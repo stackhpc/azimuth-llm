@@ -2,6 +2,7 @@ apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Reservation
 metadata:
   name: azimuth-llm-ui
-  # annotations:
+  labels:
+    {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
   credentialSecretName: azimuth-llm-ui-zenith-credential

@@ -1,7 +1,0 @@
-apiVersion: v1
-data:
-  gradio-app.py: ""
-kind: ConfigMap
-metadata:
-  creationTimestamp: null
-  name: gradio-app

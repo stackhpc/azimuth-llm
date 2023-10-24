@@ -2,6 +2,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: gradio-app
+  labels:
+    {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
   ports:
   - name: ui
@@ -9,4 +11,4 @@ spec:
     protocol: TCP
     targetPort: ui
   selector:
-    azimuth-llm: ui
+    {{- include "azimuth-llm.ui-selectorLabels" . | nindent 4 }}

@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-app
+  labels:
+    {{- include "azimuth-llm.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      {{- include "azimuth-llm.ui-selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "azimuth-llm.ui-selectorLabels" . | nindent 8 }}
+    spec:
+      containers:
+      - name: gradio-web-app
+        tty: true # Make stdout from python visible in k8s logs
+        ports:
+        - name: ui
+          containerPort: 7680
+        volumeMounts:
+        - name: app
+          mountPath: /etc/web-app
+        image: sd327/gradio-huggingface:v1.0.1-amd64
+        command: 
+        - python
+        args:
+        - /etc/web-app/app.py
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        readinessProbe:
+          tcpSocket:
+            port: 7680
+          periodSeconds: 5
+      volumes:
+        - name: app
+          configMap:
+            name: gradio-app
