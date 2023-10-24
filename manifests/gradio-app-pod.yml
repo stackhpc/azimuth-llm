@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gradio-web-app
+  labels:
+    azimuth-llm: ui
+spec:
+  containers:
+  - name: gradio-web-app
+    ports:
+    - name: ui
+      containerPort: 7680
+    volumeMounts:
+    - name: app
+      mountPath: /tmp/gradio-ui
+    image: sd327/gradio-huggingface:v1.0.1-amd64
+    # command: 
+    # - python
+    # args:
+    # - /tmp/gradio-ui/gradio-app.py
+    # env:
+    # - name: GRADIO_APP_SCRIPT_PATH
+    #   value: /tmp/gradio-ui/gradio-app.py
+    command: 
+    - /usr/bin/sleep
+    - "1000000"
+  volumes:
+    - name: app
+      configMap:
+        name: gradio-app

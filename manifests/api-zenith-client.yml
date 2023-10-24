@@ -1,0 +1,10 @@
+apiVersion: zenith.stackhpc.com/v1alpha1
+kind: Client
+metadata:
+  name: azimuth-llm
+spec:
+  reservationName: azimuth-llm-api
+  upstream:
+    serviceName: text-generation-inference
+  # auth:
+  #   skip: true

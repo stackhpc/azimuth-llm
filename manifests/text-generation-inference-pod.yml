@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: text-generation-inference
+  labels:
+    azimuth-llm: api
+spec:
+  containers:
+  - name: text-generation-inference
+    image: ghcr.io/huggingface/text-generation-inference:1.1.0
+    ports:
+    - name: api
+      containerPort: 80
+    volumeMounts:
+    - name: data
+      mountPath: /data
+    args:
+      - --model-id
+      # - tiiuae/falcon-7b-instruct
+      # - tiiuae/falcon-40b # Weights ~160GB disk size
+      - meta-llama/Llama-2-7b-chat-hf # Requires licence token
+      # - bigscience/bloom # Weights were trending towards ~360GB disk size
+      # - mosaicml/mpt-30b-chat # 
+    envFrom:
+    - secretRef:
+        name: huggingface-token
+    resources:
+      limits:
+        nvidia.com/gpu: 1
+  volumes:
+    - name: data
+      # emptyDir:
+      hostPath:
+        path: /tmp/tgi/data
+    # Suggested in text-generation-inference docs
+    - name: shm
+      emptyDir:
+        medium: Memory
+        sizeLimit: 1Gi

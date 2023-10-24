@@ -1,0 +1,10 @@
+apiVersion: zenith.stackhpc.com/v1alpha1
+kind: Client
+metadata:
+  name: azimuth-llm-ui
+spec:
+  reservationName: azimuth-llm-ui
+  upstream:
+    serviceName: gradio-app
+  auth:
+    skip: true
