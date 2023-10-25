@@ -58,9 +58,8 @@ api:
 ui:
   # Container image config
   image:
-    # TODO: Change this to ghcr once github workflows are set up
-    repository: sd327/gradio-huggingface
-    version: v1.0.1-amd64
+    repository: ghcr.io/stackhpc/azimuth-llm-ui-base
+    version: 7b1d77f
   # Service config 
   service:
     name: web-app
