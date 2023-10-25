@@ -40,7 +40,7 @@ jobs:
           # cache-key: ${{ matrix.component }}
           # context: ./${{ matrix.component }}
           cache-key: ui-base
-          context: ./images/ui
+          context: ./images/ui-base
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.image-meta.outputs.tags }}
