@@ -1,3 +1,4 @@
+{{- if .Values.api.service.zenith.enabled -}}
 apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Reservation
 metadata:
@@ -6,3 +7,4 @@ metadata:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
   credentialSecretName: {{ .Release.Name }}-api-zenith-credential
+{{- end -}}
