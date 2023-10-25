@@ -4,8 +4,21 @@ entries:
   - annotations:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
+    appVersion: 2b59b72
+    created: "2023-10-25T16:31:26.595362593Z"
+    description: HuggingFace LLM model serving along with a simple web interface.
+    digest: b61d5ebfc76d4b0b8671866f6f32724ea6a99fe4ca734bb3fa9b4414f367a410
+    icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
+    name: azimuth-llm
+    type: application
+    urls:
+    - azimuth-llm-0.1.0-dev.0.main.17.tgz
+    version: 0.1.0-dev.0.main.17
+  - annotations:
+      azimuth.stackhpc.com/label: HuggingFace LLM
+    apiVersion: v2
     appVersion: 26d13c6
-    created: "2023-10-25T16:10:30.990811861Z"
+    created: "2023-10-25T16:31:26.594608255Z"
     description: A Helm chart for Kubernetes
     digest: 0072e9259e687e9eac83ec2beb82d63b57e899bf351ad1dcfd7b70c9c6504df2
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -16,7 +29,7 @@ entries:
     version: 0.1.0-dev.0.main.15
   - apiVersion: v2
     appVersion: 06123ef
-    created: "2023-10-25T16:10:30.989943653Z"
+    created: "2023-10-25T16:31:26.59392772Z"
     description: A Helm chart for Kubernetes
     digest: c9d195507a58577e591caee7423f6b71ca61ce32056e54d02cb062633d6e6aeb
     name: azimuth-llm
@@ -26,7 +39,7 @@ entries:
     version: 0.1.0-dev.0.main.14
   - apiVersion: v2
     appVersion: 7b1d77f
-    created: "2023-10-25T16:10:30.989080246Z"
+    created: "2023-10-25T16:31:26.593293288Z"
     description: A Helm chart for Kubernetes
     digest: 9b9be6c4d49664fb511ff4be50c38011235b9da3e7889e754d4de0be2d4fa1a8
     name: azimuth-llm
@@ -34,4 +47,4 @@ entries:
     urls:
     - azimuth-llm-0.1.0-dev.0.main.10.tgz
     version: 0.1.0-dev.0.main.10
-generated: "2023-10-25T16:10:30.987746534Z"
+generated: "2023-10-25T16:31:26.592416943Z"
