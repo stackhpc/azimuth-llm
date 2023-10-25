@@ -1,4 +1,4 @@
-{{- if .Values.api.service.zenith.enabled -}}
+{{- if .Values.ui.service.zenith.enabled -}}
 apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Client
 metadata:
