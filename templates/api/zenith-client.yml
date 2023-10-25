@@ -1,12 +1,14 @@
+{{- if .Values.api.service.zenith.enabled -}}
 apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Client
 metadata:
-  name: azimuth-llm-api
+  name: {{ .Release.Name }}-api
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
-  reservationName: azimuth-llm-api
+  reservationName: {{ .Release.Name }}-api
   upstream:
-    serviceName: text-generation-inference
-  # auth:
-  #   skip: true
+    serviceName: {{ .Values.api.service.name }}
+  auth:
+    skip: {{ .Values.api.service.zenith.skipAuth }}
+{{- end -}}

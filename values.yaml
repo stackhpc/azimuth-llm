@@ -2,107 +2,55 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
+huggingface:
+  # The name of the HuggingFace model to use
+  model: tiiuae/falcon-7b-instruct
+  # Other (partially tested) options:
+  # (some of which may not fit on a single GPU and will take a long time to download)
+  # - meta-llama/Llama-2-7b-chat-hf # Requires licence token
+  # - tiiuae/falcon-40b # Weights ~160GB disk size
+  # - bigscience/bloom # Weights were trending towards ~360GB disk size
+
+  # For private/gated huggingface models (e.g. Meta's Llama models) 
+  # you must provide your own huggingface token, for details see:
+  # https://huggingface.co/docs/hub/security-tokens
+  
+  # To do this, either provide the name of an existing secret on the cluster,
+  # which should be created before installing this chart by running 
+  # `kubectl create secret generic huggingface-token --from-env-file <file-name>`
+  # where <file-name> is a file with the following contents:
+  # HUGGING_FACE_HUB_TOKEN=<token-value>
+  secretName:
+  # OR FOR TESTING PURPOSES ONLY, you can instead provide the secret directly
+  # as a chart value here (if secretName is set about then it will take priority)
+  token: 
+
+# Configuration for the backend model serving API
 api:
-
-
-ui:
-
-
-
-
-# HELM TEMPLATE
-
-# replicaCount: 1
-
-# image:
-#   repository: nginx
-#   pullPolicy: IfNotPresent
-#   # Overrides the image tag whose default is the chart appVersion.
-#   tag: ""
-
-# imagePullSecrets: []
-# nameOverride: ""
-# fullnameOverride: ""
-
-# serviceAccount:
-#   # Specifies whether a service account should be created
-#   create: true
-#   # Automatically mount a ServiceAccount's API credentials?
-#   automount: true
-#   # Annotations to add to the service account
-#   annotations: {}
-#   # The name of the service account to use.
-#   # If not set and create is true, a name is generated using the fullname template
-#   name: ""
-
-# podAnnotations: {}
-# podLabels: {}
-
-# podSecurityContext: {}
-#   # fsGroup: 2000
-
-# securityContext: {}
-#   # capabilities:
-#   #   drop:
-#   #   - ALL
-#   # readOnlyRootFilesystem: true
-#   # runAsNonRoot: true
-#   # runAsUser: 1000
-
-# service:
-#   type: ClusterIP
-#   port: 80
-
-# ingress:
-#   enabled: false
-#   className: ""
-#   annotations: {}
-#     # kubernetes.io/ingress.class: nginx
-#     # kubernetes.io/tls-acme: "true"
-#   hosts:
-#     - host: chart-example.local
-#       paths:
-#         - path: /
-#           pathType: ImplementationSpecific
-#   tls: []
-#   #  - secretName: chart-example-tls
-#   #    hosts:
-#   #      - chart-example.local
-
-# resources: {}
-#   # We usually recommend not to specify default resources and to leave this as a conscious
-#   # choice for the user. This also increases chances charts run on environments with little
-#   # resources, such as Minikube. If you do want to specify resources, uncomment the following
-#   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-#   # limits:
-#   #   cpu: 100m
-#   #   memory: 128Mi
-#   # requests:
-#   #   cpu: 100m
-#   #   memory: 128Mi
-
-# autoscaling:
-#   enabled: false
-#   minReplicas: 1
-#   maxReplicas: 100
-#   targetCPUUtilizationPercentage: 80
-#   # targetMemoryUtilizationPercentage: 80
-
-# # Additional volumes on the output Deployment definition.
-# volumes: []
-# # - name: foo
-# #   secret:
-# #     secretName: mysecret
-# #     optional: false
-
-# # Additional volumeMounts on the output Deployment definition.
-# volumeMounts: []
-# # - name: foo
-# #   mountPath: "/etc/foo"
-# #   readOnly: true
-
-# nodeSelector: {}
-
-# tolerations: []
-
-# affinity: {}
+  # Container image config
+  image:
+    repository: ghcr.io/huggingface/text-generation-inference
+    version: 1.1.0
+  # Service config 
+  service:
+    name: text-generation-inference
+    type: ClusterIP
+    zenith:
+      enabled: true
+      # Whether or not to require
+      skipAuth: true
+  # Config
+  storage:
+  # Number of gpus to requests for each api pod instance
+  # NOTE: This must be in the range 1 <= value <= N, where
+  #       'N' is the number of GPUs available in a single 
+  #       worker node on the target Kubernetes cluster.
+  gpus: 1
+  # The update strategy to use for the deployment
+  # See https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
+  # NOTE: Changing this has implications for the number of additional GPU worker nodes required
+  #       to preform a rolling zero-downtime update
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 0%
+      maxUnavailable: 100%

@@ -1,8 +1,8 @@
 apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Reservation
 metadata:
-  name: azimuth-llm-api
+  name: {{ .Release.Name }}-api
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
-  credentialSecretName: azimuth-llm-api-zenith-credential
+  credentialSecretName: {{ .Release.Name }}-api-zenith-credential

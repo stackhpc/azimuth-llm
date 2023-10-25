@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: text-generation-inference
+  name: {{ .Release.Name }}-api
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
@@ -9,14 +9,16 @@ spec:
   selector:
     matchLabels: 
       {{- include "azimuth-llm.api-selectorLabels" . | nindent 6 }}
+  strategy:
+    {{- .Values.api.updateStrategy | toYaml | nindent 4 }}
   template:
     metadata:
       labels:
         {{- include "azimuth-llm.api-selectorLabels" . | nindent 8 }}
     spec:
       containers:
-      - name: text-generation-inference
-        image: ghcr.io/huggingface/text-generation-inference:1.1.0
+      - name: {{ .Release.Name }}-api
+        image: {{ printf "%s:%s" .Values.api.image.repository .Values.api.image.version }}
         ports:
         - name: api
           containerPort: 80
@@ -25,14 +27,18 @@ spec:
           mountPath: /data
         args:
           - --model-id
-          - tiiuae/falcon-7b-instruct
-          # - tiiuae/falcon-40b # Weights ~160GB disk size
-          # - meta-llama/Llama-2-7b-chat-hf # Requires licence token
-          # - bigscience/bloom # Weights were trending towards ~360GB disk size
-          # - mosaicml/mpt-30b-chat # 
+          - {{ .Values.huggingface.model }}
+        {{- if .Values.huggingface.secretName }}
         envFrom:
         - secretRef:
             name: huggingface-token
+        {{- else if .Values.huggingface.token }}
+        env:
+        - name: HUGGING_FACE_HUB_TOKEN
+          value: {{ .Values.huggingface.token }}
+        {{- else if contains "Llama" .Values.huggingface.model -}}
+        {{- fail "Either secretName or token value must be set for Llama and other gated models" }}
+        {{- end }}
         readinessProbe:
           tcpSocket:
             port: 80
@@ -41,8 +47,9 @@ spec:
         # TODO: Make this configurable
         resources:
           limits:
-            nvidia.com/gpu: 1
+            nvidia.com/gpu: {{ .Values.api.gpus | int }}
       volumes:
+        # TODO: Make this configurable (e.g. hostPath or PV)
         - name: data
           # emptyDir:
           hostPath:
