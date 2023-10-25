@@ -1,0 +1,19 @@
+{
+    "$schema": "http://json-schema.org/schema#",
+    "type": "object",
+    "properties": {
+        "huggingface": {
+            "type": "object",
+            "properties": {
+                "model": {
+                    "type": "string",
+                    "title": "Model",
+                    "description": "The HuggingFace model to deploy.",
+                    "default": "tiiuae/falcon-7b-instruct"
+                }
+            },
+            "required": ["model"]
+        }
+    },
+    "required": ["huggingface"]
+}
