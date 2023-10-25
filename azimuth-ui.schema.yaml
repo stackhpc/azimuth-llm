@@ -1,0 +1,5 @@
+controls:
+  # Render the memory and storage controls as number fields with a unit
+  /huggingface/model:
+    type: TextControl
+    placeholder: tiiuae/falcon-7b-instruct
