@@ -1,5 +1,5 @@
 
-FROM amd64/python:3.11-slim
+FROM python:3.11-slim
 
 ENV GRADIO_SERVER_PORT=7680
 
