@@ -14,7 +14,8 @@
                 "token": {
                     "type": "string",
                     "title": "Access Token",
-                    "description": "The HuggingFace access token to use for installing gated models."
+                    "description": "The HuggingFace access token to use for installing gated models.",
+                    "default": ""
                 }
             },
             "required": ["model"]
