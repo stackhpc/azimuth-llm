@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: gradio-app
+  name: {{ .Release.Name }}-web-app
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 data:

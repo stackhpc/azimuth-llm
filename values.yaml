@@ -37,8 +37,7 @@ api:
     type: ClusterIP
     zenith:
       enabled: true
-      # Whether or not to require
-      skipAuth: true
+      skipAuth: false
   # Config
   storage:
   # Number of gpus to requests for each api pod instance
@@ -54,3 +53,23 @@ api:
     rollingUpdate:
       maxSurge: 0%
       maxUnavailable: 100%
+
+# Configuration for the frontend web interface
+ui:
+  # Container image config
+  image:
+    # TODO: Change this to ghcr once github workflows are set up
+    repository: sd327/gradio-huggingface
+    version: v1.0.1-amd64
+  # Service config 
+  service:
+    name: web-app
+    type: ClusterIP
+    zenith:
+      enabled: true
+      skipAuth: false
+  # The update strategy to use for the deployment
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%

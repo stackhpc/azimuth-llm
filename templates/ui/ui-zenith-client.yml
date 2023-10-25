@@ -1,12 +1,14 @@
+{{- if .Values.api.service.zenith.enabled -}}
 apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Client
 metadata:
-  name: azimuth-llm-ui
+  name: {{ .Release.Name }}-ui
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
-  reservationName: azimuth-llm-ui
+  reservationName: {{ .Release.Name }}-ui
   upstream:
-    serviceName: gradio-app
+    serviceName: {{ .Values.ui.service.name }}
   auth:
-    skip: true
+    skip: {{ .Values.ui.service.zenith.skipAuth }}
+{{- end -}}
