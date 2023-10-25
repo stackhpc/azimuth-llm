@@ -3,8 +3,12 @@ apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Reservation
 metadata:
   name: {{ .Release.Name }}-api
-  labels:
-    {{- include "azimuth-llm.labels" . | nindent 4 }}
+  annotations:
+    azimuth.stackhpc.com/service-label: {{ quote .Values.api.service.zenith.label }}
+    azimuth.stackhpc.com/service-icon-url: {{ .Values.api.service.zenith.iconUrl }}
+    {{- with .Values.api.service.zenith.description }}
+    azimuth.stackhpc.com/service-description: {{ quote . }}
+    {{- end }}
 spec:
   credentialSecretName: {{ .Release.Name }}-api-zenith-credential
 {{- end -}}

@@ -30,7 +30,8 @@ api:
   # Container image config
   image:
     repository: ghcr.io/huggingface/text-generation-inference
-    version: 1.1.0
+    # NOTE: versions > 0.9.4 are no longer Apache licensed :(
+    version: 0.9.4
   # Service config 
   service:
     name: text-generation-inference
@@ -38,6 +39,11 @@ api:
     zenith:
       enabled: true
       skipAuth: false
+      label: Inference API
+      iconUrl: 
+      description: |
+        The raw inference API endpoints for the deployed LLM. 
+        Public API docs are available [here](https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference)
   # Config
   storage:
   # Number of gpus to requests for each api pod instance
@@ -67,6 +73,10 @@ ui:
     zenith:
       enabled: true
       skipAuth: false
+      label: Web Interface
+      iconUrl: https://raw.githubusercontent.com/gradio-app/gradio/5524e590577769b0444a5332b8d444aafb0c5c12/js/app/public/static/img/logo.svg
+      description: |
+        A web-based user inferface for interacting with the deployed LLM.
   # The update strategy to use for the deployment
   updateStrategy:
     rollingUpdate:

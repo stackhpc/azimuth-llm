@@ -5,6 +5,12 @@ metadata:
   name: {{ .Release.Name }}-ui
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
+  annotations:
+    azimuth.stackhpc.com/service-label: {{ quote .Values.ui.service.zenith.label }}
+    azimuth.stackhpc.com/service-icon-url: {{ .Values.ui.service.zenith.iconUrl }}
+    {{- with .Values.ui.service.zenith.description }}
+    azimuth.stackhpc.com/service-description: {{ quote . }}
+    {{- end }}
 spec:
   credentialSecretName: {{ .Release.Name }}-ui-zenith-credential
 {{- end -}}
