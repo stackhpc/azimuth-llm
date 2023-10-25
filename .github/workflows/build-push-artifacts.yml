@@ -1,16 +1,12 @@
 # Adapted from https://github.com/stackhpc/azimuth/blob/master/.github/workflows/build-push-artifacts.yaml
 name: Publish artifacts
 # Run the tasks on every push
+# TODO: Add path filtering to only run on relevant changes
 on: push
 jobs:
   build_push_images:
     name: Build and push images
     runs-on: ubuntu-latest
-    # strategy:
-    #   matrix:
-    #     include:
-    #       - component: api
-    #       - component: ui
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
@@ -26,7 +22,6 @@ jobs:
         id: image-meta
         uses: docker/metadata-action@v4
         with:
-          # images: ghcr.io/stackhpc/azimuth-${{ matrix.component }}
           images: ghcr.io/stackhpc/azimuth-llm-ui-base
           # Produce the branch name or tag and the SHA as tags
           tags: |
@@ -37,8 +32,6 @@ jobs:
       - name: Build and push image
         uses: stackhpc/github-actions/docker-multiarch-build-push@master
         with:
-          # cache-key: ${{ matrix.component }}
-          # context: ./${{ matrix.component }}
           cache-key: ui-base
           context: ./images/ui-base
           platforms: linux/amd64,linux/arm64
