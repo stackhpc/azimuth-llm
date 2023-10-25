@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   azimuth-llm:
   - apiVersion: v2
+    appVersion: 06123ef
+    created: "2023-10-25T15:13:34.137040331Z"
+    description: A Helm chart for Kubernetes
+    digest: c9d195507a58577e591caee7423f6b71ca61ce32056e54d02cb062633d6e6aeb
+    name: azimuth-llm
+    type: application
+    urls:
+    - azimuth-llm-0.1.0-dev.0.main.14.tgz
+    version: 0.1.0-dev.0.main.14
+  - apiVersion: v2
     appVersion: 7b1d77f
-    created: "2023-10-25T14:42:51.382358767Z"
+    created: "2023-10-25T15:13:34.136360704Z"
     description: A Helm chart for Kubernetes
     digest: 9b9be6c4d49664fb511ff4be50c38011235b9da3e7889e754d4de0be2d4fa1a8
     name: azimuth-llm
@@ -11,4 +21,4 @@ entries:
     urls:
     - azimuth-llm-0.1.0-dev.0.main.10.tgz
     version: 0.1.0-dev.0.main.10
-generated: "2023-10-25T14:42:51.381666253Z"
+generated: "2023-10-25T15:13:34.134801343Z"
