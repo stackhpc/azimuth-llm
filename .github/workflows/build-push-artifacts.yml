@@ -7,6 +7,11 @@ jobs:
   build_push_images:
     name: Build and push images
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - component: api
+          - component: ui
     steps:
       - name: Check out the repository
         uses: actions/checkout@v3
@@ -22,7 +27,7 @@ jobs:
         id: image-meta
         uses: docker/metadata-action@v4
         with:
-          images: ghcr.io/stackhpc/azimuth-llm-ui-base
+          images: ghcr.io/stackhpc/azimuth-llm-${{ matrix.component }}-base
           # Produce the branch name or tag and the SHA as tags
           tags: |
             type=ref,event=branch
@@ -32,8 +37,8 @@ jobs:
       - name: Build and push image
         uses: stackhpc/github-actions/docker-multiarch-build-push@master
         with:
-          cache-key: ui-base
-          context: ./images/ui-base
+          cache-key: ${{ matrix.component }}-base
+          context: ./images/${{ matrix.component }}-base
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.image-meta.outputs.tags }}
