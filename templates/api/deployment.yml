@@ -24,9 +24,9 @@ spec:
           containerPort: 80
         volumeMounts:
         - name: data
-          mountPath: /data
+          mountPath: /root/.cache/huggingface
         args:
-          - --model-id
+          - --model
           - {{ .Values.huggingface.model }}
         {{- if .Values.huggingface.secretName }}
         envFrom:
@@ -44,7 +44,6 @@ spec:
             port: 80
           initialDelaySeconds: 15
           periodSeconds: 10
-        # TODO: Make this configurable
         resources:
           limits:
             nvidia.com/gpu: {{ .Values.api.gpus | int }}
@@ -53,7 +52,7 @@ spec:
         - name: data
           # emptyDir:
           hostPath:
-            path: /tmp/tgi/data
+            path: /tmp/llm/data
         # Suggested in text-generation-inference docs
         - name: shm
           emptyDir:
