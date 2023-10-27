@@ -23,24 +23,23 @@ huggingface:
   secretName:
   # OR FOR TESTING PURPOSES ONLY, you can instead provide the secret directly
   # as a chart value here (if secretName is set about then it will take priority)
-  token: 
+  token: ""
 
 # Configuration for the backend model serving API
 api:
   # Container image config
   image:
-    repository: ghcr.io/huggingface/text-generation-inference
-    # NOTE: versions > 0.9.4 are no longer Apache licensed :(
-    version: 0.9.4
+    repository: ghcr.io/stackhpc/azimuth-llm-api-base
+    version: fae060a
   # Service config 
   service:
     name: text-generation-inference
     type: ClusterIP
     zenith:
-      enabled: true
+      enabled: false
       skipAuth: false
       label: Inference API
-      iconUrl: 
+      iconUrl:
       description: |
         The raw inference API endpoints for the deployed LLM. 
         Public API docs are available [here](https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference)

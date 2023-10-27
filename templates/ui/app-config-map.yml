@@ -6,40 +6,45 @@ metadata:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 data:
   app.py: |
-    import huggingface_hub
-    from huggingface_hub import InferenceClient
+    import requests, json
     import gradio as gr
     from startup import wait_for_backend
 
+    # NOTE: This url should match the chart's api service name & namespace
     backend_url = "http://{{ .Values.api.service.name }}.{{ .Release.Namespace }}.svc"
     wait_for_backend(backend_url)
 
-    client = InferenceClient(model=backend_url)
-
     def inference(message, history):
         
-        if message == "":
-            yield ""
+        headers = {"User-Agent": "vLLM Client"}
+        pload = {
+            "prompt": message,
+            "stream": True,
+            "max_tokens": 128,
+        }
+        response = requests.post(f'{backend_url}/generate',
+                                headers=headers,
+                                json=pload,
+                                stream=True)
 
-        partial_message = ""
-        try:
-            for token in client.text_generation(message, max_new_tokens=500, stream=True):
-                partial_message += token
-                # Strip text marker from generated output
-                partial_message = partial_message.replace('<|endoftext|>', '')
-                yield partial_message
-        except huggingface_hub.inference._text_generation.ValidationError as e:
-            raise gr.Error("Context length exceeded. Please clear the chat window.")
+        for chunk in response.iter_lines(chunk_size=8192,
+                                        decode_unicode=False,
+                                        delimiter=b"\0"):
+            if chunk:
+                data = json.loads(chunk.decode("utf-8"))
+                output = data["text"][0]
+                yield output
+
 
     gr.ChatInterface(
         inference,
         chatbot=gr.Chatbot(
             height=500,
             show_copy_button=True,
+            # layout='panel',
         ),
-        title="Azimuth LLM",
-        description="This is the demo UI for the Azimuth LLM application.",
         textbox=gr.Textbox(placeholder="Ask me anything...", container=False, scale=7),
+        title="Large Language Model",
         retry_btn="Retry",
         undo_btn="Undo",
         clear_btn="Clear",
@@ -51,7 +56,7 @@ data:
         ready = False
         while not ready:
             try:
-                ready = (requests.get(f'{url}/health').status_code == 200)
+                ready = (requests.get(f'{url}/docs').status_code == 200)
                 print('Waiting for backend API to start')
                 time.sleep(5)
             except requests.exceptions.ConnectionError as e:

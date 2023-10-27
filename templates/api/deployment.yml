@@ -21,11 +21,15 @@ spec:
         image: {{ printf "%s:%s" .Values.api.image.repository .Values.api.image.version }}
         ports:
         - name: api
-          containerPort: 80
+          containerPort: 8000
         volumeMounts:
         - name: data
           mountPath: /root/.cache/huggingface
+        command:
+        - python3.11
         args:
+          - -m
+          - vllm.entrypoints.api_server
           - --model
           - {{ .Values.huggingface.model }}
         {{- if .Values.huggingface.secretName }}
@@ -41,7 +45,7 @@ spec:
         {{- end }}
         readinessProbe:
           tcpSocket:
-            port: 80
+            port: 8000
           initialDelaySeconds: 15
           periodSeconds: 10
         resources:
