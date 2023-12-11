@@ -10,5 +10,6 @@ spec:
     port: 80
     protocol: TCP
     targetPort: ui
+  type: {{ .Values.ui.service.type }}
   selector:
     {{- include "azimuth-llm.ui-selectorLabels" . | nindent 4 }}
