@@ -26,12 +26,13 @@ spec:
         - name: data
           mountPath: /root/.cache/huggingface
         command:
-        - python3.11
+        - python3
         args:
           - -m
           - vllm.entrypoints.api_server
           - --model
           - {{ .Values.huggingface.model }}
+          {{- .Values.api.extraArgs | toYaml | nindent 10 }}
         {{- if .Values.huggingface.secretName }}
         envFrom:
         - secretRef:

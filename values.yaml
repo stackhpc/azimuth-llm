@@ -30,7 +30,7 @@ api:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-api-base
-    version: fae060a
+    version: "6876068"
   # Service config 
   service:
     name: text-generation-inference
@@ -61,13 +61,15 @@ api:
     rollingUpdate:
       maxSurge: 0%
       maxUnavailable: 100%
-
+  # Extra args to supply to the vLLM backend
+  extraArgs: []
+  
 # Configuration for the frontend web interface
 ui:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base
-    version: 7b1d77f
+    version: "6876068"
   # Service config 
   service:
     name: web-app
