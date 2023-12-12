@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - component: api
+          # - component: api
           - component: ui
     steps:
       - name: Check out the repository
