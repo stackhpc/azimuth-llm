@@ -28,7 +28,7 @@ spec:
         command: 
         - python
         args:
-        - /etc/web-app/app.py
+        - {{ printf "/etc/web-app/%s" .Values.ui.entrypoint }}
         env:
         - name: PYTHONUNBUFFERED
           value: "1"
