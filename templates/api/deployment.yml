@@ -54,9 +54,7 @@ spec:
       volumes:
         # TODO: Make this configurable (e.g. hostPath or PV)
         - name: data
-          # emptyDir:
-          hostPath:
-            path: /tmp/llm/data
+          {{- .Values.api.cacheVolume | toYaml | nindent 10 }}
         # Suggested in text-generation-inference docs
         - name: shm
           emptyDir:

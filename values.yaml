@@ -43,8 +43,11 @@ api:
       description: |
         The raw inference API endpoints for the deployed LLM. 
         Public API docs are available [here](https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference)
-  # Config
-  storage:
+  # Config for huggingface model cache volume
+  # This is mounted at /root/.cache/huggingface in the api deployment
+  cacheVolume:
+    hostPath:
+      path: /tmp/llm/huggingface-cache
   # Number of gpus to requests for each api pod instance
   # NOTE: This must be in the range 1 <= value <= N, where
   #       'N' is the number of GPUs available in a single 
