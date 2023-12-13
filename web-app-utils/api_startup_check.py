@@ -9,7 +9,7 @@ def wait_for_backend(url):
     ready = False
     while not ready:
         try:
-            ready = requests.get(f"{url}/docs").status_code == 200
+            ready = requests.get(f"{url}/health").status_code == 200
             print("Waiting for backend API to start")
             time.sleep(1)
         except requests.exceptions.ConnectionError as e:
