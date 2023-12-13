@@ -29,6 +29,12 @@ def inference(message, history):
         "prompt": prompt.format(prompt=context),
         "stream": True,
         "max_tokens": 1000,
+        # Parameters requested by HU
+        "sampling_params": {
+            "temperature": 0.7,
+            "top_p": 0.4,
+            "top_k": 40,
+        }
     }
     response = requests.post(
         f"{backend_url}/generate", headers=headers, json=pload, stream=True
