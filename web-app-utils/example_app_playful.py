@@ -3,7 +3,7 @@ import gradio as gr
 from api_startup_check import wait_for_backend
 
 # NOTE: This url should match the chart's api service name & namespace
-#TODO: Detect namespace automatically?
+# TODO: Detect namespace automatically?
 backend_url = "http://llm-backend.default.svc"
 wait_for_backend(backend_url)
 
