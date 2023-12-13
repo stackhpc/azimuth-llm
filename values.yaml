@@ -33,7 +33,7 @@ api:
     version: "6876068"
   # Service config 
   service:
-    name: text-generation-inference
+    name: llm-backend
     type: ClusterIP
     zenith:
       enabled: false
@@ -41,8 +41,7 @@ api:
       label: Inference API
       iconUrl:
       description: |
-        The raw inference API endpoints for the deployed LLM. 
-        Public API docs are available [here](https://huggingface.github.io/text-generation-inference/#/Text%20Generation%20Inference)
+        The raw inference API endpoints for the deployed LLM.
   # Config for huggingface model cache volume
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:

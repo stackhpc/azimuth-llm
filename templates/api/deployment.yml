@@ -58,7 +58,7 @@ spec:
         # TODO: Make this configurable (e.g. hostPath or PV)
         - name: data
           {{- .Values.api.cacheVolume | toYaml | nindent 10 }}
-        # Suggested in text-generation-inference docs
+        # Suggested in vLLM docs
         - name: shm
           emptyDir:
             medium: Memory
