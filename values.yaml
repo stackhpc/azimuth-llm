@@ -29,8 +29,8 @@ huggingface:
 api:
   # Container image config
   image:
-    repository: ghcr.io/stackhpc/azimuth-llm-api-base
-    version: "6876068"
+    repository: vllm/vllm-openai
+    version: v0.2.4
   # Service config 
   service:
     name: llm-backend
