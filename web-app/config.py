@@ -30,7 +30,7 @@ class AppSettings(BaseSettings):
 
     # Prompt settings
     prompt_template: str = Field(
-        description="The template to use for requests to the backend model. If present, the '\{context\}' placeholder will be replaced by the conversation history of the current session.",
+        description="The template to use for requests to the backend model. If present, the '\{context\}' placeholder will be replaced by the conversation history of the current session. In order for the frontend to correctly filter out context from the displayed text, the context placeholder must not appear on the final line of the prompt template.",
     )
     # The following settings are only used if {context} used in prompt template
     include_user_messages_in_context: bool = True
