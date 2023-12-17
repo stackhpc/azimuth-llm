@@ -1,11 +1,12 @@
-import requests, json, argparse, yaml
+import requests, json
+from urllib.parse import urljoin
 import gradio as gr
 from api_startup_check import wait_for_backend
 from config import AppSettings
 
 settings = AppSettings.load("./settings.yml")
 
-backend_url = settings.backend_url
+backend_url = str(settings.backend_url)
 wait_for_backend(backend_url)
 
 
@@ -28,7 +29,7 @@ def inference(message, history):
         **settings.llm_params,
     }
     response = requests.post(
-        f"{backend_url}/generate", headers=headers, json=payload, stream=True
+        urljoin(backend_url, "/generate"), headers=headers, json=payload, stream=True
     )
 
     for chunk in response.iter_lines(
@@ -38,8 +39,9 @@ def inference(message, history):
             data = json.loads(chunk.decode("utf-8"))
             output = data["text"][0]
             # Manually trim the context from output
-            if "[/INST]" in output:
-                output = output.split("[/INST]")[-1]
+            delimiter = settings.prompt_template.splitlines()[-1]
+            if delimiter in output:
+                output = output.split(delimiter)[-1]
             yield output
 
 

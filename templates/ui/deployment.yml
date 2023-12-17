@@ -22,13 +22,14 @@ spec:
         ports:
         - name: ui
           containerPort: 7680
+        workingDir: /etc/web-app
         volumeMounts:
         - name: app
           mountPath: /etc/web-app
         command: 
         - python
         args:
-        - {{ printf "/etc/web-app/%s" .Values.ui.entrypoint }}
+        - {{ .Values.ui.entrypoint }}
         env:
         - name: PYTHONUNBUFFERED
           value: "1"

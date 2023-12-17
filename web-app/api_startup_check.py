@@ -1,5 +1,5 @@
 import requests, time
-
+from urllib.parse import urljoin
 
 def wait_for_backend(url):
     """
@@ -7,10 +7,11 @@ def wait_for_backend(url):
     accept requests until the backend API is up and running.
     """
     ready = False
+    endpoint = urljoin(url, "/health")
     while not ready:
         try:
-            ready = requests.get(f"{url}/health").status_code == 200
-            print("Waiting for backend API to start")
+            ready = requests.get(endpoint).status_code == 200
+            print(f"Waiting for 200 status from backend API at {endpoint}")
             time.sleep(1)
         except requests.exceptions.ConnectionError as e:
             pass
