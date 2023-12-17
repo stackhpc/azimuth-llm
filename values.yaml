@@ -65,8 +65,12 @@ api:
   
 # Configuration for the frontend web interface
 ui:
-  # The file from the UI config map to execute as the frontend app
-  entrypoint: example_app_vanilla.py
+  # The file from the UI config map to execute as the entrypoint to the frontend app
+  entrypoint: app.py
+  # The values to be written to settings.yml for parsing as frontend app setting
+  # (see example_app.py and config.py for example using pydantic-settings to configure app)
+  appSettings:
+    prompt_template: ""
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base
