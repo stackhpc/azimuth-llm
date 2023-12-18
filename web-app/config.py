@@ -33,8 +33,8 @@ class AppSettings(BaseSettings):
         description="The template to use for requests to the backend model. If present, the '\{context\}' placeholder will be replaced by the conversation history of the current session. In order for the frontend to correctly filter out context from the displayed text, the context placeholder must not appear on the final line of the prompt template.",
     )
     # The following settings are only used if {context} used in prompt template
-    include_user_messages_in_context: bool = True
-    include_system_responses_in_context: bool = True
+    include_past_user_messages_in_context: bool = True
+    include_past_system_responses_in_context: bool = True
     user_context_template: str = Field(
         default="<<USER>>\n{user_input}\n<</USER>>\n",
         description="The template string to use for including user messages in the prompt context sent to backend. The '\{user_input\}' placeholder will be replaced by the the user's messages. (Only applies if '\{context\}' is present in prompt_template)",

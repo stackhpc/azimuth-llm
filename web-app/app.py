@@ -13,9 +13,9 @@ wait_for_backend(backend_url)
 def inference(message, history):
     context = ""
     for user_input, system_response in history:
-        if settings.include_user_messages_in_context:
+        if settings.include_past_system_responses_in_context:
             context += settings.user_context_template.format(user_input=user_input)
-        if settings.include_system_responses_in_context:
+        if settings.include_past_system_responses_in_context:
             context += settings.system_context_template.format(
                 system_response=system_response
             )
