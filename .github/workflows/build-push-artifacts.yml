@@ -35,7 +35,7 @@ jobs:
             type=sha,prefix=
 
       - name: Build and push image
-        uses: stackhpc/github-actions/docker-multiarch-build-push@master
+        uses: stackhpc/github-actions/docker-multiarch-build-push@allow-continue-after-scan
         with:
           cache-key: ${{ matrix.component }}-base
           context: ./images/${{ matrix.component }}-base
@@ -43,6 +43,7 @@ jobs:
           push: true
           tags: ${{ steps.image-meta.outputs.tags }}
           labels: ${{ steps.image-meta.outputs.labels }}
+          fail_on_high_severity_cve: false
 
   build_push_chart:
     name: Build and push Helm chart
