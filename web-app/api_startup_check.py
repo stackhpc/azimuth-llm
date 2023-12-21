@@ -1,6 +1,7 @@
 import requests, time
 from urllib.parse import urljoin
 
+
 def wait_for_backend(url):
     """
     This function acts as a startup check so that the frontend web app does not
