@@ -6,6 +6,7 @@ on: push
 jobs:
   # Job to run change detection
   changes:
+    name: Check for relevant changes
     runs-on: ubuntu-latest
     # Required permissions
     permissions:
