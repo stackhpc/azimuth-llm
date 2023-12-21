@@ -15,15 +15,18 @@ jobs:
       images: ${{ steps.filter.outputs.images }}
       chart: ${{ steps.filter.outputs.chart }}
     steps:
-    # For pull requests it's not necessary to checkout the code
-    - uses: dorny/paths-filter@v2
-      id: filter
-      with:
-        filters: |
-          images:
-            - 'images/**'
-          chart:
-            - 'chart/**'
+
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            images:
+              - 'images/**'
+            chart:
+              - 'chart/**'
 
   # Job to build container images
   build_push_images:
