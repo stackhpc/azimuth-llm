@@ -3,6 +3,7 @@ from pydantic.alias_generators import to_camel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 import yaml
 
+from typing import Optional
 
 def get_k8s_namespace():
     namespace_file_path = "/var/run/secrets/kubernetes.io/serviceaccount/namespace"
@@ -25,7 +26,7 @@ class AppSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="llm_ui_")
 
     # General settings
-    backend_url: HttpUrl = f"http://llm-backend.{get_k8s_namespace()}.svc"
+    backend_url: HttpUrl = Field(default_factory=lambda: f"http://llm-backend.{get_k8s_namespace()}.svc")
     page_title: str = "Large Language Model"
 
     # Prompt settings
@@ -47,6 +48,16 @@ class AppSettings(BaseSettings):
     # Model settings
     llm_params: dict[str, float] = {}
     llm_max_tokens: int = 1000
+
+    # UI theming
+    # Variables explicitly passed to gradio.theme.Default()
+    theme_primary_hue: str = Field(default="orange")
+    theme_secondary_hue: str = Field(default="blue")
+    theme_neutral_hue: str = Field(default="gray")
+    # Overrides for theme.body_background_fill property
+    theme_background_colour: Optional[str] = None
+    # Custom page title colour override passed as CSS
+    theme_title_colour: Optional[str] = None
 
     @staticmethod
     def load(file_path: str):
