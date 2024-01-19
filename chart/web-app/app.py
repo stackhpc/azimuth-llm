@@ -5,6 +5,7 @@ from api_startup_check import wait_for_backend
 from config import AppSettings
 
 settings = AppSettings.load("./settings.yml")
+# print(settings)
 
 backend_url = str(settings.backend_url)
 wait_for_backend(backend_url)
@@ -39,22 +40,52 @@ def inference(message, history):
             data = json.loads(chunk.decode("utf-8"))
             output = data["text"][0]
             # Manually trim the context from output
-            delimiter = settings.prompt_template.splitlines()[-1]
-            if delimiter in output:
-                output = output.split(delimiter)[-1]
+            prompt_template_lines = settings.prompt_template.splitlines()
+            if len(prompt_template_lines) > 0:
+                delimiter = prompt_template_lines[-1]
+                if delimiter in output:
+                    output = output.split(delimiter)[-1]
             yield output
 
 
+# UI colour theming
+theme = gr.themes.Default(
+    primary_hue=settings.theme_primary_hue,
+    secondary_hue=settings.theme_secondary_hue,
+    neutral_hue=settings.theme_neutral_hue,
+)
+if settings.theme_background_colour:
+    theme.body_background_fill = settings.theme_background_colour
+
+css_overrides = ""
+if settings.theme_title_colour:
+    css_overrides += """
+    h1 {{
+        color: {0}
+    }}
+    """.format(settings.theme_title_colour)
+
+
+# Build main chat interface
 gr.ChatInterface(
     inference,
     chatbot=gr.Chatbot(
-        height=500,
+        # Height of conversation window in CSS units (string) or pixels (int)
+        height="70vh",
         show_copy_button=True,
-        # layout='panel',
     ),
-    textbox=gr.Textbox(placeholder="Ask me anything...", container=False, scale=7),
+    textbox=gr.Textbox(
+        placeholder="Ask me anything...", 
+        container=False, 
+        # Ratio of text box to submit button width
+        scale=7
+    ),
     title=settings.page_title,
     retry_btn="Retry",
     undo_btn="Undo",
     clear_btn="Clear",
+    analytics_enabled=False,
+    theme=theme,
+    # Overwrite title color to contrast with 
+    css=css_overrides,
 ).queue().launch(server_name="0.0.0.0")
