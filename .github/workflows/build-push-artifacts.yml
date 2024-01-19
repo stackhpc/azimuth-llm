@@ -77,9 +77,8 @@ jobs:
   build_push_chart:
     name: Build and push Helm chart
     runs-on: ubuntu-latest
-    # Only build and push the chart if the images built successfully
-    # and if chart files have changed
-    needs: [changes, build_push_images]
+    # Only build and push the chart if chart files have changed
+    needs: [changes]
     if: ${{ needs.changes.outputs.chart == 'true' }}
     steps:
       - name: Check out the repository
