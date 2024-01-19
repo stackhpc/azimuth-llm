@@ -5,6 +5,7 @@ import yaml
 
 from typing import Optional
 
+
 def get_k8s_namespace():
     namespace_file_path = "/var/run/secrets/kubernetes.io/serviceaccount/namespace"
     try:
@@ -26,7 +27,9 @@ class AppSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="llm_ui_")
 
     # General settings
-    backend_url: HttpUrl = Field(default_factory=lambda: f"http://llm-backend.{get_k8s_namespace()}.svc")
+    backend_url: HttpUrl = Field(
+        default_factory=lambda: f"http://llm-backend.{get_k8s_namespace()}.svc"
+    )
     page_title: str = "Large Language Model"
 
     # Prompt settings
@@ -50,15 +53,17 @@ class AppSettings(BaseSettings):
     llm_max_tokens: int = 1000
 
     # UI theming
+    
     # Variables explicitly passed to gradio.theme.Default()
-    theme_primary_hue: str = Field(default="orange")
-    theme_secondary_hue: str = Field(default="blue")
-    theme_neutral_hue: str = Field(default="gray")
-    # Overrides for theme.body_background_fill property
+    # For example:
+    # {"primary_hue": "red"}
+    theme_params: dict[str, str] = {}
+    # Overrides for theme.body_background_fill property
     theme_background_colour: Optional[str] = None
     # Custom page title colour override passed as CSS
     theme_title_colour: Optional[str] = None
 
+    # Method for loading settings file
     @staticmethod
     def load(file_path: str):
         try:

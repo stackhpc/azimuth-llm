@@ -48,11 +48,7 @@ def inference(message, history):
 
 
 # UI colour theming
-theme = gr.themes.Default(
-    primary_hue=settings.theme_primary_hue,
-    secondary_hue=settings.theme_secondary_hue,
-    neutral_hue=settings.theme_neutral_hue,
-)
+theme = gr.themes.Default(**settings.theme_params)
 if settings.theme_background_colour:
     theme.body_background_fill = settings.theme_background_colour
 
@@ -60,9 +56,12 @@ css_overrides = ""
 if settings.theme_title_colour:
     css_overrides += """
     h1 {{
-        color: {0}
+        color: {0};
+        padding-top: 0.5em;
     }}
-    """.format(settings.theme_title_colour)
+    """.format(
+        settings.theme_title_colour
+    )
 
 
 # Build main chat interface
@@ -70,14 +69,14 @@ gr.ChatInterface(
     inference,
     chatbot=gr.Chatbot(
         # Height of conversation window in CSS units (string) or pixels (int)
-        height="70vh",
+        height="68vh",
         show_copy_button=True,
     ),
     textbox=gr.Textbox(
-        placeholder="Ask me anything...", 
-        container=False, 
+        placeholder="Ask me anything...",
+        container=False,
         # Ratio of text box to submit button width
-        scale=7
+        scale=7,
     ),
     title=settings.page_title,
     retry_btn="Retry",
