@@ -5,7 +5,6 @@ from api_startup_check import wait_for_backend
 from config import AppSettings
 
 settings = AppSettings.load("./settings.yml")
-# print(settings)
 
 backend_url = str(settings.backend_url)
 wait_for_backend(backend_url)
@@ -39,7 +38,7 @@ def inference(message, history):
         if chunk:
             data = json.loads(chunk.decode("utf-8"))
             output = data["text"][0]
-            # Manually trim the context from output
+            # Manually trim the context from output if present
             prompt_template_lines = settings.prompt_template.splitlines()
             if len(prompt_template_lines) > 0:
                 delimiter = prompt_template_lines[-1]
@@ -86,6 +85,5 @@ gr.ChatInterface(
     clear_btn="Clear",
     analytics_enabled=False,
     theme=theme,
-    # Overwrite title color to contrast with 
     css=css_overrides,
 ).queue().launch(server_name="0.0.0.0")
