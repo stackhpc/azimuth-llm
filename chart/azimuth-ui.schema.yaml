@@ -1,4 +1,8 @@
-controls: {}
-  # /huggingface/model:
-  #   type: TextControl
-  #   placeholder: tiiuae/falcon-7b-instruct
+controls:
+  /huggingface/model:
+    type: TextControl
+    # placeholder: tiiuae/falcon-7b-instruct
+  /huggingface/token:
+    type: TextControl
+  /ui/appSettings/prompt_template:
+    type: TextControl
