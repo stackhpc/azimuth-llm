@@ -1,4 +1,7 @@
 The LLM chatbot app allows users to deploy machine learning models from [Huggingface](https://huggingface.co/models) and interact with them through a simple web interface. 
+See the [chart README](https://github.com/stackhpc/azimuth-llm/) for more information.
+
+Note: This target Kubernetes cluster must have a GPU worker node group configured, otherwise the deployment will remain in a pending state until a GPU node becomes available for scheduling.
 
 On first deployment, the app must download the weights for the specified model from Huggingface. 
 This can take a significant amount of time depending on model choice and network speeds.
