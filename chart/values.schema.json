@@ -8,8 +8,7 @@
                 "model": {
                     "type": "string",
                     "title": "Model",
-                    "description": "The HuggingFace model to deploy.",
-                    "default": "tiiuae/falcon-7b-instruct"
+                    "description": "The HuggingFace model to deploy."
                 },
                 "token": {
                     "type": "string",
@@ -19,6 +18,21 @@
                 }
             },
             "required": ["model"]
+        },
+        "ui": {
+            "type": "object",
+            "properties": {
+                "appSettings": {
+                    "type": "object",
+                    "properties": {
+                        "prompt_template": {
+                            "type": "string",
+                            "title": "Prompt Template",
+                            "description": "The internal prompt template to when generation responses. If present, the {context} placeholder will be replaced by the conversation history of the current session."
+                        }
+                    }
+                }
+            }
         }
     },
     "required": ["huggingface"]
