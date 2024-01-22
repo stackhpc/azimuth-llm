@@ -28,7 +28,7 @@
                         "prompt_template": {
                             "type": "string",
                             "title": "Prompt Template",
-                            "description": "The internal prompt template to when generation responses. If present, the {context} placeholder will be replaced by the conversation history of the current session."
+                            "description": "The internal prompt template to use when generation responses. If present, the {context} placeholder will be replaced by the conversation history of the current session."
                         }
                     }
                 }
