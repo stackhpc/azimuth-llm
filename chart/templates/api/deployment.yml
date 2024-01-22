@@ -25,11 +25,11 @@ spec:
         volumeMounts:
         - name: data
           mountPath: /root/.cache/huggingface
-        command:
-        - python3
+        # command:
+        # - python3
         args:
-          - -m
-          - vllm.entrypoints.api_server
+          # - -m
+          # - vllm.entrypoints.api_server
           - --model
           - {{ .Values.huggingface.model }}
           {{- if .Values.api.extraArgs -}}
