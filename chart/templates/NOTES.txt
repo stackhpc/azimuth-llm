@@ -1,1 +1,7 @@
-The LLM app allows users to deploy machine learning models using [vLLM](https://docs.vllm.ai/en/latest/) as a model serving backend and [gradio](https://github.com/gradio-app/gradio) as a web interface.
+The LLM chatbot app allows users to deploy machine learning models from [Huggingface](https://huggingface.co/models) and interact with them through a simple web interface. 
+
+On first deployment, the app must download the weights for the specified model from Huggingface. 
+Depending on model choice these weights can be tens or hundreds of GB in size; therefore, depending on network speeds, the initial deployment can take a significant amount of time. 
+Download progress can be monitored by inspecting the logs for the LLM API pod via the Kubernetes Dashboard for the target cluster.
+
+The app use [vLLM](https://docs.vllm.ai/en/latest/) as a model serving backend and [gradio](https://github.com/gradio-app/gradio) as a web interface. For official list of Huggingface models supported by vLLM see https://docs.vllm.ai/en/latest/models/supported_models.html

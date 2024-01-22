@@ -39,7 +39,7 @@ api:
       enabled: false
       skipAuth: false
       label: Inference API
-      iconUrl:
+      iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
       description: |
         The raw inference API endpoints for the deployed LLM.
   # Config for huggingface model cache volume
