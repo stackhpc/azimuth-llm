@@ -3,12 +3,13 @@ from urllib.parse import urljoin
 import gradio as gr
 from api_startup_check import wait_for_backend
 from config import AppSettings
+import rich
 
 settings = AppSettings.load("./settings.yml")
+rich.print(settings)
 
 backend_url = str(settings.backend_url)
 wait_for_backend(backend_url)
-
 
 def inference(message, history):
     context = ""
