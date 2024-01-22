@@ -1,6 +1,5 @@
 **/kubeconfig.y[a]ml
 *kubeconfig*.y[a]ml
-venv/
 .vscode/
 __pycache__/
 **/*.secret
@@ -9,3 +8,4 @@ __pycache__/
 test-values.y[a]ml
 chart/web-app/settings.yml
 gradio-client-test.py
+venv*/
