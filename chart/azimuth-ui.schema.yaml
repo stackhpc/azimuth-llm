@@ -9,3 +9,8 @@ controls:
   /ui/appSettings/llm_temperature:
     type: NumberControl
     minimum: 0
+  # Use mirror to mimic yaml anchor in base Helm chart
+  /ui/appSettings/model_name:
+    type: MirrorControl
+    path: /huggingface/model
+    visuallyHidden: true
