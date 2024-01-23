@@ -28,8 +28,7 @@
                         "model_name": {
                             "type": "string",
                             "title": "Model Name",
-                            "description": "Model name supplied to OpenAI client in frontend web app. Should match huggingface.model above.",
-                            "placeholder": "ise-uiuc/Magicoder-S-DS-6.7B"
+                            "description": "Model name supplied to OpenAI client in frontend web app. Should match huggingface.model above."
                         },
                         "model_instruction": {
                             "type": "string",
