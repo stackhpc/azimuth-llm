@@ -25,10 +25,15 @@
                 "appSettings": {
                     "type": "object",
                     "properties": {
-                        "prompt_template": {
+                        "model_instruction": {
                             "type": "string",
-                            "title": "Prompt Template",
-                            "description": "The internal prompt template to use when generation responses. If present, the {context} placeholder will be replaced by the conversation history of the current session."
+                            "title": "Model instruction",
+                            "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses."
+                        },
+                        "llm_temperature": {
+                            "type": "number",
+                            "title": "LLM temperature",
+                            "description": "The 'temperature' value to use when generating LLM responses"
                         }
                     }
                 }

@@ -1,8 +1,11 @@
 controls:
   /huggingface/model:
     type: TextControl
-    # placeholder: tiiuae/falcon-7b-instruct
+    placeholder: tiiuae/falcon-7b
   /huggingface/token:
     type: TextControl
-  /ui/appSettings/prompt_template:
+  /ui/appSettings/model_instruction:
     type: TextControl
+  /ui/appSettings/llm_temperature:
+    type: NumberControl
+    minimum: 0
