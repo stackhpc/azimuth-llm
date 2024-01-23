@@ -31,7 +31,7 @@ api:
   # Container image config
   image:
     repository: vllm/vllm-openai
-    version: v0.2.4
+    version: v0.2.7
   # Service config 
   service:
     name: llm-backend
