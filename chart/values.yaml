@@ -4,7 +4,8 @@
 
 huggingface:
   # The name of the HuggingFace model to use
-  model: tiiuae/falcon-7b-instruct
+  # Use a yaml anchor to avoid duplication elsewhere
+  model: &model-name tiiuae/falcon-7b-instruct
   # Other (partially tested) options:
   # (some of which may not fit on a single GPU and will take a long time to download)
   # - meta-llama/Llama-2-7b-chat-hf # Requires licence token
@@ -70,7 +71,8 @@ ui:
   # The values to be written to settings.yml for parsing as frontend app setting
   # (see example_app.py and config.py for example using pydantic-settings to configure app)
   appSettings:
-    prompt_template: ""
+    model_name: *model-name
+    model_instruction: "You are a helpful AI assistant. Please response appropriately."
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base

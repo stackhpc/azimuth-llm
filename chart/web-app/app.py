@@ -4,12 +4,6 @@ from api_startup_check import wait_for_backend
 from config import AppSettings
 import rich
 
-import requests
-from langchain.prompts.chat import (
-    ChatPromptTemplate,
-    HumanMessagePromptTemplate,
-    SystemMessagePromptTemplate,
-)
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
@@ -20,88 +14,43 @@ rich.print(settings)
 backend_url = str(settings.backend_url)
 wait_for_backend(backend_url)
 
+# TODO: Think about whether we want to run the vLLM model here
+# in an AIO setup instead of separate frontend/backend components
+# from langchain_community.llms import VLLM
+# llm = VLLM()
+
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
-    model = "facebook/opt-125m",
+    model = settings.model_name,
     openai_api_key="required-but-not-used",
-    temperature=0.5,
-    max_tokens=1000,
-    # streaming=True,
+    temperature=settings.llm_temperature,
+    max_tokens=settings.llm_max_tokens,
+    model_kwargs={
+        "top_p": settings.llm_top_p,
+        "frequency_penalty": settings.llm_frequency_penalty,
+        "presence_penalty": settings.llm_presence_penalty,
+    },
+    streaming=True,
 )
 
-system_message_prompt = SystemMessagePromptTemplate.from_template(
-    """
-<SYSTEM>
-You are a helpful assistant. Please respond appropriately.
-</SYSTEM>
-""",
-)
+def inference(latest_message, history):
 
-human_message_prompt = HumanMessagePromptTemplate.from_template(
-    """
-<USER>
-{text}
-</User>
-""",
-)
-
-def inference(message, history):
-
-    history_langchain_format = []
+    context = [SystemMessage(content=settings.model_instruction)]
     for human, ai in history:
-        history_langchain_format.append(HumanMessage(content=human))
-        history_langchain_format.append(AIMessage(content=ai))
-    history_langchain_format.append(HumanMessage(content=message))
-    # NOTE(sd109): Streaming response doesn't render
-    # correctly in Gradio UI with ChatOpenAI
-    for chunk in llm.stream(history_langchain_format):
-        # chunk.
-        if chunk:
-            output = chunk.content
-            yield output
-    # return llm.invoke(history_langchain_format).content
-    
-    # chat_prompt = ChatPromptTemplate.from_messages([system_message_prompt, human_message_prompt])
-    # messages = chat_prompt.format_prompt(text="Hello, how are you?").to_messages()
-    # print(messages)
+        context.append(HumanMessage(content=human))
+        context.append(AIMessage(content=ai))
+    context.append(HumanMessage(content=latest_message))
 
-    # llm.invoke(messages)
-    
-    # context = ""
-    # for user_input, system_response in history:
-    #     if settings.include_past_system_responses_in_context:
-    #         context += settings.user_context_template.format(user_input=user_input)
-    #     if settings.include_past_system_responses_in_context:
-    #         context += settings.system_context_template.format(
-    #             system_response=system_response
-    #         )
-    # context += settings.user_context_template.format(user_input=message)
-
-    # headers = {"User-Agent": "vLLM Client"}
-    # payload = {
-    #     "prompt": settings.prompt_template.format(context=context),
-    #     "stream": True,
-    #     "max_tokens": settings.llm_max_tokens,
-    #     **settings.llm_params,
-    # }
-    # response = requests.post(
-    #     urljoin(backend_url, "/generate"), headers=headers, json=payload, stream=True
-    # )
-
-    # for chunk in response.iter_lines(
-    #     chunk_size=8192, decode_unicode=False, delimiter=b"\0"
-    # ):
-    #     if chunk:
-    #         data = json.loads(chunk.decode("utf-8"))
-    #         output = data["text"][0]
-    #         # Manually trim the context from output if present
-    #         prompt_template_lines = settings.prompt_template.splitlines()
-    #         if len(prompt_template_lines) > 0:
-    #             delimiter = prompt_template_lines[-1]
-    #             if delimiter in output:
-    #                 output = output.split(delimiter)[-1]
-    #         yield output
-
+    response = ""
+    for chunk in llm.stream(context):
+        # print(chunk)
+        # NOTE(sd109): For some reason the '>' character breaks the UI
+        # so we need to escape it here.
+        # response += chunk.content.replace('>', '\>')
+        # UPDATE(sd109): Above bug seems to have been fixed as of gradio 4.15.0
+        # but keeping this note here incase we enounter it again
+        response += chunk.content
+        yield response
 
 # UI colour theming
 theme = gr.themes.Default(**settings.theme_params)
