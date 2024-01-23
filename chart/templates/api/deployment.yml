@@ -46,7 +46,7 @@ spec:
           httpGet:
             port: 8000
             path: /health
-          periodSeconds: 10
+          periodSeconds: 60
         resources:
           limits:
             nvidia.com/gpu: {{ .Values.api.gpus | int }}
