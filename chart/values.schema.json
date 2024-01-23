@@ -25,6 +25,11 @@
                 "appSettings": {
                     "type": "object",
                     "properties": {
+                        "model_name": {
+                            "type": "string",
+                            "title": "Model Name",
+                            "description": "Model name supplied to OpenAI client in frontend web app. Should match huggingface.model above."
+                        },
                         "model_instruction": {
                             "type": "string",
                             "title": "Model instruction",
@@ -33,9 +38,10 @@
                         "llm_temperature": {
                             "type": "number",
                             "title": "LLM temperature",
-                            "description": "The 'temperature' value to use when generating LLM responses"
+                            "description": "The 'temperature' value to use when generating LLM responses. See [here](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature) for details."
                         }
-                    }
+                    },
+                    "required": ["model_name"]
                 }
             }
         }

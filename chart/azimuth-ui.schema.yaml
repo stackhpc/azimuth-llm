@@ -1,14 +1,12 @@
 controls:
   /huggingface/model:
     type: TextControl
-    placeholder: tiiuae/falcon-7b
   /huggingface/token:
     type: TextControl
   /ui/appSettings/model_instruction:
     type: TextControl
   /ui/appSettings/llm_temperature:
     type: NumberControl
-    minimum: 0
   # Use mirror to mimic yaml anchor in base Helm chart
   /ui/appSettings/model_name:
     type: MirrorControl
