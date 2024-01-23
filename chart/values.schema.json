@@ -8,7 +8,7 @@
                 "model": {
                     "type": "string",
                     "title": "Model",
-                    "description": "The HuggingFace model to deploy. (Hint: Try (ise-uiuc/Magicoder-S-DS-6.7B)[https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B] as a solid, relatively light-weight starting model.)"
+                    "description": "The HuggingFace model to deploy. (Hint: Try (ise-uiuc/Magicoder-S-DS-6.7B)[https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B] for a solid, general-purpose starting model.)"
                 },
                 "token": {
                     "type": "string",
