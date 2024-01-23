@@ -5,7 +5,7 @@
 huggingface:
   # The name of the HuggingFace model to use
   # Use a yaml anchor to avoid duplication elsewhere
-  model: &model-name tiiuae/falcon-7b-instruct
+  model: &model-name tiiuae/falcon-7b
   # Other (partially tested) options:
   # (some of which may not fit on a single GPU and will take a long time to download)
   # - meta-llama/Llama-2-7b-chat-hf # Requires licence token
