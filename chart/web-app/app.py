@@ -38,6 +38,7 @@ def inference(latest_message, history):
     try:
         response = requests.get(backend_health_endpoint, timeout=5)
         if response.status_code == 200:
+            global backend_initialised
             if not backend_initialised:
                 # Record the fact that backend was up at one point so we know that
                 # any future errors are not related to slow model initialisation
