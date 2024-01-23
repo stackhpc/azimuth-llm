@@ -16,12 +16,7 @@ rich.print(settings)
 
 backend_url = str(settings.backend_url)
 backend_health_endpoint = urljoin(backend_url, "/health")
-wait_for_backend(backend_health_endpoint)
-
-# TODO: Think about whether we want to run the vLLM model here
-# in an AIO setup instead of separate frontend/backend components
-# from langchain_community.llms import VLLM
-# llm = VLLM()
+backend_initialised = False
 
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
@@ -41,12 +36,25 @@ def inference(latest_message, history):
 
     # Check backend health and warn the user on error
     try:
-        response = requests.get(backend_health_endpoint, timeout=1)
-        if response.status_code != 200:
-            raise gr.Error("Backend reachable but unhealthy. Please try again later")
+        response = requests.get(backend_health_endpoint, timeout=5)
+        if response.status_code == 200:
+            if not backend_initialised:
+                # Record the fact that backend was up at one point so we know that
+                # any future errors are not related to slow model initialisation
+                backend_initialised = True
+        else:
+            # If the server's running (i.e. we get a response) but it's not an HTTP 200
+            # we just hope Kubernetes reconciles things for us eventually..
+            raise gr.Error("Backend unhealthy - please try again later")
     except Exception as err:
         warnings.warn(f"Error while checking backend health: {err}")
-        raise gr.Error("Backend unreachable. Please try again later")
+        if backend_initialised:
+            # If backend was previously reachable then something unexpected has gone wrong
+            raise gr.Error("Backend unreachable")
+        else:
+            # In this case backend is probably still busy downloading model weights
+            raise gr.Error("Backend not ready yet - please try again later")
+
 
     try:
         context = [SystemMessage(content=settings.model_instruction)]
