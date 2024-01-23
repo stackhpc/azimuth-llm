@@ -4,6 +4,9 @@ metadata:
   name: {{ .Release.Name }}-ui
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
+  annotations:
+    # Make sure UI is reloaded when app settings are updated
+    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:

@@ -93,3 +93,6 @@ ui:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
+
+reloader:
+  watchGlobally: false
