@@ -1,18 +1,22 @@
-from urllib.parse import urljoin
+import requests
+import warnings
+import rich
 import gradio as gr
+from urllib.parse import urljoin
 from api_startup_check import wait_for_backend
 from config import AppSettings
-import rich
 
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
 
 settings = AppSettings.load("./settings.yml")
+print("App settings:")
 rich.print(settings)
 
 backend_url = str(settings.backend_url)
-wait_for_backend(backend_url)
+backend_health_endpoint = urljoin(backend_url, "/health")
+wait_for_backend(backend_health_endpoint)
 
 # TODO: Think about whether we want to run the vLLM model here
 # in an AIO setup instead of separate frontend/backend components
@@ -35,22 +39,38 @@ llm = ChatOpenAI(
 
 def inference(latest_message, history):
 
-    context = [SystemMessage(content=settings.model_instruction)]
-    for human, ai in history:
-        context.append(HumanMessage(content=human))
-        context.append(AIMessage(content=ai))
-    context.append(HumanMessage(content=latest_message))
+    # Check backend health and warn the user on error
+    try:
+        response = requests.get(backend_health_endpoint, timeout=1)
+        if response.status_code != 200:
+            raise gr.Error("Backend reachable but unhealthy. Please try again later")
+    except Exception as err:
+        warnings.warn(f"Error while checking backend health: {err}")
+        raise gr.Error("Backend unreachable. Please try again later")
 
-    response = ""
-    for chunk in llm.stream(context):
-        # print(chunk)
-        # NOTE(sd109): For some reason the '>' character breaks the UI
-        # so we need to escape it here.
-        # response += chunk.content.replace('>', '\>')
-        # UPDATE(sd109): Above bug seems to have been fixed as of gradio 4.15.0
-        # but keeping this note here incase we enounter it again
-        response += chunk.content
-        yield response
+    try:
+        context = [SystemMessage(content=settings.model_instruction)]
+        for human, ai in history:
+            context.append(HumanMessage(content=human))
+            context.append(AIMessage(content=ai))
+        context.append(HumanMessage(content=latest_message))
+
+        response = ""
+        for chunk in llm.stream(context):
+            # print(chunk)
+            # NOTE(sd109): For some reason the '>' character breaks the UI
+            # so we need to escape it here.
+            # response += chunk.content.replace('>', '\>')
+            # UPDATE(sd109): Above bug seems to have been fixed as of gradio 4.15.0
+            # but keeping this note here incase we enounter it again
+            response += chunk.content
+            yield response
+
+    # For all other errors notify user and log a more detailed warning
+    except Exception as err:
+        warnings.warn(f"Exception encountered while generating response: {err}")
+        raise gr.Error("Unknown error encountered - see application logs for more information.")
+
 
 # UI colour theming
 theme = gr.themes.Default(**settings.theme_params)
