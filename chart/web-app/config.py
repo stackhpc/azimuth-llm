@@ -1,7 +1,6 @@
-from pydantic import Field, HttpUrl
-from pydantic.alias_generators import to_camel
-from pydantic_settings import BaseSettings, SettingsConfigDict
 import yaml
+from pydantic import Field, HttpUrl
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 from typing import Optional
 
@@ -27,41 +26,34 @@ class AppSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="llm_ui_")
 
     # General settings
+    model_name: str = Field(
+        description="The model to use when constructing the LLM Chat client. This should match the model name running on the vLLM backend",
+    )
     backend_url: HttpUrl = Field(
         default_factory=lambda: f"http://llm-backend.{get_k8s_namespace()}.svc"
     )
-    page_title: str = "Large Language Model"
-
-    # Prompt settings
-    prompt_template: str = Field(
-        description="The template to use for requests to the backend model. If present, the '\{context\}' placeholder will be replaced by the conversation history of the current session. In order for the frontend to correctly filter out context from the displayed text, the context placeholder must not appear on the final line of the prompt template.",
-    )
-    # The following settings are only used if {context} used in prompt template
-    include_past_user_messages_in_context: bool = True
-    include_past_system_responses_in_context: bool = True
-    user_context_template: str = Field(
-        default="<<USER>>\n{user_input}\n<</USER>>\n",
-        description="The template string to use for including user messages in the prompt context sent to backend. The '\{user_input\}' placeholder will be replaced by the the user's messages. (Only applies if '\{context\}' is present in prompt_template)",
-    )
-    system_context_template: str = Field(
-        default="<SYS>>{system_response}\n<</SYS>>\n",
-        description="The template string to use for if user messages are included in context sent to backend. The '\{system_response\}' placeholder will be replaced by the system's response to each user message. (Only applies if '\{context\}' is present in prompt_template)",
-    )
+    page_title: str = Field(default="Large Language Model")
+    model_instruction: str = Field(default="You are a helpful and cheerful AI assistant. Please respond appropriately.")
 
     # Model settings
-    llm_params: dict[str, float] = {}
-    llm_max_tokens: int = 1000
+    # See https://platform.openai.com/docs/api-reference/chat/create for available parameters
+    llm_max_tokens: int = Field(default=500)
+    llm_temperature: float = Field(default=0.5)
+    llm_top_p: float = Field(default=1)
+    llm_presence_penalty: float = Field(default=0, ge=-2, le=2)
+    llm_frequency_penalty: float = Field(default=0, ge=-2, le=2)
+
 
     # UI theming
     
     # Variables explicitly passed to gradio.theme.Default()
     # For example:
     # {"primary_hue": "red"}
-    theme_params: dict[str, str] = {}
+    theme_params: dict[str, str] = Field(default_factory=dict)
     # Overrides for theme.body_background_fill property
-    theme_background_colour: Optional[str] = None
+    theme_background_colour: Optional[str] = Field(default=None)
     # Custom page title colour override passed as CSS
-    theme_title_colour: Optional[str] = None
+    theme_title_colour: Optional[str] = Field(default=None)
 
     # Method for loading settings file
     @staticmethod

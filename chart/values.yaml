@@ -4,12 +4,8 @@
 
 huggingface:
   # The name of the HuggingFace model to use
-  model: tiiuae/falcon-7b-instruct
-  # Other (partially tested) options:
-  # (some of which may not fit on a single GPU and will take a long time to download)
-  # - meta-llama/Llama-2-7b-chat-hf # Requires licence token
-  # - tiiuae/falcon-40b # Weights ~160GB disk size
-  # - bigscience/bloom # Weights were trending towards ~360GB disk size
+  # Use a yaml anchor to avoid duplication elsewhere
+  model: &model-name ise-uiuc/Magicoder-S-DS-6.7B
 
   # For private/gated huggingface models (e.g. Meta's Llama models) 
   # you must provide your own huggingface token, for details see:
@@ -30,7 +26,7 @@ api:
   # Container image config
   image:
     repository: vllm/vllm-openai
-    version: v0.2.4
+    version: v0.2.7
   # Service config 
   service:
     name: llm-backend
@@ -39,7 +35,7 @@ api:
       enabled: false
       skipAuth: false
       label: Inference API
-      iconUrl:
+      iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
       description: |
         The raw inference API endpoints for the deployed LLM.
   # Config for huggingface model cache volume
@@ -70,11 +66,12 @@ ui:
   # The values to be written to settings.yml for parsing as frontend app setting
   # (see example_app.py and config.py for example using pydantic-settings to configure app)
   appSettings:
-    prompt_template: ""
+    model_name: *model-name
+    model_instruction: "You are a helpful AI assistant. Please response appropriately."
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base
-    version: de4324c
+    version: "984c499"
   # Service config 
   service:
     name: web-app
@@ -82,7 +79,7 @@ ui:
     zenith:
       enabled: true
       skipAuth: false
-      label: Web Interface
+      label: Chat Interface
       iconUrl: https://raw.githubusercontent.com/gradio-app/gradio/5524e590577769b0444a5332b8d444aafb0c5c12/js/app/public/static/img/logo.svg
       description: |
         A web-based user inferface for interacting with the deployed LLM.
@@ -91,3 +88,6 @@ ui:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
+
+reloader:
+  watchGlobally: false
