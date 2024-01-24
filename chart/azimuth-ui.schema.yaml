@@ -3,6 +3,7 @@ controls:
     type: TextControl
   /huggingface/token:
     type: TextControl
+    secret: true
   /ui/appSettings/model_instruction:
     type: TextControl
   /ui/appSettings/llm_max_tokens:
