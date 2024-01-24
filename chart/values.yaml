@@ -5,12 +5,7 @@
 huggingface:
   # The name of the HuggingFace model to use
   # Use a yaml anchor to avoid duplication elsewhere
-  model: &model-name tiiuae/falcon-7b
-  # Other (partially tested) options:
-  # (some of which may not fit on a single GPU and will take a long time to download)
-  # - meta-llama/Llama-2-7b-chat-hf # Requires licence token
-  # - tiiuae/falcon-40b # Weights ~160GB disk size
-  # - bigscience/bloom # Weights were trending towards ~360GB disk size
+  model: &model-name ise-uiuc/Magicoder-S-DS-6.7B
 
   # For private/gated huggingface models (e.g. Meta's Llama models) 
   # you must provide your own huggingface token, for details see:
