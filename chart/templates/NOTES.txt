@@ -8,5 +8,5 @@ Download progress can be monitored by inspecting the logs for the LLM API pod(s)
 
 The app use [vLLM](https://docs.vllm.ai/en/latest/) as a model serving backend and [gradio](https://github.com/gradio-app/gradio) + [LangChain](https://python.langchain.com/docs/get_started/introduction) to provide the web interface.
 The official list of Huggingface models supported by vLLM can be found [here](https://docs.vllm.ai/en/latest/models/supported_models.html), though some of these may not be compatible with the LangChain prompt format. 
-See this app's [README](https://github.com/stackhpc/azimuth-llm/) for a non-exhaustive list of languange models against which the app has been tested.
+See [this documentation](https://github.com/stackhpc/azimuth-llm/) for a non-exhaustive list of languange models against which the app has been tested.
  
