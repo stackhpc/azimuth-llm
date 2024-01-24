@@ -71,7 +71,7 @@ ui:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base
-    version: "1884414"
+    version: "984c499"
   # Service config 
   service:
     name: web-app
