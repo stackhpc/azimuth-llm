@@ -3,7 +3,6 @@ import warnings
 import rich
 import gradio as gr
 from urllib.parse import urljoin
-from api_startup_check import wait_for_backend
 from config import AppSettings
 
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
