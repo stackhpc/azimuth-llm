@@ -35,11 +35,32 @@
                             "title": "Model instruction",
                             "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses."
                         },
+                        "llm_max_tokens": {
+                            "type": "number",
+                            "title": "LLM temperature",
+                            "description": "The maximum number of new [tokens](https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_tokens) to generate for each LLM responses."
+                        },
                         "llm_temperature": {
                             "type": "number",
                             "title": "LLM temperature",
-                            "description": "The 'temperature' value to use when generating LLM responses. See [here](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature) for details."
+                            "description": "The '[temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature)' value to use when generating LLM responses."
+                        },
+                        "llm_top_p": {
+                            "type": "number",
+                            "title": "LLM Top P",
+                            "description": "The [top p](https://platform.openai.com/docs/api-reference/chat/create#chat-create-top_p) value to use when generating LLM responses."
+                        },
+                        "llm_presence_penalty": {
+                            "type": "number",
+                            "title": "LLM Presence Penalty",
+                            "description": "The [presence penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-presence_penalty) to use when generating LLM responses."
+                        },
+                        "llm_frequency_penalty": {
+                            "type": "number",
+                            "title": "LLM Frequency Penalty",
+                            "description": "The [frequency_penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-frequency_penalty) to use when generating LLM responses."
                         }
+
                     },
                     "required": ["model_name"]
                 }

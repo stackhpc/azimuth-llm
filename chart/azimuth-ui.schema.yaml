@@ -5,7 +5,15 @@ controls:
     type: TextControl
   /ui/appSettings/model_instruction:
     type: TextControl
+  /ui/appSettings/llm_max_tokens:
+    type: NumberControl
   /ui/appSettings/llm_temperature:
+    type: NumberControl
+  /ui/appSettings/llm_top_p:
+    type: NumberControl
+  /ui/appSettings/llm_frequency_penalty:
+    type: NumberControl
+  /ui/appSettings/llm_presence_penalty:
     type: NumberControl
   # Use mirror to mimic yaml anchor in base Helm chart
   /ui/appSettings/model_name:
