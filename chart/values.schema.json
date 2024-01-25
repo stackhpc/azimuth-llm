@@ -32,17 +32,17 @@
                         },
                         "model_instruction": {
                             "type": "string",
-                            "title": "Model instruction",
+                            "title": "Model Instruction",
                             "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses."
                         },
                         "llm_max_tokens": {
                             "type": "number",
-                            "title": "LLM temperature",
+                            "title": "Max Tokens",
                             "description": "The maximum number of new [tokens](https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_tokens) to generate for each LLM responses."
                         },
                         "llm_temperature": {
                             "type": "number",
-                            "title": "LLM temperature",
+                            "title": "LLM Temperature",
                             "description": "The '[temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature)' value to use when generating LLM responses."
                         },
                         "llm_top_p": {
