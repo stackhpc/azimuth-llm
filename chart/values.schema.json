@@ -32,7 +32,7 @@
                         },
                         "model_instruction": {
                             "type": "string",
-                            "title": "Model Instruction",
+                            "title": "Instruction",
                             "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses."
                         },
                         "llm_max_tokens": {
