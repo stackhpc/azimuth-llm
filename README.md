@@ -18,7 +18,7 @@ helm repo update
 helm install <installation-name> <chosen-repo-name>/azimuth-llm --version <version>
 ```
 
-where version is the full published version for the specified commit (e.g. `0.1.0-dev.0.main.125`). To see the latest published version, see [here](https://github.com/stackhpc/azimuth-llm/tree/gh-pages).
+where version is the full published version for the specified commit (e.g. `0.1.0-dev.0.main.125`). To see the latest published version, see [this page](https://github.com/stackhpc/azimuth-llm/tree/gh-pages).
 
 ### Customisation
 
@@ -42,7 +42,7 @@ The following is a non-exhaustive list of models which have been tested with thi
 - [AWQ Quantized Llama 2 70B](https://huggingface.co/TheBloke/Llama-2-70B-Chat-AWQ)
 - [Magicoder 6.7B](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B)
 
-Due to the combination of [components](##Components) used in this app, some Huggingface models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model The logs for the API pod will usually provide more information on failed requests.
+Due to the combination of [components](##Components) used in this app, some Huggingface models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model will appear in the pod logs for either the web-app deployment the backend API deployment.
 
 
 ## Components
