@@ -2,15 +2,13 @@
 
 This repository contains a Helm chart for deploying Large Language Models (LLMs) on Kubernetes. It is developed primarily for use as a pre-packaged application within [Azimuth](https://www.stackhpc.com/azimuth-introduction.html) but is structured such that it can, in principle, be deployed on any Kubernetes cluster with at least 1 GPU node.
 
-# Deployment
-
-## Azimuth
+## Azimuth App
 
 This app ~~is~~ will soon be provided as part of a standard deployment Azimuth so no specific steps are required to use this app other than access to an up to date Azimuth deployment.
 
-## Manual Installation
+## Manual Deployment
 
-To set up the Helm repository and manually install this chart on an arbitrary Kubernetes cluster, run
+Alternatively, to set up the Helm repository and manually install this chart on an existing Kubernetes cluster, run
 
 ```
 helm repo add <chosen-repo-name> https://stackhpc.github.io/azimuth-llm/
