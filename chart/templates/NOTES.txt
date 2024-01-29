@@ -6,7 +6,6 @@ On deployment of a new model, the app must first download the model's weights fr
 This can take a significant amount of time depending on model choice and network speeds.
 Download progress can be monitored by inspecting the logs for the LLM API pod(s) via the Kubernetes Dashboard for the target cluster.
 
-The app use [vLLM](https://docs.vllm.ai/en/latest/) as a model serving backend and [gradio](https://github.com/gradio-app/gradio) + [LangChain](https://python.langchain.com/docs/get_started/introduction) to provide the web interface.
+The app uses [vLLM](https://docs.vllm.ai/en/latest/) as a model serving backend and [gradio](https://github.com/gradio-app/gradio) + [LangChain](https://python.langchain.com/docs/get_started/introduction) to provide the web interface.
 The official list of Huggingface models supported by vLLM can be found [here](https://docs.vllm.ai/en/latest/models/supported_models.html), though some of these may not be compatible with the LangChain prompt format. 
 See [this documentation](https://github.com/stackhpc/azimuth-llm/) for a non-exhaustive list of languange models against which the app has been tested.
- 
