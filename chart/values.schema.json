@@ -35,6 +35,11 @@
                             "title": "Instruction",
                             "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses."
                         },
+                        "page_title": {
+                            "type": "string",
+                            "title": "Page Title",
+                            "description": "The title to use for the chat interface."
+                        },
                         "llm_max_tokens": {
                             "type": "number",
                             "title": "Max Tokens",
