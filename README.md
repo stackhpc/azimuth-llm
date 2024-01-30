@@ -4,7 +4,7 @@ This repository contains a Helm chart for deploying Large Language Models (LLMs)
 
 ## Azimuth App
 
-This app ~~is~~ will soon be provided as part of a standard deployment Azimuth so no specific steps are required to use this app other than access to an up to date Azimuth deployment.
+This app ~~is~~ will soon be provided as part of a standard deployment Azimuth, so no specific steps are required to use this app other than access to an up-to-date Azimuth deployment.
 
 ## Manual Deployment
 
@@ -16,7 +16,7 @@ helm repo update
 helm install <installation-name> <chosen-repo-name>/azimuth-llm --version <version>
 ```
 
-where version is the full published version for the specified commit (e.g. `0.1.0-dev.0.main.125`). To see the latest published version, see [this page](https://github.com/stackhpc/azimuth-llm/tree/gh-pages).
+where `version` is the full name of the published version for the specified commit (e.g. `0.1.0-dev.0.main.125`). To see the latest published version, see [this page](https://github.com/stackhpc/azimuth-llm/tree/gh-pages).
 
 ### Customisation
 
@@ -42,7 +42,7 @@ The following is a non-exhaustive list of models which have been tested with thi
 - [Mistral 7B Instruct v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2)
 <!-- - [AWQ Quantized Mixtral 8x7B Instruct v0.1](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-AWQ) (Not producing output properly) -->
 
-Due to the combination of [components](##Components) used in this app, some Huggingface models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model will appear in the pod logs for either the web-app deployment the backend API deployment.
+Due to the combination of [components](##Components) used in this app, some HuggingFace models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model will appear in the pod logs for either the web-app deployment the backend API deployment.
 
 
 ## Components
