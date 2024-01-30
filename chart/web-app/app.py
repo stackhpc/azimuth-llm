@@ -27,6 +27,8 @@ backend_initialised = False
 # when contructing the `context` list in the `inference` function below.
 MISTRAL_REGEX = re.compile(r"mi(s|x)tral", re.IGNORECASE)
 IS_MISTRAL_MODEL = (MISTRAL_REGEX.match(settings.model_name) is not None)
+if IS_MISTRAL_MODEL:
+    print("Detected Mistral model - will alter LangChain conversation format appropriately.")
 
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
