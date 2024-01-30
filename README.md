@@ -39,6 +39,8 @@ The following is a non-exhaustive list of models which have been tested with thi
 - [Llama 2 7B chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf)
 - [AWQ Quantized Llama 2 70B](https://huggingface.co/TheBloke/Llama-2-70B-Chat-AWQ)
 - [Magicoder 6.7B](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B)
+- [Mistral 7B Instruct v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2)
+<!-- - [AWQ Quantized Mixtral 8x7B Instruct v0.1](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-AWQ) (Not producing output properly) -->
 
 Due to the combination of [components](##Components) used in this app, some Huggingface models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model will appear in the pod logs for either the web-app deployment the backend API deployment.
 
