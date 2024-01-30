@@ -25,7 +25,7 @@ backend_initialised = False
 # sure the web app works correctly with them. To do so, we detect when a
 # mistral model is specified using this regex and then handle it explicitly
 # when contructing the `context` list in the `inference` function below.
-MISTRAL_REGEX = re.compile(r"mi(s|x)tral", re.IGNORECASE)
+MISTRAL_REGEX = re.compile(r".*mi(s|x)tral.*", re.IGNORECASE)
 IS_MISTRAL_MODEL = (MISTRAL_REGEX.match(settings.model_name) is not None)
 if IS_MISTRAL_MODEL:
     print("Detected Mistral model - will alter LangChain conversation format appropriately.")
