@@ -25,12 +25,16 @@ The `chart/values.yaml` file documents the various customisation options which a
 api:
   service:
     type: LoadBalancer
+    zenith:
+      enabled: false
 ui:
   service:
     type: LoadBalancer
+    zenith:
+      enabled: false
 ```
 
-***Warning*** - Exposing the services in this way provides no authentication mechanism and anyone with access to the load balancer IPs will be able to query the language model. In the Azimuth deployment case, authentication is provided via the standard Azimuth identity provider mechanisms and the authenticated services are exposed via [Zenith](https://github.com/stackhpc/zenith).
+***Warning*** - Exposing the services in this way provides no authentication mechanism and anyone with access to the load balancer IPs will be able to query the language model. It is up to you to secure the running service in your own way. In contrast, when deploying via Azimuth, authentication is provided via the standard Azimuth Identity Provider mechanisms and the authenticated services are exposed via [Zenith](https://github.com/stackhpc/zenith).
 
 
 ## Tested Models
@@ -47,4 +51,9 @@ Due to the combination of [components](##Components) used in this app, some Hugg
 
 ## Components
 
-*TO-DO*
+The Helm chart consists of the following components:
+- A backend web API which runs [vLLM](https://github.com/vllm-project/vllm)'s [OpenAI compatible web server](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#openai-compatible-server).
+
+- A frontend web-app built using [Gradio](https://www.gradio.app) and [LangChain](https://www.langchain.com). The web app source code can be found in `chart/web-app` and gets written to a ConfigMap during the chart build and is then mounted into the UI pod and executed as the entry point for the UI docker image (built from `images/ui-base/Dockerfile`).
+
+- A [stakater/Reloader](https://github.com/stakater/Reloader) instance which monitors the web-app ConfigMap for changes and restarts the frontend when the app code changes (i.e. whenever the Helm values are updated).

@@ -18,7 +18,7 @@ huggingface:
   # HUGGING_FACE_HUB_TOKEN=<token-value>
   secretName:
   # OR FOR TESTING PURPOSES ONLY, you can instead provide the secret directly
-  # as a chart value here (if secretName is set about then it will take priority)
+  # as a chart value here (if secretName is set above then it will take priority)
   token: ""
 
 # Configuration for the backend model serving API
@@ -45,18 +45,23 @@ api:
       path: /tmp/llm/huggingface-cache
   # Number of gpus to requests for each api pod instance
   # NOTE: This must be in the range 1 <= value <= N, where
-  #       'N' is the number of GPUs available in a single 
-  #       worker node on the target Kubernetes cluster.
+  # 'N' is the number of GPUs available in a single 
+  # worker node on the target Kubernetes cluster.
+  # NOTE: According to the vLLM docs found here
+  # https://docs.vllm.ai/en/latest/serving/distributed_serving.html
+  # distributed / multi-GPU support should be available, though it 
+  # has not been tested against this app.
   gpus: 1
   # The update strategy to use for the deployment
   # See https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
   # NOTE: Changing this has implications for the number of additional GPU worker nodes required
-  #       to preform a rolling zero-downtime update
+  # to preform a rolling zero-downtime update
   updateStrategy:
     rollingUpdate:
       maxSurge: 0%
       maxUnavailable: 100%
-  # Extra args to supply to the vLLM backend
+  # Extra args to supply to the vLLM backend, see
+  # https://github.com/vllm-project/vllm/blob/main/vllm/entrypoints/openai/api_server.py
   extraArgs: []
   
 # Configuration for the frontend web interface
