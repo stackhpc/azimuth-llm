@@ -1,5 +1,6 @@
 import requests
 import warnings
+import re
 import rich
 import gradio as gr
 from urllib.parse import urljoin
@@ -16,6 +17,18 @@ rich.print(settings)
 backend_url = str(settings.backend_url)
 backend_health_endpoint = urljoin(backend_url, "/health")
 backend_initialised = False
+
+# NOTE(sd109): The Mistral family of models explicitly require a chat
+# history of the form user -> ai -> user -> ... and so don't like having
+# a SystemPrompt at the beginning. Since these models seem to be the
+# best around right now, it makes sense to treat them as special and make
+# sure the web app works correctly with them. To do so, we detect when a
+# mistral model is specified using this regex and then handle it explicitly
+# when contructing the `context` list in the `inference` function below.
+MISTRAL_REGEX = re.compile(r".*mi(s|x)tral.*", re.IGNORECASE)
+IS_MISTRAL_MODEL = (MISTRAL_REGEX.match(settings.model_name) is not None)
+if IS_MISTRAL_MODEL:
+    print("Detected Mistral model - will alter LangChain conversation format appropriately.")
 
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
@@ -57,9 +70,17 @@ def inference(latest_message, history):
 
 
     try:
-        context = [SystemMessage(content=settings.model_instruction)]
-        for human, ai in history:
-            context.append(HumanMessage(content=human))
+        # To handle Mistral models we have to add the model instruction to
+        # the first user message since Mistral requires user -> ai -> user
+        # chat format and therefore doesn't allow system prompts.
+        context = []
+        if not IS_MISTRAL_MODEL:
+            context.append(SystemMessage(content=settings.model_instruction))
+        for i, (human, ai) in enumerate(history):
+            if IS_MISTRAL_MODEL and i == 0:
+                context.append(HumanMessage(content=f"{settings.model_instruction}\n\n{human}"))
+            else:
+                context.append(HumanMessage(content=human))
             context.append(AIMessage(content=ai))
         context.append(HumanMessage(content=latest_message))
 
