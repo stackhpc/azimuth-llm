@@ -43,7 +43,8 @@
                         "llm_max_tokens": {
                             "type": "number",
                             "title": "Max Tokens",
-                            "description": "The maximum number of new [tokens](https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_tokens) to generate for each LLM responses."
+                            "description": "The maximum number of new [tokens](https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_tokens) to generate for each LLM responses.",
+                            "default": 1000
                         },
                         "llm_temperature": {
                             "type": "number",
