@@ -1,6 +1,7 @@
 controls:
   /huggingface/model:
     type: TextControl
+    required: true
   /huggingface/token:
     type: TextControl
     secret: true

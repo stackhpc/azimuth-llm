@@ -46,7 +46,7 @@ The following is a non-exhaustive list of models which have been tested with thi
 - [Mistral 7B Instruct v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2)
 <!-- - [AWQ Quantized Mixtral 8x7B Instruct v0.1](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-AWQ) (Not producing output properly) -->
 
-Due to the combination of [components](##Components) used in this app, some HuggingFace models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model will appear in the pod logs for either the web-app deployment or the backend API deployment.
+Due to the combination of [components](##Components) used in this app, some HuggingFace models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model will appear in the logs for either the web-app pod or the backend API pod. Please open an issue if you would like explicit support for a specific model which is not in the above list.
 
 
 ## Components
