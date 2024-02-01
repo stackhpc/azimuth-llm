@@ -1,14 +1,12 @@
 controls:
   /huggingface/model:
     type: TextControl
-    placeholder: mistralai/Mistral-7B-Instruct-v0.2
     required: true
   /huggingface/token:
     type: TextControl
     secret: true
   /ui/appSettings/model_instruction:
     type: TextControl
-    placeholder: "You are a helpful AI assistant. Please respond appropriately"
   /ui/appSettings/page_title:
     type: TextControl
     placeholder: "Large Language Model"

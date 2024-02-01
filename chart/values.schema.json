@@ -8,12 +8,12 @@
                 "model": {
                     "type": "string",
                     "title": "Model",
-                    "description": "The HuggingFace model to deploy (Hint: For a simple, lightweight demo try ise-uiuc/Magicoder-S-DS-6.7B)"
+                    "description": "The [HuggingFace model](https://huggingface.co/models) to deploy (see [here](https://github.com/stackhpc/azimuth-llm?tab=readme-ov-file#tested-models) for a list of tested models)."
                 },
                 "token": {
                     "type": "string",
                     "title": "Access Token",
-                    "description": "The HuggingFace access token to use for installing gated models.",
+                    "description": "The HuggingFace access token to use for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 2).",
                     "default": ""
                 }
             },
@@ -28,17 +28,20 @@
                         "model_name": {
                             "type": "string",
                             "title": "Model Name",
-                            "description": "Model name supplied to OpenAI client in frontend web app. Should match huggingface.model above."
+                            "description": "Model name supplied to the OpenAI client in frontend web app. Should match huggingface.model above.",
+                            "default": "mistralai/Mistral-7B-Instruct-v0.2"
                         },
                         "model_instruction": {
                             "type": "string",
                             "title": "Instruction",
-                            "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses."
+                            "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses.",
+                            "default": "You are a helpful AI assistant. Please respond appropriately"
                         },
                         "page_title": {
                             "type": "string",
                             "title": "Page Title",
-                            "description": "The title to use for the chat interface."
+                            "description": "The title to use for the chat interface.",
+                            "default": "Large Language Model"
                         },
                         "llm_max_tokens": {
                             "type": "number",
@@ -49,22 +52,26 @@
                         "llm_temperature": {
                             "type": "number",
                             "title": "LLM Temperature",
-                            "description": "The '[temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature)' value to use when generating LLM responses."
+                            "description": "The [temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature) value to use when generating LLM responses.",
+                            "default": 1
                         },
                         "llm_top_p": {
                             "type": "number",
                             "title": "LLM Top P",
-                            "description": "The [top p](https://platform.openai.com/docs/api-reference/chat/create#chat-create-top_p) value to use when generating LLM responses."
+                            "description": "The [top p](https://platform.openai.com/docs/api-reference/chat/create#chat-create-top_p) value to use when generating LLM responses.",
+                            "default": 1
                         },
                         "llm_presence_penalty": {
                             "type": "number",
                             "title": "LLM Presence Penalty",
-                            "description": "The [presence penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-presence_penalty) to use when generating LLM responses."
+                            "description": "The [presence penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-presence_penalty) to use when generating LLM responses.",
+                            "default": 0
                         },
                         "llm_frequency_penalty": {
                             "type": "number",
                             "title": "LLM Frequency Penalty",
-                            "description": "The [frequency_penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-frequency_penalty) to use when generating LLM responses."
+                            "description": "The [frequency_penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-frequency_penalty) to use when generating LLM responses.",
+                            "default": 0
                         }
 
                     },
