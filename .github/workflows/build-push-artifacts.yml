@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     # Only build and push the chart if chart files have changed
     needs: [changes]
-    if: ${{ needs.changes.outputs.chart == 'true' }}
+    if: ${{ needs.changes.outputs.chart == 'true' || github.ref_type == 'tag' }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
