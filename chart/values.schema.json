@@ -13,7 +13,7 @@
                 "token": {
                     "type": "string",
                     "title": "Access Token",
-                    "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Only required for [gated models](https://huggingface.co/docs/hub/en/models-gated (e.g. Llama 2).",
+                    "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Only required for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 2).",
                     "default": ""
                 }
             },
