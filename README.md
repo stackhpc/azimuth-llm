@@ -4,7 +4,7 @@ This repository contains a Helm chart for deploying Large Language Models (LLMs)
 
 ## Azimuth App
 
-This app ~~is~~ will soon be provided as part of a standard deployment Azimuth, so no specific steps are required to use this app other than access to an up-to-date Azimuth deployment.
+This app is provided as part of a standard deployment Azimuth, so no specific steps are required to use this app other than access to an up-to-date Azimuth deployment.
 
 ## Manual Deployment
 
