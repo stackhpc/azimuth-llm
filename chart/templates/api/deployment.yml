@@ -7,7 +7,7 @@ metadata:
 spec:
   replicas: 1
   selector:
-    matchLabels: 
+    matchLabels:
       {{- include "azimuth-llm.api-selectorLabels" . | nindent 6 }}
   strategy:
     {{- .Values.api.updateStrategy | toYaml | nindent 4 }}
@@ -38,7 +38,7 @@ spec:
         {{- else if .Values.huggingface.token }}
         env:
         - name: HUGGING_FACE_HUB_TOKEN
-          value: {{ .Values.huggingface.token }}
+          value: {{ quote .Values.huggingface.token }}
         {{- else if contains "Llama" .Values.huggingface.model -}}
         {{- fail "Either secretName or token value must be set for Llama and other gated models" }}
         {{- end }}
