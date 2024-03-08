@@ -7,12 +7,12 @@ huggingface:
   # Use a yaml anchor to avoid duplication elsewhere
   model: &model-name ise-uiuc/Magicoder-S-DS-6.7B
 
-  # For private/gated huggingface models (e.g. Meta's Llama models) 
+  # For private/gated huggingface models (e.g. Meta's Llama models)
   # you must provide your own huggingface token, for details see:
   # https://huggingface.co/docs/hub/security-tokens
-  
+
   # To do this, either provide the name of an existing secret on the cluster,
-  # which should be created before installing this chart by running 
+  # which should be created before installing this chart by running
   # `kubectl create secret generic huggingface-token --from-env-file <file-name>`
   # where <file-name> is a file with the following contents:
   # HUGGING_FACE_HUB_TOKEN=<token-value>
@@ -27,7 +27,7 @@ api:
   image:
     repository: vllm/vllm-openai
     version: v0.2.7
-  # Service config 
+  # Service config
   service:
     name: llm-backend
     type: ClusterIP
@@ -45,11 +45,11 @@ api:
       path: /tmp/llm/huggingface-cache
   # Number of gpus to requests for each api pod instance
   # NOTE: This must be in the range 1 <= value <= N, where
-  # 'N' is the number of GPUs available in a single 
+  # 'N' is the number of GPUs available in a single
   # worker node on the target Kubernetes cluster.
   # NOTE: According to the vLLM docs found here
   # https://docs.vllm.ai/en/latest/serving/distributed_serving.html
-  # distributed / multi-GPU support should be available, though it 
+  # distributed / multi-GPU support should be available, though it
   # has not been tested against this app.
   gpus: 1
   # The update strategy to use for the deployment
@@ -57,13 +57,11 @@ api:
   # NOTE: Changing this has implications for the number of additional GPU worker nodes required
   # to preform a rolling zero-downtime update
   updateStrategy:
-    rollingUpdate:
-      maxSurge: 0%
-      maxUnavailable: 100%
+    type: recreate
   # Extra args to supply to the vLLM backend, see
   # https://github.com/vllm-project/vllm/blob/main/vllm/entrypoints/openai/api_server.py
   extraArgs: []
-  
+
 # Configuration for the frontend web interface
 ui:
   # The file from the UI config map to execute as the entrypoint to the frontend app
@@ -77,7 +75,7 @@ ui:
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base
     version: "984c499"
-  # Service config 
+  # Service config
   service:
     name: web-app
     type: ClusterIP
