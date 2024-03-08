@@ -57,7 +57,7 @@ api:
   # NOTE: Changing this has implications for the number of additional GPU worker nodes required
   # to preform a rolling zero-downtime update
   updateStrategy:
-    type: recreate
+    type: Recreate
   # Extra args to supply to the vLLM backend, see
   # https://github.com/vllm-project/vllm/blob/main/vllm/entrypoints/openai/api_server.py
   extraArgs: []
