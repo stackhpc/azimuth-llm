@@ -26,14 +26,14 @@ class AppSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="llm_ui_")
 
     # General settings
-    model_name: str = Field(
+    hf_model_name: str = Field(
         description="The model to use when constructing the LLM Chat client. This should match the model name running on the vLLM backend",
     )
     backend_url: HttpUrl = Field(
         default_factory=lambda: f"http://llm-backend.{get_k8s_namespace()}.svc"
     )
     page_title: str = Field(default="Large Language Model")
-    model_instruction: str = Field(
+    hf_model_instruction: str = Field(
         default="You are a helpful and cheerful AI assistant. Please respond appropriately."
     )
 
