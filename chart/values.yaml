@@ -64,6 +64,8 @@ api:
 
 # Configuration for the frontend web interface
 ui:
+  # Toggles installation of the gradio web UI
+  enabled: true
   # The file from the UI config map to execute as the entrypoint to the frontend app
   entrypoint: app.py
   # The values to be written to settings.yml for parsing as frontend app setting
