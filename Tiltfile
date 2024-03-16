@@ -1,3 +1,7 @@
+# The HuggingFace model to use for testing
+# hf_model = "ise-uiuc/Magicoder-S-DS-6.7B"
+hf_model = "TheBloke/WizardCoder-Python-34B-V1.0-AWQ"
+
 # Toggles whether UI should be run locally using gradio hot-reloading
 # or should be included in the remote Helm install
 run_ui_locally = True
@@ -13,7 +17,10 @@ chart_yaml = helm(
     "chart/",
     values="hu-dev-values.yml",
     # Enable/disable remote UI install depending on if we're running it locally
-    set="ui.enabled={}".format(not str(run_ui_locally).lower()),
+    set=[
+        "huggingface.model={}".format(hf_model),
+        "ui.enabled={}".format(not str(run_ui_locally).lower())
+    ],
 )
 k8s_yaml(chart_yaml)
 
@@ -32,10 +39,10 @@ if run_ui_locally:
     local_resource(
         name="gradio-app-venv",
         deps=[requirements],
-        cmd="".join([
+        cmd=" && ".join([
             "([[ -d {} ]] || python3 -m venv {})".format(venv_name, venv_name),
-            "&& source {}/bin/activate".format(venv_name),
-            "&& pip install -r {}".format(requirements),
+            "source {}/bin/activate".format(venv_name),
+            "pip install -r {}".format(requirements),
         ])
     )
 
@@ -44,8 +51,8 @@ if run_ui_locally:
         name="gradio-app",
         deps=["chart/web-app/"],
         resource_deps=["gradio-app-venv"],
-        serve_cmd="".join([
+        serve_cmd=" && ".join([
             "cd chart/web-app",
-            "&& python app.py",
+            "python app.py {}".format(hf_model),
         ])
     )
