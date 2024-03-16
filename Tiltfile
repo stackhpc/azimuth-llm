@@ -27,15 +27,25 @@ k8s_resource("chart-api", port_forwards="8081:8000")
 if run_ui_locally:
     venv_name = "tilt-dev-venv"
     requirements = "images/ui-base/requirements.txt"
-    # Run gradio app locally with hot-reloading
+
+    # Ensure venv exists and matches requirements.txt
     local_resource(
-        name="gradio-app",
-        deps=requirements,
-        serve_cmd="".join([
+        name="gradio-app-venv",
+        deps=[requirements],
+        cmd="".join([
             "([[ -d {} ]] || python3 -m venv {})".format(venv_name, venv_name),
             "&& source {}/bin/activate".format(venv_name),
             "&& pip install -r {}".format(requirements),
-            "&& cd chart/web-app",
-            "&& gradio app.py --demo-name app"
+        ])
+    )
+
+    # Run web app locally
+    local_resource(
+        name="gradio-app",
+        deps=["chart/web-app/"],
+        resource_deps=["gradio-app-venv"],
+        serve_cmd="".join([
+            "cd chart/web-app",
+            "&& python app.py",
         ])
     )
