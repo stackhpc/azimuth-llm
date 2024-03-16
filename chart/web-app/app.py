@@ -26,7 +26,7 @@ BACKEND_INITIALISED = False
 # Some models disallow 'system' role's their conversation history by raising errors in their chat prompt template, e.g. see
 # https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/blob/cf47bb3e18fe41a5351bc36eef76e9c900847c89/tokenizer_config.json#L42
 # Detecting this ahead of time is difficult so for now we use a global variable which stores whether the API has
-# responded with a HTTP 400 error and retry request without system role replaced by
+# responded with a HTTP 400 error and formats all subsequent request to avoid using a system role.
 INCLUDE_SYSTEM_PROMPT = True
 class PossibleSystemPromptException(Exception):
     pass
@@ -48,12 +48,10 @@ llm = ChatOpenAI(
 
 def inference(latest_message, history):
 
-    # Allow mutating global variables
-    global BACKEND_INITIALISED, INCLUDE_SYSTEM_PROMPT
+    # Allow mutating global variable
+    global BACKEND_INITIALISED
 
     try:
-        # Attempt to handle models which disallow system prompts
-        # Construct conversation history for model prompt
         if INCLUDE_SYSTEM_PROMPT:
             context = [SystemMessage(content=settings.hf_model_instruction)]
         else:
@@ -83,6 +81,9 @@ def inference(latest_message, history):
             # but keeping this note here incase we enounter it again
             response += chunk.content
             yield response
+
+    # Handle any API errors here. See OpenAI Python client for possible error responses
+    # https://github.com/openai/openai-python/tree/e8e5a0dc7ccf2db19d7f81991ee0987f9c3ae375?tab=readme-ov-file#handling-errors
 
     except openai.BadRequestError as err:
         logger.error("Received BadRequestError from backend API: %s", err)
@@ -131,14 +132,15 @@ if settings.theme_title_colour:
 def inference_wrapper(*args):
     """
     Simple wrapper round the `inference` function which catches certain predictable errors
-    such as invalid prompty formats and attempts to mitigate them automatically.
+    such as invalid prompt formats and attempts to mitigate them automatically.
     """
+    # Allow mutating global variable
+    global INCLUDE_SYSTEM_PROMPT
     try:
         for chunk in inference(*args):
             yield chunk
     except PossibleSystemPromptException:
         logger.warning("Disabling system prompt and retrying previous request")
-        global INCLUDE_SYSTEM_PROMPT
         INCLUDE_SYSTEM_PROMPT = False
         for chunk in inference(*args):
             yield chunk
