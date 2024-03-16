@@ -9,7 +9,6 @@ from config import AppSettings
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
-
 settings = AppSettings.load("./settings.yml")
 print("App settings:")
 rich.print(settings)
@@ -26,13 +25,15 @@ backend_initialised = False
 # mistral model is specified using this regex and then handle it explicitly
 # when contructing the `context` list in the `inference` function below.
 MISTRAL_REGEX = re.compile(r".*mi(s|x)tral.*", re.IGNORECASE)
-IS_MISTRAL_MODEL = (MISTRAL_REGEX.match(settings.model_name) is not None)
+IS_MISTRAL_MODEL = MISTRAL_REGEX.match(settings.model_name) is not None
 if IS_MISTRAL_MODEL:
-    print("Detected Mistral model - will alter LangChain conversation format appropriately.")
+    print(
+        "Detected Mistral model - will alter LangChain conversation format appropriately."
+    )
 
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
-    model = settings.model_name,
+    model=settings.model_name,
     openai_api_key="required-but-not-used",
     temperature=settings.llm_temperature,
     max_tokens=settings.llm_max_tokens,
@@ -44,8 +45,8 @@ llm = ChatOpenAI(
     streaming=True,
 )
 
-def inference(latest_message, history):
 
+def inference(latest_message, history):
     # Check backend health and warn the user on error
     try:
         response = requests.get(backend_health_endpoint, timeout=5)
@@ -68,7 +69,6 @@ def inference(latest_message, history):
             # In this case backend is probably still busy downloading model weights
             raise gr.Error("Backend not ready yet - please try again later")
 
-
     try:
         # To handle Mistral models we have to add the model instruction to
         # the first user message since Mistral requires user -> ai -> user
@@ -78,7 +78,9 @@ def inference(latest_message, history):
             context.append(SystemMessage(content=settings.model_instruction))
         for i, (human, ai) in enumerate(history):
             if IS_MISTRAL_MODEL and i == 0:
-                context.append(HumanMessage(content=f"{settings.model_instruction}\n\n{human}"))
+                context.append(
+                    HumanMessage(content=f"{settings.model_instruction}\n\n{human}")
+                )
             else:
                 context.append(HumanMessage(content=human))
             context.append(AIMessage(content=ai))
@@ -98,7 +100,9 @@ def inference(latest_message, history):
     # For all other errors notify user and log a more detailed warning
     except Exception as err:
         warnings.warn(f"Exception encountered while generating response: {err}")
-        raise gr.Error("Unknown error encountered - see application logs for more information.")
+        raise gr.Error(
+            "Unknown error encountered - see application logs for more information."
+        )
 
 
 # UI colour theming
@@ -119,7 +123,7 @@ if settings.theme_title_colour:
 
 
 # Build main chat interface
-gr.ChatInterface(
+with gr.ChatInterface(
     inference,
     chatbot=gr.Chatbot(
         # Height of conversation window in CSS units (string) or pixels (int)
@@ -139,4 +143,6 @@ gr.ChatInterface(
     analytics_enabled=False,
     theme=theme,
     css=css_overrides,
-).queue().launch(server_name="0.0.0.0")
+) as app:
+    # app.launch(server_name="0.0.0.0")
+    app.launch()

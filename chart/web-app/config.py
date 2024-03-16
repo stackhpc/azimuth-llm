@@ -33,7 +33,9 @@ class AppSettings(BaseSettings):
         default_factory=lambda: f"http://llm-backend.{get_k8s_namespace()}.svc"
     )
     page_title: str = Field(default="Large Language Model")
-    model_instruction: str = Field(default="You are a helpful and cheerful AI assistant. Please respond appropriately.")
+    model_instruction: str = Field(
+        default="You are a helpful and cheerful AI assistant. Please respond appropriately."
+    )
 
     # Model settings
     # See https://platform.openai.com/docs/api-reference/chat/create for available parameters
@@ -43,9 +45,8 @@ class AppSettings(BaseSettings):
     llm_presence_penalty: float = Field(default=0, ge=-2, le=2)
     llm_frequency_penalty: float = Field(default=0, ge=-2, le=2)
 
-
     # UI theming
-    
+
     # Variables explicitly passed to gradio.theme.Default()
     # For example:
     # {"primary_hue": "red"}
