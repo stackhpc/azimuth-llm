@@ -28,8 +28,11 @@ BACKEND_INITIALISED = False
 # Detecting this ahead of time is difficult so for now we use a global variable which stores whether the API has
 # responded with a HTTP 400 error and formats all subsequent request to avoid using a system role.
 INCLUDE_SYSTEM_PROMPT = True
+
+
 class PossibleSystemPromptException(Exception):
     pass
+
 
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
@@ -47,7 +50,6 @@ llm = ChatOpenAI(
 
 
 def inference(latest_message, history):
-
     # Allow mutating global variable
     global BACKEND_INITIALISED
 
@@ -67,10 +69,9 @@ def inference(latest_message, history):
 
         response = ""
         for chunk in llm.stream(context):
-
             # If this is our first successful response from the backend
             # then update the status variable to allow future error messages
-            # to be more informative
+            # to be more informative
             if not BACKEND_INITIALISED and len(response) > 0:
                 BACKEND_INITIALISED = True
 
@@ -87,7 +88,7 @@ def inference(latest_message, history):
 
     except openai.BadRequestError as err:
         logger.error("Received BadRequestError from backend API: %s", err)
-        message = err.response.json()['message']
+        message = err.response.json()["message"]
         if INCLUDE_SYSTEM_PROMPT:
             raise PossibleSystemPromptException()
         else:
@@ -98,13 +99,17 @@ def inference(latest_message, history):
     except openai.APIConnectionError as err:
         if not BACKEND_INITIALISED:
             logger.info("Backend API not yet ready")
-            gr.Info("Backend not ready - model may still be initialising - please try again later")
+            gr.Info(
+                "Backend not ready - model may still be initialising - please try again later"
+            )
         else:
             logger.error("Failed to connect to backend API: %s", err)
             gr.Warning("Failed to connect to backend API")
 
     except openai.InternalServerError as err:
-        gr.Warning("Internal server error encountered in backend API - see API logs for details.")
+        gr.Warning(
+            "Internal server error encountered in backend API - see API logs for details."
+        )
 
     # Catch-all for unexpected exceptions
     except err:
@@ -144,6 +149,7 @@ def inference_wrapper(*args):
         INCLUDE_SYSTEM_PROMPT = False
         for chunk in inference(*args):
             yield chunk
+
 
 # Build main chat interface
 with gr.ChatInterface(
