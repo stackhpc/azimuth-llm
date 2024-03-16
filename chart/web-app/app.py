@@ -1,41 +1,39 @@
-import requests
-import warnings
-import re
-import rich
+import sys
+import logging
 import gradio as gr
 from urllib.parse import urljoin
 from config import AppSettings
 
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
+import openai
 
-print("\n Starting app \n---------------\n")
+logging.basicConfig()
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+
+logger.info("Starting app")
 
 settings = AppSettings.load("./settings.yml")
-print("App settings:")
-rich.print(settings)
+if len(sys.argv) > 1:
+    settings.hf_model_name = sys.argv[1]
+logger.info("App settings: %s", settings)
 
 backend_url = str(settings.backend_url)
 backend_health_endpoint = urljoin(backend_url, "/health")
-backend_initialised = False
+BACKEND_INITIALISED = False
 
-# NOTE(sd109): The Mistral family of models explicitly require a chat
-# history of the form user -> ai -> user -> ... and so don't like having
-# a SystemPrompt at the beginning. Since these models seem to be the
-# best around right now, it makes sense to treat them as special and make
-# sure the web app works correctly with them. To do so, we detect when a
-# mistral model is specified using this regex and then handle it explicitly
-# when contructing the `context` list in the `inference` function below.
-MISTRAL_REGEX = re.compile(r".*mi(s|x)tral.*", re.IGNORECASE)
-IS_MISTRAL_MODEL = MISTRAL_REGEX.match(settings.model_name) is not None
-if IS_MISTRAL_MODEL:
-    print(
-        "Detected Mistral model - will alter LangChain conversation format appropriately."
-    )
+# Some models disallow 'system' role's their conversation history by raising errors in their chat prompt template, e.g. see
+# https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2/blob/cf47bb3e18fe41a5351bc36eef76e9c900847c89/tokenizer_config.json#L42
+# Detecting this ahead of time is difficult so for now we use a global variable which stores whether the API has
+# responded with a HTTP 400 error and formats all subsequent request to avoid using a system role.
+INCLUDE_SYSTEM_PROMPT = True
+class PossibleSystemPromptException(Exception):
+    pass
 
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
-    model=settings.model_name,
+    model=settings.hf_model_name,
     openai_api_key="required-but-not-used",
     temperature=settings.llm_temperature,
     max_tokens=settings.llm_max_tokens,
@@ -49,48 +47,33 @@ llm = ChatOpenAI(
 
 
 def inference(latest_message, history):
-    # Check backend health and warn the user on error
-    try:
-        response = requests.get(backend_health_endpoint, timeout=5)
-        if response.status_code == 200:
-            global backend_initialised
-            if not backend_initialised:
-                # Record the fact that backend was up at one point so we know that
-                # any future errors are not related to slow model initialisation
-                backend_initialised = True
-        else:
-            # If the server's running (i.e. we get a response) but it's not an HTTP 200
-            # we just hope Kubernetes reconciles things for us eventually..
-            raise gr.Error("Backend unhealthy - please try again later")
-    except Exception as err:
-        warnings.warn(f"Error while checking backend health: {err}")
-        if backend_initialised:
-            # If backend was previously reachable then something unexpected has gone wrong
-            raise gr.Error("Backend unreachable")
-        else:
-            # In this case backend is probably still busy downloading model weights
-            raise gr.Error("Backend not ready yet - please try again later")
+
+    # Allow mutating global variable
+    global BACKEND_INITIALISED
 
     try:
-        # To handle Mistral models we have to add the model instruction to
-        # the first user message since Mistral requires user -> ai -> user
-        # chat format and therefore doesn't allow system prompts.
-        context = []
-        if not IS_MISTRAL_MODEL:
-            context.append(SystemMessage(content=settings.model_instruction))
+        if INCLUDE_SYSTEM_PROMPT:
+            context = [SystemMessage(content=settings.hf_model_instruction)]
+        else:
+            context = []
         for i, (human, ai) in enumerate(history):
-            if IS_MISTRAL_MODEL and i == 0:
-                context.append(
-                    HumanMessage(content=f"{settings.model_instruction}\n\n{human}")
-                )
-            else:
-                context.append(HumanMessage(content=human))
-            context.append(AIMessage(content=ai))
+            if not INCLUDE_SYSTEM_PROMPT and i == 0:
+                # Mimic system prompt by prepending it to first human message
+                human = f"{settings.hf_model_instruction}\n\n{human}"
+            context.append(HumanMessage(content=human))
+            context.append(AIMessage(content=(ai or "")))
         context.append(HumanMessage(content=latest_message))
+        logger.debug("Chat context: %s", context)
 
         response = ""
         for chunk in llm.stream(context):
-            # print(chunk)
+
+            # If this is our first successful response from the backend
+            # then update the status variable to allow future error messages
+            # to be more informative
+            if not BACKEND_INITIALISED and len(response) > 0:
+                BACKEND_INITIALISED = True
+
             # NOTE(sd109): For some reason the '>' character breaks the UI
             # so we need to escape it here.
             # response += chunk.content.replace('>', '\>')
@@ -99,12 +82,34 @@ def inference(latest_message, history):
             response += chunk.content
             yield response
 
-    # For all other errors notify user and log a more detailed warning
-    except Exception as err:
-        warnings.warn(f"Exception encountered while generating response: {err}")
-        raise gr.Error(
-            "Unknown error encountered - see application logs for more information."
-        )
+    # Handle any API errors here. See OpenAI Python client for possible error responses
+    # https://github.com/openai/openai-python/tree/e8e5a0dc7ccf2db19d7f81991ee0987f9c3ae375?tab=readme-ov-file#handling-errors
+
+    except openai.BadRequestError as err:
+        logger.error("Received BadRequestError from backend API: %s", err)
+        message = err.response.json()['message']
+        if INCLUDE_SYSTEM_PROMPT:
+            raise PossibleSystemPromptException()
+        else:
+            # In this case we've already tried without system prompt and still hit a bad request error so something else must be wrong
+            ui_message = f"API Error received. This usually means the chosen LLM uses an incompatible prompt format. Error message was: {message}"
+            raise gr.Error(ui_message)
+
+    except openai.APIConnectionError as err:
+        if not BACKEND_INITIALISED:
+            logger.info("Backend API not yet ready")
+            gr.Info("Backend not ready - model may still be initialising - please try again later")
+        else:
+            logger.error("Failed to connect to backend API: %s", err)
+            gr.Warning("Failed to connect to backend API")
+
+    except openai.InternalServerError as err:
+        gr.Warning("Internal server error encountered in backend API - see API logs for details.")
+
+    # Catch-all for unexpected exceptions
+    except err:
+        logger.error("Unexpected error during inference: %s", err)
+        raise gr.Error("Unexpected error encountered - see logs for details.")
 
 
 # UI colour theming
@@ -124,9 +129,25 @@ if settings.theme_title_colour:
     )
 
 
+def inference_wrapper(*args):
+    """
+    Simple wrapper round the `inference` function which catches certain predictable errors
+    such as invalid prompt formats and attempts to mitigate them automatically.
+    """
+    # Allow mutating global variable
+    global INCLUDE_SYSTEM_PROMPT
+    try:
+        for chunk in inference(*args):
+            yield chunk
+    except PossibleSystemPromptException:
+        logger.warning("Disabling system prompt and retrying previous request")
+        INCLUDE_SYSTEM_PROMPT = False
+        for chunk in inference(*args):
+            yield chunk
+
 # Build main chat interface
 with gr.ChatInterface(
-    inference,
+    inference_wrapper,
     chatbot=gr.Chatbot(
         # Height of conversation window in CSS units (string) or pixels (int)
         height="68vh",
@@ -146,5 +167,6 @@ with gr.ChatInterface(
     theme=theme,
     css=css_overrides,
 ) as app:
-    # app.launch(server_name="0.0.0.0")
+    logger.debug("Gradio chat interface config: %s", app.config)
+    # app.launch(server_name="0.0.0.0") # Do we need this for k8s service?
     app.launch()

@@ -1,7 +1,7 @@
 backend_url: http://128.232.226.230
-model_name: tiiuae/falcon-7b
+hf_model_name: tiiuae/falcon-7b
 
-model_instruction: You are a helpful and cheerful AI assistant. Please respond appropriately.
+hf_model_instruction: You are a helpful and cheerful AI assistant. Please respond appropriately.
 
 # UI theming tweaks
 # theme_title_colour: white
@@ -11,6 +11,6 @@ model_instruction: You are a helpful and cheerful AI assistant. Please respond a
 
 # llm_max_tokens:
 # llm_temperature:
-# llm_top_p: 
+# llm_top_p:
 # llm_frequency_penalty:
 # llm_presence_penalty:

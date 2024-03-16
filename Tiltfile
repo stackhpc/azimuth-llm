@@ -1,6 +1,10 @@
 # The HuggingFace model to use for testing
-# hf_model = "ise-uiuc/Magicoder-S-DS-6.7B"
-hf_model = "TheBloke/WizardCoder-Python-34B-V1.0-AWQ"
+# hf_model = "ise-uiuc/Magicoder-S-DS-6.7B" # Good lightweight model for testing
+# hf_model = "TheBloke/WizardCoder-Python-34B-V1.0-AWQ" # Poor performance, missing chat_template in repo
+hf_model = "TheBloke/SauerkrautLM-70B-v1-AWQ"
+# hf_model = "TheBloke/SauerkrautLM-Mixtral-8x7B-Instruct-AWQ" # Works well
+# hf_model = "abacusai/Smaug-Mixtral-v0.1" # GPU OOM
+# hf_model = "LoneStriker/Smaug-72B-v0.1-AWQ" # Works but produces nonsense responses
 
 # Toggles whether UI should be run locally using gradio hot-reloading
 # or should be included in the remote Helm install
