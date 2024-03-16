@@ -9,6 +9,8 @@ from config import AppSettings
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 
+print("\n Starting app \n---------------\n")
+
 settings = AppSettings.load("./settings.yml")
 print("App settings:")
 rich.print(settings)
