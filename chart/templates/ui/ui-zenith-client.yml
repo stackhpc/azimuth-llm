@@ -1,3 +1,4 @@
+{{- if .Values.ui.enabled -}}
 {{- if .Values.ui.service.zenith.enabled -}}
 apiVersion: zenith.stackhpc.com/v1alpha1
 kind: Client
@@ -11,4 +12,5 @@ spec:
     serviceName: {{ .Values.ui.service.name }}
   auth:
     skip: {{ .Values.ui.service.zenith.skipAuth }}
+{{- end -}}
 {{- end -}}

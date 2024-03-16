@@ -32,3 +32,4 @@ dependencies:
   - name: reloader
     version: 1.0.63
     repository: https://stakater.github.io/stakater-charts
+    condition: ui.enabled

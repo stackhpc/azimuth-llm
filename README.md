@@ -57,3 +57,17 @@ The Helm chart consists of the following components:
 - A frontend web-app built using [Gradio](https://www.gradio.app) and [LangChain](https://www.langchain.com). The web app source code can be found in `chart/web-app` and gets written to a ConfigMap during the chart build and is then mounted into the UI pod and executed as the entry point for the UI docker image (built from `images/ui-base/Dockerfile`).
 
 - A [stakater/Reloader](https://github.com/stakater/Reloader) instance which monitors the web-app ConfigMap for changes and restarts the frontend when the app code changes (i.e. whenever the Helm values are updated).
+
+## Development
+
+The GitHub repository includes a [tilt](https://tilt.dev) file for easier development. After installing tilt locally, simply run `tilt up` from the repo root to get started with development. This will trigger the following:
+
+- Install the backend API components of the Helm chart on the remote k8s cluster specified by your current k8s context.
+
+- Create a port-forward from the remote cluster to `localhost:8080`
+
+- Create a local `tilt-dev-venv` in the repo root containing the required Python dependencies to run the frontend web app locally.
+
+- Launch the frontend web app locally on `127.0.0.1:7860`, configured to use `localhost:8080` as the backend API
+
+- Watch all components and only reload the minimal set of components needed when a file in the repo changes (e.g. modifying `chart/web-app/app.py` will restart the local web app instance only)
