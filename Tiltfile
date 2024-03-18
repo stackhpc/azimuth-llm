@@ -1,11 +1,3 @@
-# The HuggingFace model to use for testing
-# hf_model = "ise-uiuc/Magicoder-S-DS-6.7B" # Good lightweight model for testing
-# hf_model = "TheBloke/WizardCoder-Python-34B-V1.0-AWQ" # Poor performance, missing chat_template in repo
-hf_model = "TheBloke/SauerkrautLM-70B-v1-AWQ"
-# hf_model = "TheBloke/SauerkrautLM-Mixtral-8x7B-Instruct-AWQ" # Works well
-# hf_model = "abacusai/Smaug-Mixtral-v0.1" # GPU OOM
-# hf_model = "LoneStriker/Smaug-72B-v0.1-AWQ" # Works but produces nonsense responses
-
 # Toggles whether UI should be run locally using gradio hot-reloading
 # or should be included in the remote Helm install
 run_ui_locally = True
@@ -19,14 +11,17 @@ allow_k8s_contexts('production-llm-service-admin@production-llm-service')
 
 chart_yaml = helm(
     "chart/",
-    values="hu-dev-values.yml",
+    values="dev-values.yml",
     # Enable/disable remote UI install depending on if we're running it locally
     set=[
-        "huggingface.model={}".format(hf_model),
         "ui.enabled={}".format(not str(run_ui_locally).lower())
     ],
 )
 k8s_yaml(chart_yaml)
+
+# Parse LLM name from templated deployment
+api_deployment, _ = filter_yaml(chart_yaml, kind='Deployment', name='chart-api')
+hf_model = decode_yaml(api_deployment)['spec']['template']['spec']['containers'][0]['args'][1]
 
 if not run_ui_locally:
     # Port-forward web app to localhost:8080
@@ -56,7 +51,8 @@ if run_ui_locally:
         deps=["chart/web-app/"],
         resource_deps=["gradio-app-venv"],
         serve_cmd=" && ".join([
+            "source {}/bin/activate".format(venv_name),
             "cd chart/web-app",
-            "python app.py {}".format(hf_model),
+            "python3 app.py {}".format(hf_model),
         ])
     )

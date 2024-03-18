@@ -28,6 +28,10 @@ spec:
         args:
           - --model
           - {{ .Values.huggingface.model }}
+          {{- if .Values.huggingface.chatTemplate }}
+          - --chat-template
+          - {{ quote .Values.huggingface.chatTemplate }}
+          {{- end -}}
           {{- if .Values.api.extraArgs -}}
           {{- .Values.api.extraArgs | toYaml | nindent 10 }}
           {{- end -}}

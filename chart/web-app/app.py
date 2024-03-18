@@ -100,11 +100,11 @@ def inference(latest_message, history):
         if not BACKEND_INITIALISED:
             logger.info("Backend API not yet ready")
             gr.Info(
-                "Backend not ready - model may still be initialising - please try again later"
+                "Backend not ready - model may still be initialising - please try again later."
             )
         else:
             logger.error("Failed to connect to backend API: %s", err)
-            gr.Warning("Failed to connect to backend API")
+            gr.Warning("Failed to connect to backend API.")
 
     except openai.InternalServerError as err:
         gr.Warning(
