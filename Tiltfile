@@ -2,6 +2,9 @@
 # or should be included in the remote Helm install
 run_ui_locally = True
 
+# Allow non-local contexts
+allow_k8s_contexts(k8s_context())
+
 # TODO: Include image builds in tilt up
 # docker_build("images/ui-base/")
 
