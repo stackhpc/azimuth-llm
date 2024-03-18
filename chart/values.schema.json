@@ -8,7 +8,8 @@
                 "model": {
                     "type": "string",
                     "title": "Model",
-                    "description": "The [HuggingFace model](https://huggingface.co/models) to deploy (see [here](https://github.com/stackhpc/azimuth-llm?tab=readme-ov-file#tested-models) for a list of tested models)."
+                    "description": "The [HuggingFace model](https://huggingface.co/models) to deploy (see [here](https://github.com/stackhpc/azimuth-llm?tab=readme-ov-file#tested-models) for a list of tested models).",
+                    "default": "mistralai/Mistral-7B-Instruct-v0.2"
                 },
                 "chat_template": {
                     "type": "string",
@@ -18,8 +19,7 @@
                 "token": {
                     "type": "string",
                     "title": "Access Token",
-                    "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Only required for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 2).",
-                    "default": ""
+                    "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Only required for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 2)."
                 }
             },
             "required": ["model"]
@@ -34,7 +34,6 @@
                             "type": "string",
                             "title": "Model Name",
                             "description": "Model name supplied to the OpenAI client in frontend web app. Should match huggingface.model above.",
-                            "default": "mistralai/Mistral-7B-Instruct-v0.2"
                         },
                         "hf_model_instruction": {
                             "type": "string",
