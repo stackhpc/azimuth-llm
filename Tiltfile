@@ -56,7 +56,8 @@ if run_ui_locally:
         deps=["chart/web-app/"],
         resource_deps=["gradio-app-venv"],
         serve_cmd=" && ".join([
+            "source {}/bin/activate".format(venv_name),
             "cd chart/web-app",
-            "python app.py {}".format(hf_model),
+            "python3 app.py {}".format(hf_model),
         ])
     )
