@@ -6,6 +6,15 @@ huggingface:
   # The name of the HuggingFace model to use
   # Use a yaml anchor to avoid duplication elsewhere
   model: &model-name ise-uiuc/Magicoder-S-DS-6.7B
+  # A Jinja formatted chat template to provide to the language model.
+  # See https://huggingface.co/blog/chat-templates for background info.
+  # If not provided, the default template specified in the HuggingFace
+  # model repository's tokenizer_config.json file is used. As explained
+  # in the above blog post, the HF template key in tokenizer_config.json
+  # is relatively new and not all HF models include a template in their
+  # repo files yet. This chart value provides a hook to manually apply the
+  # correct chat template for such models.
+  chatTemplate:
 
   # For private/gated huggingface models (e.g. Meta's Llama models)
   # you must provide your own huggingface token, for details see:
@@ -71,8 +80,8 @@ ui:
   # The values to be written to settings.yml for parsing as frontend app setting
   # (see example_app.py and config.py for example using pydantic-settings to configure app)
   appSettings:
-    model_name: *model-name
-    model_instruction: "You are a helpful AI assistant. Please response appropriately."
+    hf_model_name: *model-name
+    hf_model_instruction: "You are a helpful AI assistant. Please response appropriately."
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base

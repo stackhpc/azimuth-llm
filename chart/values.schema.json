@@ -25,13 +25,13 @@
                 "appSettings": {
                     "type": "object",
                     "properties": {
-                        "model_name": {
+                        "hf_model_name": {
                             "type": "string",
                             "title": "Model Name",
                             "description": "Model name supplied to the OpenAI client in frontend web app. Should match huggingface.model above.",
                             "default": "mistralai/Mistral-7B-Instruct-v0.2"
                         },
-                        "model_instruction": {
+                        "hf_model_instruction": {
                             "type": "string",
                             "title": "Instruction",
                             "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses.",
@@ -75,7 +75,7 @@
                         }
 
                     },
-                    "required": ["model_name", "model_instruction"]
+                    "required": ["hf_model_name", "hf_model_instruction"]
                 }
             }
         }
