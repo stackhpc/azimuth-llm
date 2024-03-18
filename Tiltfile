@@ -2,10 +2,6 @@
 # or should be included in the remote Helm install
 run_ui_locally = True
 
-# Tilt warns is if we try to use tilt against a cluster named 'production'
-# Use this line to allow it for now
-allow_k8s_contexts('production-llm-service-admin@production-llm-service')
-
 # TODO: Include image builds in tilt up
 # docker_build("images/ui-base/")
 
