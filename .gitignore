@@ -4,6 +4,7 @@
 __pycache__/
 **/*.secret
 .DS_Store
+.tox/
 
 # Ignore local dev helpers
 test-values.y[a]ml
