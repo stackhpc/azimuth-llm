@@ -14,7 +14,7 @@ chart_yaml = helm(
     values="dev-values.yml",
     # Enable/disable remote UI install depending on if we're running it locally
     set=[
-        "ui.enabled={}".format(not str(run_ui_locally).lower())
+        "ui.enabled={}".format(str(not run_ui_locally).lower())
     ],
 )
 k8s_yaml(chart_yaml)

@@ -34,6 +34,7 @@ spec:
         - python
         args:
         - {{ .Values.ui.entrypoint }}
+        - {{ .Values.huggingface.model }}
         env:
         - name: PYTHONUNBUFFERED
           value: "1"

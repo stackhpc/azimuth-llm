@@ -112,7 +112,7 @@ def inference(latest_message, history):
         )
 
     # Catch-all for unexpected exceptions
-    except err:
+    except Exception as err:
         logger.error("Unexpected error during inference: %s", err)
         raise gr.Error("Unexpected error encountered - see logs for details.")
 
