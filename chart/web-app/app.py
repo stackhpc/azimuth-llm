@@ -174,5 +174,9 @@ with gr.ChatInterface(
     css=css_overrides,
 ) as app:
     logger.debug("Gradio chat interface config: %s", app.config)
-    # app.launch(server_name="0.0.0.0") # Do we need this for k8s service?
-    app.launch()
+    # For running locally in tilt dev setup
+    if len(sys.argv) > 2 and sys.argv[2] == "localhost":
+        app.launch()
+    # For running on cluster
+    else:
+        app.launch(server_name="0.0.0.0")

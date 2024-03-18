@@ -53,6 +53,6 @@ if run_ui_locally:
         serve_cmd=" && ".join([
             "source {}/bin/activate".format(venv_name),
             "cd chart/web-app",
-            "python3 app.py {}".format(hf_model),
+            "python3 app.py {} localhost".format(hf_model),
         ])
     )
