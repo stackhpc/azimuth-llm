@@ -11,7 +11,7 @@
                     "description": "The [HuggingFace model](https://huggingface.co/models) to deploy (see [here](https://github.com/stackhpc/azimuth-llm?tab=readme-ov-file#tested-models) for a list of tested models).",
                     "default": "mistralai/Mistral-7B-Instruct-v0.2"
                 },
-                "chat_template": {
+                "chatTemplate": {
                     "type": "string",
                     "title": "Chat Template",
                     "description": "An optional chat template override for the model (see [here](https://huggingface.co/blog/chat-templates) for more information)."

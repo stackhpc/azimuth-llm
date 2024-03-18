@@ -5,7 +5,7 @@ controls:
   /huggingface/token:
     type: TextControl
     secret: true
-  /huggingface/chat_template:
+  /huggingface/chatTemplate:
     type: TextControl
   /ui/appSettings/hf_model_instruction:
     type: TextControl
