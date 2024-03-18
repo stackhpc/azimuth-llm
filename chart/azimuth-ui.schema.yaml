@@ -22,7 +22,7 @@ controls:
   /ui/appSettings/llm_presence_penalty:
     type: NumberControl
   # Use mirror to mimic yaml anchor in base Helm chart
-  /ui/appSettings/model_name:
+  /ui/appSettings/hf_model_name:
     type: MirrorControl
     path: /huggingface/model
     visuallyHidden: true
