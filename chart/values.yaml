@@ -28,7 +28,7 @@ huggingface:
   secretName:
   # OR FOR TESTING PURPOSES ONLY, you can instead provide the secret directly
   # as a chart value here (if secretName is set above then it will take priority)
-  token: ""
+  token:
 
 # Configuration for the backend model serving API
 api:
