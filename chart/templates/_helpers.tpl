@@ -76,3 +76,19 @@ Create the name of the service account to use
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}
 {{- end }}
+
+{{/*
+Workaround for models which don't yet contain chat templates in their HuggingFace repos.
+If a chat template is provided in the Helm values then this is used, otherwise we omit the
+chat template for all models apart from a list of known cases where the upstream repo is
+not responsive to adding a chat template to their repo.
+*/}}
+{{- define "azimuth-llm.chatTemplate" -}}
+{{- if .Values.huggingface.chatTemplate }}
+- --chat-template
+- {{ quote .Values.huggingface.chatTemplate }}
+{{- else if contains "WizardCoder" .Values.huggingface.model }}
+- --chat-template
+- {{ quote "{% for message in messages %}{% if message['role'] == 'system' %}{% endif %}{% if message['role'] == 'user' %}{{ '### Instruction:\n' }}{% endif %}{% if message['role'] == 'assistant' %}{{ '### Response:\n' }}{% endif %}{{ message['content'].strip() }}{% if not loop.last %}{{ '\n\n' }}{% endif %}{% if message['role'] == 'user' and loop.last %}{{ '### Response:\n' }}{% endif %}{% endfor %}" }}
+{{- end -}}
+{{- end }}

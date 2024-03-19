@@ -28,10 +28,7 @@ spec:
         args:
           - --model
           - {{ .Values.huggingface.model }}
-          {{- if .Values.huggingface.chatTemplate }}
-          - --chat-template
-          - {{ quote .Values.huggingface.chatTemplate }}
-          {{- end -}}
+          {{- include "azimuth-llm.chatTemplate" . | nindent 10 }}
           {{- if .Values.api.extraArgs -}}
           {{- .Values.api.extraArgs | toYaml | nindent 10 }}
           {{- end -}}
