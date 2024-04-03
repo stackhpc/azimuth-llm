@@ -17,8 +17,14 @@ controls:
     type: NumberControl
   /ui/appSettings/llm_frequency_penalty:
     type: NumberControl
+    minimum: -2
+    maximum: 2
   /ui/appSettings/llm_presence_penalty:
     type: NumberControl
+    minimum: -2
+    maximum: 2
+  /ui/ingress/host:
+    type: TextControl
   # Use mirror to mimic yaml anchor in base Helm chart
   /ui/appSettings/hf_model_name:
     type: MirrorControl
