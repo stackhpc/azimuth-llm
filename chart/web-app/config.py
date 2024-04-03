@@ -38,10 +38,12 @@ class AppSettings(BaseSettings):
     )
 
     # Model settings
-    # See https://platform.openai.com/docs/api-reference/chat/create for available parameters
+    # For available parameters, see https://docs.vllm.ai/en/latest/dev/sampling_params.html
+    # which is based on https://platform.openai.com/docs/api-reference/completions/create
     llm_max_tokens: int = Field(default=500)
     llm_temperature: float = Field(default=0.5)
     llm_top_p: float = Field(default=1)
+    llm_top_k: float = Field(default=-1)
     llm_presence_penalty: float = Field(default=0, ge=-2, le=2)
     llm_frequency_penalty: float = Field(default=0, ge=-2, le=2)
 
