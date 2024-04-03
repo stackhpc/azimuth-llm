@@ -75,6 +75,16 @@
 
                     },
                     "required": ["hf_model_name", "hf_model_instruction"]
+                },
+                "ingress": {
+                    "type": "object",
+                    "properties": {
+                        "host": {
+                            "type": ["string", "null"],
+                            "title": "Ingress Host",
+                            "description": "An optional custom domain name to expose the UI on (requires an Ingress controller-equipped cluster)"
+                        }
+                    }
                 }
             }
         }
