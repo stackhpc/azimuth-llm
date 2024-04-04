@@ -104,7 +104,7 @@ ui:
     # Any annotations to apply to the ingress resource
     # (e.g. for cert-manager TLS integration)
     annotations: {}
-    # The host to use for the ingress resource.
+    # The domain name to use for the ingress resource.
     # If host is not set then ingress support will be disabled and
     # no ingress resource will be created.
     # NOTE: If ingress is enabled, an ingress controller must be installed
