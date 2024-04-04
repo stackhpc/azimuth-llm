@@ -36,6 +36,7 @@ ui:
 
 ***Warning*** - Exposing the services in this way provides no authentication mechanism and anyone with access to the load balancer IPs will be able to query the language model. It is up to you to secure the running service in your own way. In contrast, when deploying via Azimuth, authentication is provided via the standard Azimuth Identity Provider mechanisms and the authenticated services are exposed via [Zenith](https://github.com/stackhpc/zenith).
 
+The UI can also optionally be exposed using a Kubernetes Ingress resource. See the `ui.ingress` section in `values.yml` for available config options.
 
 ## Tested Models
 
