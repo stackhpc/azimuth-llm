@@ -44,6 +44,11 @@ llm = ChatOpenAI(
         "top_p": settings.llm_top_p,
         "frequency_penalty": settings.llm_frequency_penalty,
         "presence_penalty": settings.llm_presence_penalty,
+        # Additional parameters supported by vLLM but not OpenAI API
+        # https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html#extra-parameters
+        "extra_body": {
+            "top_k": settings.llm_top_k,
+        }
     },
     streaming=True,
 )

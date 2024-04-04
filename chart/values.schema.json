@@ -60,6 +60,12 @@
                             "description": "The [top p](https://platform.openai.com/docs/api-reference/chat/create#chat-create-top_p) value to use when generating LLM responses.",
                             "default": 1
                         },
+                        "llm_top_k": {
+                            "type": "number",
+                            "title": "LLM Top K",
+                            "description": "The [top k](https://docs.vllm.ai/en/latest/dev/sampling_params.html) value to use when generating LLM responses.",
+                            "default": -1
+                        },
                         "llm_presence_penalty": {
                             "type": "number",
                             "title": "LLM Presence Penalty",
