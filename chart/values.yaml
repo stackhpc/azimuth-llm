@@ -36,6 +36,8 @@ api:
   image:
     repository: vllm/vllm-openai
     version: v0.3.2
+  monitoring:
+    enabled: true
   # Service config
   service:
     name: llm-backend

@@ -45,10 +45,15 @@ The following is a non-exhaustive list of models which have been tested with thi
 - [Magicoder 6.7B](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B)
 - [Mistral 7B Instruct v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2)
 - [WizardCoder Python 34B](https://huggingface.co/WizardLM/WizardCoder-Python-34B-V1.0)
-<!-- - [AWQ Quantized Mixtral 8x7B Instruct v0.1](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-AWQ) (Not producing output properly) -->
+- [AWQ Quantized Mixtral 8x7B Instruct v0.1](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-AWQ)
 
-Due to the combination of [components](##Components) used in this app, some HuggingFace models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using new model will appear in the logs for either the web-app pod or the backend API pod. Please open an issue if you would like explicit support for a specific model which is not in the above list.
+Due to the combination of [components](##Components) used in this app, some HuggingFace models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using a new model will appear in the logs for either the web-app pod or the backend API pod. Please open an issue if you would like explicit support for a specific model that is not in the above list.
 
+## Monitoring
+
+The LLM chart integrates with [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) by creating a `ServiceMonitor` resource and installing a custom Grafana dashboard as a Kubernetes `ConfigMap`. If the target cluster has an existing `kube-prometheus-stack` deployment which is appropriately configured to watch all namespaces for new Grafana dashboards, the custom LLM dashboard provided here will automatically picked up by Grafana. It will appear in the Grafana dashboard list with the name 'LLM dashboard'.
+
+To disable the monitoring integrations, set the `api.monitoring.enabled` value to `false`.
 
 ## Components
 

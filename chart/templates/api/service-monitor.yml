@@ -1,0 +1,21 @@
+{{- if .Values.api.monitoring.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  creationTimestamp: "2024-04-03T07:18:47Z"
+  generation: 1
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+spec:
+  endpoints:
+  - port: api
+    path: /metrics
+  jobLabel: operator
+  namespaceSelector:
+    matchNames:
+    - {{ .Release.Namespace }}
+  selector:
+    matchLabels:
+      {{- include "azimuth-llm.api-selectorLabels" . | nindent 6 }}
+{{- end -}}
