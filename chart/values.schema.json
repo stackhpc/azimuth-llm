@@ -33,17 +33,17 @@
                         "hf_model_instruction": {
                             "type": "string",
                             "title": "Instruction",
-                            "description": "The initial model prompt (i.e. the hidden instructions) to use when generating responses.",
+                            "description": "The initial system prompt (i.e. the hidden instruction) to use when generating responses.",
                             "default": "You are a helpful AI assistant. Please respond appropriately."
                         },
                         "page_title": {
                             "type": "string",
                             "title": "Page Title",
-                            "description": "The title to use for the chat interface.",
+                            "description": "The title to display at the top of the chat interface.",
                             "default": "Large Language Model"
                         },
                         "llm_max_tokens": {
-                            "type": "number",
+                            "type": "integer",
                             "title": "Max Tokens",
                             "description": "The maximum number of new [tokens](https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_tokens) to generate for each LLM responses.",
                             "default": 1000
@@ -52,31 +52,40 @@
                             "type": "number",
                             "title": "LLM Temperature",
                             "description": "The [temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature) value to use when generating LLM responses.",
-                            "default": 1
+                            "default": 1,
+                            "minimum": 0,
+                            "maximum": 2
                         },
                         "llm_top_p": {
                             "type": "number",
                             "title": "LLM Top P",
                             "description": "The [top p](https://platform.openai.com/docs/api-reference/chat/create#chat-create-top_p) value to use when generating LLM responses.",
-                            "default": 1
+                            "default": 1,
+                            "exclusiveMinimum": 0,
+                            "maximum": 1
                         },
                         "llm_top_k": {
-                            "type": "number",
+                            "type": "integer",
                             "title": "LLM Top K",
-                            "description": "The [top k](https://docs.vllm.ai/en/latest/dev/sampling_params.html) value to use when generating LLM responses.",
-                            "default": -1
+                            "description": "The [top k](https://docs.vllm.ai/en/latest/dev/sampling_params.html) value to use when generating LLM responses (must be an integer).",
+                            "default": -1,
+                            "minimum": -1
                         },
                         "llm_presence_penalty": {
                             "type": "number",
                             "title": "LLM Presence Penalty",
                             "description": "The [presence penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-presence_penalty) to use when generating LLM responses.",
-                            "default": 0
+                            "default": 0,
+                            "minimum": -2,
+                            "maximum": 2
                         },
                         "llm_frequency_penalty": {
                             "type": "number",
                             "title": "LLM Frequency Penalty",
                             "description": "The [frequency_penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-frequency_penalty) to use when generating LLM responses.",
-                            "default": 0
+                            "default": 0,
+                            "minimum": -2,
+                            "maximum": 2
                         }
 
                     },
@@ -88,7 +97,7 @@
                         "host": {
                             "type": ["string", "null"],
                             "title": "Ingress Host",
-                            "description": "An optional custom domain name to expose the UI on (requires an Ingress controller-equipped cluster)"
+                            "description": "An optional custom domain name to expose the UI on (requires an [Ingress controller](https://github.com/kubernetes/ingress-nginx) on the target cluster)"
                         }
                     }
                 }
