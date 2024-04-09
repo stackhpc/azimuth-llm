@@ -122,7 +122,7 @@ def inference(latest_message, history):
         raise gr.Error("Unexpected error encountered - see logs for details.")
 
 
-# UI colour theming
+# UI theming
 theme = gr.themes.Default(**settings.theme_params)
 if settings.theme_background_colour:
     theme.body_background_fill = settings.theme_background_colour
