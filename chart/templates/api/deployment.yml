@@ -38,6 +38,8 @@ spec:
             name: huggingface-token
         {{- else if .Values.huggingface.token }}
         env:
+        - name: DO_NOT_TRACK
+          value: 1
         - name: HUGGING_FACE_HUB_TOKEN
           value: {{ quote .Values.huggingface.token }}
         {{- else if contains "Llama" .Values.huggingface.model -}}
