@@ -184,4 +184,9 @@ with gr.ChatInterface(
         app.launch()
     # For running on cluster
     else:
-        app.launch(server_name="0.0.0.0")
+        app.queue(
+            # Allow 10 concurrent requests to backend
+            # vLLM backend should be clever enough to
+            # batch these requests appropriately.
+            default_concurrency_limit=10,
+        ).launch(server_name="0.0.0.0")
