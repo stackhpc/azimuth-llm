@@ -67,7 +67,7 @@
                         "llm_top_k": {
                             "type": "integer",
                             "title": "LLM Top K",
-                            "description": "The [top k](https://docs.vllm.ai/en/latest/dev/sampling_params.html) value to use when generating LLM responses (must be an integer).",
+                            "description": "The [top k](https://docs.vllm.ai/en/stable/dev/sampling_params.html) value to use when generating LLM responses (must be an integer).",
                             "default": -1,
                             "minimum": -1
                         },
