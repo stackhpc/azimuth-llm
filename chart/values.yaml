@@ -51,7 +51,7 @@ api:
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:
     hostPath:
-      path: /tmp/llm/huggingface-cache
+      path: /mnt/llm/huggingface-cache
   # Number of gpus to requests for each api pod instance
   # NOTE: This must be in the range 1 <= value <= N, where
   # 'N' is the number of GPUs available in a single
@@ -69,7 +69,8 @@ api:
     type: Recreate
   # Extra args to supply to the vLLM backend, see
   # https://github.com/vllm-project/vllm/blob/main/vllm/entrypoints/openai/api_server.py
-  extraArgs: []
+  extraArgs:
+    - --disable-log-requests
 
 # Configuration for the frontend web interface
 ui:
@@ -82,6 +83,8 @@ ui:
   appSettings:
     hf_model_name: *model-name
     hf_model_instruction: "You are a helpful AI assistant. Please response appropriately."
+    theme_title_colour: white
+    theme_background_colour: "#00376c"
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base
