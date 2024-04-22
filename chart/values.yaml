@@ -95,7 +95,7 @@ ui:
     type: ClusterIP
     zenith:
       enabled: true
-      skipAuth: false
+      skipAuth: true
       label: Chat Interface
       iconUrl: https://raw.githubusercontent.com/gradio-app/gradio/5524e590577769b0444a5332b8d444aafb0c5c12/js/app/public/static/img/logo.svg
       description: |
