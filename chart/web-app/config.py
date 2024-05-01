@@ -2,7 +2,7 @@ import yaml
 from pydantic import Field, HttpUrl
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
-from typing import Optional
+from typing import Optional, Union, List
 
 
 def get_k8s_namespace():
@@ -52,7 +52,7 @@ class AppSettings(BaseSettings):
     # Variables explicitly passed to gradio.theme.Default()
     # For example:
     # {"primary_hue": "red"}
-    theme_params: dict[str, str] = Field(default_factory=dict)
+    theme_params: dict[str, Union[str, List[str]]] = Field(default_factory=dict)
     # Overrides for theme.body_background_fill property
     theme_background_colour: Optional[str] = Field(default=None)
     # Custom page title colour override passed as CSS
