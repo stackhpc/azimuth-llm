@@ -127,17 +127,6 @@ theme = gr.themes.Default(**settings.theme_params)
 if settings.theme_background_colour:
     theme.body_background_fill = settings.theme_background_colour
 
-css_overrides = ""
-if settings.theme_title_colour:
-    css_overrides += """
-    h1 {{
-        color: {0};
-        padding-top: 0.5em;
-    }}
-    """.format(
-        settings.theme_title_colour
-    )
-
 
 def inference_wrapper(*args):
     """
@@ -171,12 +160,14 @@ with gr.ChatInterface(
         scale=7,
     ),
     title=settings.page_title,
+    description=settings.page_description,
     retry_btn="Retry",
     undo_btn="Undo",
     clear_btn="Clear",
     analytics_enabled=False,
     theme=theme,
-    css=css_overrides,
+    css=settings.css_overrides,
+    js=settings.custom_javascript,
 ) as app:
     logger.debug("Gradio chat interface config: %s", app.config)
     # For running locally in tilt dev setup

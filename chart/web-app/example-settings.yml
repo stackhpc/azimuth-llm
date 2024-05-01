@@ -2,21 +2,39 @@ backend_url: http://localhost:8081
 hf_model_name: ise-uiuc/Magicoder-S-DS-6.7B
 
 # model_instruction: You are a helpful and cheerful AI assistant. Please respond appropriately.
-
-page_description: "[Privacy statement](https://google.com)"
-
-# UI theming tweaks
-# theme_title_colour: white
-# theme_background_colour: "#00376c"
-theme_params:
-  # primary_hue: blue
-  font:
-  - sans-serif
-  font_mono:
-  - sans-serif
-
 # llm_max_tokens:
 # llm_temperature:
 # llm_top_p:
 # llm_frequency_penalty:
 # llm_presence_penalty:
+
+page_description: "[Custom Markdown](https://google.com)"
+
+# UI theming tweaks
+theme_background_colour: "#00376c"
+theme_params:
+  # primary_hue: blue
+  # Use local system fonts rather than Google fonts API
+  font:
+  - sans-serif
+  font_mono:
+  - sans-serif
+
+# Customise page title colour
+css_overrides: |
+  h1 {
+      color: white;
+      padding-top: 1em;
+  }
+
+# Example of a custom JS function which adds a
+# privacy statement link to the page footer
+custom_javascript: |
+  function addPrivacyStatement() {
+      var footer = document.querySelector('footer');
+      footer.appendChild(footer.children[1].cloneNode(deep=true));
+      var item = footer.children[2].cloneNode();
+      item.href = 'https://gdpr.eu/eu-gdpr-personal-data/';
+      item.textContent = 'Privacy Statement';
+      footer.appendChild(item);
+  }
