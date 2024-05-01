@@ -9,7 +9,7 @@
                     "type": "string",
                     "title": "Model",
                     "description": "The [HuggingFace model](https://huggingface.co/models) to deploy (see [here](https://github.com/stackhpc/azimuth-llm?tab=readme-ov-file#tested-models) for a list of tested models).",
-                    "default": "mistralai/Mistral-7B-Instruct-v0.2"
+                    "default": "ise-uiuc/Magicoder-S-DS-6.7B"
                 },
                 "token": {
                     "type": ["string", "null"],
@@ -90,16 +90,6 @@
 
                     },
                     "required": ["hf_model_name", "hf_model_instruction"]
-                },
-                "ingress": {
-                    "type": "object",
-                    "properties": {
-                        "host": {
-                            "type": ["string", "null"],
-                            "title": "Ingress Host",
-                            "description": "An optional custom domain name to expose the UI on (requires an [Ingress controller](https://github.com/kubernetes/ingress-nginx) on the target cluster)"
-                        }
-                    }
                 }
             }
         }
