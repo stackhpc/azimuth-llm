@@ -33,6 +33,7 @@ class AppSettings(BaseSettings):
         default_factory=lambda: f"http://llm-backend.{get_k8s_namespace()}.svc"
     )
     page_title: str = Field(default="Large Language Model")
+    page_description: Optional[str] = Field(default=None)
     hf_model_instruction: str = Field(
         default="You are a helpful and cheerful AI assistant. Please respond appropriately."
     )
@@ -55,8 +56,10 @@ class AppSettings(BaseSettings):
     theme_params: dict[str, Union[str, List[str]]] = Field(default_factory=dict)
     # Overrides for theme.body_background_fill property
     theme_background_colour: Optional[str] = Field(default=None)
-    # Custom page title colour override passed as CSS
-    theme_title_colour: Optional[str] = Field(default=None)
+    # Provides arbitrary CSS and JS overrides to the UI,
+    # see https://www.gradio.app/guides/custom-CSS-and-JS
+    css_overrides: Optional[str] = Field(default=None)
+    custom_javascript: Optional[str] = Field(default=None)
 
     # Method for loading settings file
     @staticmethod
