@@ -10,7 +10,7 @@ declare -a LINKS=(
     "https://fonts.googleapis.com"
     "https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/.*/iframeResizer.contentWindow.min.js"
 )
-REPLACEMENT="no-GDPR-violations-here"
+REPLACEMENT="external-url-removed-for-gdpr-compliance"
 for item in "${LINKS[@]}"; do
     find $SOURCE_CODE_PATH -name "*.html" -type f -exec sed -i s!$item!$REPLACEMENT!g {} \;
 done
