@@ -14,7 +14,7 @@
                 "token": {
                     "type": ["string", "null"],
                     "title": "Access Token",
-                    "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Required for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 3). Attempting to deploy a gated model without a token will cause the app to be stuck in an 'installing' state indefinitely."
+                    "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Required for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 3).\nAttempting to deploy a gated model without a token will cause the app to be stuck in an 'installing' state indefinitely."
                 }
             },
             "required": ["model"]
