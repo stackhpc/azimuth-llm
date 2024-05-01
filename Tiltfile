@@ -38,7 +38,7 @@ if run_ui_locally:
         name="gradio-app-venv",
         deps=[requirements],
         cmd=" && ".join([
-            "([[ -d {} ]] || python3 -m venv {})".format(venv_name, venv_name),
+            "([[ -d {} ]] || python3.11 -m venv {})".format(venv_name, venv_name),
             "source {}/bin/activate".format(venv_name),
             "pip install -r {}".format(requirements),
         ])
