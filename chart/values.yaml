@@ -84,6 +84,17 @@ ui:
   appSettings:
     hf_model_name: *model-name
     hf_model_instruction: "You are a helpful AI assistant. Please response appropriately."
+    # Use local system fonts by default to avoid GDPR issues
+    # with Gradio's defaults fonts which require fetching from
+    # the Google fonts API. To restore default Gradio theme
+    # fonts, remove the font and font-mono keys.
+    theme_params:
+      font:
+        - sans-serif
+        - Arial
+      font_mono:
+        - sans-serif
+        - Arial
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base

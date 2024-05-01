@@ -1,13 +1,19 @@
-backend_url: http://128.232.226.230
-hf_model_name: tiiuae/falcon-7b
+backend_url: http://localhost:8081
+hf_model_name: ise-uiuc/Magicoder-S-DS-6.7B
 
-hf_model_instruction: You are a helpful and cheerful AI assistant. Please respond appropriately.
+# model_instruction: You are a helpful and cheerful AI assistant. Please respond appropriately.
+
+page_description: "[Privacy statement](https://google.com)"
 
 # UI theming tweaks
 # theme_title_colour: white
 # theme_background_colour: "#00376c"
-# theme_params:
-#   primary_hue: blue
+theme_params:
+  # primary_hue: blue
+  font:
+  - sans-serif
+  font_mono:
+  - sans-serif
 
 # llm_max_tokens:
 # llm_temperature:
