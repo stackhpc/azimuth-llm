@@ -118,7 +118,7 @@ data:
                 "uid": "prometheus"
               },
               "editorMode": "code",
-              "expr": "sum by (container, namespace, method, path) (rate(requests_total_counter[1m]))",
+              "expr": "sum by (container, namespace, method, path) (rate(vllm:request_success_total[1m]))",
               "instant": false,
               "legendFormat": "__auto",
               "range": true,
