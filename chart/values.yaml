@@ -35,7 +35,7 @@ api:
   # Container image config
   image:
     repository: vllm/vllm-openai
-    version: v0.4.1
+    version: v0.4.2
   monitoring:
     enabled: true
   # Service config
@@ -98,7 +98,7 @@ ui:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-ui-base
-    version: "0.2.0-rc1"
+    version: "0.3.0"
   # Service config
   service:
     name: web-app

@@ -35,15 +35,14 @@ spec:
         {{- if .Values.huggingface.secretName }}
         envFrom:
         - secretRef:
-            name: huggingface-token
-        {{- else if .Values.huggingface.token }}
+            name: {{ .Values.huggingface.secretName }}
+        {{- end }}
         env:
         - name: DO_NOT_TRACK
-          value: 1
+          value: "1"
+        {{- if .Values.huggingface.token }}
         - name: HUGGING_FACE_HUB_TOKEN
           value: {{ quote .Values.huggingface.token }}
-        {{- else if contains "Llama" .Values.huggingface.model -}}
-        {{- fail "Either secretName or token value must be set for Llama and other gated models" }}
         {{- end }}
         readinessProbe:
           httpGet:

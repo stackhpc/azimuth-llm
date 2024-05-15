@@ -788,22 +788,4 @@
       "title": "GPU Power Draw",
       "type": "timeseries"
     }
-  ],
-  "refresh": "",
-  "schemaVersion": 39,
-  "tags": [],
-  "templating": {
-    "list": []
-  },
-  "time": {
-    "from": "now-30m",
-    "to": "now"
-  },
-  "timepicker": {},
-  "timezone": "",
-  "title": "LLM Dashboard",
-  "uid": "c4114a95-8172-4a8b-99c8-963ba7d31385",
-  "version": 1,
-  "weekStart": ""
-}
 {{- end -}}
