@@ -47,7 +47,7 @@ data:
                 "axisColorMode": "text",
                 "axisLabel": "Requests per minute",
                 "axisPlacement": "auto",
-                "axisWidth": 25,
+                "axisWidth": 50,
                 "barAlignment": 0,
                 "drawStyle": "line",
                 "fillOpacity": 0,
@@ -141,9 +141,9 @@ data:
                 "axisBorderShow": false,
                 "axisCenteredZero": false,
                 "axisColorMode": "text",
-                "axisLabel": "Number of requests",
+                "axisLabel": "Number of requests per minute",
                 "axisPlacement": "auto",
-                "axisWidth": 25,
+                "axisWidth": 50,
                 "barAlignment": 0,
                 "drawStyle": "line",
                 "fillOpacity": 0,
@@ -797,4 +797,6 @@ data:
           "title": "GPU Power Draw",
           "type": "timeseries"
         }
+      ]
+    }
 {{- end -}}
