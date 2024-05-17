@@ -38,6 +38,8 @@ api:
     version: v0.4.2
   monitoring:
     enabled: true
+  # The number of replicas for the backend deployment
+  replicas: 1
   # Service config
   service:
     name: llm-backend

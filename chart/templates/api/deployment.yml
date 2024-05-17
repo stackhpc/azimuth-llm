@@ -5,7 +5,7 @@ metadata:
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 spec:
-  replicas: 1
+  replicas: {{ .Values.api.replicas }}
   selector:
     matchLabels:
       {{- include "azimuth-llm.api-selectorLabels" . | nindent 6 }}
