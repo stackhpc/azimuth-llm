@@ -1,0 +1,32 @@
+{{- if .Values.ingress.api.enabled -}}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  {{ if .Values.ingress.ui.annotations -}}
+  annotations:
+    {{- .Values.ingress.api.annotations | toYaml | nindent 4 }}
+  {{ end -}}
+  name: {{ default (printf "%s-api" .Release.Name) .Values.ingress.api.name }}
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /v1
+        pathType: Prefix
+        backend:
+          service:
+            name: {{ .Values.api.service.name }}
+            port:
+              # Must match Service resource
+              number: 80
+    {{ if .Values.ingress.host -}}
+    host: {{ .Values.ingress.host | quote }}
+    {{- end -}}
+  {{- if .Values.ingress.tls }}
+  tls:
+  - hosts:
+    - {{ (required "ingress.host is required when ingress.tls is true" .Values.ingress.host) | quote }}
+    secretName: {{ .Release.Name }}-tls
+  {{- end -}}
+{{- end -}}
