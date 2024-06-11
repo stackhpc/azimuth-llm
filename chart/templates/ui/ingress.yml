@@ -8,7 +8,7 @@ metadata:
   {{ end -}}
   name: {{ default (printf "%s-ui" .Release.Name) .Values.ingress.ui.name }}
 spec:
-  ingressClassName: nginx
+  ingressClassName: {{ .Values.ingress.className }}
   rules:
   - http:
       paths:

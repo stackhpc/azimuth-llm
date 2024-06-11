@@ -124,6 +124,8 @@ ui:
 # NOTE: An ingress controller must be installed
 # on the target cluster.
 ingress:
+  # The name of the ingress class to use
+  className: nginx
   host:
   tls: true
   api:

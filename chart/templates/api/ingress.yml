@@ -8,11 +8,11 @@ metadata:
   {{ end -}}
   name: {{ default (printf "%s-api" .Release.Name) .Values.ingress.api.name }}
 spec:
-  ingressClassName: nginx
+  ingressClassName: {{ .Values.ingress.className }}
   rules:
   - http:
       paths:
-      - path: /v1
+      - path: {{ .Values.ingress.api.path }}
         pathType: Prefix
         backend:
           service:
