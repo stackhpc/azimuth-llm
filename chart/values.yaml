@@ -112,27 +112,42 @@ ui:
       iconUrl: https://raw.githubusercontent.com/gradio-app/gradio/5524e590577769b0444a5332b8d444aafb0c5c12/js/app/public/static/img/logo.svg
       description: |
         A web-based user inferface for interacting with the deployed LLM.
-  # Optional config for an ingress resource to expose the UI
-  ingress:
-    # The name of the ingress resource to create (default: Release.Name)
-    name:
-    # Any annotations to apply to the ingress resource
-    # (e.g. for cert-manager TLS integration)
-    annotations: {}
-    # The domain name to use for the ingress resource.
-    # If host is not set then ingress support will be disabled and
-    # no ingress resource will be created.
-    # NOTE: If ingress is enabled, an ingress controller must be installed
-    # on the target cluster before installing this chart.
-    # For example, see https://kubernetes.github.io/ingress-nginx/deploy/
-    # TODO: Check what happens if ingress is enabled without a controller deployed
-    # (probably nothing, just an unused ingress resource will be created)
-    host:
   # The update strategy to use for the deployment
   updateStrategy:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
+
+# Settings for configuring ingress resources
+# to make the UI and/or backend API accessible
+# outside the cluster.
+# NOTE: An ingress controller must be installed
+# on the target cluster.
+ingress:
+  # The name of the ingress class to use
+  className: nginx
+  host:
+  tls: true
+  api:
+    enabled: false
+    # Defaults to "{{ .Release.name }}"-api
+    name:
+    # This is required to be /v1 for an OpenAI API
+    # unless we add URL rewrite functionality to the
+    # Ingress resource templates in the future.
+    path: /v1
+    # Annotations to apply to the ingress resource
+    # e.g. for cert-manager integration
+    annotations:
+  ui:
+    enabled: false
+    # Defaults to "{{ .Release.name }}"-ui
+    name:
+    # For a Gradio app this must be the root
+    path: /
+    # Annotations to apply to the ingress resource
+    # e.g. for cert-manager integration
+    annotations:
 
 reloader:
   watchGlobally: false

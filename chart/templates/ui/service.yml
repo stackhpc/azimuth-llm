@@ -1,5 +1,4 @@
 {{- if .Values.ui.enabled -}}
----
 apiVersion: v1
 kind: Service
 metadata:
@@ -15,30 +14,4 @@ spec:
   type: {{ .Values.ui.service.type }}
   selector:
     {{- include "azimuth-llm.ui-selectorLabels" . | nindent 4 }}
----
-{{- if .Values.ui.ingress.host -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  annotations:
-    {{- .Values.ui.ingress.annotations | toYaml | nindent 4 }}
-  name: {{ .Values.ui.ingress.name | default .Release.Name }}
-spec:
-  ingressClassName: nginx
-  rules:
-  - host: {{ .Values.ui.ingress.host | quote }}
-    http:
-      paths:
-      - backend:
-          service:
-            name: {{ .Values.ui.service.name }}
-            port:
-              number: 80 # Must match Service resource
-        path: /
-        pathType: Prefix
-  tls:
-  - hosts:
-    - {{ .Values.ui.ingress.host | quote }}
-    secretName: {{ .Release.Name }}-tls
-{{- end -}}
 {{- end -}}
