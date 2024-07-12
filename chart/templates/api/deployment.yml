@@ -29,6 +29,10 @@ spec:
           - --model
           - {{ .Values.huggingface.model }}
           {{- include "azimuth-llm.chatTemplate" . | nindent 10 }}
+          {{- if .Values.api.modelMaxContextLength -}}
+          - --max-model-len
+          - {{ .Values.api.modelMaxContextLength }}
+          {{- end -}}
           {{- if .Values.api.extraArgs -}}
           {{- .Values.api.extraArgs | toYaml | nindent 10 }}
           {{- end -}}

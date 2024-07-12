@@ -51,11 +51,13 @@ api:
       iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
       description: |
         The raw inference API endpoints for the deployed LLM.
+
   # Config for huggingface model cache volume
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:
     hostPath:
       path: /tmp/llm/huggingface-cache
+
   # Number of gpus to requests for each api pod instance
   # NOTE: This must be in the range 1 <= value <= N, where
   # 'N' is the number of GPUs available in a single
@@ -71,8 +73,13 @@ api:
   # to preform a rolling zero-downtime update
   updateStrategy:
     type: Recreate
+
+  # The value of the vLLM backend's max_model_len argument (if the model's default is not suitable)
+  # https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#command-line-arguments-for-the-server
+  modelMaxContextLength:
+
   # Extra args to supply to the vLLM backend, see
-  # https://github.com/vllm-project/vllm/blob/main/vllm/entrypoints/openai/api_server.py
+  # https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#command-line-arguments-for-the-server
   extraArgs: []
 
 # Configuration for the frontend web interface
