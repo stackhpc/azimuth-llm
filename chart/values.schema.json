@@ -97,7 +97,7 @@
             "type": "object",
             "properties": {
                 "modelMaxContextLength": {
-                    "type": "integer",
+                    "type": ["integer", "null"],
                     "title": "Model Context Length",
                     "description": "An override for the maximum context length to use if the model's default is not suitable."
                 },
