@@ -31,7 +31,7 @@ spec:
           {{- include "azimuth-llm.chatTemplate" . | nindent 10 }}
           {{- if .Values.api.modelMaxContextLength -}}
           - --max-model-len
-          - {{ .Values.api.modelMaxContextLength }}
+          - {{ .Values.api.modelMaxContextLength | quote }}
           {{- end -}}
           {{- if .Values.api.extraArgs -}}
           {{- .Values.api.extraArgs | toYaml | nindent 10 }}
