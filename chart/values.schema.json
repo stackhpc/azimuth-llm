@@ -92,6 +92,26 @@
                     "required": ["hf_model_name", "hf_model_instruction"]
                 }
             }
+        },
+        "api": {
+            "type": "object",
+            "properties": {
+                "modelMaxContextLength": {
+                    "title": "Model Context Length",
+                    "description": "An override for the maximum context length to allow, if the model's default is not suitable."
+                },
+                "image": {
+                    "type": "object",
+                    "properties": {
+                        "version": {
+                            "type": "string",
+                            "title": "Backend vLLM version",
+                            "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
+                            "default": "v0.4.3"
+                        }
+                    }
+                }
+            }
         }
     }
 }

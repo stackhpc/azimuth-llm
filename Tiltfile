@@ -1,6 +1,6 @@
 # Toggles whether UI should be run locally using gradio hot-reloading
 # or should be included in the remote Helm install
-run_ui_locally = True
+run_ui_locally = os.getenv("AZIMUTH_LLM_TILT_LOCAL_UI", True)
 
 # Allow non-local contexts
 allow_k8s_contexts(k8s_context())
