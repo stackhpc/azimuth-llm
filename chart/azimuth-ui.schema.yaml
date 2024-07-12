@@ -11,7 +11,7 @@ controls:
     path: /huggingface/model
     visuallyHidden: true
   # Azimuth UI doesn't handle json type ["integer","null"]
-  # properly so we allow type "string" in JSON schema then
+  # properly so we allow any type in JSON schema then
   # constrain to (optional) integer here.
   /api/modelMaxContextLength:
     type: IntegerControl
