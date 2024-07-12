@@ -10,6 +10,12 @@ controls:
     type: MirrorControl
     path: /huggingface/model
     visuallyHidden: true
+  # Azimuth UI doesn't handle json type ["integer","null"]
+  # properly so we allow type "string" in JSON schema then
+  # constrain to (optional) integer here.
+  /api/modelMaxContextLength:
+    type: IntegerControl
+    required: false
 
 sortOrder:
   - /huggingface/model

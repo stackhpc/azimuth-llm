@@ -97,7 +97,7 @@
             "type": "object",
             "properties": {
                 "modelMaxContextLength": {
-                    "type": ["integer", "null"],
+                    "type": "string",
                     "title": "Model Context Length",
                     "description": "An override for the maximum context length to use if the model's default is not suitable."
                 },
@@ -106,7 +106,7 @@
                     "properties": {
                         "version": {
                             "type": "string",
-                            "title": "vLLM version override",
+                            "title": "Backend vLLM version",
                             "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
                             "default": "v0.4.3"
                         }
