@@ -94,6 +94,7 @@
             }
         },
         "api": {
+            "type": "object",
             "properties": {
                 "modelMaxContextLength": {
                     "type": "integer",
@@ -101,6 +102,7 @@
                     "description": "An override for the maximum context length to use if the model's default is not suitable."
                 },
                 "image": {
+                    "type": "object",
                     "properties": {
                         "version": {
                             "type": "string",
