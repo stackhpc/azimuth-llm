@@ -35,7 +35,7 @@ api:
   # Container image config
   image:
     repository: vllm/vllm-openai
-    version: v0.4.3
+    version: v0.5.4
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
