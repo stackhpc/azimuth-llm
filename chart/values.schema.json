@@ -9,7 +9,7 @@
                     "type": "string",
                     "title": "Model",
                     "description": "The [HuggingFace model](https://huggingface.co/models) to deploy (see [here](https://github.com/stackhpc/azimuth-llm?tab=readme-ov-file#tested-models) for a list of tested models).",
-                    "default": "ise-uiuc/Magicoder-S-DS-6.7B"
+                    "default": "microsoft/Phi-3.5-mini-instruct"
                 },
                 "token": {
                     "type": ["string", "null"],
