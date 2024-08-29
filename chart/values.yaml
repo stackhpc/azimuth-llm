@@ -5,7 +5,7 @@
 huggingface:
   # The name of the HuggingFace model to use
   # Use a yaml anchor to avoid duplication elsewhere
-  model: &model-name ise-uiuc/Magicoder-S-DS-6.7B
+  model: &model-name microsoft/Phi-3.5-mini-instruct
   # A Jinja formatted chat template to provide to the language model.
   # See https://huggingface.co/blog/chat-templates for background info.
   # If not provided, the default template specified in the HuggingFace
@@ -35,7 +35,7 @@ api:
   # Container image config
   image:
     repository: vllm/vllm-openai
-    version: v0.5.4
+    version: v0.5.5
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
