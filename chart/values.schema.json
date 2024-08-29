@@ -12,12 +12,17 @@
                     "default": "microsoft/Phi-3.5-mini-instruct"
                 },
                 "token": {
-                    "type": ["string", "null"],
+                    "type": [
+                        "string",
+                        "null"
+                    ],
                     "title": "Access Token",
                     "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Required for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 3)."
                 }
             },
-            "required": ["model"]
+            "required": [
+                "model"
+            ]
         },
         "ui": {
             "type": "object",
@@ -87,9 +92,11 @@
                             "minimum": -2,
                             "maximum": 2
                         }
-
                     },
-                    "required": ["hf_model_name", "hf_model_instruction"]
+                    "required": [
+                        "hf_model_name",
+                        "hf_model_instruction"
+                    ]
                 }
             }
         },
@@ -107,7 +114,7 @@
                             "type": "string",
                             "title": "Backend vLLM version",
                             "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
-                            "default": "v0.5.4"
+                            "default": "v0.5.5"
                         }
                     }
                 }

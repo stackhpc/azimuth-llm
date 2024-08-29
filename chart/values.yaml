@@ -15,7 +15,6 @@ huggingface:
   # repo files yet. This chart value provides a hook to manually apply the
   # correct chat template for such models.
   chatTemplate:
-
   # For private/gated huggingface models (e.g. Meta's Llama models)
   # you must provide your own huggingface token, for details see:
   # https://huggingface.co/docs/hub/security-tokens
@@ -29,7 +28,6 @@ huggingface:
   # OR FOR TESTING PURPOSES ONLY, you can instead provide the secret directly
   # as a chart value here (if secretName is set above then it will take priority)
   token:
-
 # Configuration for the backend model serving API
 api:
   # Container image config
@@ -51,13 +49,11 @@ api:
       iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
       description: |
         The raw inference API endpoints for the deployed LLM.
-
   # Config for huggingface model cache volume
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:
     hostPath:
       path: /tmp/llm/huggingface-cache
-
   # Number of gpus to requests for each api pod instance
   # NOTE: This must be in the range 1 <= value <= N, where
   # 'N' is the number of GPUs available in a single
@@ -73,15 +69,12 @@ api:
   # to preform a rolling zero-downtime update
   updateStrategy:
     type: Recreate
-
   # The value of the vLLM backend's max_model_len argument (if the model's default is not suitable)
   # https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#command-line-arguments-for-the-server
   modelMaxContextLength:
-
   # Extra args to supply to the vLLM backend, see
   # https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#command-line-arguments-for-the-server
   extraArgs: []
-
 # Configuration for the frontend web interface
 ui:
   # Toggles installation of the gradio web UI
@@ -124,7 +117,6 @@ ui:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
-
 # Settings for configuring ingress resources
 # to make the UI and/or backend API accessible
 # outside the cluster.
@@ -155,6 +147,5 @@ ingress:
     # Annotations to apply to the ingress resource
     # e.g. for cert-manager integration
     annotations:
-
 reloader:
   watchGlobally: false
