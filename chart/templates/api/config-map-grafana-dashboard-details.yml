@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: llm-grafana-dashboard
+  name: llm-grafana-dashboard-detailed
   labels:
     grafana_dashboard: "1"
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 data:
-  llm-dashboard.json: |
+  vllm-dashboard-detailed.json: |
 {
   "__inputs": [
   ],
