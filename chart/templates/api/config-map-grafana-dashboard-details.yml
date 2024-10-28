@@ -1009,7 +1009,7 @@ data:
               "fullMetaSearch": false,
               "includeNullMetadata": true,
               "instant": false,
-              "legendFormat": "\{\{le\}\}",
+              "legendFormat": "{{ "{{" }}le{{ "}}" }}",
               "range": true,
               "refId": "A",
               "useBackend": false
@@ -1101,7 +1101,7 @@ data:
               "fullMetaSearch": false,
               "includeNullMetadata": true,
               "instant": false,
-              "legendFormat": "\{\{le\}\}",
+              "legendFormat": "{{ "{{" }}le{{ "}}" }}",
               "range": true,
               "refId": "A",
               "useBackend": false
