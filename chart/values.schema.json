@@ -57,7 +57,7 @@
                             "type": "number",
                             "title": "LLM Temperature",
                             "description": "The [temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature) value to use when generating LLM responses.",
-                            "default": 1,
+                            "default": 0,
                             "minimum": 0,
                             "maximum": 2
                         },
@@ -114,7 +114,7 @@
                             "type": "string",
                             "title": "Backend vLLM version",
                             "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
-                            "default": "v0.5.5"
+                            "default": "v0.6.3"
                         }
                     }
                 }
