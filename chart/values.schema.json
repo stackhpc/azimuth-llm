@@ -57,7 +57,7 @@
                             "type": "number",
                             "title": "LLM Temperature",
                             "description": "The [temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature) value to use when generating LLM responses.",
-                            "default": 1,
+                            "default": 0,
                             "minimum": 0,
                             "maximum": 2
                         },
