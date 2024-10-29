@@ -103,7 +103,7 @@ ui:
     # repository: ghcr.io/stackhpc/azimuth-llm-ui-base
     # version: "0.3.0"
     repository: azimuth-llm-chat-interface
-    version: latest
+    version: 87a0342
     imagePullPolicy:
   # Service config
   service:
