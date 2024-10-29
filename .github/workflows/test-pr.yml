@@ -39,7 +39,7 @@ jobs:
       - name: Create Kind Cluster
         uses: helm/kind-action@v1
         with:
-          cluster-name: ${{ env.CLUSTER_NAME }}
+          cluster_name: ${{ env.CLUSTER_NAME }}
 
       - name: Load local docker images into kind cluster
         run: |
