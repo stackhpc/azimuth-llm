@@ -72,28 +72,28 @@ jobs:
           tags: ${{ steps.image-meta.outputs.tags }}
           labels: ${{ steps.image-meta.outputs.labels }}
 
-  # # Job to build and publish Helm chart
-  # build_push_chart:
-  #   name: Build and push Helm chart
-  #   runs-on: ubuntu-latest
-  #   # Only build and push the chart if chart files have changed
-  #   needs: [changes]
-  #   if: ${{ needs.changes.outputs.chart == 'true' || github.ref_type == 'tag' }}
-  #   steps:
-  #     - name: Check out the repository
-  #       uses: actions/checkout@v4
-  #       with:
-  #         # This is important for the semver action to work correctly
-  #         # when determining the number of commits since the last tag
-  #         fetch-depth: 0
+  # Job to build and publish Helm chart
+  build_push_chart:
+    name: Build and push Helm chart
+    runs-on: ubuntu-latest
+    # Only build and push the chart if chart files have changed
+    needs: [changes]
+    if: ${{ needs.changes.outputs.chart == 'true' || github.ref_type == 'tag' }}
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        with:
+          # This is important for the semver action to work correctly
+          # when determining the number of commits since the last tag
+          fetch-depth: 0
 
-  #     - name: Get SemVer version for current commit
-  #       id: semver
-  #       uses: azimuth-cloud/github-actions/semver@master
+      - name: Get SemVer version for current commit
+        id: semver
+        uses: azimuth-cloud/github-actions/semver@master
 
-  #     - name: Publish Helm charts
-  #       uses: azimuth-cloud/github-actions/helm-publish@master
-  #       with:
-  #         token: ${{ secrets.GITHUB_TOKEN }}
-  #         version: ${{ steps.semver.outputs.version }}
-  #         app-version: ${{ steps.semver.outputs.short-sha }}
+      - name: Publish Helm charts
+        uses: azimuth-cloud/github-actions/helm-publish@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          version: ${{ steps.semver.outputs.version }}
+          app-version: ${{ steps.semver.outputs.short-sha }}
