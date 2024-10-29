@@ -10,7 +10,7 @@ spec:
     spec:
       containers:
       - name: gradio-client-test
-        image: ghcr.io/stackhpc/azimuth-llm-chat-interface
+        image: ghcr.io/stackhpc/azimuth-llm-chat-interface:{{ .Values.ui.image.version }}
         imagePullPolicy: IfNotPresent
         command:
         - python

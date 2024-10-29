@@ -100,7 +100,7 @@ ui:
         - Arial
   # Container image config
   image:
-    repository: azimuth-llm-chat-interface
+    repository: ghcr.io/stackhpc/azimuth-llm-chat-interface
     version: 87a0342
     imagePullPolicy:
   # Service config

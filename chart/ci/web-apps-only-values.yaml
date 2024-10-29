@@ -1,10 +1,6 @@
 api:
   enabled: false
 ui:
-  image:
-    repository: ghcr.io/stackhpc/azimuth-llm-chat-interface
-    version: latest
-    imagePullPolicy: Never
   service:
     zenith:
       enabled: false
