@@ -32,19 +32,10 @@ jobs:
         run: helm template ci-test .
         working-directory: chart
 
-      - name: Build all web app images
-        run: ./build.sh
-        working-directory: web-apps
-
       - name: Create Kind Cluster
         uses: helm/kind-action@v1
         with:
           cluster_name: ${{ env.CLUSTER_NAME }}
-
-      - name: Load local docker images into kind cluster
-        run: |
-          IMAGE_NAMES=$(docker image ls | grep ghcr.io/stackhpc/azimuth-llm- | awk '{print $1}')
-          kind load docker-image $IMAGE_NAMES -n ${{ env.CLUSTER_NAME }}
 
       - name: Add Helm repos for dependencies
         run: |
