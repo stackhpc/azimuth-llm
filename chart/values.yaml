@@ -104,7 +104,7 @@ ui:
     # version: "0.3.0"
     repository: azimuth-llm-chat-interface
     version: latest
-    imagePullPolicy: IfNotPresent
+    imagePullPolicy:
   # Service config
   service:
     name: web-app

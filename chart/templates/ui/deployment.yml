@@ -22,8 +22,12 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-ui
-        image: {{ printf "%s:%s" .Values.ui.image.repository .Values.ui.image.version }}
-        imagePullPolicy: {{ .Values.ui.image.imagePullPolicy }}
+        {{- with .Values.ui.image }}
+        image: {{ printf "%s:%s" .repository .version }}
+        {{- if .imagePullPolicy }}
+        imagePullPolicy: {{ .imagePullPolicy }}
+        {{- end -}}
+        {{- end }}
         ports:
         - name: ui
           containerPort: 7860
