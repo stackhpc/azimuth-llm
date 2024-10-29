@@ -100,8 +100,11 @@ ui:
         - Arial
   # Container image config
   image:
-    repository: ghcr.io/stackhpc/azimuth-llm-ui-base
-    version: "0.3.0"
+    # repository: ghcr.io/stackhpc/azimuth-llm-ui-base
+    # version: "0.3.0"
+    repository: azimuth-llm-chat-interface
+    version: latest
+    imagePullPolicy: IfNotPresent
   # Service config
   service:
     name: web-app

@@ -23,25 +23,20 @@ spec:
       containers:
       - name: {{ .Release.Name }}-ui
         image: {{ printf "%s:%s" .Values.ui.image.repository .Values.ui.image.version }}
+        imagePullPolicy: {{ .Values.ui.image.imagePullPolicy }}
         ports:
         - name: ui
-          containerPort: 7680
-        workingDir: /etc/web-app
+          containerPort: 7860
         volumeMounts:
         - name: app
           mountPath: /etc/web-app
-        command:
-        - python
-        args:
-        - {{ .Values.ui.entrypoint }}
-        - {{ .Values.huggingface.model }}
         env:
         - name: PYTHONUNBUFFERED
           value: "1"
         tty: true # Make stdout from python visible in k8s logs
         readinessProbe:
           tcpSocket:
-            port: 7680
+            port: 7860
           periodSeconds: 5
       volumes:
         - name: app

@@ -1,0 +1,13 @@
+api:
+  enabled: false
+ui:
+  image:
+    repository: ghcr.io/stackhpc/azimuth-llm-chat-interface
+    tag: latest
+    imagePullPolicy: Never
+  service:
+    zenith:
+      enabled: false
+  appSettings:
+    hf_model_name: AMead10/c4ai-command-r-08-2024-awq
+    backend_url: https://llm3-compute.cms.hu-berlin.de

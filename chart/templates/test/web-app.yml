@@ -1,0 +1,22 @@
+{{- if not .Values.api.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: web-app-liveness
+  annotations:
+    "helm.sh/hook": test
+spec:
+  template:
+    spec:
+      containers:
+      - name: web-app-test
+        image: nicolaka/netshoot:v0.12
+        imagePullPolicy: IfNotPresent
+        command:
+        - nc
+        - -vz
+        - {{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+        - "80"
+      restartPolicy: Never
+  backoffLimit: 3
+{{- end -}}

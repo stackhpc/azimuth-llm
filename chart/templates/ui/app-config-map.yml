@@ -6,7 +6,6 @@ metadata:
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 data:
-{{ (.Files.Glob "web-app/*").AsConfig | nindent 2 }}
-  settings.yml: |
+  overrides.yml: |
     {{- .Values.ui.appSettings | toYaml | nindent 4 }}
 {{- end -}}

@@ -1,0 +1,23 @@
+{{- if .Values.api.enabled -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gradio-client-response
+  annotations:
+    "helm.sh/hook": test
+spec:
+  template:
+    spec:
+      containers:
+      - name: gradio-client-test
+        image: ghcr.io/stackhpc/azimuth-llm-chat-interface
+        imagePullPolicy: IfNotPresent
+        command:
+        - python
+        - gradio-client-test.py
+        - http://{{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+      restartPolicy: Never
+  # Allow plenty of retries since downloading
+  # model weights can take a long time.
+  backoffLimit: 10
+{{- end -}}

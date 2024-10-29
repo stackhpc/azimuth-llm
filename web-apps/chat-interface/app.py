@@ -14,7 +14,7 @@ logger.setLevel(logging.INFO)
 
 logger.info("Starting app")
 
-settings = AppSettings.load("./settings.yml")
+settings = AppSettings.load()
 if len(sys.argv) > 1:
     settings.hf_model_name = sys.argv[1]
 logger.info("App settings: %s", settings)
@@ -40,15 +40,22 @@ llm = ChatOpenAI(
     openai_api_key="required-but-not-used",
     temperature=settings.llm_temperature,
     max_tokens=settings.llm_max_tokens,
-    model_kwargs={
-        "top_p": settings.llm_top_p,
-        "frequency_penalty": settings.llm_frequency_penalty,
-        "presence_penalty": settings.llm_presence_penalty,
-        # Additional parameters supported by vLLM but not OpenAI API
-        # https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html#extra-parameters
-        "extra_body": {
-            "top_k": settings.llm_top_k,
-        }
+    # model_kwargs={
+    #     "top_p": settings.llm_top_p,
+    #     "frequency_penalty": settings.llm_frequency_penalty,
+    #     "presence_penalty": settings.llm_presence_penalty,
+    #     # Additional parameters supported by vLLM but not OpenAI API
+    #     # https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html#extra-parameters
+    #     "extra_body": {
+    #         "top_k": settings.llm_top_k,
+    #     }
+    top_p=settings.llm_top_p,
+    frequency_penalty=settings.llm_frequency_penalty,
+    presence_penalty=settings.llm_presence_penalty,
+    # Additional parameters supported by vLLM but not OpenAI API
+    # https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html#extra-parameters
+    extra_body={
+        "top_k": settings.llm_top_k,
     },
     streaming=True,
 )
