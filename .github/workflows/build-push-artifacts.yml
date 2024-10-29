@@ -36,8 +36,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: changes
     # if: ${{ needs.changes.outputs.images == 'true' || github.ref_type == 'tag' }}
-    permissions:
-      packages: write
     strategy:
       matrix:
         include:
