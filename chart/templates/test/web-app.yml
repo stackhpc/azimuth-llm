@@ -1,4 +1,4 @@
-{{- if not .Values.api.enabled -}}
+{{- if and .Values.ui.enabled (not .Values.api.enabled) -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -15,7 +15,11 @@ spec:
         command:
         - nc
         - -vz
+        {{- if .Values.ingress.ui.enabled }}
+        - {{ .Values.ingress.host | trimPrefix 'http://' | trimPrefix 'https://' }}{{ .Values.ingress.ui.path }}
+        {{- else }}
         - {{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+        {{- end }}
         - "80"
       restartPolicy: Never
   backoffLimit: 3

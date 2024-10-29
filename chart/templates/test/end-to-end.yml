@@ -1,4 +1,4 @@
-{{- if .Values.api.enabled -}}
+{{- if and .Values.ui.enabled .Values.api.enabled -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -15,7 +15,11 @@ spec:
         command:
         - python
         - gradio-client-test.py
+        {{- if .Values.ingress.ui.enabled }}
+        - {{ .Values.ingress.host }}{{ .Values.ingress.ui.path }}
+        {{- else }}
         - http://{{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+        {{- end }}
       restartPolicy: Never
   # Allow plenty of retries since downloading
   # model weights can take a long time.
