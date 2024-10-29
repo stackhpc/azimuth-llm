@@ -1,6 +1,11 @@
 name: Test pull request
 on:
   pull_request:
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+      - synchronize
 jobs:
   chart_validation:
     runs-on: ubuntu-latest
