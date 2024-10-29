@@ -30,6 +30,7 @@ huggingface:
   token:
 # Configuration for the backend model serving API
 api:
+  enabled: true
   # Container image config
   image:
     repository: vllm/vllm-openai
