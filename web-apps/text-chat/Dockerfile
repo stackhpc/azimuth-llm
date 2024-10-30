@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-ARG DIR=chat-interface
+ARG DIR=text-chat
 
 COPY $DIR/requirements.txt requirements.txt
 COPY utils utils

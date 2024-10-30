@@ -1,6 +1,6 @@
 FROM python:3.11-slim
 
-ARG DIR=image-interface
+ARG DIR=image-analysis
 
 COPY $DIR/requirements.txt requirements.txt
 COPY utils utils
