@@ -30,12 +30,12 @@
                 "appSettings": {
                     "type": "object",
                     "properties": {
-                        "hf_model_name": {
+                        "model_name": {
                             "type": "string",
                             "title": "Model Name",
                             "description": "Model name supplied to the OpenAI client in frontend web app. Should match huggingface.model above."
                         },
-                        "hf_model_instruction": {
+                        "model_instruction": {
                             "type": "string",
                             "title": "Instruction",
                             "description": "The initial system prompt (i.e. the hidden instruction) to use when generating responses.",
@@ -94,8 +94,7 @@
                         }
                     },
                     "required": [
-                        "hf_model_name",
-                        "hf_model_instruction"
+                        "model_name"
                     ]
                 }
             }

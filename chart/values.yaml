@@ -82,8 +82,8 @@ ui:
   enabled: true
   # Container image config
   image:
-    repository: ghcr.io/stackhpc/azimuth-llm-chat-interface
-    version: 87a0342
+    repository: ghcr.io/stackhpc/azimuth-llm-chat-ui
+    version: 58c4dcb
     imagePullPolicy:
   # The settings to be passed to the frontend web app.
   # Format depends on the chosen UI image above. For each of the UIs
@@ -94,7 +94,6 @@ ui:
   # with different config options for each web app.
   appSettings:
     model_name: *model-name
-    model_instruction: "You are a helpful AI assistant. Please response appropriately."
     # Use local system fonts by default to avoid GDPR issues
     # with Gradio's defaults fonts which require fetching from
     # the Google fonts API. To restore default Gradio theme
