@@ -1,0 +1,8 @@
+api:
+  enabled: false
+ui:
+  image:
+    repository: ghcr.io/stackhpc/azimuth-llm-image-analysis-ui
+  service:
+    zenith:
+      enabled: false
