@@ -39,7 +39,8 @@ jobs:
     strategy:
       matrix:
         include:
-          - component: chat-interface
+          - component: basic-chat
+          - component: image-analysis
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
