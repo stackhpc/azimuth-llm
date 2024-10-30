@@ -13,3 +13,9 @@ test-values.y[a]ml
 # Helm chart stuff
 chart/Chart.lock
 chart/charts
+
+# Python stuff
+**/build/
+**/*.egg-info/
+**/flagged/
+web-apps/**/overrides.yml

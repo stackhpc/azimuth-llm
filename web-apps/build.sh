@@ -2,14 +2,12 @@
 set -e
 
 build() {
-    pushd $1 > /dev/null
-    if [[ -f Dockerfile ]]; then
+    if [[ -f $1/Dockerfile ]]; then
         echo Building $1 docker image
-        docker build . -t ghcr.io/stackhpc/azimuth-llm-$1
+        docker build . -t ghcr.io/stackhpc/azimuth-llm-$1 -f $1/Dockerfile
     else
         echo No Dockerfile found for $1
     fi
-    popd > /dev/null
 }
 
 # If a single app is provided as a

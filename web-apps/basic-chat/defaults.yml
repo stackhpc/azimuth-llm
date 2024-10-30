@@ -1,0 +1,31 @@
+
+model_name:
+model_instruction: "You are a helpful and cheerful AI assistant. Please respond appropriately."
+backend_url:
+host_address: 0.0.0.0
+
+page_title: Large Language Model
+
+# LLM request parameters
+# See https://platform.openai.com/docs/api-reference/chat/create
+# and https://docs.vllm.ai/en/v0.6.0/serving/openai_compatible_server.html#extra-parameters
+llm_params:
+  max_tokens:
+  temperature: 0
+  top_p:
+  top_k:
+  frequency_penalty:
+  presence_penalty:
+
+# Gradio theme constructor parameters (e.g. 'primary_hue')
+# See https://www.gradio.app/guides/theming-guide
+theme_params: {}
+
+# Gradio theme .set(...) parameters
+# See https://www.gradio.app/guides/theming-guide#extending-themes-via-set
+theme_params_extended: {}
+
+# Additional CSS and JS overrides
+# See https://www.gradio.app/guides/custom-CSS-and-JS
+css_overrides:
+custom_javascript:

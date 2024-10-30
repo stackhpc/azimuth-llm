@@ -1,0 +1,36 @@
+
+model_name:
+backend_url:
+host_address: 0.0.0.0
+
+page_title: Image analysis with a vision model
+page_description: This model can be used to analyse image files.
+
+# Example inputs to render in the UI
+examples:
+  - image_url: https://www.myplace.de/sites/default/files/styles/blog_hero_bild_slideshow/public/blog/Platzprofessor-MyPlace-SelfStorage-Die-Stadt-als-Raum-der-Begegnung-H.jpg?itok=ibY2Hoy9
+    prompt: Conduct a detailed image analysis and describe all parts of the image that you can identify. Count all occurrences of the entities, which you can identify. Make a guess about the provenance or location of the image.
+
+# LLM request parameters
+# See https://platform.openai.com/docs/api-reference/chat/create
+# and https://docs.vllm.ai/en/v0.6.0/serving/openai_compatible_server.html#extra-parameters
+llm_params:
+  max_tokens:
+  temperature:
+  top_p:
+  top_k:
+  frequency_penalty:
+  presence_penalty:
+
+# Gradio theme constructor parameters (e.g. 'primary_hue')
+# See https://www.gradio.app/guides/theming-guide
+theme_params: {}
+
+# Gradio theme .set(...) parameters
+# See https://www.gradio.app/guides/theming-guide#extending-themes-via-set
+theme_params_extended: {}
+
+# Additional CSS and JS overrides
+# See https://www.gradio.app/guides/custom-CSS-and-JS
+css_overrides:
+custom_javascript:
