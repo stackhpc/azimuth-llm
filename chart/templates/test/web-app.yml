@@ -1,0 +1,26 @@
+{{- if and .Values.ui.enabled (not .Values.api.enabled) -}}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: web-app-liveness
+  annotations:
+    "helm.sh/hook": test
+spec:
+  template:
+    spec:
+      containers:
+      - name: web-app-test
+        image: nicolaka/netshoot:v0.12
+        imagePullPolicy: IfNotPresent
+        command:
+        - nc
+        - -vz
+        {{- if .Values.ingress.ui.enabled }}
+        - {{ .Values.ingress.host | trimPrefix "http://" | trimPrefix "https://" }}{{ .Values.ingress.ui.path }}
+        {{- else }}
+        - {{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+        {{- end }}
+        - "80"
+      restartPolicy: Never
+  backoffLimit: 3
+{{- end -}}

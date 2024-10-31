@@ -1,6 +1,9 @@
 apiVersion: v2
 name: azimuth-llm
 description: HuggingFace LLM model serving along with a simple web interface.
+maintainers:
+  - name: "Scott Davidson"
+    email: scott@stackhpc.com
 
 # A chart can be either an 'application' or a 'library' chart.
 #

@@ -1,0 +1,49 @@
+name: Test pull request
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - ready_for_review
+      - synchronize
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+jobs:
+  chart_validation:
+    runs-on: ubuntu-latest
+    env:
+      CLUSTER_NAME: chart-testing
+      RELEASE_NAME: ci-test
+    steps:
+      - name: Checkout the repo
+        uses: actions/checkout@v4
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+
+      - name: Set up chart testing
+        uses: helm/chart-testing-action@v2
+
+      - name: Run chart linting
+        run: ct lint --config ct.yaml
+
+      - name: Run helm template with default values
+        run: helm template ci-test .
+        working-directory: chart
+
+      - name: Create Kind Cluster
+        uses: helm/kind-action@v1
+        with:
+          cluster_name: ${{ env.CLUSTER_NAME }}
+
+      - name: Add Helm repos for dependencies
+        run: |
+          helm repo add stakater https://stakater.github.io/stakater-charts
+
+      # https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
+      # Each chart/ci/*-values.yaml file will be treated as a separate test case with it's
+      # own helm install/test process.
+      - name: Run chart install and test
+        run: ct install --config ct.yaml
+

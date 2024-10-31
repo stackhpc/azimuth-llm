@@ -30,6 +30,7 @@ huggingface:
   token:
 # Configuration for the backend model serving API
 api:
+  enabled: true
   # Container image config
   image:
     repository: vllm/vllm-openai
@@ -99,8 +100,9 @@ ui:
         - Arial
   # Container image config
   image:
-    repository: ghcr.io/stackhpc/azimuth-llm-ui-base
-    version: "0.3.0"
+    repository: ghcr.io/stackhpc/azimuth-llm-chat-interface
+    version: 87a0342
+    imagePullPolicy:
   # Service config
   service:
     name: web-app

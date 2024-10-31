@@ -1,7 +1,6 @@
 # Adapted from https://github.com/stackhpc/azimuth/blob/master/.github/workflows/build-push-artifacts.yaml
 name: Publish artifacts
 # Run the tasks on every push
-# TODO: Add path filtering to only run on relevant changes
 on: push
 jobs:
   # Job to run change detection
@@ -24,9 +23,10 @@ jobs:
         id: filter
         with:
           base: ${{ github.ref_name }}
+          # TODO: Make image filters more granular
           filters: |
             images:
-              - 'images/**'
+              - 'web-apps/**'
             chart:
               - 'chart/**'
 
@@ -39,8 +39,7 @@ jobs:
     strategy:
       matrix:
         include:
-          # - component: api
-          - component: ui
+          - component: chat-interface
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
@@ -56,7 +55,7 @@ jobs:
         id: image-meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/stackhpc/azimuth-llm-${{ matrix.component }}-base
+          images: ghcr.io/stackhpc/azimuth-llm-${{ matrix.component }}
           # Produce the branch name or tag and the SHA as tags
           tags: |
             type=ref,event=branch
@@ -64,15 +63,14 @@ jobs:
             type=sha,prefix=
 
       - name: Build and push image
-        uses: stackhpc/github-actions/docker-multiarch-build-push@allow-continue-after-scan
+        uses: azimuth-cloud/github-actions/docker-multiarch-build-push@update-trivy-action
         with:
-          cache-key: ${{ matrix.component }}-base
-          context: ./images/${{ matrix.component }}-base
+          cache-key: ${{ matrix.component }}
+          context: ./web-apps/${{ matrix.component }}
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.image-meta.outputs.tags }}
           labels: ${{ steps.image-meta.outputs.labels }}
-          fail_on_high_severity_cve: false
 
   # Job to build and publish Helm chart
   build_push_chart:
@@ -91,10 +89,10 @@ jobs:
 
       - name: Get SemVer version for current commit
         id: semver
-        uses: stackhpc/github-actions/semver@master
+        uses: azimuth-cloud/github-actions/semver@master
 
       - name: Publish Helm charts
-        uses: stackhpc/github-actions/helm-publish@master
+        uses: azimuth-cloud/github-actions/helm-publish@master
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ steps.semver.outputs.version }}
