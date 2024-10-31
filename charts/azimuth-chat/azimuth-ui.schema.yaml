@@ -1,0 +1,34 @@
+controls:
+  /azimuth-llm/huggingface/model:
+    type: TextControl
+    required: true
+  /azimuth-llm/huggingface/token:
+    type: TextControl
+    secret: true
+  # Use mirror to mimic yaml anchor in base Helm chart
+  /azimuth-llm/ui/appSettings/hf_model_name:
+    type: MirrorControl
+    path: /azimuth-llm/huggingface/model
+    visuallyHidden: true
+  # Azimuth UI doesn't handle json type ["integer","null"]
+  # properly so we allow any type in JSON schema then
+  # constrain to (optional) integer here.
+  /azimuth-llm/api/modelMaxContextLength:
+    type: IntegerControl
+    minimum: 100
+    step: 100
+    required: false
+
+sortOrder:
+  - /azimuth-llm/huggingface/model
+  - /azimuth-llm/huggingface/token
+  - /azimuth-llm/ui/appSettings/hf_model_instruction
+  - /azimuth-llm/ui/appSettings/page_title
+  - /azimuth-llm/api/image/version
+  - /azimuth-llm/ui/appSettings/llm_temperature
+  - /azimuth-llm/ui/appSettings/llm_max_tokens
+  - /azimuth-llm/ui/appSettings/llm_frequency_penalty
+  - /azimuth-llm/ui/appSettings/llm_presence_penalty
+  - /azimuth-llm/ui/appSettings/llm_top_p
+  - /azimuth-llm/ui/appSettings/llm_top_k
+  - /azimuth-llm/api/modelMaxContextLength

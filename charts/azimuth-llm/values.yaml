@@ -90,8 +90,6 @@ ui:
   # included in the web-apps/ folder of this git repository there is a
   # defaults.yml file (e.g. web-apps/text-chat/defaults.yml) listing all
   # available configuration options.
-  # FIXME: Figure out how to make JSON schema fit
-  # with different config options for each web app.
   appSettings:
     model_name: *model-name
     # Use local system fonts by default to avoid GDPR issues
@@ -151,5 +149,6 @@ ingress:
     # Annotations to apply to the ingress resource
     # e.g. for cert-manager integration
     annotations:
-reloader:
-  watchGlobally: false
+
+# reloader:
+#   watchGlobally: false

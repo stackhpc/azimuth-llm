@@ -1,0 +1,8 @@
+azimuth-llm:
+  huggingface:
+    model: &model-name microsoft/Phi-3.5-vision-instruct
+  ui:
+    image:
+      repository: ghcr.io/stackhpc/azimuth-llm-image-analysis-ui
+    appSettings:
+      model_name: *model-name

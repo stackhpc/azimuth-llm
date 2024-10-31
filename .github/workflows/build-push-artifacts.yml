@@ -28,7 +28,7 @@ jobs:
             images:
               - 'web-apps/**'
             chart:
-              - 'chart/**'
+              - 'charts/**'
 
   # Job to build container images
   build_push_images:
@@ -96,6 +96,7 @@ jobs:
       - name: Publish Helm charts
         uses: azimuth-cloud/github-actions/helm-publish@master
         with:
+          directory: charts
           token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ steps.semver.outputs.version }}
           app-version: ${{ steps.semver.outputs.short-sha }}
