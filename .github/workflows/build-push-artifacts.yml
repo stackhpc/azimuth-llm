@@ -7,6 +7,7 @@ jobs:
   changes:
     name: Check for relevant changes
     runs-on: ubuntu-latest
+    if: ${{ github.ref_type != 'tag' }}
     # Required permissions
     permissions:
       pull-requests: read
