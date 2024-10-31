@@ -30,7 +30,7 @@ class AppSettings(BaseModel):
     page_title: str
     page_description: str
     examples: List[PromptExample]
-    llm_params: LLMParams
+    llm_params: LLMParams | None
     # Theme customisation
     theme_params: Dict[str, str | list]
     theme_params_extended: Dict[str, str]
