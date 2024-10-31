@@ -41,7 +41,7 @@ jobs:
       packages: write         # required for pushing container images
       security-events: write  # required for pushing SARIF files
     needs: changes
-    if: ${{ needs.changes.outputs.images == 'true' || github.ref_type == 'tag' }}
+    if: ${{ github.ref_type == 'tag' || needs.changes.outputs.images == 'true' }}
     strategy:
       matrix:
         include:
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     # Only build and push the chart if chart files have changed
     needs: [changes]
-    if: ${{ needs.changes.outputs.chart == 'true' || github.ref_type == 'tag' }}
+    if: ${{ github.ref_type == 'tag' || needs.changes.outputs.chart == 'true' }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
