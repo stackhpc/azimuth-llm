@@ -18,7 +18,9 @@ llm_params:
   max_tokens:
   temperature:
   top_p:
-  top_k:
+  # vLLM rejects requests with top_k parameter for
+  # most (all?) vision models so can't use it here
+  # top_k:
   frequency_penalty:
   presence_penalty:
 

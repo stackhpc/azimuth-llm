@@ -58,6 +58,7 @@
                                     "description": "Model name supplied to the OpenAI client in frontend web app. Should match huggingface.model above."
                                 },
                                 "llm_params": {
+                                    "$comment": "top_k parameter causes vLLM to error for most (all?) vision models so is excluded here",
                                     "type": "object",
                                     "properties": {
                                         "max_tokens": {
@@ -81,13 +82,6 @@
                                             "default": 1,
                                             "exclusiveMinimum": 0,
                                             "maximum": 1
-                                        },
-                                        "top_k": {
-                                            "type": "integer",
-                                            "title": "LLM Top K",
-                                            "description": "The [top k](https://docs.vllm.ai/en/stable/dev/sampling_params.html) value to use when generating LLM responses (must be an integer).",
-                                            "default": -1,
-                                            "minimum": -1
                                         },
                                         "presence_penalty": {
                                             "type": "number",
