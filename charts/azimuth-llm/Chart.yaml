@@ -18,7 +18,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.0
+version: 0.2.0
 
 # This is the version number of the application being deployed. This version number should be
 # incremented each time you make changes to the application. Versions are not expected to
@@ -30,9 +30,3 @@ icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-l
 
 annotations:
   azimuth.stackhpc.com/label: HuggingFace LLM
-
-# dependencies:
-#   - name: reloader
-#     version: 1.0.63
-#     repository: https://stakater.github.io/stakater-charts
-#     condition: ui.enabled
