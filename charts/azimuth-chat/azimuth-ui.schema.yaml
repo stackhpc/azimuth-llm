@@ -24,10 +24,10 @@ sortOrder:
   - /azimuth-llm/ui/appSettings/model_instruction
   - /azimuth-llm/ui/appSettings/page_title
   - /azimuth-llm/api/image/version
-  - /azimuth-llm/ui/appSettings/llm_temperature
-  - /azimuth-llm/ui/appSettings/llm_max_tokens
-  - /azimuth-llm/ui/appSettings/llm_frequency_penalty
-  - /azimuth-llm/ui/appSettings/llm_presence_penalty
-  - /azimuth-llm/ui/appSettings/llm_top_p
-  - /azimuth-llm/ui/appSettings/llm_top_k
+  - /azimuth-llm/ui/appSettings/llm_params/temperature
+  - /azimuth-llm/ui/appSettings/llm_params/max_tokens
+  - /azimuth-llm/ui/appSettings/llm_params/frequency_penalty
+  - /azimuth-llm/ui/appSettings/llm_params/presence_penalty
+  - /azimuth-llm/ui/appSettings/llm_params/top_p
+  - /azimuth-llm/ui/appSettings/llm_params/top_k
   - /azimuth-llm/api/modelMaxContextLength

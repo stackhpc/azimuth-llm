@@ -15,9 +15,9 @@ sortOrder:
   - /huggingface/model
   - /huggingface/token
   - /api/image/version
-  - /ui/appSettings/llm_temperature
-  - /ui/appSettings/llm_max_tokens
-  - /ui/appSettings/llm_frequency_penalty
-  - /ui/appSettings/llm_presence_penalty
-  - /ui/appSettings/llm_top_p
-  - /ui/appSettings/llm_top_k
+  - /ui/appSettings/llm_params/temperature
+  - /ui/appSettings/llm_params/max_tokens
+  - /ui/appSettings/llm_params/frequency_penalty
+  - /ui/appSettings/llm_params/presence_penalty
+  - /ui/appSettings/llm_params/top_p
+  - /ui/appSettings/llm_params/top_k
