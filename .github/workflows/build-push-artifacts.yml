@@ -40,7 +40,7 @@ jobs:
       packages: write         # required for pushing container images
       security-events: write  # required for pushing SARIF files
     needs: changes
-    # if: ${{ needs.changes.outputs.images == 'true' || github.ref_type == 'tag' }}
+    if: ${{ needs.changes.outputs.images == 'true' || github.ref_type == 'tag' }}
     strategy:
       matrix:
         include:
