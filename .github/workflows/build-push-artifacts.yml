@@ -69,7 +69,6 @@ jobs:
             type=sha,prefix=
 
       - name: Build and push image
-        # uses: azimuth-cloud/github-actions/docker-multiarch-build-push@update-trivy-action
         uses: azimuth-cloud/github-actions/docker-multiarch-build-push@test/docker-build-cache
         with:
           cache-key: ${{ matrix.component }}
