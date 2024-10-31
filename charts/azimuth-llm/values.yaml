@@ -83,7 +83,7 @@ ui:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-chat-ui
-    version: 8e58066
+    version: ef83288
     imagePullPolicy:
   # The settings to be passed to the frontend web app.
   # Format depends on the chosen UI image above. For each of the UIs
