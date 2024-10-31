@@ -32,44 +32,6 @@ class AppSettings(BaseModel):
     model_config = ConfigDict(protected_namespaces=(), extra="forbid")
 
 
-# class AppSettings(BaseModel):
-#     hf_model_name: str = Field(
-#         description="The model to use when constructing the LLM Chat client. This should match the model name running on the vLLM backend",
-#     )
-#     backend_url: HttpUrl = Field(
-#         description="The address of the OpenAI compatible API server (either in-cluster or externally hosted)"
-#     )
-#     page_title: str = Field(default="Large Language Model")
-#     page_description: Optional[str] = Field(default=None)
-#     hf_model_instruction: str = Field(
-#         default="You are a helpful and cheerful AI assistant. Please respond appropriately."
-#     )
-
-#     # Model settings
-
-#     # For available parameters, see https://docs.vllm.ai/en/latest/dev/sampling_params.html
-#     # which is based on https://platform.openai.com/docs/api-reference/completions/create
-#     llm_max_tokens: int = Field(default=500)
-#     llm_temperature: float = Field(default=0)
-#     llm_top_p: float = Field(default=1)
-#     llm_top_k: float = Field(default=-1)
-#     llm_presence_penalty: float = Field(default=0, ge=-2, le=2)
-#     llm_frequency_penalty: float = Field(default=0, ge=-2, le=2)
-
-#     # UI theming
-
-#     # Variables explicitly passed to gradio.theme.Default()
-#     # For example:
-#     # {"primary_hue": "red"}
-#     theme_params: dict[str, Union[str, List[str]]] = Field(default_factory=dict)
-#     # Overrides for theme.body_background_fill property
-#     theme_background_colour: Optional[str] = Field(default=None)
-#     # Provides arbitrary CSS and JS overrides to the UI,
-#     # see https://www.gradio.app/guides/custom-CSS-and-JS
-#     css_overrides: Optional[str] = Field(default=None)
-#     custom_javascript: Optional[str] = Field(default=None)
-
-
 settings = AppSettings(**load_settings())
 logger.info(settings)
 
@@ -102,7 +64,6 @@ llm = ChatOpenAI(
     },
     streaming=True,
 )
-logger.info(llm)
 
 
 def inference(latest_message, history):
@@ -176,7 +137,6 @@ def inference(latest_message, history):
 # UI theming
 theme = gr.themes.Default(**settings.theme_params)
 theme.set(**settings.theme_params_extended)
-# theme.set(text)
 
 
 def inference_wrapper(*args):
@@ -221,44 +181,5 @@ app = gr.ChatInterface(
 )
 logger.debug("Gradio chat interface config: %s", app.config)
 app.queue(
-    # Allow 10 concurrent requests to backend
-    # vLLM backend should be clever enough to
-    # batch these requests appropriately.
     default_concurrency_limit=10,
 ).launch(server_name=settings.host_address)
-
-# with gr.ChatInterface(
-#     inference_wrapper,
-#     chatbot=gr.Chatbot(
-#         # Height of conversation window in CSS units (string) or pixels (int)
-#         height="68vh",
-#         show_copy_button=True,
-#     ),
-#     textbox=gr.Textbox(
-#         placeholder="Ask me anything...",
-#         container=False,
-#         # Ratio of text box to submit button width
-#         scale=7,
-#     ),
-#     title=settings.page_title,
-#     description=settings.page_description,
-#     retry_btn="Retry",
-#     undo_btn="Undo",
-#     clear_btn="Clear",
-#     analytics_enabled=False,
-#     theme=theme,
-#     css=settings.css_overrides,
-#     js=settings.custom_javascript,
-# ) as app:
-#     logger.debug("Gradio chat interface config: %s", app.config)
-#     # For running locally in tilt dev setup
-#     if len(sys.argv) > 2 and sys.argv[2] == "localhost":
-#         app.launch()
-#     # For running on cluster
-#     else:
-#         app.queue(
-#             # Allow 10 concurrent requests to backend
-#             # vLLM backend should be clever enough to
-#             # batch these requests appropriately.
-#             default_concurrency_limit=10,
-#         ).launch(server_name=settings.host_address)
