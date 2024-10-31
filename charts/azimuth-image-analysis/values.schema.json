@@ -39,6 +39,10 @@
                                     "default": "v0.6.3"
                                 }
                             }
+                        },
+                        "modelMaxContextLength": {
+                            "title": "Model Context Length",
+                            "description": "An override for the maximum context length to allow, if the model's default is not suitable."
                         }
                     }
                 },
