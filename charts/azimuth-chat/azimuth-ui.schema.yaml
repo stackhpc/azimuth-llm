@@ -6,7 +6,7 @@ controls:
     type: TextControl
     secret: true
   # Use mirror to mimic yaml anchor in base Helm chart
-  /azimuth-llm/ui/appSettings/hf_model_name:
+  /azimuth-llm/ui/appSettings/model_name:
     type: MirrorControl
     path: /azimuth-llm/huggingface/model
     visuallyHidden: true
@@ -16,13 +16,12 @@ controls:
   /azimuth-llm/api/modelMaxContextLength:
     type: IntegerControl
     minimum: 100
-    step: 100
     required: false
 
 sortOrder:
   - /azimuth-llm/huggingface/model
   - /azimuth-llm/huggingface/token
-  - /azimuth-llm/ui/appSettings/hf_model_instruction
+  - /azimuth-llm/ui/appSettings/model_instruction
   - /azimuth-llm/ui/appSettings/page_title
   - /azimuth-llm/api/image/version
   - /azimuth-llm/ui/appSettings/llm_temperature
