@@ -18,4 +18,4 @@ else
     echo "Found local $IMAGE_TAG docker image"
 fi
 
-docker run --rm -p 7860:7860 $IMAGE_TAG
+docker run --rm -v ./$1/overrides.yml:/etc/web-app/overrides.yml -p 7860:7860 $IMAGE_TAG
