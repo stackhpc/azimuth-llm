@@ -10,7 +10,10 @@ spec:
     spec:
       containers:
       - name: gradio-client-test
-        image: ghcr.io/stackhpc/azimuth-llm-chat-interface:{{ .Values.ui.image.version }}
+        {{- /*
+          Use the chat image since we know this contains the gradio_client package
+        */}}
+        image: {{ printf "ghcr.io/stackhpc/azimuth-llm-chat-ui:%s" (default .Chart.AppVersion .Values.ui.image.tag) }}
         imagePullPolicy: IfNotPresent
         command:
         - python
