@@ -34,6 +34,10 @@ spec:
           - --max-model-len
           - {{ .Values.api.modelMaxContextLength | quote }}
           {{- end -}}
+          {{- if and (not (has "--tokenizer-model" .Values.api.extraArgs)) (hasPrefix "mistralai/" .Values.huggingface.model) -}}
+          - --tokenizer-mode
+          - mistral
+          {{- end -}}
           {{- if .Values.api.extraArgs -}}
           {{- .Values.api.extraArgs | toYaml | nindent 10 }}
           {{- end -}}
