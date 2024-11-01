@@ -57,6 +57,14 @@ jobs:
         with:
           cluster_name: ${{ env.CLUSTER_NAME }}
 
+      # NOTE(scott): Since the local Chart.yaml uses "appVersion: latest" and this
+      # only gets overwritten to the correct commit SHA during Helm chart build,
+      # we need to pull these published images and load them into the kind cluster
+      # with the tag correct tag.
+      - name: Load tagged container images into kind cluster
+        run: ./kind-images.sh ${{ github.event.pull_request.head.sha }}
+        working-directory: web-apps
+
       - name: Add Helm repos for dependencies
         run: |
           helm repo add stakater https://stakater.github.io/stakater-charts
