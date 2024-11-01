@@ -46,6 +46,9 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4
 
+      - name: Run base chart templating with default values
+        run: helm template ci-test charts/azimuth-llm
+
       - name: Set up chart testing
         uses: helm/chart-testing-action@v2
 
@@ -62,12 +65,8 @@ jobs:
       # we need to pull these published images and load them into the kind cluster
       # with the tag correct tag.
       - name: Load tagged container images into kind cluster
-        run: ./kind-images.sh ${{ github.event.pull_request.head.sha }} ${{ env.CLUSTER_NAME }}
+        run: ./kind-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }}) ${{ env.CLUSTER_NAME }}
         working-directory: web-apps
-
-      - name: Add Helm repos for dependencies
-        run: |
-          helm repo add stakater https://stakater.github.io/stakater-charts
 
       # https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
       # Each chart/ci/*-values.yaml file will be treated as a separate test case with it's
