@@ -3,7 +3,7 @@ name: Test pull request
 
 on:
   # We use pull_request_target so that dependabot-created workflows can run
-  pull_request:
+  pull_request_target:
     types:
       - opened
       - synchronize
