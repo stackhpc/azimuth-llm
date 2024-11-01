@@ -40,7 +40,7 @@ jobs:
       packages: write         # required for pushing container images
       security-events: write  # required for pushing SARIF files
     needs: changes
-    # if: ${{ github.ref_type == 'tag' || needs.changes.outputs.images == 'true' }}
+    if: ${{ github.ref_type == 'tag' || needs.changes.outputs.images == 'true' }}
     strategy:
       matrix:
         include:
@@ -69,7 +69,7 @@ jobs:
             type=sha,prefix=
 
       - name: Build and push image
-        uses: azimuth-cloud/github-actions/docker-multiarch-build-push@test/docker-build-cache
+        uses: azimuth-cloud/github-actions/docker-multiarch-build-push@master
         with:
           cache-key: ${{ matrix.component }}
           context: ./web-apps/
