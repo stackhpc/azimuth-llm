@@ -1,20 +1,20 @@
 apiVersion: v2
 name: azimuth-llm-image-analysis
-description: HuggingFace vision model serving along with a simple web interface.
+description: HuggingFace vision model serving along with a simple web interface for image analysis.
 maintainers:
   - name: "Scott Davidson"
     email: scott@stackhpc.com
 
 type: application
 
+# The version and appVersion are updated by the chart build script
 version: 0.1.0
-
-appVersion: "0.1.0"
+appVersion: master
 
 icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
 
 annotations:
-  azimuth.stackhpc.com/label: HuggingFace Image Analysis
+  azimuth.stackhpc.com/label: HuggingFace VLM
 
 dependencies:
   - name: azimuth-llm

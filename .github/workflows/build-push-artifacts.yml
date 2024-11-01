@@ -1,54 +1,45 @@
 # Adapted from https://github.com/stackhpc/azimuth/blob/master/.github/workflows/build-push-artifacts.yaml
 name: Publish artifacts
-# Run the tasks on every push
-on: push
-jobs:
-  # Job to run change detection
-  changes:
-    name: Check for relevant changes
-    runs-on: ubuntu-latest
-    # Required permissions
-    permissions:
-      pull-requests: read
-    # Set job outputs to values from filter step
+
+on:
+  # Publish artifacts on every push to master and every tag
+  push:
+    branches:
+      - master
+    tags:
+      - "*"
+  # Also allow publication to be done via a workflow call
+  # In this case, the chart version is returned as an output
+  workflow_call:
+    inputs:
+      ref:
+        type: string
+        description: The ref to build.
+        required: true
     outputs:
-      images: ${{ steps.filter.outputs.images }}
-      chart: ${{ steps.filter.outputs.chart }}
-    steps:
+      chart-version:
+        description: The chart version that was published
+        value: ${{ jobs.build_push_chart.outputs.chart-version }}
 
-      - name: Check out the repository
-        uses: actions/checkout@v4
-
-      - uses: dorny/paths-filter@v2
-        id: filter
-        with:
-          base: ${{ github.ref_name }}
-          # TODO: Make image filters more granular
-          filters: |
-            images:
-              - 'web-apps/**'
-            chart:
-              - 'charts/**'
-
-  # Job to build container images
+jobs:
   build_push_images:
     name: Build and push images
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write         # needed for signing the images with GitHub OIDC Token
-      packages: write         # required for pushing container images
-      security-events: write  # required for pushing SARIF files
-    needs: changes
-    if: ${{ github.ref_type == 'tag' || needs.changes.outputs.images == 'true' }}
     strategy:
       matrix:
         include:
           - component: chat
           - component: image-analysis
+    permissions:
+      contents: read
+      id-token: write         # needed for signing the images with GitHub OIDC Token
+      packages: write         # required for pushing container images
+      security-events: write  # required for pushing SARIF files
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
@@ -56,6 +47,10 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get SemVer version for current commit
+        id: semver
+        uses: azimuth-cloud/github-actions/semver@master
 
       - name: Calculate metadata for image
         id: image-meta
@@ -66,7 +61,7 @@ jobs:
           tags: |
             type=ref,event=branch
             type=ref,event=tag
-            type=sha,prefix=
+            type=raw,value=${{ steps.semver.outputs.short-sha }}
 
       - name: Build and push image
         uses: azimuth-cloud/github-actions/docker-multiarch-build-push@master
@@ -79,17 +74,18 @@ jobs:
           tags: ${{ steps.image-meta.outputs.tags }}
           labels: ${{ steps.image-meta.outputs.labels }}
 
-  # Job to build and publish Helm chart
   build_push_chart:
     name: Build and push Helm chart
     runs-on: ubuntu-latest
-    # Only build and push the chart if chart files have changed
-    needs: [changes]
-    if: ${{ github.ref_type == 'tag' || needs.changes.outputs.chart == 'true' }}
+    # Only build and push the chart if the images built successfully
+    needs: [build_push_images]
+    outputs:
+      chart-version: ${{ steps.semver.outputs.version }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
         with:
+          ref: ${{ inputs.ref || github.ref }}
           # This is important for the semver action to work correctly
           # when determining the number of commits since the last tag
           fetch-depth: 0
@@ -101,7 +97,6 @@ jobs:
       - name: Publish Helm charts
         uses: azimuth-cloud/github-actions/helm-publish@master
         with:
-          directory: charts
           token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ steps.semver.outputs.version }}
           app-version: ${{ steps.semver.outputs.short-sha }}
