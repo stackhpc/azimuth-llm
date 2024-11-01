@@ -11,5 +11,11 @@ test-values.y[a]ml
 **venv*/
 
 # Helm chart stuff
-chart/Chart.lock
-chart/charts
+charts/*/Chart.lock
+charts/*/charts
+
+# Python stuff
+**/build/
+**/*.egg-info/
+**/flagged/
+web-apps/**/overrides.yml

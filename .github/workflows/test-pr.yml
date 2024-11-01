@@ -28,10 +28,6 @@ jobs:
       - name: Run chart linting
         run: ct lint --config ct.yaml
 
-      - name: Run helm template with default values
-        run: helm template ci-test .
-        working-directory: chart
-
       - name: Create Kind Cluster
         uses: helm/kind-action@v1
         with:

@@ -1,0 +1,33 @@
+controls:
+  /azimuth-llm/huggingface/model:
+    type: TextControl
+    required: true
+  /azimuth-llm/huggingface/token:
+    type: TextControl
+    secret: true
+  # Use mirror to mimic yaml anchor in base Helm chart
+  /azimuth-llm/ui/appSettings/model_name:
+    type: MirrorControl
+    path: /azimuth-llm/huggingface/model
+    visuallyHidden: true
+  # Azimuth UI doesn't handle json type ["integer","null"]
+  # properly so we allow any type in JSON schema then
+  # constrain to (optional) integer here.
+  /azimuth-llm/api/modelMaxContextLength:
+    type: IntegerControl
+    minimum: 100
+    required: false
+
+sortOrder:
+  - /azimuth-llm/huggingface/model
+  - /azimuth-llm/huggingface/token
+  - /azimuth-llm/api/image/version
+  - /azimuth-llm/ui/appSettings/llm_params/temperature
+  - /azimuth-llm/ui/appSettings/llm_params/max_tokens
+  - /azimuth-llm/ui/appSettings/llm_params/frequency_penalty
+  - /azimuth-llm/ui/appSettings/llm_params/presence_penalty
+  - /azimuth-llm/ui/appSettings/llm_params/top_p
+  # vLLM responds with HTTP 400 BadRequest when top_k is
+  # passed to a vision model (but ollama accepts it)
+  # - /azimuth-llm/ui/appSettings/llm_params/top_k
+  - /azimuth-llm/api/modelMaxContextLength

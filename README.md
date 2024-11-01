@@ -34,38 +34,36 @@ ui:
       enabled: false
 ```
 
-***Warning*** - Exposing the services in this way provides no authentication mechanism and anyone with access to the load balancer IPs will be able to query the language model. It is up to you to secure the running service in your own way. In contrast, when deploying via Azimuth, authentication is provided via the standard Azimuth Identity Provider mechanisms and the authenticated services are exposed via [Zenith](https://github.com/stackhpc/zenith).
+[!WARNING] Exposing the services in this way provides no authentication mechanism and anyone with access to the load balancer IPs will be able to query the language model. It is up to you to secure the running service as appropriate for your use case. In contrast, when deployed via Azimuth, authentication is provided via the standard Azimuth Identity Provider mechanisms and the authenticated services are exposed via [Zenith](https://github.com/stackhpc/zenith).
 
-The UI can also optionally be exposed using a Kubernetes Ingress resource. See the `ui.ingress` section in `values.yml` for available config options.
+The both the web-based interface and the backend OpenAI-compatible vLLM API server can also optionally be exposed using [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/). See the `ingress` section in `values.yml` for available config options.
 
 ## Tested Models
 
-The following is a non-exhaustive list of models which have been tested with this app:
-- [Llama 2 7B chat](https://huggingface.co/meta-llama/Llama-2-7b-chat-hf)
-- [AWQ Quantized Llama 2 70B](https://huggingface.co/TheBloke/Llama-2-70B-Chat-AWQ)
-- [Magicoder 6.7B](https://huggingface.co/ise-uiuc/Magicoder-S-DS-6.7B)
-- [Mistral 7B Instruct v0.2](https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2)
-- [WizardCoder Python 34B](https://huggingface.co/WizardLM/WizardCoder-Python-34B-V1.0)
-- [AWQ Quantized Mixtral 8x7B Instruct v0.1](https://huggingface.co/TheBloke/Mixtral-8x7B-Instruct-v0.1-AWQ)
+The application uses [vLLM](https://docs.vllm.ai/en/latest/index.html) for model serving, therefore any of the vLLM [supported models](https://docs.vllm.ai/en/latest/models/supported_models.html) should work. Since vLLM pulls the model files directly from [HuggingFace](https://huggingface.co/models) it is likely that some other models will also be compatible with vLLM but mileage may vary between models and model architectures. If a model is incompatible with vLLM then the API pod will likely enter a `CrashLoopBackoff` state and any relevant error information will be found in the API pod logs. These logs can be viewed with
 
-Due to the combination of [components](##Components) used in this app, some HuggingFace models may not work as expected (usually due to the way in which LangChain formats the prompt messages). Any errors when using a new model will appear in the logs for either the web-app pod or the backend API pod. Please open an issue if you would like explicit support for a specific model that is not in the above list.
+```
+kubectl (-n <helm-release-namespace>) logs deploy/<helm-release-name>-api
+```
+
+If you suspect that a given error is not caused by the upstream vLLM support and a problem with this Helm chart then please [open an issue](https://github.com/stackhpc/azimuth-llm/issues).
 
 ## Monitoring
 
-The LLM chart integrates with [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) by creating a `ServiceMonitor` resource and installing a custom Grafana dashboard as a Kubernetes `ConfigMap`. If the target cluster has an existing `kube-prometheus-stack` deployment which is appropriately configured to watch all namespaces for new Grafana dashboards, the custom LLM dashboard provided here will automatically picked up by Grafana. It will appear in the Grafana dashboard list with the name 'LLM dashboard'.
+The LLM chart integrates with [kube-prometheus-stack](https://artifacthub.io/packages/helm/prometheus-community/kube-prometheus-stack) by creating a `ServiceMonitor` resource and installing two custom Grafana dashboard as Kubernetes `ConfigMap`s. If the target cluster has an existing `kube-prometheus-stack` deployment which is appropriately configured to watch all namespaces for new Grafana dashboards, the LLM dashboards will automatically appear in Grafana's dashboard list.
 
 To disable the monitoring integrations, set the `api.monitoring.enabled` value to `false`.
 
 ## Components
 
 The Helm chart consists of the following components:
-- A backend web API which runs [vLLM](https://github.com/vllm-project/vllm)'s [OpenAI compatible web server](https://docs.vllm.ai/en/latest/getting_started/quickstart.html#openai-compatible-server).
+- A backend web API which runs [vLLM](https://github.com/vllm-project/vllm)'s [OpenAI compatible web server](https://docs.vllm.ai/en/stable/getting_started/quickstart.html#openai-compatible-server).
 
-- A frontend web-app built using [Gradio](https://www.gradio.app) and [LangChain](https://www.langchain.com). The web app source code can be found in `chart/web-app` and gets written to a ConfigMap during the chart build and is then mounted into the UI pod and executed as the entry point for the UI docker image (built from `images/ui-base/Dockerfile`).
+- A choice of frontend web-apps built using [Gradio](https://www.gradio.app) (see [web-apps](./web-apps/)). Each web interface is available as a pre-built container image [hosted on ghcr.io](https://github.com/orgs/stackhpc/packages?repo_name=azimuth-llm) and be configured for each Helm release by changing the `ui.image` section of the chart values.
 
-- A [stakater/Reloader](https://github.com/stakater/Reloader) instance which monitors the web-app ConfigMap for changes and restarts the frontend when the app code changes (i.e. whenever the Helm values are updated).
+<!-- ## Development
 
-## Development
+TODO: Update this
 
 The GitHub repository includes a [tilt](https://tilt.dev) file for easier development. After installing tilt locally, simply run `tilt up` from the repo root to get started with development. This will trigger the following:
 
@@ -77,4 +75,8 @@ The GitHub repository includes a [tilt](https://tilt.dev) file for easier develo
 
 - Launch the frontend web app locally on `127.0.0.1:7860`, configured to use `localhost:8080` as the backend API
 
-- Watch all components and only reload the minimal set of components needed when a file in the repo changes (e.g. modifying `chart/web-app/app.py` will restart the local web app instance only)
+- Watch all components and only reload the minimal set of components needed when a file in the repo changes (e.g. modifying `chart/web-app/app.py` will restart the local web app instance only) -->
+
+<!-- ## Adding a new web interface
+
+TODO: Write these docs... -->

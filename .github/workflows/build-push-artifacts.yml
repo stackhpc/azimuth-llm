@@ -28,18 +28,24 @@ jobs:
             images:
               - 'web-apps/**'
             chart:
-              - 'chart/**'
+              - 'charts/**'
 
   # Job to build container images
   build_push_images:
     name: Build and push images
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write         # needed for signing the images with GitHub OIDC Token
+      packages: write         # required for pushing container images
+      security-events: write  # required for pushing SARIF files
     needs: changes
-    if: ${{ needs.changes.outputs.images == 'true' || github.ref_type == 'tag' }}
+    if: ${{ github.ref_type == 'tag' || needs.changes.outputs.images == 'true' }}
     strategy:
       matrix:
         include:
-          - component: chat-interface
+          - component: chat
+          - component: image-analysis
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
@@ -55,7 +61,7 @@ jobs:
         id: image-meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/stackhpc/azimuth-llm-${{ matrix.component }}
+          images: ghcr.io/stackhpc/azimuth-llm-${{ matrix.component }}-ui
           # Produce the branch name or tag and the SHA as tags
           tags: |
             type=ref,event=branch
@@ -63,10 +69,11 @@ jobs:
             type=sha,prefix=
 
       - name: Build and push image
-        uses: azimuth-cloud/github-actions/docker-multiarch-build-push@update-trivy-action
+        uses: azimuth-cloud/github-actions/docker-multiarch-build-push@master
         with:
           cache-key: ${{ matrix.component }}
-          context: ./web-apps/${{ matrix.component }}
+          context: ./web-apps/
+          file: ./web-apps/${{ matrix.component }}/Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.image-meta.outputs.tags }}
@@ -78,7 +85,7 @@ jobs:
     runs-on: ubuntu-latest
     # Only build and push the chart if chart files have changed
     needs: [changes]
-    if: ${{ needs.changes.outputs.chart == 'true' || github.ref_type == 'tag' }}
+    if: ${{ github.ref_type == 'tag' || needs.changes.outputs.chart == 'true' }}
     steps:
       - name: Check out the repository
         uses: actions/checkout@v4
@@ -94,6 +101,7 @@ jobs:
       - name: Publish Helm charts
         uses: azimuth-cloud/github-actions/helm-publish@master
         with:
+          directory: charts
           token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ steps.semver.outputs.version }}
           app-version: ${{ steps.semver.outputs.short-sha }}

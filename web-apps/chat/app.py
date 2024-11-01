@@ -1,23 +1,39 @@
-import sys
 import logging
-import gradio as gr
-from urllib.parse import urljoin
-from config import AppSettings
+import openai
 
+import gradio as gr
+
+from urllib.parse import urljoin
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-import openai
+from typing import Dict, List
+from pydantic import BaseModel, ConfigDict
+from utils import LLMParams, load_settings
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
 
-logger.info("Starting app")
 
-settings = AppSettings.load()
-if len(sys.argv) > 1:
-    settings.hf_model_name = sys.argv[1]
-logger.info("App settings: %s", settings)
+class AppSettings(BaseModel):
+    # Basic config
+    host_address: str
+    backend_url: str
+    model_name: str
+    model_instruction: str
+    page_title: str
+    llm_params: LLMParams
+    # Theme customisation
+    theme_params: Dict[str, str | list]
+    theme_params_extended: Dict[str, str]
+    css_overrides: str | None
+    custom_javascript: str | None
+    # Error on typos and suppress warnings for fields with 'model_' prefix
+    model_config = ConfigDict(protected_namespaces=(), extra="forbid")
+
+
+settings = AppSettings(**load_settings())
+logger.info(settings)
 
 backend_url = str(settings.backend_url)
 backend_health_endpoint = urljoin(backend_url, "/health")
@@ -36,26 +52,15 @@ class PossibleSystemPromptException(Exception):
 
 llm = ChatOpenAI(
     base_url=urljoin(backend_url, "v1"),
-    model=settings.hf_model_name,
+    model=settings.model_name,
     openai_api_key="required-but-not-used",
-    temperature=settings.llm_temperature,
-    max_tokens=settings.llm_max_tokens,
-    # model_kwargs={
-    #     "top_p": settings.llm_top_p,
-    #     "frequency_penalty": settings.llm_frequency_penalty,
-    #     "presence_penalty": settings.llm_presence_penalty,
-    #     # Additional parameters supported by vLLM but not OpenAI API
-    #     # https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html#extra-parameters
-    #     "extra_body": {
-    #         "top_k": settings.llm_top_k,
-    #     }
-    top_p=settings.llm_top_p,
-    frequency_penalty=settings.llm_frequency_penalty,
-    presence_penalty=settings.llm_presence_penalty,
-    # Additional parameters supported by vLLM but not OpenAI API
-    # https://docs.vllm.ai/en/latest/serving/openai_compatible_server.html#extra-parameters
+    temperature=settings.llm_params.temperature,
+    max_tokens=settings.llm_params.max_tokens,
+    top_p=settings.llm_params.top_p,
+    frequency_penalty=settings.llm_params.frequency_penalty,
+    presence_penalty=settings.llm_params.presence_penalty,
     extra_body={
-        "top_k": settings.llm_top_k,
+        "top_k": settings.llm_params.top_k,
     },
     streaming=True,
 )
@@ -67,13 +72,13 @@ def inference(latest_message, history):
 
     try:
         if INCLUDE_SYSTEM_PROMPT:
-            context = [SystemMessage(content=settings.hf_model_instruction)]
+            context = [SystemMessage(content=settings.model_instruction)]
         else:
             context = []
         for i, (human, ai) in enumerate(history):
             if not INCLUDE_SYSTEM_PROMPT and i == 0:
                 # Mimic system prompt by prepending it to first human message
-                human = f"{settings.hf_model_instruction}\n\n{human}"
+                human = f"{settings.model_instruction}\n\n{human}"
             context.append(HumanMessage(content=human))
             context.append(AIMessage(content=(ai or "")))
         context.append(HumanMessage(content=latest_message))
@@ -131,8 +136,7 @@ def inference(latest_message, history):
 
 # UI theming
 theme = gr.themes.Default(**settings.theme_params)
-if settings.theme_background_colour:
-    theme.body_background_fill = settings.theme_background_colour
+theme.set(**settings.theme_params_extended)
 
 
 def inference_wrapper(*args):
@@ -153,7 +157,7 @@ def inference_wrapper(*args):
 
 
 # Build main chat interface
-with gr.ChatInterface(
+app = gr.ChatInterface(
     inference_wrapper,
     chatbot=gr.Chatbot(
         # Height of conversation window in CSS units (string) or pixels (int)
@@ -167,7 +171,6 @@ with gr.ChatInterface(
         scale=7,
     ),
     title=settings.page_title,
-    description=settings.page_description,
     retry_btn="Retry",
     undo_btn="Undo",
     clear_btn="Clear",
@@ -175,16 +178,8 @@ with gr.ChatInterface(
     theme=theme,
     css=settings.css_overrides,
     js=settings.custom_javascript,
-) as app:
-    logger.debug("Gradio chat interface config: %s", app.config)
-    # For running locally in tilt dev setup
-    if len(sys.argv) > 2 and sys.argv[2] == "localhost":
-        app.launch()
-    # For running on cluster
-    else:
-        app.queue(
-            # Allow 10 concurrent requests to backend
-            # vLLM backend should be clever enough to
-            # batch these requests appropriately.
-            default_concurrency_limit=10,
-        ).launch(server_name="0.0.0.0")
+)
+logger.debug("Gradio chat interface config: %s", app.config)
+app.queue(
+    default_concurrency_limit=10,
+).launch(server_name=settings.host_address)

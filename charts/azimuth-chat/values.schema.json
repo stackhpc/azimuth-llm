@@ -1,0 +1,133 @@
+{
+    "type": "object",
+    "properties": {
+        "azimuth-llm": {
+            "type": "object",
+            "properties": {
+                "huggingface": {
+                    "type": "object",
+                    "properties": {
+                        "model": {
+                            "type": "string",
+                            "title": "Model",
+                            "description": "The [HuggingFace model](https://huggingface.co/models) to deploy (see [here](https://github.com/stackhpc/azimuth-llm?tab=readme-ov-file#tested-models) for a list of tested models).",
+                            "default": "microsoft/Phi-3.5-mini-instruct"
+                        },
+                        "token": {
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "title": "Access Token",
+                            "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Required for [gated models](https://huggingface.co/docs/hub/en/models-gated) (e.g. Llama 3)."
+                        }
+                    },
+                    "required": [
+                        "model"
+                    ]
+                },
+                "api": {
+                    "type": "object",
+                    "properties": {
+                        "modelMaxContextLength": {
+                            "title": "Model Context Length",
+                            "description": "An override for the maximum context length to allow, if the model's default is not suitable."
+                        },
+                        "image": {
+                            "type": "object",
+                            "properties": {
+                                "version": {
+                                    "type": "string",
+                                    "title": "Backend vLLM version",
+                                    "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
+                                    "default": "v0.6.3"
+                                }
+                            }
+                        }
+                    }
+                },
+                "ui": {
+                    "type": "object",
+                    "properties": {
+                        "appSettings": {
+                            "type": "object",
+                            "properties": {
+                                "model_name": {
+                                    "type": "string",
+                                    "title": "Model Name",
+                                    "description": "Model name supplied to the OpenAI client in frontend web app. Should match huggingface.model above."
+                                },
+                                "model_instruction": {
+                                    "type": "string",
+                                    "title": "Instruction",
+                                    "description": "The initial system prompt (i.e. the hidden instruction) to use when generating responses.",
+                                    "default": "You are a helpful AI assistant. Please respond appropriately."
+                                },
+                                "page_title": {
+                                    "type": "string",
+                                    "title": "Page Title",
+                                    "description": "The title to display at the top of the chat interface.",
+                                    "default": "Large Language Model"
+                                },
+                                "llm_params": {
+                                    "type": "object",
+                                    "properties": {
+                                        "max_tokens": {
+                                            "type": "integer",
+                                            "title": "Max Tokens",
+                                            "description": "The maximum number of new [tokens](https://platform.openai.com/docs/api-reference/chat/create#chat-create-max_tokens) to generate for each LLM responses.",
+                                            "default": 1000
+                                        },
+                                        "temperature": {
+                                            "type": "number",
+                                            "title": "LLM Temperature",
+                                            "description": "The [temperature](https://platform.openai.com/docs/api-reference/chat/create#chat-create-temperature) value to use when generating LLM responses.",
+                                            "default": 0,
+                                            "minimum": 0,
+                                            "maximum": 2
+                                        },
+                                        "top_p": {
+                                            "type": "number",
+                                            "title": "LLM Top P",
+                                            "description": "The [top p](https://platform.openai.com/docs/api-reference/chat/create#chat-create-top_p) value to use when generating LLM responses.",
+                                            "default": 1,
+                                            "exclusiveMinimum": 0,
+                                            "maximum": 1
+                                        },
+                                        "top_k": {
+                                            "type": "integer",
+                                            "title": "LLM Top K",
+                                            "description": "The [top k](https://docs.vllm.ai/en/stable/dev/sampling_params.html) value to use when generating LLM responses (must be an integer).",
+                                            "default": -1,
+                                            "minimum": -1
+                                        },
+                                        "presence_penalty": {
+                                            "type": "number",
+                                            "title": "LLM Presence Penalty",
+                                            "description": "The [presence penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-presence_penalty) to use when generating LLM responses.",
+                                            "default": 0,
+                                            "minimum": -2,
+                                            "maximum": 2
+                                        },
+                                        "frequency_penalty": {
+                                            "type": "number",
+                                            "title": "LLM Frequency Penalty",
+                                            "description": "The [frequency_penalty](https://platform.openai.com/docs/api-reference/chat/create#chat-create-frequency_penalty) to use when generating LLM responses.",
+                                            "default": 0,
+                                            "minimum": -2,
+                                            "maximum": 2
+                                        }
+                                    }
+                                }
+                            },
+                            "required": [
+                                "model_name",
+                                "model_instruction"
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

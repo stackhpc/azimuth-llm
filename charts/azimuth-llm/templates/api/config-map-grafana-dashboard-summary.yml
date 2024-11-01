@@ -184,7 +184,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unit": "locale"
             },
             "overrides": []
           },
@@ -279,7 +280,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unit": "locale"
             },
             "overrides": []
           },
@@ -378,7 +380,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unit": "locale"
             },
             "overrides": []
           },
@@ -477,7 +480,8 @@ data:
                     "value": 80
                   }
                 ]
-              }
+              },
+              "unit": "locale"
             },
             "overrides": []
           },
@@ -518,7 +522,7 @@ data:
               "useBackend": false
             }
           ],
-          "title": "Tokens Generated (total)",
+          "title": "Generated Tokens (total)",
           "type": "timeseries"
         },
         {
@@ -814,14 +818,14 @@ data:
         "list": []
       },
       "time": {
-        "from": "now-120d",
+        "from": "now-90d",
         "to": "now"
       },
       "timepicker": {},
       "timezone": "",
-      "title": "vLLM Dashboard - Summary",
+      "title": "Scott test 1",
       "uid": "ee0cbu8l3b400dasdasfas",
-      "version": 1,
+      "version": 5,
       "weekStart": ""
     }
 {{- end -}}

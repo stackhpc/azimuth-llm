@@ -1,6 +1,9 @@
 FROM python:3.11-slim
 
-COPY requirements.txt requirements.txt
+ARG DIR=image-analysis
+
+COPY $DIR/requirements.txt requirements.txt
+COPY utils utils
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY purge-google-fonts.sh purge-google-fonts.sh
@@ -8,9 +11,8 @@ RUN bash purge-google-fonts.sh
 
 WORKDIR /app
 
-COPY *.py .
+COPY $DIR/*.py .
 
-COPY defaults.yml .
-# COPY overrides.yml .
+COPY $DIR/defaults.yml .
 
 ENTRYPOINT ["python3", "app.py"]

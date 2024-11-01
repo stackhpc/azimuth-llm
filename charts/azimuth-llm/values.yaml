@@ -80,13 +80,18 @@ api:
 ui:
   # Toggles installation of the gradio web UI
   enabled: true
-  # The file from the UI config map to execute as the entrypoint to the frontend app
-  entrypoint: app.py
-  # The values to be written to settings.yml for parsing as frontend app setting
-  # (see example_app.py and config.py for example using pydantic-settings to configure app)
+  # Container image config
+  image:
+    repository: ghcr.io/stackhpc/azimuth-llm-chat-ui
+    version: ef83288
+    imagePullPolicy:
+  # The settings to be passed to the frontend web app.
+  # Format depends on the chosen UI image above. For each of the UIs
+  # included in the web-apps/ folder of this git repository there is a
+  # defaults.yml file (e.g. web-apps/text-chat/defaults.yml) listing all
+  # available configuration options.
   appSettings:
-    hf_model_name: *model-name
-    hf_model_instruction: "You are a helpful AI assistant. Please response appropriately."
+    model_name: *model-name
     # Use local system fonts by default to avoid GDPR issues
     # with Gradio's defaults fonts which require fetching from
     # the Google fonts API. To restore default Gradio theme
@@ -98,11 +103,6 @@ ui:
       font_mono:
         - sans-serif
         - Arial
-  # Container image config
-  image:
-    repository: ghcr.io/stackhpc/azimuth-llm-chat-interface
-    version: 87a0342
-    imagePullPolicy:
   # Service config
   service:
     name: web-app
@@ -149,5 +149,3 @@ ingress:
     # Annotations to apply to the ingress resource
     # e.g. for cert-manager integration
     annotations:
-reloader:
-  watchGlobally: false

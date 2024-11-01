@@ -1,0 +1,9 @@
+azimuth-llm:
+  huggingface:
+    model: &model-name microsoft/Phi-3.5-mini-instruct
+  ui:
+    image:
+      repository: ghcr.io/stackhpc/azimuth-llm-chat-ui
+    appSettings:
+      model_name: *model-name
+      model_instruction: "You are a helpful AI assistant; please respond appropriately."

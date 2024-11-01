@@ -5,9 +5,6 @@ metadata:
   name: {{ .Release.Name }}-ui
   labels:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
-  annotations:
-    # Make sure UI is reloaded when app settings are updated
-    reloader.stakater.com/auto: "true"
 spec:
   replicas: 1
   selector:
@@ -19,6 +16,10 @@ spec:
     metadata:
       labels:
         {{- include "azimuth-llm.ui-selectorLabels" . | nindent 8 }}
+      # Restart deployment when settings config map changes
+      # https://helm.sh/docs/howto/charts_tips_and_tricks/#automatically-roll-deployments
+      annotations:
+        checksum/config: {{ include (print $.Template.BasePath "/ui/app-config-map.yml") . | sha256sum }}
     spec:
       containers:
       - name: {{ .Release.Name }}-ui
