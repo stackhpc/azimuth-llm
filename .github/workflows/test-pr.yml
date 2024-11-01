@@ -62,7 +62,7 @@ jobs:
       # we need to pull these published images and load them into the kind cluster
       # with the tag correct tag.
       - name: Load tagged container images into kind cluster
-        run: ./kind-images.sh ${{ github.event.pull_request.head.sha }}
+        run: ./kind-images.sh ${{ github.event.pull_request.head.sha }} ${{ env.CLUSTER_NAME }}
         working-directory: web-apps
 
       - name: Add Helm repos for dependencies
