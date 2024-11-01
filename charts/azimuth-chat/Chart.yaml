@@ -1,20 +1,20 @@
 apiVersion: v2
 name: azimuth-llm-chat
-description: HuggingFace vision model serving along with a simple web interface.
+description: HuggingFace large language model serving along with a simple web interface.
 maintainers:
   - name: "Scott Davidson"
     email: scott@stackhpc.com
 
 type: application
 
+# The version and appVersion are updated by the chart build script
 version: 0.1.0
-
-appVersion: "0.1.0"
+appVersion: master
 
 icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
 
 annotations:
-  azimuth.stackhpc.com/label: HuggingFace Image Analysis
+  azimuth.stackhpc.com/label: HuggingFace LLM
 
 dependencies:
   - name: azimuth-llm

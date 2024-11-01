@@ -24,7 +24,7 @@ spec:
       containers:
       - name: {{ .Release.Name }}-ui
         {{- with .Values.ui.image }}
-        image: {{ printf "%s:%s" .repository .version }}
+        image: {{ printf "%s:%s" .repository (default $.Chart.AppVersion .tag) }}
         {{- if .imagePullPolicy }}
         imagePullPolicy: {{ .imagePullPolicy }}
         {{- end -}}
