@@ -10,7 +10,7 @@ on:
       - ready_for_review
       - reopened
     branches:
-      - master
+      - main
 
 # Use the head ref for workflow concurrency, with cancellation
 # This should mean that any previous workflows for a PR get cancelled when a new commit is pushed
