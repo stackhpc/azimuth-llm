@@ -1,7 +1,7 @@
 name: Check for dependency updates
 on:
   schedule:
-    - cron: "0 9 * * *"
+    - cron: "0 9 * * 0"
   workflow_dispatch:
 jobs:
   check_for_update:
@@ -33,7 +33,7 @@ jobs:
           git config user.name "${{ github.actor }}"
 
           # Get latest vLLM release tag and replace it in various places
-          CHART_VALUES=chart/values.yaml
+          CHART_VALUES=charts/azimuth-llm/values.yaml
           # Export vars so that they can be used by yq's strenv function
           export OLD_VLLM_TAG=$(yq '.api.image.version' $CHART_VALUES)
           export NEW_VLLM_TAG=$(curl -s https://api.github.com/repos/vllm-project/vllm/releases/latest | jq .tag_name | sed s/\"//g)

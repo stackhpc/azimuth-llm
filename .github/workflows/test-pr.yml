@@ -24,17 +24,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: PR must be from a branch in the stackhpc/azimuth-llm repo
-        run: exit ${{ github.event.pull_request.head.repo.full_name == 'stackhpc/azimuth-llm' && '0' || '1' }}
+        run:  |
+          exit ${{ github.event.pull_request.head.repo.full_name == 'stackhpc/azimuth-llm' && '0' || '1' }}
 
-  publish_artifacts:
+  publish_images:
     needs: [fail_on_remote]
-    uses: ./.github/workflows/build-push-artifacts.yml
+    uses: ./.github/workflows/build-push-images.yml
     with:
       ref: ${{ github.event.pull_request.head.sha }}
     secrets: inherit
 
   chart_validation:
-    needs: [publish_artifacts]
+    needs: [publish_images]
     runs-on: ubuntu-latest
     env:
       CLUSTER_NAME: chart-testing
@@ -74,3 +75,9 @@ jobs:
       - name: Run chart install and test
         run: ct install --config ct.yaml
 
+  publish_charts:
+    needs: [chart_validation]
+    uses: ./.github/workflows/build-push-charts.yml
+    with:
+      ref: ${{ github.event.pull_request.head.sha }}
+    secrets: inherit
