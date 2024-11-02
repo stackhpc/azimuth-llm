@@ -1,5 +1,5 @@
 # Adapted from https://github.com/stackhpc/azimuth/blob/master/.github/workflows/build-push-artifacts.yaml
-name: Publish artifacts
+name: Publish Helm charts
 
 on:
   workflow_call:
@@ -24,7 +24,7 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.ref || github.ref }}
+          ref: ${{ inputs.ref }}
           # This is important for the semver action to work correctly
           # when determining the number of commits since the last tag
           fetch-depth: 0

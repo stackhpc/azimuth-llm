@@ -1,5 +1,5 @@
 # Adapted from https://github.com/stackhpc/azimuth/blob/master/.github/workflows/build-push-artifacts.yaml
-name: Publish artifacts
+name: Publish container images
 
 on:
   workflow_call:
@@ -27,7 +27,7 @@ jobs:
       - name: Check out the repository
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.ref || github.ref }}
+          ref: ${{ inputs.ref }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3

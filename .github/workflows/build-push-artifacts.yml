@@ -13,11 +13,11 @@ jobs:
   publish_images:
     uses: ./.github/workflows/build-push-images.yml
     with:
-      ref: ${{ inputs.ref || github.ref }}
+      ref: ${{ github.ref }}
     secrets: inherit
 
   publish_charts:
     uses: ./.github/workflows/build-push-charts.yml
     with:
-      ref: ${{ inputs.ref || github.ref }}
+      ref: ${{ github.ref }}
     secrets: inherit
