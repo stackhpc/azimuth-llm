@@ -5,7 +5,7 @@ on:
   # Publish artifacts on every push to master and every tag
   push:
     branches:
-      - master
+      - main
     tags:
       - "*"
 
@@ -17,6 +17,7 @@ jobs:
     secrets: inherit
 
   publish_charts:
+    needs: [publish_images]
     uses: ./.github/workflows/build-push-charts.yml
     with:
       ref: ${{ github.ref }}
