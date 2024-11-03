@@ -3,14 +3,26 @@
 #####
 
 import logging
+import os
 import pathlib
+import structlog
 import yaml
 from typing import Annotated
 from pydantic import BaseModel, ConfigDict, PositiveInt, Field
 
-logging.basicConfig()
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+LOG_LEVELS = {
+    "debug": logging.DEBUG,
+    "info": logging.INFO,
+    "warn": logging.WARN,
+    "error": logging.ERROR,
+}
+
+
+def get_logger():
+    # Allow overwriting log level via env var
+    log_level = LOG_LEVELS[os.environ.get("PYTHON_GRADIO_LOG_LEVEL", "info").lower()]
+    structlog.configure(wrapper_class=structlog.make_filtering_bound_logger(log_level))
+    return structlog.get_logger()
 
 
 class LLMParams(BaseModel):
