@@ -10,7 +10,6 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-
       - name: Checkout the config repo
         uses: actions/checkout@v4
         with:
@@ -43,8 +42,8 @@ jobs:
             # Update yaml in-place with yq
             yq e -i '.api.image.version = strenv(NEW_VLLM_TAG)' $CHART_VALUES
             # Can't use in-place editing with jq
-            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' chart/values.schema.json > chart/values.schema.json.new
-            mv chart/values.schema.json{.new,}
+            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' charts/azimuth-llm/values.schema.json > charts/azimuth-llm/values.schema.json.new
+            mv charts/azimuth-llm/values.schema.json{.new,}
           fi
 
       - name: Create Pull Request

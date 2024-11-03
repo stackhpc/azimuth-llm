@@ -92,6 +92,8 @@ ui:
   # available configuration options.
   appSettings:
     model_name: *model-name
+    model_instruction: |
+      You are a helpful AI assistant. Please respond appropriately.
     # Use local system fonts by default to avoid GDPR issues
     # with Gradio's defaults fonts which require fetching from
     # the Google fonts API. To restore default Gradio theme
