@@ -5,7 +5,7 @@ import gradio as gr
 from urllib.parse import urljoin
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-from typing import Dict, List
+from typing import Dict
 from pydantic import BaseModel, ConfigDict
 
 log = utils.get_logger()
