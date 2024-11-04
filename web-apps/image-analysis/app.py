@@ -115,6 +115,7 @@ app = gr.Interface(
         gr.Textbox(label="Prompt/Question", elem_id="prompt", scale=2),
     ],
     outputs=[gr.Image(label="Image"), gr.Textbox(label="Results")],
+    allow_flagging='never',
     title=settings.page_title,
     description=settings.page_description,
     examples=[[ex.image_url, ex.prompt] for ex in settings.examples],
