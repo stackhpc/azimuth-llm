@@ -1,6 +1,6 @@
 azimuth-llm:
   huggingface:
-    model: &model-name microsoft/Phi-3.5-vision-instruct
+    model: &model-name Qwen/Qwen2-VL-7B-Instruct
   ui:
     image:
       repository: ghcr.io/stackhpc/azimuth-llm-image-analysis-ui
