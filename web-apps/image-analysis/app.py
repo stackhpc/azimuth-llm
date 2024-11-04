@@ -1,8 +1,8 @@
 import base64
+import gradio as gr
 import logging
 import requests
-
-import gradio as gr
+import utils
 
 from typing import List, Dict
 from io import BytesIO
@@ -10,11 +10,8 @@ from PIL import Image
 from pydantic import BaseModel, ConfigDict
 from urllib.parse import urljoin
 
-from utils import load_settings, LLMParams
 
-logging.basicConfig()
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+log = utils.get_logger()
 
 
 class PromptExample(BaseModel):
@@ -30,7 +27,7 @@ class AppSettings(BaseModel):
     page_title: str
     page_description: str
     examples: List[PromptExample]
-    llm_params: LLMParams | None
+    llm_params: utils.LLMParams | None
     # Theme customisation
     theme_params: Dict[str, str | list]
     theme_params_extended: Dict[str, str]
@@ -40,8 +37,8 @@ class AppSettings(BaseModel):
     model_config = ConfigDict(protected_namespaces=(), extra="forbid")
 
 
-settings = AppSettings(**load_settings())
-logger.info(settings)
+settings = AppSettings(**utils.load_settings())
+log.info(settings)
 
 
 # TODO: Rewrite this to stream output?
@@ -78,6 +75,7 @@ def analyze_image(image_url, prompt):
             payload["extra_body"] = {
                 "top_k": settings.llm_params.top_k,
             }
+        log.debug("Request payload: %s", payload)
 
         # Make the API call to the vision model
         headers = {"Content-Type": "application/json"}
@@ -86,7 +84,16 @@ def analyze_image(image_url, prompt):
             json=payload,
             headers=headers,
         )
-        response.raise_for_status()
+        log.debug("Request payload: %s", payload)
+        try:
+            response.raise_for_status()
+        except Exception as e:
+            log.debug(
+                "Received HTTP %s response with content: %s",
+                response.status_code,
+                response.json(),
+            )
+            raise e
 
         # Extract and return the model's response
         result = response.json()

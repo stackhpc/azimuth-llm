@@ -3,15 +3,28 @@
 #####
 
 import logging
+import os
 import pathlib
+import structlog
 import yaml
 from typing import Annotated
 from pydantic import BaseModel, ConfigDict, PositiveInt, Field
 
-logging.basicConfig()
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+LOG_LEVELS = {
+    "debug": logging.DEBUG,
+    "info": logging.INFO,
+    "warn": logging.WARN,
+    "error": logging.ERROR,
+}
 
+
+def get_logger():
+    # Allow overwriting log level via env var
+    log_level = LOG_LEVELS[os.environ.get("PYTHON_GRADIO_LOG_LEVEL", "info").lower()]
+    structlog.configure(wrapper_class=structlog.make_filtering_bound_logger(log_level))
+    return structlog.get_logger()
+
+log = get_logger()
 
 class LLMParams(BaseModel):
     """
@@ -37,7 +50,7 @@ def get_k8s_namespace():
     try:
         current_k8s_namespace = open(NAMESPACE_FILE_PATH).read()
         return current_k8s_namespace
-    except FileNotFoundError as err:
+    except FileNotFoundError:
         return None
 
 
@@ -46,7 +59,7 @@ def api_address_in_cluster():
     if k8s_ns:
         return f"http://llm-backend.{k8s_ns}.svc"
     else:
-        logger.warning(
+        log.warning(
             "Failed to determine k8s namespace from %s - assuming non-kubernetes environment.",
             NAMESPACE_FILE_PATH,
         )
@@ -77,7 +90,7 @@ def load_settings() -> dict:
     # Sanity checks on settings
     unused_overrides = [k for k in overrides.keys() if k not in defaults.keys()]
     if unused_overrides:
-        logger.warning(
+        log.warning(
             f"Overrides {unused_overrides} not part of default settings so may be ignored."
             "Please check for typos"
         )

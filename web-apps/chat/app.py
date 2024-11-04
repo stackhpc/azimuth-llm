@@ -1,18 +1,14 @@
-import logging
 import openai
-
+import utils
 import gradio as gr
 
 from urllib.parse import urljoin
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
-from typing import Dict, List
+from typing import Dict
 from pydantic import BaseModel, ConfigDict
-from utils import LLMParams, load_settings
 
-logging.basicConfig()
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
+log = utils.get_logger()
 
 
 class AppSettings(BaseModel):
@@ -22,7 +18,7 @@ class AppSettings(BaseModel):
     model_name: str
     model_instruction: str
     page_title: str
-    llm_params: LLMParams
+    llm_params: utils.LLMParams
     # Theme customisation
     theme_params: Dict[str, str | list]
     theme_params_extended: Dict[str, str]
@@ -32,8 +28,8 @@ class AppSettings(BaseModel):
     model_config = ConfigDict(protected_namespaces=(), extra="forbid")
 
 
-settings = AppSettings(**load_settings())
-logger.info(settings)
+settings = AppSettings(**utils.load_settings())
+log.info(settings)
 
 backend_url = str(settings.backend_url)
 backend_health_endpoint = urljoin(backend_url, "/health")
@@ -82,7 +78,7 @@ def inference(latest_message, history):
             context.append(HumanMessage(content=human))
             context.append(AIMessage(content=(ai or "")))
         context.append(HumanMessage(content=latest_message))
-        logger.debug("Chat context: %s", context)
+        log.debug("Chat context: %s", context)
 
         response = ""
         for chunk in llm.stream(context):
@@ -104,7 +100,7 @@ def inference(latest_message, history):
     # https://github.com/openai/openai-python/tree/e8e5a0dc7ccf2db19d7f81991ee0987f9c3ae375?tab=readme-ov-file#handling-errors
 
     except openai.BadRequestError as err:
-        logger.error("Received BadRequestError from backend API: %s", err)
+        log.error("Received BadRequestError from backend API: %s", err)
         message = err.response.json()["message"]
         if INCLUDE_SYSTEM_PROMPT:
             raise PossibleSystemPromptException()
@@ -115,12 +111,12 @@ def inference(latest_message, history):
 
     except openai.APIConnectionError as err:
         if not BACKEND_INITIALISED:
-            logger.info("Backend API not yet ready")
+            log.info("Backend API not yet ready")
             gr.Info(
                 "Backend not ready - model may still be initialising - please try again later."
             )
         else:
-            logger.error("Failed to connect to backend API: %s", err)
+            log.error("Failed to connect to backend API: %s", err)
             gr.Warning("Failed to connect to backend API.")
 
     except openai.InternalServerError as err:
@@ -130,7 +126,7 @@ def inference(latest_message, history):
 
     # Catch-all for unexpected exceptions
     except Exception as err:
-        logger.error("Unexpected error during inference: %s", err)
+        log.error("Unexpected error during inference: %s", err)
         raise gr.Error("Unexpected error encountered - see logs for details.")
 
 
@@ -150,7 +146,7 @@ def inference_wrapper(*args):
         for chunk in inference(*args):
             yield chunk
     except PossibleSystemPromptException:
-        logger.warning("Disabling system prompt and retrying previous request")
+        log.warning("Disabling system prompt and retrying previous request")
         INCLUDE_SYSTEM_PROMPT = False
         for chunk in inference(*args):
             yield chunk
@@ -179,7 +175,7 @@ app = gr.ChatInterface(
     css=settings.css_overrides,
     js=settings.custom_javascript,
 )
-logger.debug("Gradio chat interface config: %s", app.config)
+log.debug("Gradio chat interface config: %s", app.config)
 app.queue(
     default_concurrency_limit=10,
 ).launch(server_name=settings.host_address)
