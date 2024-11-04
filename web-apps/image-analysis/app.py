@@ -97,7 +97,7 @@ def analyze_image(image_url, prompt):
 
         # Extract and return the model's response
         result = response.json()
-        return result["choices"][0]["message"]["content"]
+        return image, result["choices"][0]["message"]["content"]
 
     except Exception as e:
         return f"An error occurred: {str(e)}"
@@ -114,7 +114,7 @@ app = gr.Interface(
         gr.Textbox(label="Image URL"),
         gr.Textbox(label="Prompt/Question", elem_id="prompt", scale=2),
     ],
-    outputs=gr.Textbox(label="Results"),
+    outputs=[gr.Image(label="Image"), gr.Textbox(label="Results")],
     title=settings.page_title,
     description=settings.page_description,
     examples=[[ex.image_url, ex.prompt] for ex in settings.examples],
