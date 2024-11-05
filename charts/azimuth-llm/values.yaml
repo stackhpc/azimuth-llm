@@ -46,10 +46,10 @@ api:
     zenith:
       enabled: false
       skipAuth: false
-      label: Inference API
+      label: OpenAI API
       iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
       description: |
-        The raw inference API endpoints for the deployed LLM.
+        The OpenAI API for the deployed LLM.
   # Config for huggingface model cache volume
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:
