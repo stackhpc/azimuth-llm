@@ -57,6 +57,12 @@
                                     "title": "Model Name",
                                     "description": "Model name supplied to the OpenAI client in frontend web app. Should match huggingface.model above."
                                 },
+                                "page_title": {
+                                    "type": "string",
+                                    "title": "Page Title",
+                                    "description": "The title to display at the top of the chat interface.",
+                                    "default": "Vision Model Image Analysis"
+                                },
                                 "llm_params": {
                                     "$comment": "top_k parameter causes vLLM to error for most (all?) vision models so is excluded here",
                                     "type": "object",
