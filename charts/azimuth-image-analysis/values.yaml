@@ -4,5 +4,9 @@ azimuth-llm:
   ui:
     image:
       repository: ghcr.io/stackhpc/azimuth-llm-image-analysis-ui
+    service:
+      zenith:
+        enabled: true
+        label: Image Analysis Interface
     appSettings:
       model_name: *model-name
