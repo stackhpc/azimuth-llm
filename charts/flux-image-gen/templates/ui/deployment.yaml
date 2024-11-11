@@ -1,0 +1,93 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "flux-image-gen.fullname" . }}-ui
+  labels:
+    {{- include "flux-image-gen.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "flux-image-gen.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.ui.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "flux-image-gen.labels" . | nindent 8 }}
+        {{- with .Values.ui.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: {{ $.Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+          - python
+          - gradio_ui.py
+          args:
+          - --models
+          - {{ .Values.models | join "," }}
+          {{- if .Values.ui.extraArgs }}
+          {{- .Values.ui.extraArgs | toYaml | nindent 10 }}
+          {{- end }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.ui.service.port }}
+              protocol: TCP
+          {{- if .Values.ui.startupProbe }}
+          startupProbe:
+            {{- toYaml .Values.ui.ui.startupProbe | nindent 12 }}
+          {{- end }}
+          {{- if .Values.ui.livenessProbe }}
+          livenessProbe:
+            {{- toYaml .Values.ui.livenessProbe | nindent 12 }}
+          {{- end }}
+          {{- if .Values.ui.readinessProbe }}
+          readinessProbe:
+            {{- toYaml .Values.ui.readinessProbe | nindent 12 }}
+          {{- end }}
+          {{- with .Values.ui.volumeMounts }}
+          volumeMounts:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+          # Make stdout from python visible in k8s logs
+          tty: true
+          env:
+          - name: PYTHONUNBUFFERED
+            value: "1"
+          - name: HELM_RELEASE_NAME
+            value: {{ include "flux-image-gen.fullname" . }}
+          - name: HELM_RELEASE_NAMESPACE
+            value: {{ .Release.Namespace }}
+          {{- with .Values.ui.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+      {{- with .Values.ui.volumes }}
+      volumes:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.ui.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.ui.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.ui.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
