@@ -51,11 +51,19 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
-Selector labels
+Model selector labels
 */}}
 {{- define "flux-image-gen.modelLabels" -}}
 app.kubernetes.io/component: {{ . }}-api
 {{- end }}
+
+{{/*
+UI selector labels
+*/}}
+{{- define "flux-image-gen.uiLabels" -}}
+app.kubernetes.io/component: {{ .Release.Name }}-ui
+{{- end }}
+
 
 {{/*
 Create the name of the service account to use

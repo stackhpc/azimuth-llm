@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-ui-config
+  labels:
+    {{- include "flux-image-gen.labels" . | nindent 4 }}
+data:
+  gradio_config.yaml: |
+    models:
+    {{- range $model := .Values.models }}
+      - name: {{ . }}
+        address: {{ printf "http://%s.%s.svc:%v" ( printf "%s-%s-api" (include "flux-image-gen.fullname" $) . ) $.Release.Namespace $.Values.api.service.port }}
+    {{- end -}}

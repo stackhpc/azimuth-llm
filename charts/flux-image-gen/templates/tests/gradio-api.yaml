@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: gradio-client-test
+  annotations:
+    "helm.sh/hook": test
+spec:
+  template:
+    spec:
+      containers:
+      - name: gradio-client
+        image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
+        command:
+        - python
+        - stackhpc-app/test_client.py
+        env:
+        - name: GRADIO_HOST
+          value: {{ printf "http://%s-ui.%s.svc:%v" (include "flux-image-gen.fullname" .) .Release.Namespace .Values.ui.service.port }}
+        - name: FLUX_MODEL
+          value: {{ .Values.models | first }}
+      restartPolicy: Never
+  backoffLimit: 3

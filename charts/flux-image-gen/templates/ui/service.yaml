@@ -5,6 +5,7 @@ metadata:
   name: {{ include "flux-image-gen.fullname" . }}-ui
   labels:
     {{- include "flux-image-gen.labels" $ | nindent 4 }}
+    {{- include "flux-image-gen.uiLabels" . | nindent 4 }}
 spec:
   type: {{ .Values.ui.service.type }}
   ports:
@@ -14,3 +15,4 @@ spec:
       name: http
   selector:
     {{- include "flux-image-gen.selectorLabels" . | nindent 4 }}
+    {{- include "flux-image-gen.uiLabels" . | nindent 4 }}

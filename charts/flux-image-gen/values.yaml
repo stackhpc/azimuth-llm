@@ -21,9 +21,6 @@ nameOverride: ""
 fullnameOverride: ""
 
 ui:
-
-  extraArgs:
-
   # This is for setting Kubernetes Annotations to a Pod.
   # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
   podAnnotations: {}
@@ -131,6 +128,8 @@ api:
   tolerations: []
 
   affinity: {}
+
+  commandOverride:
 
   # This is for setting Kubernetes Annotations to a Pod.
   # For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
