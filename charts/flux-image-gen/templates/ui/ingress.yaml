@@ -35,7 +35,7 @@ spec:
             {{- end }}
             backend:
               service:
-                name: {{ include "flux-image-gen.fullname" $ }}
+                name: {{ include "flux-image-gen.fullname" $ }}-ui
                 port:
                   number: {{ $.Values.ui.service.port }}
           {{- end }}

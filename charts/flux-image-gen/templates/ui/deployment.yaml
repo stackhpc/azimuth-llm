@@ -14,6 +14,8 @@ spec:
     metadata:
       {{- with .Values.ui.podAnnotations }}
       annotations:
+        # Recreate pods if settings config map changes
+        checksum/config: {{ include (print $.Template.BasePath "/ui/configmap.yaml") . | sha256sum }}
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:

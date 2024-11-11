@@ -11,4 +11,6 @@ data:
     {{- range $model := .Values.models }}
       - name: {{ . }}
         address: {{ printf "http://%s.%s.svc:%v" ( printf "%s-%s-api" (include "flux-image-gen.fullname" $) . ) $.Release.Namespace $.Values.api.service.port }}
-    {{- end -}}
+    {{- end }}
+    example_prompt: |
+      {{- .Values.examplePrompt | nindent 6 -}}
