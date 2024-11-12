@@ -39,7 +39,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           command:
           - python
-          - stackhpc-app/gradio_ui.py
+          - gradio_ui.py
           ports:
             - name: http
               containerPort: {{ .Values.ui.service.port }}

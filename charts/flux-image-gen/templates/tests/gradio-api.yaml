@@ -12,7 +12,7 @@ spec:
         image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag | default $.Chart.AppVersion }}"
         command:
         - python
-        - stackhpc-app/test_client.py
+        - test_client.py
         env:
         - name: GRADIO_HOST
           value: {{ printf "http://%s-ui.%s.svc:%v" (include "flux-image-gen.fullname" .) .Release.Namespace .Values.ui.service.port }}
