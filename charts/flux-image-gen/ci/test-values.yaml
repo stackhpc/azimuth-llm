@@ -8,6 +8,6 @@ api:
   commandOverride:
   - fastapi
   - dev
-  - stackhpc-app/api_server.py
+  - api_server.py
   - --host
   - "0.0.0.0"
