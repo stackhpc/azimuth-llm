@@ -7,6 +7,18 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 
+# Clean up some storage capacity in CI runner
+if [[ $CI == "true" ]]; then
+    docker system prune -af
+fi
+
+# Debug storage issues
+set -x
+docker system df
+lsblk
+df -h
+set +x
+
 REMOTE_TAG=$1
 CLUSTER_NAME=${2:-kind}
 echo Kind cluster name: $CLUSTER_NAME
