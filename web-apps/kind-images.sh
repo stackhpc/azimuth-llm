@@ -34,7 +34,14 @@ for image in $(find_images .); do
     # inside a GH runner so do each step manually here instead.
     # kind load docker-image -n $CLUSTER_NAME $full_name:$KIND_TAG
     # Apparently there's a separate 75G disk at /mnt so try using it.
-    TAR_PATH=/mnt/image.tar
+    if [[ $CI == "true" ]]; then
+        DIR=/mnt/gimme-more-space
+        sudo mkdir $DIR
+        sudo chown -R $USER:$USER $DIR
+        TAR_PATH=$DIR/image.tar
+    else
+        TAR_PATH="./image.tar"
+    fi
     docker image save -o $TAR_PATH $full_name:$KIND_TAG
     docker rm $full_name:{$REMOTE_TAG,$KIND_TAG}
     kind load image-archive -n $CLUSTER_NAME $TAR_PATH
