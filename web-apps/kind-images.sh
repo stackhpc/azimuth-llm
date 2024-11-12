@@ -16,8 +16,11 @@ for image in $(find_images .); do
     echo $full_name
     docker pull $full_name:$REMOTE_TAG
     docker image tag $full_name:$REMOTE_TAG $full_name:$KIND_TAG
-    kind load docker-image -n $CLUSTER_NAME $full_name:$KIND_TAG
-    # Clean up images to save on disk space
-    # docker image rm -f $(docker image ls $full_name -q)
-    docker system prune -af
+    # NOTE(scott): The 'load docker-image' command saves the
+    # intermediate tar archive to /tmp which has limited space
+    # inside a GH runner so do each step manually here instead.
+    # kind load docker-image -n $CLUSTER_NAME $full_name:$KIND_TAG
+    docker image save -o ./image.tar $full_name:$KIND_TAG
+    kind load image-archive -n $CLUSTER_NAME ./image.tar
+    rm image.tar
 done
