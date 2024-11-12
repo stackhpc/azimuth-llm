@@ -1,0 +1,13 @@
+models:
+  - flux-dev
+  - flux-schnell
+api:
+  # Run in dev mode so that we skip
+  # the image gen step and can therefore
+  # test in a kind cluster
+  commandOverride:
+  - fastapi
+  - dev
+  - api_server.py
+  - --host
+  - "0.0.0.0"

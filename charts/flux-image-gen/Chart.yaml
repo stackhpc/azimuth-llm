@@ -1,0 +1,9 @@
+apiVersion: v2
+name: flux-image-gen
+description: A Helm chart for running Flux image generation models on Kubernetes
+
+type: application
+
+# The version and appVersion are updated by the chart build script
+version: 0.1.0
+appVersion: local
