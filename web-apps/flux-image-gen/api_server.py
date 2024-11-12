@@ -31,6 +31,9 @@ class ImageGenInput(BaseModel):
     prompt: str
     add_sampling_metadata: bool
 
+@app.get("/")
+def health_check():
+    return "Server is running"
 
 @app.get("/model")
 async def get_model():
