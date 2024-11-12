@@ -7,17 +7,17 @@ if [[ -z $1 ]]; then
     exit 1
 fi
 
-# Clean up some storage capacity in CI runner
+# Work around storage limits in GH runners
 if [[ $CI == "true" ]]; then
-    # Debug storage issues
-    set -x
-    docker system df
-    docker system prune -af
-    docker system df
-    lsblk
-    df -h
-    set +x
+    DIR=/mnt/gimme-more-space
+    sudo mkdir -p $DIR
+    sudo chown -R $USER:$USER $DIR
+    TAR_PATH=$DIR/image.tar
+else
+    TAR_PATH="./image.tar"
 fi
+
+
 
 
 REMOTE_TAG=$1
@@ -34,14 +34,6 @@ for image in $(find_images .); do
     # inside a GH runner so do each step manually here instead.
     # kind load docker-image -n $CLUSTER_NAME $full_name:$KIND_TAG
     # Apparently there's a separate 75G disk at /mnt so try using it.
-    if [[ $CI == "true" ]]; then
-        DIR=/mnt/gimme-more-space
-        sudo mkdir $DIR
-        sudo chown -R $USER:$USER $DIR
-        TAR_PATH=$DIR/image.tar
-    else
-        TAR_PATH="./image.tar"
-    fi
     docker image save -o $TAR_PATH $full_name:$KIND_TAG
     docker image rm $full_name:{$REMOTE_TAG,$KIND_TAG}
     kind load image-archive -n $CLUSTER_NAME $TAR_PATH
