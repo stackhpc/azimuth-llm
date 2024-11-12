@@ -18,5 +18,5 @@ for image in $(find_images .); do
     docker image tag $full_name:$REMOTE_TAG $full_name:$KIND_TAG
     kind load docker-image -n $CLUSTER_NAME $full_name:$KIND_TAG
     # Clean up images to save on disk space
-    docker image rm $(docker image ls $full_name -q)
+    docker image rm -f $(docker image ls $full_name -q)
 done
