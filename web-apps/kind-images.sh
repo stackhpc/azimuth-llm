@@ -43,7 +43,7 @@ for image in $(find_images .); do
         TAR_PATH="./image.tar"
     fi
     docker image save -o $TAR_PATH $full_name:$KIND_TAG
-    docker rm $full_name:{$REMOTE_TAG,$KIND_TAG}
+    docker image rm $full_name:{$REMOTE_TAG,$KIND_TAG}
     kind load image-archive -n $CLUSTER_NAME $TAR_PATH
-    rm image.tar
+    rm $TAR_PATH
 done
