@@ -19,7 +19,7 @@ class Model(BaseModel):
 class AppSettings(BaseModel):
     models: List[Model]
     example_prompt: str = "Yoda riding a skateboard."
-    title = "Flux Image Generation Demo"
+    title: str = "Flux Image Generation Demo"
 
 
 

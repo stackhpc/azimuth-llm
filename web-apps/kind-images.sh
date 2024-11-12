@@ -17,9 +17,6 @@ else
     TAR_PATH="./image.tar"
 fi
 
-
-
-
 REMOTE_TAG=$1
 CLUSTER_NAME=${2:-kind}
 echo Kind cluster name: $CLUSTER_NAME
