@@ -18,7 +18,9 @@ class Model(BaseModel):
 
 class AppSettings(BaseModel):
     models: List[Model]
-    example_prompt: str
+    example_prompt: str = "Yoda riding a skateboard."
+    title = "Flux Image Generation Demo"
+
 
 
 settings_path = pathlib.Path("/etc/gradio-app/gradio_config.yaml")
@@ -93,9 +95,8 @@ async def generate_image(
 
         return image, seed, filename, None
 
-
-with gr.Blocks() as demo:
-    gr.Markdown("# Flux Image Generation Demo")
+with gr.Blocks(title=settings.title) as demo:
+    gr.Markdown(f"# {settings.title}")
 
     with gr.Row():
         with gr.Column():
