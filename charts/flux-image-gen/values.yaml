@@ -85,13 +85,13 @@ api:
   deploymentStrategy:
     type: Recreate
 
-  # Downloading 100GB+ of model weights can take a long time so
-  # it's difficult to give these probes sensible default values...
+  # Downloading model weights can take a long time so it's
+  # difficult to give these probes sensible default values
+  # Is 30 minutes long enough...?
   startupProbe:
     # httpGet:
     #   path: /
     #   port: http
-    # Is 30 minutes long enough...?
     # failureThreshold: 180
     # periodSeconds: 10
   livenessProbe:
