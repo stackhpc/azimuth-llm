@@ -1,8 +1,12 @@
 
-model_name:
-model_instruction: "You are a helpful and cheerful AI assistant. Please respond appropriately."
-backend_url:
+# Default target is a local ollama instance
+# running inside the same docker network
+model_name: smollm2:135m
+backend_url: http://ollama:11434
+
 host_address: 0.0.0.0
+
+model_instruction: "You are a helpful and cheerful AI assistant. Please respond appropriately."
 
 page_title: Large Language Model
 

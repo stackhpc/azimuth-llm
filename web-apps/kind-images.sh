@@ -1,6 +1,14 @@
 set -e
 
-source functions.sh
+find_images() {
+    images=""
+    for dir in $(ls $1); do
+        if [[ -f $1/$dir/Dockerfile ]]; then
+            images+="$dir "
+        fi
+    done
+    echo $images
+}
 
 if [[ -z $1 ]]; then
     echo "Published image tag must be provided as sole command line arg"
