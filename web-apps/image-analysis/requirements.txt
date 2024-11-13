@@ -1,6 +1,6 @@
 pillow
 requests
-gradio==4.21 # v4.41 breaks custom JS query param parsing
+gradio<5
 gradio_client
 pydantic
 structlog
