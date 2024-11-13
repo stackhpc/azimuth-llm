@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        include:
-          - component: chat
-          - component: image-analysis
-          - component: flux-image-gen
+        component:
+          - chat
+          - image-analysis
+          - flux-image-gen
     permissions:
       contents: read
       id-token: write         # needed for signing the images with GitHub OIDC Token
