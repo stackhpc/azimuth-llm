@@ -47,12 +47,12 @@ test() {
     if [[ -f $1/test.py ]]; then
 
         # Ensure app image is available
-        IMAGE_NAME=$(image_name $1)
+        IMAGE=$(image_name $1):$IMAGE_TAG
         if [[ $IMAGE_TAG == "latest" ]]; then
             build $1
         else
-            log "Pulling image $IMAGE_NAME:$IMAGE_TAG"
-            docker pull $IMAGE_NAME:$IMAGE_TAG
+            log "Pulling image $IMAGE"
+            docker pull $IMAGE
         fi
 
         # Ensure Ollama instance is available
@@ -66,13 +66,17 @@ test() {
         fi
 
         log "Starting Gradio app container"
-        docker run --network $DOCKER_NET_NAME -d --name $1-app $IMAGE_NAME
+        docker run --network $DOCKER_NET_NAME -d --name $1-app $IMAGE
 
         # Give the app time to start
         sleep 3
 
         log "Running tests"
-        docker run --network $DOCKER_NET_NAME --rm --name $1-test-suite -e GRADIO_URL=http://$1-app:7860 --entrypoint python $IMAGE_NAME test.py
+        docker run --network $DOCKER_NET_NAME --rm \
+            --name $1-test-suite \
+            -e GRADIO_URL=http://$1-app:7860 --entrypoint python \
+            $IMAGE \
+            test.py
 
         log "Removing containers:"
         docker rm -f ollama $1-app
