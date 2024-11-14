@@ -62,7 +62,7 @@ test() {
             log "Ollama process not running - starting containerised server"
             docker run --rm --network $DOCKER_NET_NAME -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
             sleep 3
-            docker exec -it ollama ollama pull smollm2:135m
+            docker exec ollama ollama pull smollm2:135m
         fi
 
         log "Starting Gradio app container"
