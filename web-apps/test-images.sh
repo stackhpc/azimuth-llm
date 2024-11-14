@@ -39,12 +39,12 @@ test() {
     echo "----- Starting test process for $1 app -----"
     echo
 
-    DOCKER_NET_NAME=azimuth-llm-shared
-    if [[ ! $(docker network ls | grep $DOCKER_NET_NAME) ]]; then
-        docker network create $DOCKER_NET_NAME
-    fi
-
     if [[ -f $1/test.py ]]; then
+
+        DOCKER_NET_NAME=azimuth-llm-shared
+        if [[ ! $(docker network ls | grep $DOCKER_NET_NAME) ]]; then
+            docker network create $DOCKER_NET_NAME
+        fi
 
         # Ensure app image is available
         IMAGE=$(image_name $1):$IMAGE_TAG
