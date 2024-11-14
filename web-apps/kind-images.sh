@@ -17,6 +17,7 @@ fi
 
 # Work around storage limits in GH runners
 if [[ $CI == "true" ]]; then
+    docker system prune -af
     DIR=/mnt/gimme-more-space
     sudo mkdir -p $DIR
     sudo chown -R $USER:$USER $DIR
