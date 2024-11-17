@@ -34,7 +34,7 @@ api:
   # Container image config
   image:
     repository: vllm/vllm-openai
-    version: v0.6.3
+    version: v0.6.4.post1
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
@@ -83,7 +83,7 @@ ui:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-chat-ui
-    tag:  # Defaults to chart's appVersion
+    tag: # Defaults to chart's appVersion
     imagePullPolicy:
   # The settings to be passed to the frontend web app.
   # Format depends on the chosen UI image above. For each of the UIs
