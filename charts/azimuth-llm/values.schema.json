@@ -37,7 +37,7 @@
                             "type": "string",
                             "title": "Backend vLLM version",
                             "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
-                            "default": "v0.6.3"
+                            "default": "v0.6.5"
                         }
                     }
                 }
@@ -118,7 +118,8 @@
                         }
                     },
                     "required": [
-                        "model_name"                    ]
+                        "model_name"
+                    ]
                 }
             }
         }
