@@ -38,7 +38,8 @@ ui:
       enabled: false
 ```
 
-[!WARNING] Exposing the services in this way provides no authentication mechanism and anyone with access to the load balancer IPs will be able to query the language model. It is up to you to secure the running service as appropriate for your use case. In contrast, when deployed via Azimuth, authentication is provided via the standard Azimuth Identity Provider mechanisms and the authenticated services are exposed via [Zenith](https://github.com/stackhpc/zenith).
+> [!WARNING]
+> Exposing the services in this way provides no authentication mechanism and anyone with access to the load balancer IPs will be able to query the language model. It is up to you to secure the running service as appropriate for your use case. In contrast, when deployed via Azimuth, authentication is provided via the standard Azimuth Identity Provider mechanisms and the authenticated services are exposed via [Zenith](https://github.com/stackhpc/zenith).
 
 The both the web-based interface and the backend OpenAI-compatible vLLM API server can also optionally be exposed using [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/). See the `ingress` section in `values.yml` for available config options.
 
