@@ -1,26 +1,30 @@
 # Azimuth LLM
 
-This repository contains a Helm chart for deploying Large Language Models (LLMs) on Kubernetes. It is developed primarily for use as a pre-packaged application within [Azimuth](https://www.stackhpc.com/azimuth-introduction.html) but is structured such that it can, in principle, be deployed on any Kubernetes cluster with at least 1 GPU node.
+This repository contains a set of Helm charts for deploying Large Language Models (LLMs) on Kubernetes. It is developed primarily for use as a set of pre-packaged applications within [Azimuth](https://www.stackhpc.com/azimuth-introduction.html) but is structured such that the charts can, in principle, be deployed on any Kubernetes cluster with at least 1 GPU node.
 
 ## Azimuth App
 
-This app is provided as part of a standard deployment Azimuth, so no specific steps are required to use this app other than access to an up-to-date Azimuth deployment.
+This primary LLM chat app is provided as part of a standard deployment Azimuth, so no specific steps are required to use this app other than access to an up-to-date Azimuth deployment.
 
 ## Manual Deployment
 
-Alternatively, to set up the Helm repository and manually install this chart on an existing Kubernetes cluster, run
+Alternatively, to set up the Helm repository and manually install the LLM chat interface chart on an existing Kubernetes cluster, run
 
 ```
 helm repo add <chosen-repo-name> https://stackhpc.github.io/azimuth-llm/
 helm repo update
-helm install <installation-name> <chosen-repo-name>/azimuth-llm --version <version>
+helm install <installation-name> <chosen-repo-name>/azimuth-llm-chat
 ```
 
-where `version` is the full name of the published version for the specified commit (e.g. `0.1.0-dev.0.main.125`). To see the latest published version, see [this page](https://github.com/stackhpc/azimuth-llm/tree/gh-pages).
+This will install the latest stable [release](https://github.com/stackhpc/azimuth-llm/releases) of the application.
+
+## Chart Structure
+
+Under the charts directory, there is a base [azimuth-llm](./charts/azimuth-llm) Helm chart which uses vLLM to deploy models from Huggingface. The [azimuth-chat](charts/azimuth-chat) and [azimuth-image-analysis](charts/azimuth-image-analysis) are wrapper charts which add different Gradio web interfaces for interacting with the deployed LLM.
 
 ### Customisation
 
-The `chart/values.yaml` file documents the various customisation options which are available. In order to access the LLM from outside the Kubernetes cluster, the API and/or UI service types may be changed to
+The `charts/azimuth-llm/values.yaml` file documents the various customisation options which are available. In order to access the LLM from outside the Kubernetes cluster, the API and/or UI service types may be changed to
 ```
 api:
   service:
@@ -38,6 +42,8 @@ ui:
 
 The both the web-based interface and the backend OpenAI-compatible vLLM API server can also optionally be exposed using [Kubernetes Ingress](https://kubernetes.io/docs/concepts/services-networking/ingress/). See the `ingress` section in `values.yml` for available config options.
 
+When deploying the chat or image-analysis wrapper charts, all configuration options must be nested under the `azimuth-llm` heading ([example](https://github.com/stackhpc/azimuth-llm/blob/main/charts/azimuth-chat/values.yaml#L1)) due to the way that Helm passes values between [parent charts and sub-charts](https://helm.sh/docs/chart_template_guide/subcharts_and_globals/#overriding-values-from-a-parent-chart).
+
 ## Tested Models
 
 The application uses [vLLM](https://docs.vllm.ai/en/latest/index.html) for model serving, therefore any of the vLLM [supported models](https://docs.vllm.ai/en/latest/models/supported_models.html) should work. Since vLLM pulls the model files directly from [HuggingFace](https://huggingface.co/models) it is likely that some other models will also be compatible with vLLM but mileage may vary between models and model architectures. If a model is incompatible with vLLM then the API pod will likely enter a `CrashLoopBackoff` state and any relevant error information will be found in the API pod logs. These logs can be viewed with
@@ -46,7 +52,7 @@ The application uses [vLLM](https://docs.vllm.ai/en/latest/index.html) for model
 kubectl (-n <helm-release-namespace>) logs deploy/<helm-release-name>-api
 ```
 
-If you suspect that a given error is not caused by the upstream vLLM support and a problem with this Helm chart then please [open an issue](https://github.com/stackhpc/azimuth-llm/issues).
+If you suspect that a given error is not caused by the upstream vLLM version and is instead a problem with this Helm chart then please [open an issue](https://github.com/stackhpc/azimuth-llm/issues).
 
 ## Monitoring
 
