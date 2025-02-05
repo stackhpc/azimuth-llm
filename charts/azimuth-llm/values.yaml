@@ -66,8 +66,12 @@ api:
   gpus: 1
   # The update strategy to use for the deployment
   # See https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
-  # NOTE: Changing this has implications for the number of additional GPU worker nodes required
-  # to preform a rolling zero-downtime update
+  # NOTE: The following RollingUpdate strategy offers a zero-downtime update but requires additional GPU worker nodes.
+  # updateStrategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 1
+  #     maxUnavailable: 0
   updateStrategy:
     type: Recreate
   # The value of the vLLM backend's max_model_len argument (if the model's default is not suitable)
