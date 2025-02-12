@@ -130,11 +130,6 @@ def inference(latest_message, history):
         raise gr.Error("Unexpected error encountered - see logs for details.")
 
 
-# UI theming
-theme = gr.themes.Default(**settings.theme_params)
-theme.set(**settings.theme_params_extended)
-
-
 def inference_wrapper(*args):
     """
     Simple wrapper round the `inference` function which catches certain predictable errors
@@ -152,30 +147,26 @@ def inference_wrapper(*args):
             yield chunk
 
 
-# Build main chat interface
-app = gr.ChatInterface(
-    inference_wrapper,
-    chatbot=gr.Chatbot(
-        # Height of conversation window in CSS units (string) or pixels (int)
-        height="68vh",
-        show_copy_button=True,
-    ),
-    textbox=gr.Textbox(
-        placeholder="Ask me anything...",
-        container=False,
-        # Ratio of text box to submit button width
-        scale=7,
-    ),
-    title=settings.page_title,
-    retry_btn="Retry",
-    undo_btn="Undo",
-    clear_btn="Clear",
-    analytics_enabled=False,
+# UI theming
+theme = gr.themes.Default(**settings.theme_params)
+theme.set(**settings.theme_params_extended)
+
+with gr.Blocks(
+    fill_height=True,
     theme=theme,
     css=settings.css_overrides,
-    js=settings.custom_javascript,
-)
-log.debug("Gradio chat interface config: %s", app.config)
-app.queue(
-    default_concurrency_limit=10,
-).launch(server_name=settings.host_address)
+    js=settings.custom_javascript
+) as demo:
+     gr.ChatInterface(
+        inference_wrapper,
+        type="messages",
+        title=settings.page_title,
+        analytics_enabled=False,
+    )
+
+
+if __name__ == "__main__":
+    log.debug("Gradio chat interface config: %s", demo.config)
+    demo.queue(
+        default_concurrency_limit=10,
+    ).launch(server_name=settings.host_address)
