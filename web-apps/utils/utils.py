@@ -33,12 +33,12 @@ class LLMParams(BaseModel):
     https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#extra-parameters
     """
 
-    max_tokens: PositiveInt = 1000
-    temperature: Annotated[float, Field(ge=0, le=2)] = 0
-    top_p: Annotated[float, Field(gt=0, le=1)] = 1
-    top_k: Annotated[int, Field(ge=-1)] = -1
-    frequency_penalty: Annotated[float, Field(ge=-2, le=2)] = 0
-    presence_penalty: Annotated[float, Field(ge=0 - 2, le=2)] = 0
+    max_tokens: PositiveInt | None = None
+    temperature: Annotated[float, Field(ge=0, le=2)] | None = None
+    top_p: Annotated[float, Field(gt=0, le=1)] | None = None
+    top_k: Annotated[int, Field(ge=-1)] | None = None
+    frequency_penalty: Annotated[float, Field(ge=-2, le=2)] | None = None
+    presence_penalty: Annotated[float, Field(ge=0 - 2, le=2)] | None = None
     # Make sure we can't smuggle in extra request params / typos
     model_config = ConfigDict(extra="forbid")
 

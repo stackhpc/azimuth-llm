@@ -14,12 +14,12 @@ page_title: Large Language Model
 # See https://platform.openai.com/docs/api-reference/chat/create
 # and https://docs.vllm.ai/en/v0.6.0/serving/openai_compatible_server.html#extra-parameters
 llm_params:
-  max_tokens:
+  max_tokens: 1000
   temperature: 0
-  top_p:
-  top_k:
-  frequency_penalty:
-  presence_penalty:
+  top_p: 1
+  top_k: -1
+  frequency_penalty: 0
+  presence_penalty: 0
 
 # Gradio theme constructor parameters (e.g. 'primary_hue')
 # See https://www.gradio.app/guides/theming-guide
