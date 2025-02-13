@@ -95,7 +95,7 @@ def load_settings() -> dict:
             "Please check for typos"
         )
     settings = {**defaults, **overrides}
-    if "backend_url" not in settings or not settings["backend_url"]:
+    if "backend_url" not in settings or settings["backend_url"] == defaults["backend_url"]:
         # Try to detect in-cluster address
         in_cluster_backend = api_address_in_cluster()
         if not in_cluster_backend:

@@ -61,7 +61,6 @@ llm = ChatOpenAI(
     streaming=True,
 )
 
-
 def inference(latest_message, history):
     # Allow mutating global variable
     global BACKEND_INITIALISED
