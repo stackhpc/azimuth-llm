@@ -1,32 +1,43 @@
-{{- if and .Values.api.enabled .Values.ingress.api.enabled -}}
+{{- if and .Values.api.enabled .Values.api.ingress.enabled -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  {{ if .Values.ingress.ui.annotations -}}
+  name: {{ printf "%s-api" .Release.Name }}
+  labels:
+    {{- include "azimuth-llm.labels" . | nindent 4 }}
+  {{- with .Values.api.ingress.annotations }}
   annotations:
-    {{- .Values.ingress.api.annotations | toYaml | nindent 4 }}
-  {{ end -}}
-  name: {{ default (printf "%s-api" .Release.Name) .Values.ingress.api.name }}
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
 spec:
-  ingressClassName: {{ .Values.ingress.className }}
-  rules:
-  - http:
-      paths:
-      - path: {{ .Values.ingress.api.path }}
-        pathType: Prefix
-        backend:
-          service:
-            name: {{ .Values.api.service.name }}
-            port:
-              # Must match Service resource
-              number: 80
-    {{ if .Values.ingress.host -}}
-    host: {{ .Values.ingress.host | quote }}
-    {{- end -}}
-  {{- if .Values.ingress.tls }}
+  {{- with .Values.api.ingress.className }}
+  ingressClassName: {{ . }}
+  {{- end }}
+  {{- if .Values.api.ingress.tls }}
   tls:
-  - hosts:
-    - {{ (required "ingress.host is required when ingress.tls is true" .Values.ingress.host) | quote }}
-    secretName: {{ .Release.Name }}-api-tls
-  {{- end -}}
-{{- end -}}
+    {{- range .Values.api.ingress.tls }}
+    - hosts:
+        {{- range .hosts }}
+        - {{ . | quote }}
+        {{- end }}
+      secretName: {{ .secretName }}
+    {{- end }}
+  {{- end }}
+  rules:
+    {{- range .Values.api.ingress.hosts }}
+    - host: {{ .host | quote }}
+      http:
+        paths:
+          {{- range .paths }}
+          - path: {{ .path }}
+            {{- with .pathType }}
+            pathType: {{ . }}
+            {{- end }}
+            backend:
+              service:
+                name: {{ include "azimuth-llm.fullname" $ }}
+                port:
+                  number: 80
+          {{- end }}
+    {{- end }}
+{{- end }}
