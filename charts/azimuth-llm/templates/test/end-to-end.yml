@@ -23,6 +23,10 @@ spec:
         {{- else }}
         - http://{{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
         {{- end }}
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        tty: true # Make stdout from python visible in k8s logs
       restartPolicy: Never
   # Handle retries within gradio-test-client script
   backoffLimit: 1
