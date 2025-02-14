@@ -26,5 +26,5 @@ spec:
       restartPolicy: Never
   # Allow plenty of retries since downloading
   # model weights can take a long time.
-  backoffLimit: 10
+  backoffLimit: 20
 {{- end -}}
