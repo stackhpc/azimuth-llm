@@ -18,8 +18,8 @@ spec:
         command:
         - python
         - gradio-client-test.py
-        {{- if .Values.ingress.ui.enabled }}
-        - {{ .Values.ingress.host }}{{ .Values.ingress.ui.path }}
+        {{- if .Values.ui.ingress.enabled }}
+        - {{ .Values.ingress.host }}{{ .Values.ui.ingress.path }}
         {{- else }}
         - http://{{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
         {{- end }}
