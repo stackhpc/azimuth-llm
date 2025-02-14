@@ -18,7 +18,7 @@ spec:
         {{- if .Values.ingress.ui.enabled }}
         - {{ .Values.ingress.host | trimPrefix "http://" | trimPrefix "https://" }}{{ .Values.ingress.ui.path }}
         {{- else }}
-        - {{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+        - {{ .Release.Name }}-ui.{{ .Release.Namespace }}.svc
         {{- end }}
         - "80"
       restartPolicy: Never

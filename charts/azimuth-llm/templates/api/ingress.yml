@@ -16,7 +16,7 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: {{ .Values.api.service.name }}
+            name: {{ .Release.Name }}-api
             port:
               # Must match Service resource
               number: 80

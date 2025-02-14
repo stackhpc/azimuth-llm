@@ -9,7 +9,7 @@ metadata:
 spec:
   reservationName: {{ .Release.Name }}-ui
   upstream:
-    serviceName: {{ .Values.ui.service.name }}
+    serviceName: {{ .Release.Name }}-ui
   auth:
     skip: {{ .Values.ui.service.zenith.skipAuth }}
 {{- end -}}

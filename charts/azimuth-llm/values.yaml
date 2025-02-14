@@ -43,7 +43,6 @@ api:
   replicas: 1
   # Service config
   service:
-    name: llm-backend
     type: ClusterIP
     zenith:
       enabled: false
@@ -106,7 +105,6 @@ ui:
         - Arial
   # Service config
   service:
-    name: web-app
     type: ClusterIP
     zenith:
       enabled: true

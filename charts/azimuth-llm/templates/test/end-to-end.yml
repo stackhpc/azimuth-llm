@@ -21,7 +21,7 @@ spec:
         {{- if .Values.ingress.ui.enabled }}
         - {{ .Values.ingress.host }}{{ .Values.ingress.ui.path }}
         {{- else }}
-        - http://{{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+        - http://{{ .Release.Name }}-ui.{{ .Release.Namespace }}.svc
         {{- end }}
         env:
         - name: PYTHONUNBUFFERED
