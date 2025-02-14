@@ -16,7 +16,7 @@ azimuth-llm:
       model_name: *model
       # Verify that we can set non-standard LLM params
       llm_params:
-        max_tokens: 101
+        max_tokens: 10 # Constrain response tokens to speed up CI test
         temperature: 0.1
         top_p: 0.15
         presence_penalty: 0.9
