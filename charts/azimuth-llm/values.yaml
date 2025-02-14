@@ -84,7 +84,7 @@ ui:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-chat-ui
-    tag: # Defaults to chart's appVersion
+    tag:  # Defaults to chart's appVersion
     imagePullPolicy:
   # The settings to be passed to the frontend web app.
   # Format depends on the chosen UI image above. For each of the UIs
