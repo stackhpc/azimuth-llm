@@ -6,3 +6,6 @@ validate-maintainers: false
 all: true
 # Split output to make it look nice in GitHub Actions tab
 github-groups: true
+# Allow for long running install and test processes
+# (e.g. downloading containers images and model weights)
+helm-extra-args: --timeout 1200s
