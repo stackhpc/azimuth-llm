@@ -4,6 +4,9 @@ model_instruction: "You are a helpful and cheerful AI assistant. Please respond 
 
 page_title: Large Language Model
 
+backend_url: http://ollama:11434
+model_name: smollm2:135m
+
 # LLM request parameters
 # See https://platform.openai.com/docs/api-reference/chat/create
 # and https://docs.vllm.ai/en/v0.6.0/serving/openai_compatible_server.html#extra-parameters
@@ -24,6 +27,6 @@ theme_params: {}
 theme_params_extended: {}
 
 # Additional CSS and JS overrides
-# See https://www.gradio.app/guides/custom-CSS-and-JS
+# See https://www.gradio.app/guides/custom-CSS-and-JS
 css_overrides:
 custom_javascript:

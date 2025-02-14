@@ -44,10 +44,10 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
-      # - name: Run Gradio app tests
-      #   run: |
-      #     ./test-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }})
-      #   working-directory: web-apps
+      - name: Run Gradio app tests
+        run: |
+          ./test-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }})
+        working-directory: web-apps
 
       - name: Install Helm
         uses: azure/setup-helm@v4
