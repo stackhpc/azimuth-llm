@@ -4,8 +4,24 @@ entries:
   - annotations:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
+    appVersion: "0235060"
+    created: "2025-02-14T17:21:57.82745942Z"
+    description: HuggingFace LLM model serving along with a simple web interface.
+    digest: 066e83c5dc3a1324c4a7c698703040269ad58e11920b7cd0bd4aeb742e4c8c06
+    icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
+    maintainers:
+    - email: scott@stackhpc.com
+      name: Scott Davidson
+    name: azimuth-llm
+    type: application
+    urls:
+    - azimuth-llm-0.7.2-dev.0.main.18.tgz
+    version: 0.7.2-dev.0.main.18
+  - annotations:
+      azimuth.stackhpc.com/label: HuggingFace LLM
+    apiVersion: v2
     appVersion: c785811
-    created: "2025-02-14T16:53:04.939176182Z"
+    created: "2025-02-14T17:21:57.826745108Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 5697809dcbe9ebe5eaf617b43cfa144ce25341a8dd5a61e306395d74845f828d
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -21,7 +37,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "99031e1"
-    created: "2025-02-14T16:53:04.938481494Z"
+    created: "2025-02-14T17:21:57.825996761Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 0bd2543b2d13b9748be5f0c2275e38e30ddaafd30d2b91dfb99bff5ba71ed3b2
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -37,7 +53,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f40288e
-    created: "2025-02-14T16:53:04.937801113Z"
+    created: "2025-02-14T17:21:57.824380822Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 109ff430c13444c181ae4145be408e6aea2cfe35793e6c8b7b6e440c2b04b919
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -53,7 +69,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d8b04aa
-    created: "2025-02-14T16:53:04.940562862Z"
+    created: "2025-02-14T17:21:57.828857719Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 60d44c878d3c4d349dae9291c1ac28d18514e8000141e21aac6c9e265443e996
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -69,7 +85,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6f1af67
-    created: "2025-02-14T16:53:04.939875839Z"
+    created: "2025-02-14T17:21:57.82815093Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 3733bb73fe348c51624d96791750bbdbc4429226dd74b9345b91a49ad69937ea
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -85,7 +101,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3a00c21
-    created: "2025-02-14T16:53:04.937094964Z"
+    created: "2025-02-14T17:21:57.823681868Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: c7f7ae9347382a15f28241300bff4935172b58ea4822f27bdc79164b6180c340
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -101,7 +117,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "5707145"
-    created: "2025-02-14T16:53:04.936374167Z"
+    created: "2025-02-14T17:21:57.822977463Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: b591e6298f9c9e802908483228f59ccfd9993fe0ea9194da976c3f80dc4ca0ce
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -117,7 +133,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1dc58bb
-    created: "2025-02-14T16:53:04.935449128Z"
+    created: "2025-02-14T17:21:57.822223757Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: a55df49bfcd89a2e7d89a13be935efb814d632b93daf851eb600ada1be257e88
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -133,7 +149,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4c87b5c
-    created: "2025-02-14T16:53:04.933236755Z"
+    created: "2025-02-14T17:21:57.820824527Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 44d17c986bf0de2dbf521833495b9de1e659c21c1df60207fd6e1b8b837e4f01
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -149,7 +165,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1e2d15b
-    created: "2025-02-14T16:53:04.93394588Z"
+    created: "2025-02-14T17:21:57.821538469Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: e859acd1b251f27e9d14f0e026a09ad96efb5b157a462ee87c586932117ba162
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -165,7 +181,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "4781392"
-    created: "2025-02-14T16:53:04.932516169Z"
+    created: "2025-02-14T17:21:57.820102379Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 341f76d5a2c91a679763bd6e4c45bda8df428bb522ecf12eea64cd0765a8061a
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -181,7 +197,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: a5d8e8c
-    created: "2025-02-14T16:53:04.931827873Z"
+    created: "2025-02-14T17:21:57.819373139Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: be0211fd17273e11add6fa9d17d604ef2e7eb2004d7b02e50a44fbe016ecef07
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -197,7 +213,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d1c75dc
-    created: "2025-02-14T16:53:04.93111419Z"
+    created: "2025-02-14T17:21:57.817984963Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 219dd74d6236f562b8aa15469dd3cb3bd52ed7a65550b9301e8d6e35cecb9804
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -213,7 +229,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:04.930400627Z"
+    created: "2025-02-14T17:21:57.816970391Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 826d206dc2c102676562763ec2f9eae40addd70ee4458e9440899baddf4e6de6
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -229,7 +245,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:04.928995111Z"
+    created: "2025-02-14T17:21:57.815582541Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 038295eb1263bb2753c67de2e0475d3fc9395261d60083e7273abd9daeedc722
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -245,7 +261,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f8d17e0
-    created: "2025-02-14T16:53:04.929707292Z"
+    created: "2025-02-14T17:21:57.816271346Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 317a0809ae3403e60da4bae4d2a24b94d4fc1978a1ac05441ff29754c75a5c29
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -261,7 +277,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ee82539
-    created: "2025-02-14T16:53:04.927077691Z"
+    created: "2025-02-14T17:21:57.814104233Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: ca6fdf2220d119519eac744f6e2f017b1148a70cbdc1944d2e8240dae7f54783
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -277,7 +293,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6e61451
-    created: "2025-02-14T16:53:04.928150774Z"
+    created: "2025-02-14T17:21:57.814875141Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: b00b65e151078183f9795c6bcb5cd1bf71b16828ca463458aecdb80284f38924
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -293,7 +309,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b66f7d6
-    created: "2025-02-14T16:53:04.925752245Z"
+    created: "2025-02-14T17:21:57.813408385Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 799fb86f8f7068e16f47c47834271f567c44601d3c68217d8f7efcc9b875f840
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -309,7 +325,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 701ad09
-    created: "2025-02-14T16:53:04.925035486Z"
+    created: "2025-02-14T17:21:57.812675197Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: c3ba4c4a53c4b048a89a3cc148626ae88d13da75c912f8a2630dc87404f8cd9b
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -325,7 +341,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: af6310f
-    created: "2025-02-14T16:53:04.924333224Z"
+    created: "2025-02-14T17:21:57.81181906Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 59cd8d004c06d3c1dc85f143fa2f43f2567bc9cbd3c5b1da9915a097bf01ddb3
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -341,7 +357,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 701ad09
-    created: "2025-02-14T16:53:04.923646591Z"
+    created: "2025-02-14T17:21:57.810242149Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 4a5ed830d980289f3d06dd36420290c39dd72d0d38fc782db1cac3ddb985fe19
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -357,7 +373,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8a7ca4e
-    created: "2025-02-14T16:53:04.922942326Z"
+    created: "2025-02-14T17:21:57.809557592Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 1fa3d0d7a32fddf8966ac92051faf18dff6765bc8058f7acf522d18db8d81229
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -373,7 +389,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 60e6ace
-    created: "2025-02-14T16:53:04.922225306Z"
+    created: "2025-02-14T17:21:57.808856474Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 4d938b4709110e37cbefd5430c22d745431e0e738ada19ba7f7f7fbd14f722e6
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -389,7 +405,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 60e6ace
-    created: "2025-02-14T16:53:04.921480745Z"
+    created: "2025-02-14T17:21:57.808161507Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: c1019e66ff3f6d0ff32a862a8a3ef1b82aef25d5caae435bb76ef92da288f533
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -405,7 +421,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 52ce858
-    created: "2025-02-14T16:53:04.920572358Z"
+    created: "2025-02-14T17:21:57.807475648Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 77542a6fb77d1848af8bb4f94a9710b4dffc4ab8039cd1e0bb34a73388b84bcd
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -421,7 +437,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d188f1f
-    created: "2025-02-14T16:53:04.919031901Z"
+    created: "2025-02-14T17:21:57.806768468Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: beea080fd3a91c8a79010d37721f8d35943fc8aa2937d937c56e73c60d3be068
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -437,7 +453,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d188f1f
-    created: "2025-02-14T16:53:04.917694392Z"
+    created: "2025-02-14T17:21:57.805369969Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 2309ca5727baee71176aae98659dbddfee8aeb570c2e97295754c86e735b4612
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -453,7 +469,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 352aac3
-    created: "2025-02-14T16:53:04.916988353Z"
+    created: "2025-02-14T17:21:57.80412178Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 6dbe20f64528bbd3a99d7007be3324b5c716cf04f5904ddeb495560d6f6237ad
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -469,7 +485,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1beee32
-    created: "2025-02-14T16:53:04.916293445Z"
+    created: "2025-02-14T17:21:57.80304431Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 7c3e990dc7fd2348a42cb9c1c2c4b6dcfaa0bf856722dd495ca06c87abf559a9
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -485,7 +501,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 7cb2d79
-    created: "2025-02-14T16:53:04.915595281Z"
+    created: "2025-02-14T17:21:57.802335417Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 3785907fe4d86696369700a8afb74e85649247c95fc9254053c7e6eccfd8710f
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -501,7 +517,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0483b04
-    created: "2025-02-14T16:53:04.914905743Z"
+    created: "2025-02-14T17:21:57.801613731Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: b88aee0cc8213138b7d11d15b071544c2ac8d384dd0486b6f9f95d0673f8bf6a
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -517,7 +533,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "7981450"
-    created: "2025-02-14T16:53:04.914185066Z"
+    created: "2025-02-14T17:21:57.800849806Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 82dac1a5caddcde0af4f6eca9854c569d71398d5edec2d571a76a044ca385724
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -533,7 +549,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4e28893
-    created: "2025-02-14T16:53:04.913473237Z"
+    created: "2025-02-14T17:21:57.800181709Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 270078c48a46d04ed87eed62f0e70d3b3a9ae72e732c36d5041425063291add6
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -549,7 +565,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "8165494"
-    created: "2025-02-14T16:53:04.911867827Z"
+    created: "2025-02-14T17:21:57.799518402Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: fd6a83df2f4b3adb73836dbcde0d2814de0e126656315a14af71529f903da9bd
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -565,7 +581,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 15af623
-    created: "2025-02-14T16:53:04.911145939Z"
+    created: "2025-02-14T17:21:57.798836349Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 6fd4d58941bd46febde16d565f7ff9282dec3345eb725a035295b90becf89d2a
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -581,7 +597,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: de6018e
-    created: "2025-02-14T16:53:04.910488521Z"
+    created: "2025-02-14T17:21:57.79811357Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: d3defefb2237b53310310431213ed0e7d84c7469465e9912ac805e753c5db997
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -597,7 +613,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f26524c
-    created: "2025-02-14T16:53:04.90984583Z"
+    created: "2025-02-14T17:21:57.796725068Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 471c196a1e1e504ab6799973b3076bfbf74be7116e0636bc3c3ddf0a5d581734
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -613,7 +629,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 11e7bfd
-    created: "2025-02-14T16:53:04.909145242Z"
+    created: "2025-02-14T17:21:57.795902473Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 62364bac39f47df19e024241b2feef8083385d44fe74f0dde29b5aa4a18a90d8
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -629,7 +645,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: e69bac1
-    created: "2025-02-14T16:53:04.908434484Z"
+    created: "2025-02-14T17:21:57.795195565Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: ae25a91f8495e2bbc1f18407d844b704770c334a7ab1c56f81bea6597d8a401c
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -645,7 +661,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1d7defa
-    created: "2025-02-14T16:53:04.907729066Z"
+    created: "2025-02-14T17:21:57.794506218Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: a1d49a6463edbf80629e6504af8ed276dc0777779129d26b91a983a94e623fb3
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -661,7 +677,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 2aaf1c3
-    created: "2025-02-14T16:53:04.918333236Z"
+    created: "2025-02-14T17:21:57.806054015Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 48f957a66c7a9dd84ddcef0f5167c46fe741130c7989792b61c1d498548f7c81
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -677,7 +693,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 5920cfa
-    created: "2025-02-14T16:53:04.906113287Z"
+    created: "2025-02-14T17:21:57.793164515Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 78dd9a620c57b1d22e689e7daa81b8c84a8e51447fbb83afdce13cb05caef854
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -693,7 +709,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 7f91553
-    created: "2025-02-14T16:53:04.904503661Z"
+    created: "2025-02-14T17:21:57.792506187Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 54eefb89c0c7d8c598dafb6b8372c8eb8fce6e537506db23953dd1333df3314a
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -709,7 +725,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d0d1fd0
-    created: "2025-02-14T16:53:04.903856952Z"
+    created: "2025-02-14T17:21:57.791791694Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: f1204533d400d1be7d3f5ecde92fab6074c5e4a83388c097693095aa7c59bebd
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -725,7 +741,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: df7b8eb
-    created: "2025-02-14T16:53:04.907015133Z"
+    created: "2025-02-14T17:21:57.793832892Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 373885606713c8d222f30c8715e37c4e863a9e381b05c8c6b44bbd7ff6202012
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -741,7 +757,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: fe2efe2
-    created: "2025-02-14T16:53:04.903182022Z"
+    created: "2025-02-14T17:21:57.791087921Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -762,7 +778,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ae52dc9
-    created: "2025-02-14T16:53:04.901793989Z"
+    created: "2025-02-14T17:21:57.78885675Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -783,7 +799,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9a099be
-    created: "2025-02-14T16:53:04.900329934Z"
+    created: "2025-02-14T17:21:57.787389101Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -804,7 +820,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 671f0c2
-    created: "2025-02-14T16:53:04.898958612Z"
+    created: "2025-02-14T17:21:57.786007193Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -825,7 +841,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8c7825d
-    created: "2025-02-14T16:53:04.897454282Z"
+    created: "2025-02-14T17:21:57.784599627Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -846,7 +862,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c3aef4f
-    created: "2025-02-14T16:53:04.894839045Z"
+    created: "2025-02-14T17:21:57.783182423Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -867,7 +883,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8b69f42
-    created: "2025-02-14T16:53:04.893454108Z"
+    created: "2025-02-14T17:21:57.780991784Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -885,7 +901,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0f07c01
-    created: "2025-02-14T16:53:04.888025116Z"
+    created: "2025-02-14T17:21:57.776555132Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -906,7 +922,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 815087f
-    created: "2025-02-14T16:53:04.885076077Z"
+    created: "2025-02-14T17:21:57.772577791Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -924,7 +940,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c72db39
-    created: "2025-02-14T16:53:04.892000492Z"
+    created: "2025-02-14T17:21:57.779425557Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -942,7 +958,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 65fecb4
-    created: "2025-02-14T16:53:04.89052208Z"
+    created: "2025-02-14T17:21:57.777991552Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -960,7 +976,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6a8ae6e
-    created: "2025-02-14T16:53:04.886429445Z"
+    created: "2025-02-14T17:21:57.775131365Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -978,7 +994,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f3d5544
-    created: "2025-02-14T16:53:04.883640144Z"
+    created: "2025-02-14T17:21:57.771071511Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 38f2dabb721b045ab3cf9e635b6bb369be6dc05afeaf9e54ba7e5ee7ec95f0f3
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -994,7 +1010,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ef83288
-    created: "2025-02-14T16:53:04.882978879Z"
+    created: "2025-02-14T17:21:57.770397423Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 1e650ecdf913f68c976692b30c3216f6ba1ff4cf2bf565bb29712dfdca462570
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -1010,7 +1026,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f5c8654
-    created: "2025-02-14T16:53:04.882310951Z"
+    created: "2025-02-14T17:21:57.769700323Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: b74f9abbfb69ae3774fe3c55eba79d9f9e214155696cea4936afa540e6629d62
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -1026,7 +1042,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 456b221
-    created: "2025-02-14T16:53:04.881639297Z"
+    created: "2025-02-14T17:21:57.76902367Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: a094bd35ac64be28eede152db9e987080ce7d2d195567ceb49648dc20687d0df
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -1042,7 +1058,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "6020434"
-    created: "2025-02-14T16:53:04.880756447Z"
+    created: "2025-02-14T17:21:57.768354Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: e1022f7f5b8f11af1ace80dad5d24b220e16697db0c3782be320919c52565e06
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -1058,7 +1074,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "00972e2"
-    created: "2025-02-14T16:53:04.879641707Z"
+    created: "2025-02-14T17:21:57.767664584Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 87c72d928fbdb76675dd0330c74475fd672348e929582d6d6cd3c59e0f789cfd
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -1074,7 +1090,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 58c4dcb
-    created: "2025-02-14T16:53:04.878109895Z"
+    created: "2025-02-14T17:21:57.766952546Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1095,7 +1111,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 82d045c
-    created: "2025-02-14T16:53:04.876589224Z"
+    created: "2025-02-14T17:21:57.765525363Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1116,7 +1132,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 46c97ef
-    created: "2025-02-14T16:53:04.875182476Z"
+    created: "2025-02-14T17:21:57.763000259Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1134,7 +1150,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: aa0e53e
-    created: "2025-02-14T16:53:04.873817657Z"
+    created: "2025-02-14T17:21:57.761560302Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1152,7 +1168,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: aa0e53e
-    created: "2025-02-14T16:53:04.872423733Z"
+    created: "2025-02-14T17:21:57.760146214Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1170,7 +1186,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d82ef04
-    created: "2025-02-14T16:53:04.870215548Z"
+    created: "2025-02-14T17:21:57.758738938Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1188,7 +1204,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 90a809a
-    created: "2025-02-14T16:53:04.868743086Z"
+    created: "2025-02-14T17:21:57.757279345Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1206,7 +1222,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: e49c2a1
-    created: "2025-02-14T16:53:04.867317392Z"
+    created: "2025-02-14T17:21:57.75495086Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1224,7 +1240,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 420da39
-    created: "2025-02-14T16:53:04.865891429Z"
+    created: "2025-02-14T17:21:57.753263532Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1242,7 +1258,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6a9b511
-    created: "2025-02-14T16:53:04.864408669Z"
+    created: "2025-02-14T17:21:57.751803438Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1260,7 +1276,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d82ef04
-    created: "2025-02-14T16:53:04.862447615Z"
+    created: "2025-02-14T17:21:57.750359374Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1278,7 +1294,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 053fe6f
-    created: "2025-02-14T16:53:04.86041636Z"
+    created: "2025-02-14T17:21:57.748982275Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1296,7 +1312,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 80b11c1
-    created: "2025-02-14T16:53:04.85906685Z"
+    created: "2025-02-14T17:21:57.747477728Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1314,7 +1330,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 97f03a0
-    created: "2025-02-14T16:53:04.857721687Z"
+    created: "2025-02-14T17:21:57.745175475Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1332,7 +1348,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9a93344
-    created: "2025-02-14T16:53:04.856319177Z"
+    created: "2025-02-14T17:21:57.74382699Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1350,7 +1366,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f89382b
-    created: "2025-02-14T16:53:04.854860081Z"
+    created: "2025-02-14T17:21:57.742455391Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1368,7 +1384,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3dc68bc
-    created: "2025-02-14T16:53:04.853163321Z"
+    created: "2025-02-14T17:21:57.740943189Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1386,7 +1402,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: dea0001
-    created: "2025-02-14T16:53:04.850405401Z"
+    created: "2025-02-14T17:21:57.739590776Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1404,7 +1420,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b934eb6
-    created: "2025-02-14T16:53:04.849062712Z"
+    created: "2025-02-14T17:21:57.738165687Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1422,7 +1438,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 68cb476
-    created: "2025-02-14T16:53:04.847700368Z"
+    created: "2025-02-14T17:21:57.735938509Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1440,7 +1456,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b934eb6
-    created: "2025-02-14T16:53:04.846345206Z"
+    created: "2025-02-14T17:21:57.734597557Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1458,7 +1474,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 311b3a4
-    created: "2025-02-14T16:53:04.844999613Z"
+    created: "2025-02-14T17:21:57.733237519Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1476,7 +1492,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 311b3a4
-    created: "2025-02-14T16:53:04.841812988Z"
+    created: "2025-02-14T17:21:57.730474183Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1494,7 +1510,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 42ed6f6
-    created: "2025-02-14T16:53:04.843647807Z"
+    created: "2025-02-14T17:21:57.731834291Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1512,7 +1528,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: dbcd964
-    created: "2025-02-14T16:53:04.839655498Z"
+    created: "2025-02-14T17:21:57.729073029Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1530,7 +1546,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 76e0833
-    created: "2025-02-14T16:53:04.83830215Z"
+    created: "2025-02-14T17:21:57.726594709Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1548,7 +1564,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4f126a9
-    created: "2025-02-14T16:53:04.836939875Z"
+    created: "2025-02-14T17:21:57.725229893Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1566,7 +1582,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0b57dc7
-    created: "2025-02-14T16:53:04.835531093Z"
+    created: "2025-02-14T17:21:57.723869334Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1584,7 +1600,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c78922b
-    created: "2025-02-14T16:53:04.83416951Z"
+    created: "2025-02-14T17:21:57.722521449Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1602,7 +1618,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 43848b0
-    created: "2025-02-14T16:53:04.831809852Z"
+    created: "2025-02-14T17:21:57.721066505Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1620,7 +1636,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3f12602
-    created: "2025-02-14T16:53:04.830415046Z"
+    created: "2025-02-14T17:21:57.719707519Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1638,7 +1654,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 5a9e883
-    created: "2025-02-14T16:53:04.829063211Z"
+    created: "2025-02-14T17:21:57.718266Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1656,7 +1672,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: bb254a0
-    created: "2025-02-14T16:53:04.827725552Z"
+    created: "2025-02-14T17:21:57.715810325Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1674,7 +1690,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f0193b7
-    created: "2025-02-14T16:53:04.826391059Z"
+    created: "2025-02-14T17:21:57.714481175Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1692,7 +1708,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: bb254a0
-    created: "2025-02-14T16:53:04.825081352Z"
+    created: "2025-02-14T17:21:57.713153998Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1710,7 +1726,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 04abbcb
-    created: "2025-02-14T16:53:04.82371509Z"
+    created: "2025-02-14T17:21:57.71179857Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1728,7 +1744,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 84c79f5
-    created: "2025-02-14T16:53:04.821208719Z"
+    created: "2025-02-14T17:21:57.710407454Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1746,7 +1762,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b6e8f76
-    created: "2025-02-14T16:53:04.819807181Z"
+    created: "2025-02-14T17:21:57.708218378Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1764,7 +1780,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 07e31fe
-    created: "2025-02-14T16:53:04.818411914Z"
+    created: "2025-02-14T17:21:57.706875793Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1782,7 +1798,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: fafd38a
-    created: "2025-02-14T16:53:04.817084154Z"
+    created: "2025-02-14T17:21:57.70555571Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1800,7 +1816,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 57a9dfd
-    created: "2025-02-14T16:53:04.815744682Z"
+    created: "2025-02-14T17:21:57.704191776Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1818,7 +1834,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 57a9dfd
-    created: "2025-02-14T16:53:04.814395171Z"
+    created: "2025-02-14T17:21:57.702900266Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1836,7 +1852,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: a84bc79
-    created: "2025-02-14T16:53:04.811946866Z"
+    created: "2025-02-14T17:21:57.701581335Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1854,7 +1870,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: a84bc79
-    created: "2025-02-14T16:53:04.81064836Z"
+    created: "2025-02-14T17:21:57.700212161Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1872,7 +1888,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3d0999c
-    created: "2025-02-14T16:53:04.8093044Z"
+    created: "2025-02-14T17:21:57.697808897Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1890,7 +1906,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3d0999c
-    created: "2025-02-14T16:53:04.808015131Z"
+    created: "2025-02-14T17:21:57.69651893Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1908,7 +1924,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8a6e387
-    created: "2025-02-14T16:53:04.80671388Z"
+    created: "2025-02-14T17:21:57.69520554Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1926,7 +1942,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "8027018"
-    created: "2025-02-14T16:53:04.805381882Z"
+    created: "2025-02-14T17:21:57.693898752Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1944,7 +1960,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3f97b5a
-    created: "2025-02-14T16:53:04.80354488Z"
+    created: "2025-02-14T17:21:57.692581053Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1962,7 +1978,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1399cb1
-    created: "2025-02-14T16:53:04.801717025Z"
+    created: "2025-02-14T17:21:57.69118578Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1980,7 +1996,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6d87d2a
-    created: "2025-02-14T16:53:04.800398493Z"
+    created: "2025-02-14T17:21:57.688901764Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -1998,7 +2014,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: bc8b7df
-    created: "2025-02-14T16:53:04.799083907Z"
+    created: "2025-02-14T17:21:57.687563847Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2016,7 +2032,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 294ac78
-    created: "2025-02-14T16:53:04.797789579Z"
+    created: "2025-02-14T17:21:57.68621993Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2034,7 +2050,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6d1bc73
-    created: "2025-02-14T16:53:04.796473761Z"
+    created: "2025-02-14T17:21:57.684904426Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2052,7 +2068,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 294ac78
-    created: "2025-02-14T16:53:04.795075889Z"
+    created: "2025-02-14T17:21:57.683566129Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2070,7 +2086,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b5d189e
-    created: "2025-02-14T16:53:04.79226477Z"
+    created: "2025-02-14T17:21:57.682198377Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2088,7 +2104,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0eebf2a
-    created: "2025-02-14T16:53:04.790975631Z"
+    created: "2025-02-14T17:21:57.680617357Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2106,7 +2122,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 11a5575
-    created: "2025-02-14T16:53:04.789682306Z"
+    created: "2025-02-14T17:21:57.678235253Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2124,7 +2140,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 00d4865
-    created: "2025-02-14T16:53:04.788371988Z"
+    created: "2025-02-14T17:21:57.676815083Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2142,7 +2158,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6eb8053
-    created: "2025-02-14T16:53:04.787075596Z"
+    created: "2025-02-14T17:21:57.675411354Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2160,7 +2176,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: e8034a3
-    created: "2025-02-14T16:53:04.785681702Z"
+    created: "2025-02-14T17:21:57.674017905Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2178,7 +2194,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: e8034a3
-    created: "2025-02-14T16:53:04.783808633Z"
+    created: "2025-02-14T17:21:57.672621078Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2196,7 +2212,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c779a5f
-    created: "2025-02-14T16:53:04.782262675Z"
+    created: "2025-02-14T17:21:57.671176483Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2214,7 +2230,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c779a5f
-    created: "2025-02-14T16:53:04.780958989Z"
+    created: "2025-02-14T17:21:57.668696616Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2232,7 +2248,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4ba135f
-    created: "2025-02-14T16:53:04.779610721Z"
+    created: "2025-02-14T17:21:57.667291114Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2250,7 +2266,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b99fbe6
-    created: "2025-02-14T16:53:04.778333515Z"
+    created: "2025-02-14T17:21:57.665934082Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2268,7 +2284,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c779a5f
-    created: "2025-02-14T16:53:04.775640454Z"
+    created: "2025-02-14T17:21:57.66338692Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2286,7 +2302,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1f6c60a
-    created: "2025-02-14T16:53:04.771979024Z"
+    created: "2025-02-14T17:21:57.660154063Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2304,7 +2320,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b8cb754
-    created: "2025-02-14T16:53:04.770676451Z"
+    created: "2025-02-14T17:21:57.658455183Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2322,7 +2338,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: a739216
-    created: "2025-02-14T16:53:04.769357938Z"
+    created: "2025-02-14T17:21:57.657129239Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2340,7 +2356,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 934d0ea
-    created: "2025-02-14T16:53:04.768066536Z"
+    created: "2025-02-14T17:21:57.655861123Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2358,7 +2374,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3bea38b
-    created: "2025-02-14T16:53:04.765475275Z"
+    created: "2025-02-14T17:21:57.653394421Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2376,7 +2392,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1a6bbbf
-    created: "2025-02-14T16:53:04.763089057Z"
+    created: "2025-02-14T17:21:57.652079979Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2394,7 +2410,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "8547109"
-    created: "2025-02-14T16:53:04.761824715Z"
+    created: "2025-02-14T17:21:57.649987054Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2412,7 +2428,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: a86498c
-    created: "2025-02-14T16:53:04.777028767Z"
+    created: "2025-02-14T17:21:57.664644646Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2430,7 +2446,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f8c7d24
-    created: "2025-02-14T16:53:04.773165771Z"
+    created: "2025-02-14T17:21:57.662040057Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2448,7 +2464,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1dde4a0
-    created: "2025-02-14T16:53:04.766774241Z"
+    created: "2025-02-14T17:21:57.654586535Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2466,7 +2482,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: cf25a0f
-    created: "2025-02-14T16:53:04.760538322Z"
+    created: "2025-02-14T17:21:57.648728055Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2484,7 +2500,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 603ba43
-    created: "2025-02-14T16:53:04.759331698Z"
+    created: "2025-02-14T17:21:57.647543265Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2502,7 +2518,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 7231c1a
-    created: "2025-02-14T16:53:04.758129923Z"
+    created: "2025-02-14T17:21:57.646352653Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2520,7 +2536,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: cf0f7c8
-    created: "2025-02-14T16:53:04.756815488Z"
+    created: "2025-02-14T17:21:57.645035325Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2538,7 +2554,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d0e98ad
-    created: "2025-02-14T16:53:04.75464421Z"
+    created: "2025-02-14T17:21:57.643807545Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2556,7 +2572,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c13d7b6
-    created: "2025-02-14T16:53:04.753324414Z"
+    created: "2025-02-14T17:21:57.641665259Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2574,7 +2590,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9ca5485
-    created: "2025-02-14T16:53:04.752105337Z"
+    created: "2025-02-14T17:21:57.640393967Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2592,7 +2608,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8453f09
-    created: "2025-02-14T16:53:04.750794589Z"
+    created: "2025-02-14T17:21:57.639082932Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2610,7 +2626,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d389309
-    created: "2025-02-14T16:53:04.749459925Z"
+    created: "2025-02-14T17:21:57.637780121Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2628,7 +2644,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d59b5d1
-    created: "2025-02-14T16:53:04.748141562Z"
+    created: "2025-02-14T17:21:57.636482189Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2646,7 +2662,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 927556b
-    created: "2025-02-14T16:53:04.744044348Z"
+    created: "2025-02-14T17:21:57.633025681Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2664,7 +2680,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9cfc5d0
-    created: "2025-02-14T16:53:04.742755691Z"
+    created: "2025-02-14T17:21:57.631749229Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2682,7 +2698,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 571ca44
-    created: "2025-02-14T16:53:04.745287541Z"
+    created: "2025-02-14T17:21:57.634963837Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2700,7 +2716,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b12d51b
-    created: "2025-02-14T16:53:04.741445133Z"
+    created: "2025-02-14T17:21:57.630441609Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2718,7 +2734,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d2630aa
-    created: "2025-02-14T16:53:04.740208483Z"
+    created: "2025-02-14T17:21:57.629184294Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2736,7 +2752,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 277e903
-    created: "2025-02-14T16:53:04.738797557Z"
+    created: "2025-02-14T17:21:57.627715884Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2754,7 +2770,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 23d94f6
-    created: "2025-02-14T16:53:04.736634606Z"
+    created: "2025-02-14T17:21:57.624902354Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2772,7 +2788,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 2a34366
-    created: "2025-02-14T16:53:04.734127152Z"
+    created: "2025-02-14T17:21:57.623564588Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2790,7 +2806,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 69d83ab
-    created: "2025-02-14T16:53:04.730782003Z"
+    created: "2025-02-14T17:21:57.622255045Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2808,7 +2824,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3bff178
-    created: "2025-02-14T16:53:04.729009532Z"
+    created: "2025-02-14T17:21:57.620958456Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2826,7 +2842,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3bff178
-    created: "2025-02-14T16:53:04.719581281Z"
+    created: "2025-02-14T17:21:57.611449673Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2844,7 +2860,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 2c1db4e
-    created: "2025-02-14T16:53:04.718369467Z"
+    created: "2025-02-14T17:21:57.610216492Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2862,7 +2878,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c8fc765
-    created: "2025-02-14T16:53:04.717185936Z"
+    created: "2025-02-14T17:21:57.609012506Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2880,7 +2896,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6a9b4ce
-    created: "2025-02-14T16:53:04.716001604Z"
+    created: "2025-02-14T17:21:57.607801407Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2898,7 +2914,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9f33a21
-    created: "2025-02-14T16:53:04.714803055Z"
+    created: "2025-02-14T17:21:57.605768205Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2916,7 +2932,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c1bb840
-    created: "2025-02-14T16:53:04.726638543Z"
+    created: "2025-02-14T17:21:57.618498767Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2934,7 +2950,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 198e5f5
-    created: "2025-02-14T16:53:04.725433392Z"
+    created: "2025-02-14T17:21:57.617298247Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2952,7 +2968,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4088a57
-    created: "2025-02-14T16:53:04.724214805Z"
+    created: "2025-02-14T17:21:57.616071298Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2970,7 +2986,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 05bc459
-    created: "2025-02-14T16:53:04.722223968Z"
+    created: "2025-02-14T17:21:57.613807262Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -2988,7 +3004,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 21f07ad
-    created: "2025-02-14T16:53:04.720778157Z"
+    created: "2025-02-14T17:21:57.612626659Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3006,7 +3022,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 72796ae
-    created: "2025-02-14T16:53:04.7278254Z"
+    created: "2025-02-14T17:21:57.619676735Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3024,7 +3040,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9e20617
-    created: "2025-02-14T16:53:04.713527312Z"
+    created: "2025-02-14T17:21:57.604495721Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3042,7 +3058,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 94f07d5
-    created: "2025-02-14T16:53:04.711377294Z"
+    created: "2025-02-14T17:21:57.603336879Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3060,7 +3076,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9aca5a0
-    created: "2025-02-14T16:53:04.710102072Z"
+    created: "2025-02-14T17:21:57.602146328Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3078,7 +3094,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c5d19a5
-    created: "2025-02-14T16:53:04.708754615Z"
+    created: "2025-02-14T17:21:57.600980613Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3096,7 +3112,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1e3751d
-    created: "2025-02-14T16:53:04.707554513Z"
+    created: "2025-02-14T17:21:57.599780894Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3114,7 +3130,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 54de16f
-    created: "2025-02-14T16:53:04.706364931Z"
+    created: "2025-02-14T17:21:57.598592868Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3132,7 +3148,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0381fdf
-    created: "2025-02-14T16:53:04.705136416Z"
+    created: "2025-02-14T17:21:57.597353977Z"
     dependencies:
     - condition: ui.enabled
       name: reloader
@@ -3150,7 +3166,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ec6f4d1
-    created: "2025-02-14T16:53:04.703514666Z"
+    created: "2025-02-14T17:21:57.595181902Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3167,7 +3183,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ec6f4d1
-    created: "2025-02-14T16:53:04.701039051Z"
+    created: "2025-02-14T17:21:57.594036505Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3184,7 +3200,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ea591ac
-    created: "2025-02-14T16:53:04.699882501Z"
+    created: "2025-02-14T17:21:57.592873174Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3201,7 +3217,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4e52006
-    created: "2025-02-14T16:53:04.698700082Z"
+    created: "2025-02-14T17:21:57.591729731Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3218,7 +3234,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 657c71f
-    created: "2025-02-14T16:53:04.697541067Z"
+    created: "2025-02-14T17:21:57.590568935Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3235,7 +3251,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8e5d18c
-    created: "2025-02-14T16:53:04.696388654Z"
+    created: "2025-02-14T17:21:57.589374327Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3252,7 +3268,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 657c71f
-    created: "2025-02-14T16:53:04.695226202Z"
+    created: "2025-02-14T17:21:57.588118684Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3269,7 +3285,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f274700
-    created: "2025-02-14T16:53:04.69405242Z"
+    created: "2025-02-14T17:21:57.586001796Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3286,7 +3302,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 5e61acb
-    created: "2025-02-14T16:53:04.692109241Z"
+    created: "2025-02-14T17:21:57.584843766Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3303,7 +3319,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 5e61acb
-    created: "2025-02-14T16:53:04.690741546Z"
+    created: "2025-02-14T17:21:57.583687759Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3320,7 +3336,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 16b168e
-    created: "2025-02-14T16:53:04.689556954Z"
+    created: "2025-02-14T17:21:57.58252506Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3337,7 +3353,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 53bd6af
-    created: "2025-02-14T16:53:04.688376047Z"
+    created: "2025-02-14T17:21:57.581353514Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3354,7 +3370,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 05cf9ba
-    created: "2025-02-14T16:53:04.68171309Z"
+    created: "2025-02-14T17:21:57.574535053Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3371,7 +3387,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 825c5ab
-    created: "2025-02-14T16:53:04.680115867Z"
+    created: "2025-02-14T17:21:57.572929778Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3388,7 +3404,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: aabc175
-    created: "2025-02-14T16:53:04.678930362Z"
+    created: "2025-02-14T17:21:57.571749796Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3405,7 +3421,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 708dfc5
-    created: "2025-02-14T16:53:04.677387921Z"
+    created: "2025-02-14T17:21:57.570151163Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3422,7 +3438,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 706effc
-    created: "2025-02-14T16:53:04.676239275Z"
+    created: "2025-02-14T17:21:57.568925697Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3439,7 +3455,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 26bcabf
-    created: "2025-02-14T16:53:04.675053149Z"
+    created: "2025-02-14T17:21:57.566723177Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3456,7 +3472,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 429f033
-    created: "2025-02-14T16:53:04.672888165Z"
+    created: "2025-02-14T17:21:57.565509383Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3473,7 +3489,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 922e533
-    created: "2025-02-14T16:53:04.671748746Z"
+    created: "2025-02-14T17:21:57.564143014Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3490,7 +3506,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4f69c25
-    created: "2025-02-14T16:53:04.670593809Z"
+    created: "2025-02-14T17:21:57.562946732Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3507,7 +3523,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d8dd1f6
-    created: "2025-02-14T16:53:04.669435716Z"
+    created: "2025-02-14T17:21:57.561735472Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3524,7 +3540,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f8951d2
-    created: "2025-02-14T16:53:04.687216121Z"
+    created: "2025-02-14T17:21:57.58011326Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: e666f13c8e2ab251bd2233ce8b0b5d5bd42b1709cb50560ea43199d98b507aff
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3537,7 +3553,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 10aeb8a
-    created: "2025-02-14T16:53:04.686765188Z"
+    created: "2025-02-14T17:21:57.57965778Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: dac20a9e14bfde980fae69c6057b11070258b16b307d5545571e503902b7f5da
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3550,7 +3566,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6af1203
-    created: "2025-02-14T16:53:04.686279722Z"
+    created: "2025-02-14T17:21:57.579161605Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 414d07427a64ba3a1b87b3f0edd667c5fb99821cc0e3444236ad06f7b6d73613
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3563,7 +3579,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6fae8e0
-    created: "2025-02-14T16:53:04.685820514Z"
+    created: "2025-02-14T17:21:57.578688542Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: ea9fae876db1c795f71d546c3db1d029b2c1b732919a363cfac4d09d71978871
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3576,7 +3592,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 88e9d31
-    created: "2025-02-14T16:53:04.685301564Z"
+    created: "2025-02-14T17:21:57.577860096Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: f7628ec345bb1b6cf41f8704d5f32e307bcb1e07cd040beb60e646da53c6116a
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3589,7 +3605,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: de4324c
-    created: "2025-02-14T16:53:04.68478548Z"
+    created: "2025-02-14T17:21:57.576762068Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 40a906b2f80c5e1dfb5f3ff9d18e121038d2483a09ba1adc1eac41933e74f5f1
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3602,7 +3618,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b4f6224
-    created: "2025-02-14T16:53:04.683679063Z"
+    created: "2025-02-14T17:21:57.576244823Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: d5b004ea6a63c11b7155b0f5dac15a6b7e435b6b91b7357069add915cf6b7803
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3615,7 +3631,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c98720d
-    created: "2025-02-14T16:53:04.682985567Z"
+    created: "2025-02-14T17:21:57.575822194Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: cbb48237dd88ffd02c98b8833977a87b41ce20a1ccd15405681d1ba0c3d3b041
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3628,7 +3644,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c780e64
-    created: "2025-02-14T16:53:04.682549243Z"
+    created: "2025-02-14T17:21:57.575399455Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 8f475c3debe4ab16889bc6813fbfc3dc86d867baa07ea70dc30b5f807af9ccf4
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3641,7 +3657,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 2b59b72
-    created: "2025-02-14T16:53:04.682130721Z"
+    created: "2025-02-14T17:21:57.57495722Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: b61d5ebfc76d4b0b8671866f6f32724ea6a99fe4ca734bb3fa9b4414f367a410
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3654,7 +3670,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 26d13c6
-    created: "2025-02-14T16:53:04.680529319Z"
+    created: "2025-02-14T17:21:57.573363868Z"
     description: A Helm chart for Kubernetes
     digest: 0072e9259e687e9eac83ec2beb82d63b57e899bf351ad1dcfd7b70c9c6504df2
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3665,7 +3681,7 @@ entries:
     version: 0.1.0-dev.0.main.15
   - apiVersion: v2
     appVersion: 06123ef
-    created: "2025-02-14T16:53:04.677776016Z"
+    created: "2025-02-14T17:21:57.570557702Z"
     description: A Helm chart for Kubernetes
     digest: c9d195507a58577e591caee7423f6b71ca61ce32056e54d02cb062633d6e6aeb
     name: azimuth-llm
@@ -3675,7 +3691,7 @@ entries:
     version: 0.1.0-dev.0.main.14
   - apiVersion: v2
     appVersion: 7b1d77f
-    created: "2025-02-14T16:53:04.668289524Z"
+    created: "2025-02-14T17:21:57.560424947Z"
     description: A Helm chart for Kubernetes
     digest: 9b9be6c4d49664fb511ff4be50c38011235b9da3e7889e754d4de0be2d4fa1a8
     name: azimuth-llm
@@ -3687,7 +3703,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "6876068"
-    created: "2025-02-14T16:53:04.667927138Z"
+    created: "2025-02-14T17:21:57.55995501Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 276791ce2cc97491da309101c58d18c90d893923430da8acbbbf19263f1cf555
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3700,7 +3716,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ebe84b0
-    created: "2025-02-14T16:53:04.667479391Z"
+    created: "2025-02-14T17:21:57.55949403Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 088889b853ff401112decbeb30fb69bfab5201403ab37cb753376ae6d900edd9
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3713,7 +3729,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: fae060a
-    created: "2025-02-14T16:53:04.667054537Z"
+    created: "2025-02-14T17:21:57.558988336Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 2b99e9c99646a7c2d420d791dbd28846c5f7b89a4911733407502d5a9a6022a7
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3726,7 +3742,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9dc5974
-    created: "2025-02-14T16:53:04.666585301Z"
+    created: "2025-02-14T17:21:57.558287367Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 54af0b81fdae81ed6e62f55d0b180948b5950bf64186f988b12a233d30584538
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3739,7 +3755,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f307fb0
-    created: "2025-02-14T16:53:04.666067634Z"
+    created: "2025-02-14T17:21:57.557156256Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: ac5de347ea8e43da4269e0b6a9e9d58611c2a92d2ff2b410e6fee6e18bed13f3
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3752,7 +3768,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 5ab0b79
-    created: "2025-02-14T16:53:04.66480779Z"
+    created: "2025-02-14T17:21:57.556544956Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 5f9c076dd7c288ddf2f087d60498e21bbcee2627cc2895772b4643f0e779bc8a
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3765,7 +3781,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 61a5ed1
-    created: "2025-02-14T16:53:04.664239589Z"
+    created: "2025-02-14T17:21:57.556008635Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 0c070f0b7bf225d2d5a57ab12d2307b7d5cecbc8bebba641a286c8bdfa044eb9
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3778,7 +3794,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c98f044
-    created: "2025-02-14T16:53:04.663759452Z"
+    created: "2025-02-14T17:21:57.55552891Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: c77d7fe9810e4b242663d711810a15a163e4f238ac32bda1d401b0d1aa88f887
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3791,7 +3807,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ea4d8b1
-    created: "2025-02-14T16:53:04.663235403Z"
+    created: "2025-02-14T17:21:57.555020812Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 056e8cf5a80c4ecdbe778d958d791ebe2f25280fde4707511a7dc421282015b6
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -3804,7 +3820,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: cae797d
-    created: "2025-02-14T16:53:04.662384924Z"
+    created: "2025-02-14T17:21:57.554513315Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3821,7 +3837,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4ac47ec
-    created: "2025-02-14T16:53:04.661159986Z"
+    created: "2025-02-14T17:21:57.552888854Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3838,7 +3854,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 92c514b
-    created: "2025-02-14T16:53:04.659999989Z"
+    created: "2025-02-14T17:21:57.551655754Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3855,7 +3871,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 76381f3
-    created: "2025-02-14T16:53:04.658805517Z"
+    created: "2025-02-14T17:21:57.55045844Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3872,7 +3888,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 69c7917
-    created: "2025-02-14T16:53:04.657581962Z"
+    created: "2025-02-14T17:21:57.549216964Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3889,7 +3905,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0ea1cb7
-    created: "2025-02-14T16:53:04.656363255Z"
+    created: "2025-02-14T17:21:57.546941821Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3906,7 +3922,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 60d48cd
-    created: "2025-02-14T16:53:04.654248715Z"
+    created: "2025-02-14T17:21:57.545753774Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3923,7 +3939,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 71a0666
-    created: "2025-02-14T16:53:04.649757044Z"
+    created: "2025-02-14T17:21:57.54117961Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3940,7 +3956,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: c89cced
-    created: "2025-02-14T16:53:04.648547194Z"
+    created: "2025-02-14T17:21:57.54002198Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3957,7 +3973,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: abbe371
-    created: "2025-02-14T16:53:04.647305725Z"
+    created: "2025-02-14T17:21:57.538823574Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3974,7 +3990,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "0712391"
-    created: "2025-02-14T16:53:04.644983978Z"
+    created: "2025-02-14T17:21:57.536743433Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -3991,7 +4007,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 617fbe7
-    created: "2025-02-14T16:53:04.643837867Z"
+    created: "2025-02-14T17:21:57.535524379Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4008,7 +4024,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8265f68
-    created: "2025-02-14T16:53:04.642668993Z"
+    created: "2025-02-14T17:21:57.534334579Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4025,7 +4041,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: a9aff5d
-    created: "2025-02-14T16:53:04.641447762Z"
+    created: "2025-02-14T17:21:57.533106277Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4042,7 +4058,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 9078b71
-    created: "2025-02-14T16:53:04.640262508Z"
+    created: "2025-02-14T17:21:57.531881392Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4059,7 +4075,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 00cd3c5
-    created: "2025-02-14T16:53:04.639026879Z"
+    created: "2025-02-14T17:21:57.530394718Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4076,7 +4092,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 7afcdc1
-    created: "2025-02-14T16:53:04.637805528Z"
+    created: "2025-02-14T17:21:57.528150862Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4093,7 +4109,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 34b62c9
-    created: "2025-02-14T16:53:04.636480573Z"
+    created: "2025-02-14T17:21:57.52694889Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4110,7 +4126,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6ebf771
-    created: "2025-02-14T16:53:04.633897918Z"
+    created: "2025-02-14T17:21:57.525751966Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4127,7 +4143,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: fcf9ee0
-    created: "2025-02-14T16:53:04.632711352Z"
+    created: "2025-02-14T17:21:57.524549202Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4144,7 +4160,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 484c7a9
-    created: "2025-02-14T16:53:04.631531678Z"
+    created: "2025-02-14T17:21:57.523334937Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4161,7 +4177,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 7891f95
-    created: "2025-02-14T16:53:04.63032303Z"
+    created: "2025-02-14T17:21:57.522078102Z"
     dependencies:
     - name: reloader
       repository: https://stakater.github.io/stakater-charts
@@ -4178,7 +4194,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 984c499
-    created: "2025-02-14T16:53:04.653099819Z"
+    created: "2025-02-14T17:21:57.544584513Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 5616a13ec0dfbdb638a8f5ab28e841aeda57302e95a3360f51ddde8572d921db
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4191,7 +4207,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 364727f
-    created: "2025-02-14T16:53:04.652611907Z"
+    created: "2025-02-14T17:21:57.544091814Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: d1514761596fbf8fba46011b40014ad6258007d26a80f11245af5df055d5eef5
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4204,7 +4220,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: bbee9dc
-    created: "2025-02-14T16:53:04.652146648Z"
+    created: "2025-02-14T17:21:57.543617108Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 53c523aa311a8718404182021d0ce0da397c318cab897c1c7803d4916c643dcb
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4217,7 +4233,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "1884414"
-    created: "2025-02-14T16:53:04.651675568Z"
+    created: "2025-02-14T17:21:57.54311952Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: fae42a4986753c6e0b23b25b97df4207c6f94ba5b30cfacc8cea5050077fbe55
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4230,7 +4246,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "0077e58"
-    created: "2025-02-14T16:53:04.651190662Z"
+    created: "2025-02-14T17:21:57.542649312Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: ae68b3a1e733e3584b1400a9510764925c0b55c371e8ad72b967cbb294bc672b
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4243,7 +4259,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f826205
-    created: "2025-02-14T16:53:04.650715795Z"
+    created: "2025-02-14T17:21:57.542158547Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 312ff148e553eb2b10915d1ae01f6d9bfe0cc87fcb3c1588b499ce782b62d1b5
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4256,7 +4272,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d4fa50d
-    created: "2025-02-14T16:53:04.650234106Z"
+    created: "2025-02-14T17:21:57.541676217Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 954c4a123943a72a42d3247425e5b2f6dfa0ded6c66b5278ae0cd1fdb91631c2
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4269,7 +4285,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0a63578
-    created: "2025-02-14T16:53:04.629079908Z"
+    created: "2025-02-14T17:21:57.519600126Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: bd12a73a1fd0944d1bc2e7bcd0634460fa89b61fa0903f759e59be46c995dcce
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4282,7 +4298,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "8678876"
-    created: "2025-02-14T16:53:04.628566418Z"
+    created: "2025-02-14T17:21:57.519103199Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 3be51e86fb94e0141287f6294fc33606cd06178605f99509543238a06c1dd464
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4295,7 +4311,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 41da9f2
-    created: "2025-02-14T16:53:04.628073848Z"
+    created: "2025-02-14T17:21:57.518604399Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 1f203f40f4bc7daff78f81739fef49c0a065d91dc1925e61f4513c5dd63568a1
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4308,7 +4324,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f100e38
-    created: "2025-02-14T16:53:04.627525905Z"
+    created: "2025-02-14T17:21:57.518081233Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: 01f954bb206c59ad29be9d5ab08e3f17e037216eb368679efc3d779cde375a8e
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4321,7 +4337,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b956136
-    created: "2025-02-14T16:53:04.62700407Z"
+    created: "2025-02-14T17:21:57.517578735Z"
     description: HuggingFace LLM model serving along with a simple web interface.
     digest: f8352466a17f3865100da5045cd51b7770f3291ab39c26a73ea56a1b6d976a0b
     icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
@@ -4334,8 +4350,29 @@ entries:
   - annotations:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
+    appVersion: "0235060"
+    created: "2025-02-14T17:21:57.882526473Z"
+    dependencies:
+    - name: azimuth-llm
+      repository: file://../azimuth-llm/
+      version: '>=0-0'
+    description: HuggingFace large language model serving along with a simple web
+      interface.
+    digest: 64dd49ce71f878c1732778c099f7c1c640d7325994d287a0ccbb75e05ab0c4e9
+    icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
+    maintainers:
+    - email: scott@stackhpc.com
+      name: Scott Davidson
+    name: azimuth-llm-chat
+    type: application
+    urls:
+    - azimuth-llm-chat-0.7.2-dev.0.main.18.tgz
+    version: 0.7.2-dev.0.main.18
+  - annotations:
+      azimuth.stackhpc.com/label: HuggingFace LLM
+    apiVersion: v2
     appVersion: c785811
-    created: "2025-02-14T16:53:04.993528055Z"
+    created: "2025-02-14T17:21:57.88164092Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4356,7 +4393,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "99031e1"
-    created: "2025-02-14T16:53:04.992656658Z"
+    created: "2025-02-14T17:21:57.880757071Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4377,7 +4414,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f40288e
-    created: "2025-02-14T16:53:04.991745556Z"
+    created: "2025-02-14T17:21:57.87987184Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4398,7 +4435,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d8b04aa
-    created: "2025-02-14T16:53:04.995304173Z"
+    created: "2025-02-14T17:21:57.884308778Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4419,7 +4456,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6f1af67
-    created: "2025-02-14T16:53:04.994422025Z"
+    created: "2025-02-14T17:21:57.883431692Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4440,7 +4477,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 3a00c21
-    created: "2025-02-14T16:53:04.990842579Z"
+    created: "2025-02-14T17:21:57.878958636Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4461,7 +4498,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "5707145"
-    created: "2025-02-14T16:53:04.989897473Z"
+    created: "2025-02-14T17:21:57.878030264Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4482,7 +4519,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1dc58bb
-    created: "2025-02-14T16:53:04.987896243Z"
+    created: "2025-02-14T17:21:57.876153861Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4503,7 +4540,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4c87b5c
-    created: "2025-02-14T16:53:04.98612267Z"
+    created: "2025-02-14T17:21:57.87437903Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4524,7 +4561,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1e2d15b
-    created: "2025-02-14T16:53:04.987013614Z"
+    created: "2025-02-14T17:21:57.875268079Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4545,7 +4582,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "4781392"
-    created: "2025-02-14T16:53:04.98522887Z"
+    created: "2025-02-14T17:21:57.873463652Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4566,7 +4603,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: a5d8e8c
-    created: "2025-02-14T16:53:04.984330933Z"
+    created: "2025-02-14T17:21:57.872484786Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4587,7 +4624,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d1c75dc
-    created: "2025-02-14T16:53:04.983318772Z"
+    created: "2025-02-14T17:21:57.871492615Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4608,7 +4645,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:04.981846051Z"
+    created: "2025-02-14T17:21:57.870133098Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4629,7 +4666,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:04.979457429Z"
+    created: "2025-02-14T17:21:57.867236566Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4650,7 +4687,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f8d17e0
-    created: "2025-02-14T16:53:04.980347872Z"
+    created: "2025-02-14T17:21:57.868154398Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4671,7 +4708,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: ee82539
-    created: "2025-02-14T16:53:04.977694635Z"
+    created: "2025-02-14T17:21:57.86547534Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4692,7 +4729,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 6e61451
-    created: "2025-02-14T16:53:04.978571614Z"
+    created: "2025-02-14T17:21:57.866366703Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4713,7 +4750,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: b66f7d6
-    created: "2025-02-14T16:53:04.976808119Z"
+    created: "2025-02-14T17:21:57.864588124Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4734,7 +4771,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 701ad09
-    created: "2025-02-14T16:53:04.975904952Z"
+    created: "2025-02-14T17:21:57.863677225Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4755,7 +4792,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: af6310f
-    created: "2025-02-14T16:53:04.974996435Z"
+    created: "2025-02-14T17:21:57.862626044Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4776,7 +4813,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 701ad09
-    created: "2025-02-14T16:53:04.973930193Z"
+    created: "2025-02-14T17:21:57.86157865Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4797,7 +4834,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 8a7ca4e
-    created: "2025-02-14T16:53:04.971911013Z"
+    created: "2025-02-14T17:21:57.85972423Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4818,7 +4855,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 60e6ace
-    created: "2025-02-14T16:53:04.971002195Z"
+    created: "2025-02-14T17:21:57.858840621Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4839,7 +4876,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 60e6ace
-    created: "2025-02-14T16:53:04.970111782Z"
+    created: "2025-02-14T17:21:57.857955239Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4860,7 +4897,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 52ce858
-    created: "2025-02-14T16:53:04.969228031Z"
+    created: "2025-02-14T17:21:57.857072823Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4881,7 +4918,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d188f1f
-    created: "2025-02-14T16:53:04.968332598Z"
+    created: "2025-02-14T17:21:57.856173685Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4902,7 +4939,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: d188f1f
-    created: "2025-02-14T16:53:04.964759021Z"
+    created: "2025-02-14T17:21:57.853454432Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4923,7 +4960,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 352aac3
-    created: "2025-02-14T16:53:04.963870812Z"
+    created: "2025-02-14T17:21:57.852541519Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4944,7 +4981,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1beee32
-    created: "2025-02-14T16:53:04.9629921Z"
+    created: "2025-02-14T17:21:57.851659793Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4965,7 +5002,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 7cb2d79
-    created: "2025-02-14T16:53:04.962114771Z"
+    created: "2025-02-14T17:21:57.850776025Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -4986,7 +5023,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 0483b04
-    created: "2025-02-14T16:53:04.961205202Z"
+    created: "2025-02-14T17:21:57.849874322Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5007,7 +5044,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "7981450"
-    created: "2025-02-14T16:53:04.960313126Z"
+    created: "2025-02-14T17:21:57.84897774Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5028,7 +5065,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 4e28893
-    created: "2025-02-14T16:53:04.959440716Z"
+    created: "2025-02-14T17:21:57.848053515Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5049,7 +5086,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: "8165494"
-    created: "2025-02-14T16:53:04.958557486Z"
+    created: "2025-02-14T17:21:57.846131379Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5070,7 +5107,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 15af623
-    created: "2025-02-14T16:53:04.957668034Z"
+    created: "2025-02-14T17:21:57.845271064Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5091,7 +5128,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: de6018e
-    created: "2025-02-14T16:53:04.955859797Z"
+    created: "2025-02-14T17:21:57.844435605Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5112,7 +5149,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: f26524c
-    created: "2025-02-14T16:53:04.955000461Z"
+    created: "2025-02-14T17:21:57.84358044Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5133,7 +5170,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 11e7bfd
-    created: "2025-02-14T16:53:04.954120077Z"
+    created: "2025-02-14T17:21:57.842685771Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5154,7 +5191,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: e69bac1
-    created: "2025-02-14T16:53:04.953232719Z"
+    created: "2025-02-14T17:21:57.84177953Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5175,7 +5212,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 1d7defa
-    created: "2025-02-14T16:53:04.95233392Z"
+    created: "2025-02-14T17:21:57.840810292Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5196,7 +5233,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace LLM
     apiVersion: v2
     appVersion: 2aaf1c3
-    created: "2025-02-14T16:53:04.96733261Z"
+    created: "2025-02-14T17:21:57.8552439Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5217,7 +5254,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: 5920cfa
-    created: "2025-02-14T16:53:04.949843918Z"
+    created: "2025-02-14T17:21:57.837894231Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5237,7 +5274,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: 7f91553
-    created: "2025-02-14T16:53:04.948584065Z"
+    created: "2025-02-14T17:21:57.837043343Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5257,7 +5294,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: d0d1fd0
-    created: "2025-02-14T16:53:04.947741451Z"
+    created: "2025-02-14T17:21:57.836185984Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5277,7 +5314,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: df7b8eb
-    created: "2025-02-14T16:53:04.951426565Z"
+    created: "2025-02-14T17:21:57.83875122Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5297,7 +5334,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: f3d5544
-    created: "2025-02-14T16:53:04.946888397Z"
+    created: "2025-02-14T17:21:57.835337491Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5317,7 +5354,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: ef83288
-    created: "2025-02-14T16:53:04.946029733Z"
+    created: "2025-02-14T17:21:57.834471395Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5337,7 +5374,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: f5c8654
-    created: "2025-02-14T16:53:04.945170919Z"
+    created: "2025-02-14T17:21:57.833555696Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5357,7 +5394,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: 456b221
-    created: "2025-02-14T16:53:04.944305202Z"
+    created: "2025-02-14T17:21:57.832590305Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5377,7 +5414,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: "6020434"
-    created: "2025-02-14T16:53:04.943418445Z"
+    created: "2025-02-14T17:21:57.830617412Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5397,7 +5434,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: "00972e2"
-    created: "2025-02-14T16:53:04.942509748Z"
+    created: "2025-02-14T17:21:57.82974246Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5417,8 +5454,29 @@ entries:
   - annotations:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
+    appVersion: "0235060"
+    created: "2025-02-14T17:21:57.935999619Z"
+    dependencies:
+    - name: azimuth-llm
+      repository: file://../azimuth-llm/
+      version: '>=0-0'
+    description: HuggingFace vision model serving along with a simple web interface
+      for image analysis.
+    digest: 1335a6fb283bff7d454567025e8179a05e0d7d5f4aa426ffebb4d58cae917b25
+    icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
+    maintainers:
+    - email: scott@stackhpc.com
+      name: Scott Davidson
+    name: azimuth-llm-image-analysis
+    type: application
+    urls:
+    - azimuth-llm-image-analysis-0.7.2-dev.0.main.18.tgz
+    version: 0.7.2-dev.0.main.18
+  - annotations:
+      azimuth.stackhpc.com/label: HuggingFace VLM
+    apiVersion: v2
     appVersion: c785811
-    created: "2025-02-14T16:53:05.047497925Z"
+    created: "2025-02-14T17:21:57.935104489Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5439,7 +5497,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: "99031e1"
-    created: "2025-02-14T16:53:05.046562688Z"
+    created: "2025-02-14T17:21:57.934224277Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5460,7 +5518,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: f40288e
-    created: "2025-02-14T16:53:05.04501766Z"
+    created: "2025-02-14T17:21:57.933348393Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5481,7 +5539,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: d8b04aa
-    created: "2025-02-14T16:53:05.049282018Z"
+    created: "2025-02-14T17:21:57.938812661Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5502,7 +5560,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 6f1af67
-    created: "2025-02-14T16:53:05.048401723Z"
+    created: "2025-02-14T17:21:57.937110842Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5523,7 +5581,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 3a00c21
-    created: "2025-02-14T16:53:05.043854457Z"
+    created: "2025-02-14T17:21:57.932452321Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5544,7 +5602,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: "5707145"
-    created: "2025-02-14T16:53:05.042933817Z"
+    created: "2025-02-14T17:21:57.931547262Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5565,7 +5623,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 1dc58bb
-    created: "2025-02-14T16:53:05.042030289Z"
+    created: "2025-02-14T17:21:57.930596048Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5586,7 +5644,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 4c87b5c
-    created: "2025-02-14T16:53:05.040228884Z"
+    created: "2025-02-14T17:21:57.927909445Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5607,7 +5665,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 1e2d15b
-    created: "2025-02-14T16:53:05.041130889Z"
+    created: "2025-02-14T17:21:57.928906365Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5628,7 +5686,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: "4781392"
-    created: "2025-02-14T16:53:05.039303846Z"
+    created: "2025-02-14T17:21:57.927004056Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5649,7 +5707,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: a5d8e8c
-    created: "2025-02-14T16:53:05.038346448Z"
+    created: "2025-02-14T17:21:57.926114426Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5670,7 +5728,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: d1c75dc
-    created: "2025-02-14T16:53:05.036373172Z"
+    created: "2025-02-14T17:21:57.925230547Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5691,7 +5749,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:05.035443425Z"
+    created: "2025-02-14T17:21:57.924339755Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5712,7 +5770,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:05.033663971Z"
+    created: "2025-02-14T17:21:57.921870629Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5733,7 +5791,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: f8d17e0
-    created: "2025-02-14T16:53:05.034553813Z"
+    created: "2025-02-14T17:21:57.923417204Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5754,7 +5812,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: ee82539
-    created: "2025-02-14T16:53:05.031874778Z"
+    created: "2025-02-14T17:21:57.919826154Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5775,7 +5833,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 6e61451
-    created: "2025-02-14T16:53:05.032774479Z"
+    created: "2025-02-14T17:21:57.920717687Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5796,7 +5854,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: b66f7d6
-    created: "2025-02-14T16:53:05.030958958Z"
+    created: "2025-02-14T17:21:57.918936394Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5817,7 +5875,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 701ad09
-    created: "2025-02-14T16:53:05.029769125Z"
+    created: "2025-02-14T17:21:57.918035473Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5838,7 +5896,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: af6310f
-    created: "2025-02-14T16:53:05.028110556Z"
+    created: "2025-02-14T17:21:57.91714961Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5859,7 +5917,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 701ad09
-    created: "2025-02-14T16:53:05.027209293Z"
+    created: "2025-02-14T17:21:57.916231107Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5880,7 +5938,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 8a7ca4e
-    created: "2025-02-14T16:53:05.026314682Z"
+    created: "2025-02-14T17:21:57.915287115Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5901,7 +5959,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 60e6ace
-    created: "2025-02-14T16:53:05.025422044Z"
+    created: "2025-02-14T17:21:57.913480533Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5922,7 +5980,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 60e6ace
-    created: "2025-02-14T16:53:05.024542581Z"
+    created: "2025-02-14T17:21:57.912604488Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5943,7 +6001,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 52ce858
-    created: "2025-02-14T16:53:05.023639624Z"
+    created: "2025-02-14T17:21:57.911729496Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5964,7 +6022,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: d188f1f
-    created: "2025-02-14T16:53:05.02274321Z"
+    created: "2025-02-14T17:21:57.910852179Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -5985,7 +6043,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: d188f1f
-    created: "2025-02-14T16:53:05.019976361Z"
+    created: "2025-02-14T17:21:57.909109808Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6006,7 +6064,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 352aac3
-    created: "2025-02-14T16:53:05.019097961Z"
+    created: "2025-02-14T17:21:57.908185884Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6027,7 +6085,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 1beee32
-    created: "2025-02-14T16:53:05.018226453Z"
+    created: "2025-02-14T17:21:57.906362398Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6048,7 +6106,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 7cb2d79
-    created: "2025-02-14T16:53:05.017344755Z"
+    created: "2025-02-14T17:21:57.90549549Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6069,7 +6127,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 0483b04
-    created: "2025-02-14T16:53:05.01645857Z"
+    created: "2025-02-14T17:21:57.90461612Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6090,7 +6148,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: "7981450"
-    created: "2025-02-14T16:53:05.015568487Z"
+    created: "2025-02-14T17:21:57.903733553Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6111,7 +6169,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 4e28893
-    created: "2025-02-14T16:53:05.014604797Z"
+    created: "2025-02-14T17:21:57.902844324Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6132,7 +6190,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: "8165494"
-    created: "2025-02-14T16:53:05.012564275Z"
+    created: "2025-02-14T17:21:57.901974962Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6153,7 +6211,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 15af623
-    created: "2025-02-14T16:53:05.011506559Z"
+    created: "2025-02-14T17:21:57.901067819Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6174,7 +6232,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: de6018e
-    created: "2025-02-14T16:53:05.010673984Z"
+    created: "2025-02-14T17:21:57.89925127Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6195,7 +6253,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: f26524c
-    created: "2025-02-14T16:53:05.009828634Z"
+    created: "2025-02-14T17:21:57.898421632Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6216,7 +6274,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 11e7bfd
-    created: "2025-02-14T16:53:05.008949612Z"
+    created: "2025-02-14T17:21:57.897547071Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6237,7 +6295,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: e69bac1
-    created: "2025-02-14T16:53:05.008074488Z"
+    created: "2025-02-14T17:21:57.896673601Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6258,7 +6316,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 1d7defa
-    created: "2025-02-14T16:53:05.007196488Z"
+    created: "2025-02-14T17:21:57.895792667Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6279,7 +6337,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace VLM
     apiVersion: v2
     appVersion: 2aaf1c3
-    created: "2025-02-14T16:53:05.021751747Z"
+    created: "2025-02-14T17:21:57.909969452Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6300,7 +6358,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: 5920cfa
-    created: "2025-02-14T16:53:05.005388751Z"
+    created: "2025-02-14T17:21:57.894065154Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6320,7 +6378,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: 7f91553
-    created: "2025-02-14T16:53:05.003500414Z"
+    created: "2025-02-14T17:21:57.893166277Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6340,7 +6398,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: d0d1fd0
-    created: "2025-02-14T16:53:05.002657299Z"
+    created: "2025-02-14T17:21:57.891376969Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6360,7 +6418,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: df7b8eb
-    created: "2025-02-14T16:53:05.006316925Z"
+    created: "2025-02-14T17:21:57.894929487Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6380,7 +6438,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: f3d5544
-    created: "2025-02-14T16:53:05.00178525Z"
+    created: "2025-02-14T17:21:57.890533926Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6400,7 +6458,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: ef83288
-    created: "2025-02-14T16:53:05.000931155Z"
+    created: "2025-02-14T17:21:57.889685683Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6420,7 +6478,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: f5c8654
-    created: "2025-02-14T16:53:05.000063414Z"
+    created: "2025-02-14T17:21:57.888831019Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6440,7 +6498,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: 456b221
-    created: "2025-02-14T16:53:04.999162801Z"
+    created: "2025-02-14T17:21:57.887975833Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6460,7 +6518,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: "6020434"
-    created: "2025-02-14T16:53:04.998097732Z"
+    created: "2025-02-14T17:21:57.887106922Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6480,7 +6538,7 @@ entries:
       azimuth.stackhpc.com/label: HuggingFace Image Analysis
     apiVersion: v2
     appVersion: "00972e2"
-    created: "2025-02-14T16:53:04.996160323Z"
+    created: "2025-02-14T17:21:57.886110843Z"
     dependencies:
     - name: azimuth-llm
       repository: file://../azimuth-llm/
@@ -6498,8 +6556,18 @@ entries:
     version: 0.5.5-dev.0.feat-image-models.45
   flux-image-gen:
   - apiVersion: v2
+    appVersion: "0235060"
+    created: "2025-02-14T17:21:57.947279588Z"
+    description: A Helm chart for running Flux image generation models on Kubernetes
+    digest: 740062496bf56e3dc857df1ca5cc02b2b7df6022a40e9abe4a36a6087c8a9523
+    name: flux-image-gen
+    type: application
+    urls:
+    - flux-image-gen-0.7.2-dev.0.main.18.tgz
+    version: 0.7.2-dev.0.main.18
+  - apiVersion: v2
     appVersion: c785811
-    created: "2025-02-14T16:53:05.057262194Z"
+    created: "2025-02-14T17:21:57.94662655Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: ac1f5ecdcdd1e49d274c91b1d5d999f229825a7b2bc66296cdd7585c204d577a
     name: flux-image-gen
@@ -6509,7 +6577,7 @@ entries:
     version: 0.7.2-dev.0.main.16
   - apiVersion: v2
     appVersion: "99031e1"
-    created: "2025-02-14T16:53:05.056842089Z"
+    created: "2025-02-14T17:21:57.945657502Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 6d5eed4ede19d33ca1da201fbccb6fa51bb6ba814fdf0ef89aa86924d46e069c
     name: flux-image-gen
@@ -6519,7 +6587,7 @@ entries:
     version: 0.7.2-dev.0.main.14
   - apiVersion: v2
     appVersion: f40288e
-    created: "2025-02-14T16:53:05.056401486Z"
+    created: "2025-02-14T17:21:57.945006567Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 112312746a76415b6ded289952cb75e1756410a746b839ec9355258d27c48bf2
     name: flux-image-gen
@@ -6529,7 +6597,7 @@ entries:
     version: 0.7.2-dev.0.main.12
   - apiVersion: v2
     appVersion: d8b04aa
-    created: "2025-02-14T16:53:05.058111591Z"
+    created: "2025-02-14T17:21:57.948179597Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 69d1953f47e0e8b0dbbca78f1360312bf3e770977b0537714d0526132dd8191f
     name: flux-image-gen
@@ -6539,7 +6607,7 @@ entries:
     version: 0.7.2-dev.0.main.4
   - apiVersion: v2
     appVersion: 6f1af67
-    created: "2025-02-14T16:53:05.057696055Z"
+    created: "2025-02-14T17:21:57.947750537Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: d914e7b73dd9a91bbb2ddbf612e7ad041a379131f61f7baeac8b45260efc9ca6
     name: flux-image-gen
@@ -6549,7 +6617,7 @@ entries:
     version: 0.7.2-dev.0.main.3
   - apiVersion: v2
     appVersion: 3a00c21
-    created: "2025-02-14T16:53:05.055977314Z"
+    created: "2025-02-14T17:21:57.944587736Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 188a5eec6d1dfe10808c9fa56e983edd15fb48ac1665e113ddbedaa1ed48f85f
     name: flux-image-gen
@@ -6559,7 +6627,7 @@ entries:
     version: 0.7.2-dev.0.main.1
   - apiVersion: v2
     appVersion: "5707145"
-    created: "2025-02-14T16:53:05.055528175Z"
+    created: "2025-02-14T17:21:57.944149027Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 119691c02d280381d5a38c876fca87dfc0cd27f29ed7fe2852e923af70f3dcb1
     name: flux-image-gen
@@ -6569,7 +6637,7 @@ entries:
     version: 0.7.2-dev.0.llmparams-defaults.15
   - apiVersion: v2
     appVersion: 1dc58bb
-    created: "2025-02-14T16:53:05.055095346Z"
+    created: "2025-02-14T17:21:57.943722542Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 1b8f1c5903128fc514e900ec2e619671ca1ec7df5f290147409667a17ffcde6c
     name: flux-image-gen
@@ -6579,7 +6647,7 @@ entries:
     version: 0.7.2-dev.0.feat-gradio-v5.9
   - apiVersion: v2
     appVersion: 4c87b5c
-    created: "2025-02-14T16:53:05.053896668Z"
+    created: "2025-02-14T17:21:57.942828394Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 210f9656811588210b0fb2e1475bb09b72b13489b99d8cafccdfd6dd167c0c78
     name: flux-image-gen
@@ -6589,7 +6657,7 @@ entries:
     version: 0.7.2-dev.0.dependabot-github-actions-github-actions-533f70582a.10
   - apiVersion: v2
     appVersion: 1e2d15b
-    created: "2025-02-14T16:53:05.054613236Z"
+    created: "2025-02-14T17:21:57.943248487Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: cc9d43d6f05392851975723a2c5def35855b6c41ab78114be6bf85ef87a806ba
     name: flux-image-gen
@@ -6599,7 +6667,7 @@ entries:
     version: 0.7.2-dev.0.dependabot-github-actions-github-actions-533f70582a.2
   - apiVersion: v2
     appVersion: "4781392"
-    created: "2025-02-14T16:53:05.052728045Z"
+    created: "2025-02-14T17:21:57.942405114Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: d8ea4ddb2651a460c63bb6ab8fa79fd99ca5d4159b01a16c2fec2bf6f3b01728
     name: flux-image-gen
@@ -6609,7 +6677,7 @@ entries:
     version: 0.7.2-dev.0.cpu-vllm-ci.15
   - apiVersion: v2
     appVersion: a5d8e8c
-    created: "2025-02-14T16:53:05.05229156Z"
+    created: "2025-02-14T17:21:57.941970362Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 0039f0e5ad74a4e118738f4d1c46b108f9ccd2dd63854d9cb5d096c20ab5b9df
     name: flux-image-gen
@@ -6619,7 +6687,7 @@ entries:
     version: 0.7.1
   - apiVersion: v2
     appVersion: d1c75dc
-    created: "2025-02-14T16:53:05.051876845Z"
+    created: "2025-02-14T17:21:57.94154547Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 604ed5ac6da44170a52a8393c884b9686ac695f38b72df8ae6c8b29c1f75fbaf
     name: flux-image-gen
@@ -6629,7 +6697,7 @@ entries:
     version: 0.7.1-dev.0.fix-gradio-version.1
   - apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:05.051439328Z"
+    created: "2025-02-14T17:21:57.941097705Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: a636a797dfb85d4fc0e739247fd2d8d488a8d9229bfbfb5c1a25e755d4b611af
     name: flux-image-gen
@@ -6639,7 +6707,7 @@ entries:
     version: 0.7.0
   - apiVersion: v2
     appVersion: 4fd698c
-    created: "2025-02-14T16:53:05.050582688Z"
+    created: "2025-02-14T17:21:57.94022735Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 01a23bafa70f424f5b5325cd352620c245e9acad7ec4daa8da88e81c96c09b30
     name: flux-image-gen
@@ -6649,7 +6717,7 @@ entries:
     version: 0.6.3-dev.0.main.24
   - apiVersion: v2
     appVersion: f8d17e0
-    created: "2025-02-14T16:53:05.051018562Z"
+    created: "2025-02-14T17:21:57.940669636Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 8cd01c2d897fb5eea8896ec2a24dbffbda714497190f51782df9b8a3d0444e01
     name: flux-image-gen
@@ -6659,7 +6727,7 @@ entries:
     version: 0.6.3-dev.0.main.9
   - apiVersion: v2
     appVersion: ee82539
-    created: "2025-02-14T16:53:05.049735455Z"
+    created: "2025-02-14T17:21:57.939309678Z"
     description: A Helm chart for running Flux image generation models on Kubernetes
     digest: 47e11aaca4b33c70cfc53eb476993a7e9fc95c482642e05b6d15d5496a0a7cfb
     name: flux-image-gen
@@ -6669,7 +6737,7 @@ entries:
     version: 0.6.3-dev.0.feat-flux-image-gen.22
   - apiVersion: v2
     appVersion: 6e61451
-    created: "2025-02-14T16:53:05.050163425Z"
+    created: "2025-02-14T17:21:57.93979845Z"
     description: A Helm chart for Kubernetes
     digest: 654466e094ef67f680794474626e7eea50d7b5ddec56c884969e990735da3453
     name: flux-image-gen
@@ -6677,4 +6745,4 @@ entries:
     urls:
     - flux-image-gen-0.6.3-dev.0.feat-flux-image-gen.3.tgz
     version: 0.6.3-dev.0.feat-flux-image-gen.3
-generated: "2025-02-14T16:53:04.626347463Z"
+generated: "2025-02-14T17:21:57.516893627Z"
