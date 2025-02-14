@@ -7,7 +7,6 @@ metadata:
     {{- include "azimuth-llm.labels" . | nindent 4 }}
 data:
   overrides.yml: |
-    {{/* Set backend URL to in-cluster API address */}}
     {{- $_ := set .Values.ui.appSettings "backend_url" (printf "http://%s-api.%s.svc" .Release.Name .Release.Namespace) }}
     {{- .Values.ui.appSettings | toYaml | nindent 4 }}
 {{- end -}}
