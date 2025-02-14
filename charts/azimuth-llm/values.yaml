@@ -33,7 +33,9 @@ api:
   enabled: true
   # Container image config
   image:
-    repository: vllm/vllm-openai
+    # Defaults to vllm/vllm-openai when api.gpus > 0
+    # or ghrc.io/stackhpc/vllm-cpu when api.gpus == 0
+    repository:
     version: v0.6.3
   monitoring:
     enabled: true

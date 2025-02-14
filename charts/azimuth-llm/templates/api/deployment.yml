@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-api
-        image: {{ printf "%s:%s" .Values.api.image.repository .Values.api.image.version }}
+        {{ $imageRepo := .Values.api.image.repository | default (ternary "ghcr.io/stackhpc/vllm-cpu" "vllm-project/vllm" (eq (.Values.api.gpus | int) 0)) -}}
+        image: {{ printf "%s:%s" $imageRepo .Values.api.image.version }}
         ports:
         - name: api
           containerPort: 8000
@@ -29,7 +30,7 @@ spec:
         args:
           - --model
           - {{ .Values.huggingface.model }}
-          {{- include "azimuth-llm.chatTemplate" . | nindent 10 }}
+          {{- include "azimuth-llm.chatTemplate" . | nindent 10 -}}
           {{- if .Values.api.modelMaxContextLength -}}
           - --max-model-len
           - {{ .Values.api.modelMaxContextLength | quote }}
@@ -41,7 +42,7 @@ spec:
           {{- if .Values.api.extraArgs -}}
           {{- .Values.api.extraArgs | toYaml | nindent 10 }}
           {{- end -}}
-        {{- if .Values.huggingface.secretName }}
+        {{- if .Values.huggingface.secretName -}}
         envFrom:
         - secretRef:
             name: {{ .Values.huggingface.secretName }}
