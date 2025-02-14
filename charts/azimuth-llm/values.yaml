@@ -56,8 +56,7 @@ api:
     hostPath:
       path: /tmp/llm/huggingface-cache
   # Number of gpus to requests for each api pod instance
-  # NOTE: This must be in the range 1 <= value <= N, where
-  # 'N' is the number of GPUs available in a single
+  # NOTE: This must be less than the number of GPUs available in a single
   # worker node on the target Kubernetes cluster.
   # NOTE: According to the vLLM docs found here
   # https://docs.vllm.ai/en/latest/serving/distributed_serving.html
