@@ -1,5 +1,6 @@
 # This is intended to test the default chart values
-# as close as possible given the lack of GPU
+# as close as possible given the constraints of running
+# inside a Kind cluster within a CI runner
 huggingface:
   # Use the smallest LLM we can find
   model: HuggingFaceTB/SmolLM2-135M-Instruct
