@@ -24,7 +24,6 @@ spec:
         - http://{{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
         {{- end }}
       restartPolicy: Never
-  # Allow plenty of retries since downloading
-  # model weights can take a long time.
-  backoffLimit: 20
+  # Handle retries within gradio-test-client script
+  backoffLimit: 1
 {{- end -}}
