@@ -1,7 +1,7 @@
 azimuth-llm:
   huggingface:
     # Use the smallest vision model we can find
-    model: HuggingFaceTB/SmolVLM-256M-Instruct
+    model: &model HuggingFaceTB/SmolVLM-256M-Instruct
   api:
     # CI Kind cluster doesn't have kube-prometheus-stack
     monitoring:
@@ -13,6 +13,7 @@ azimuth-llm:
       zenith:
         enabled: false
     appSettings:
+      model_name: *model
       # Verify that we can set non-standard LLM params
       llm_params:
         max_tokens: 101
