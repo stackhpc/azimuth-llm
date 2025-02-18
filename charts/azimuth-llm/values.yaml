@@ -33,15 +33,16 @@ api:
   enabled: true
   # Container image config
   image:
-    repository: vllm/vllm-openai
-    version: v0.6.3
+    # Defaults to vllm/vllm-openai when api.gpus > 0
+    # or ghrc.io/stackhpc/vllm-cpu when api.gpus == 0
+    repository:
+    version: v0.7.2
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
   replicas: 1
   # Service config
   service:
-    name: llm-backend
     type: ClusterIP
     zenith:
       enabled: false
@@ -73,8 +74,7 @@ api:
     hostPath:
       path: /tmp/llm/huggingface-cache
   # Number of gpus to requests for each api pod instance
-  # NOTE: This must be in the range 1 <= value <= N, where
-  # 'N' is the number of GPUs available in a single
+  # NOTE: This must be less than the number of GPUs available in a single
   # worker node on the target Kubernetes cluster.
   # NOTE: According to the vLLM docs found here
   # https://docs.vllm.ai/en/latest/serving/distributed_serving.html
@@ -83,8 +83,12 @@ api:
   gpus: 1
   # The update strategy to use for the deployment
   # See https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
-  # NOTE: Changing this has implications for the number of additional GPU worker nodes required
-  # to preform a rolling zero-downtime update
+  # NOTE: The following RollingUpdate strategy offers a zero-downtime update but requires additional GPU worker nodes.
+  # updateStrategy:
+  #   type: RollingUpdate
+  #   rollingUpdate:
+  #     maxSurge: 1
+  #     maxUnavailable: 0
   updateStrategy:
     type: Recreate
   # The value of the vLLM backend's max_model_len argument (if the model's default is not suitable)
@@ -122,7 +126,6 @@ ui:
         - Arial
   # Service config
   service:
-    name: web-app
     type: ClusterIP
     zenith:
       enabled: true

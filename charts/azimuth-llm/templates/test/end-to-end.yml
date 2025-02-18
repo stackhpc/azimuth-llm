@@ -10,10 +10,9 @@ spec:
     spec:
       containers:
       - name: gradio-client-test
-        {{- /*
-          Use the chat image since we know this contains the gradio_client package
-        */}}
-        image: {{ printf "ghcr.io/stackhpc/azimuth-llm-chat-ui:%s" (default .Chart.AppVersion .Values.ui.image.tag) }}
+        # Assumes that one of the in-repo Gradio apps is used and that
+        # the app includes a `gradio-test-client.py` script.
+        image: {{ printf "%s:%s" .Values.ui.image.repository (default .Chart.AppVersion .Values.ui.image.tag) }}
         imagePullPolicy: IfNotPresent
         command:
         - python
@@ -21,10 +20,13 @@ spec:
         {{- if .Values.ui.ingress.enabled }}
         - {{ .Values.ingress.host }}{{ .Values.ui.ingress.path }}
         {{- else }}
-        - http://{{ .Values.ui.service.name }}.{{ .Release.Namespace }}.svc
+        - http://{{ .Release.Name }}-ui.{{ .Release.Namespace }}.svc
         {{- end }}
+        env:
+        - name: PYTHONUNBUFFERED
+          value: "1"
+        tty: true # Make stdout from python visible in k8s logs
       restartPolicy: Never
-  # Allow plenty of retries since downloading
-  # model weights can take a long time.
-  backoffLimit: 10
+  # Handle retries within gradio-test-client script
+  backoffLimit: 1
 {{- end -}}

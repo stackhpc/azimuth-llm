@@ -1,0 +1,18 @@
+# This is intended to test the default chart values
+# as close as possible given the constraints of running
+# inside a Kind cluster within a CI runner
+huggingface:
+  # Use the smallest LLM we can find
+  model: &model HuggingFaceTB/SmolLM2-135M-Instruct
+api:
+  # CI Kind cluster doesn't have kube-prometheus-stack
+  monitoring:
+    enabled: false
+  # No GPUs in CI runners
+  gpus: 0
+ui:
+  service:
+    zenith:
+      enabled: false
+  appSettings:
+    model_name: *model
