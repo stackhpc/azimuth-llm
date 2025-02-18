@@ -10,6 +10,8 @@ spec:
     spec:
       containers:
       - name: gradio-client-test
+        # Assumes that one of the in-repo Gradio apps is used and that
+        # the app includes a `gradio-test-client.py` script.
         image: {{ printf "%s:%s" .Values.ui.image.repository (default .Chart.AppVersion .Values.ui.image.tag) }}
         imagePullPolicy: IfNotPresent
         command:
