@@ -17,11 +17,7 @@ spec:
         command:
         - python
         - gradio-client-test.py
-        {{- if .Values.ingress.ui.enabled }}
-        - {{ .Values.ingress.host }}{{ .Values.ingress.ui.path }}
-        {{- else }}
         - http://{{ .Release.Name }}-ui.{{ .Release.Namespace }}.svc
-        {{- end }}
         env:
         - name: PYTHONUNBUFFERED
           value: "1"
