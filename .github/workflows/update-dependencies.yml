@@ -37,13 +37,26 @@ jobs:
           export OLD_VLLM_TAG=$(yq '.api.image.version' $CHART_VALUES)
           export NEW_VLLM_TAG=$(curl -s https://api.github.com/repos/vllm-project/vllm/releases/latest | jq .tag_name | sed s/\"//g)
           if [[ $OLD_VLLM_TAG != $NEW_VLLM_TAG ]]; then
+
             # Set new release tag output
             echo new_vllm_tag=$NEW_VLLM_TAG >> $GITHUB_OUTPUT
+
             # Update yaml in-place with yq
             yq e -i '.api.image.version = strenv(NEW_VLLM_TAG)' $CHART_VALUES
+
+            # Replace version default in Azimuth UI schema files
             # Can't use in-place editing with jq
-            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' charts/azimuth-llm/values.schema.json > charts/azimuth-llm/values.schema.json.new
-            mv charts/azimuth-llm/values.schema.json{.new,}
+            FILENAME=charts/azimuth-llm/values.schema.json
+            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' $FILENAME > $FILENAME.new
+            mv $FILENAME{.new,}
+
+            FILENAME=charts/azimuth-chat/values.schema.json
+            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' $FILENAME > $FILENAME.new
+            mv $FILENAME{.new,}
+
+            FILENAME=charts/azimuth-image-analysis/values.schema.json
+            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' $FILENAME > $FILENAME.new
+            mv $FILENAME{.new,}
           fi
 
       - name: Create Pull Request
