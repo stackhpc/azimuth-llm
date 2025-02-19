@@ -66,18 +66,26 @@ def inference(latest_message, history):
     global BACKEND_INITIALISED
 
     try:
+        context = []
         if INCLUDE_SYSTEM_PROMPT:
-            context = [SystemMessage(content=settings.model_instruction)]
+            context.append(SystemMessage(content=settings.model_instruction))
         else:
-            context = []
-        for i, (human, ai) in enumerate(history):
-            if not INCLUDE_SYSTEM_PROMPT and i == 0:
-                # Mimic system prompt by prepending it to first human message
-                human = f"{settings.model_instruction}\n\n{human}"
-            context.append(HumanMessage(content=human))
-            context.append(AIMessage(content=(ai or "")))
+            # Mimic system prompt by prepending it to first human message
+            history[0]['content'] = f"{settings.model_instruction}\n\n{history[0]['content']}"
+
+        for message in history:
+            role = message['role']
+            content = message['content']
+            if role == "user":
+                context.append(HumanMessage(content=content))
+            else:
+                if role != "assistant":
+                    log.warn(f"Message role {role} converted to 'assistant'")
+                    context.append(AIMessage(content=(content or "")))
         context.append(HumanMessage(content=latest_message))
+
         log.debug("Chat context: %s", context)
+
 
         response = ""
         for chunk in llm.stream(context):
@@ -109,6 +117,7 @@ def inference(latest_message, history):
             raise gr.Error(ui_message)
 
     except openai.APIConnectionError as err:
+        log.info(err)
         if not BACKEND_INITIALISED:
             log.info("Backend API not yet ready")
             gr.Info(
