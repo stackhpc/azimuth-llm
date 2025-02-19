@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-api
-        {{ $imageRepo := .Values.api.image.repository | default (ternary "ghcr.io/stackhpc/vllm-cpu" "vllm-project/vllm-openai" (eq (.Values.api.gpus | int) 0)) -}}
+        {{ $imageRepo := .Values.api.image.repository | default (ternary "ghcr.io/stackhpc/vllm-cpu" "vllm/vllm-openai" (eq (.Values.api.gpus | int) 0)) -}}
         image: {{ printf "%s:%s" $imageRepo .Values.api.image.version }}
         ports:
         - name: api
