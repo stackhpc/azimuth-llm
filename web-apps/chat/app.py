@@ -81,7 +81,7 @@ def inference(latest_message, history):
             else:
                 if role != "assistant":
                     log.warn(f"Message role {role} converted to 'assistant'")
-                    context.append(AIMessage(content=(content or "")))
+                context.append(AIMessage(content=(content or "")))
         context.append(HumanMessage(content=latest_message))
 
         log.debug("Chat context: %s", context)
