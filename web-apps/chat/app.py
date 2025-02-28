@@ -163,13 +163,15 @@ with gr.Blocks(
     fill_height=True,
     theme=theme,
     css=settings.css_overrides,
-    js=settings.custom_javascript
+    js=settings.custom_javascript,
+    title=settings.page_title,
 ) as demo:
-     gr.ChatInterface(
+    gr.Markdown('# ' + settings.page_title)
+    gr.ChatInterface(
         inference_wrapper,
         type="messages",
-        title=settings.page_title,
         analytics_enabled=False,
+        chatbot=gr.Chatbot(show_copy_button=True),
     )
 
 
