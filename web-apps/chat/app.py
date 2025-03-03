@@ -64,6 +64,7 @@ llm = ChatOpenAI(
 def inference(latest_message, history):
     # Allow mutating global variable
     global BACKEND_INITIALISED
+    log.debug("Inference request received with history: %s", history)
 
     try:
         context = []
@@ -81,13 +82,14 @@ def inference(latest_message, history):
             else:
                 if role != "assistant":
                     log.warn(f"Message role {role} converted to 'assistant'")
-                    context.append(AIMessage(content=(content or "")))
+                context.append(AIMessage(content=(content or "")))
         context.append(HumanMessage(content=latest_message))
 
         log.debug("Chat context: %s", context)
 
-
         response = ""
+        thinking = False
+
         for chunk in llm.stream(context):
             # If this is our first successful response from the backend
             # then update the status variable to allow future error messages
@@ -95,12 +97,17 @@ def inference(latest_message, history):
             if not BACKEND_INITIALISED and len(response) > 0:
                 BACKEND_INITIALISED = True
 
-            # NOTE(sd109): For some reason the '>' character breaks the UI
-            # so we need to escape it here.
-            # response += chunk.content.replace('>', '\>')
-            # UPDATE(sd109): Above bug seems to have been fixed as of gradio 4.15.0
-            # but keeping this note here incase we enounter it again
-            response += chunk.content
+            # The "think" tags mark the chatbot's reasoning. Remove the content
+            # and replace with "Thinking..." until the closing tag is found.
+            content = chunk.content
+            if '<think>' in content or thinking:
+                thinking = True
+                response = "Thinking..."
+                if '</think>' in content:
+                    thinking = False
+                    response = ""
+            else:
+                response += content
             yield response
 
     # Handle any API errors here. See OpenAI Python client for possible error responses
@@ -163,13 +170,20 @@ with gr.Blocks(
     fill_height=True,
     theme=theme,
     css=settings.css_overrides,
-    js=settings.custom_javascript
+    js=settings.custom_javascript,
+    title=settings.page_title,
 ) as demo:
-     gr.ChatInterface(
+    gr.Markdown('# ' + settings.page_title)
+    gr.ChatInterface(
         inference_wrapper,
         type="messages",
-        title=settings.page_title,
         analytics_enabled=False,
+        chatbot=gr.Chatbot(
+            show_copy_button=True,
+            height="75vh",
+            resizable=True,
+            sanitize_html=True,
+            ),
     )
 
 
