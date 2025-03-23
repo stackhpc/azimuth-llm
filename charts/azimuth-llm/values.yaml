@@ -36,7 +36,7 @@ api:
     # Defaults to vllm/vllm-openai when api.gpus > 0
     # or ghrc.io/stackhpc/vllm-cpu when api.gpus == 0
     repository:
-    version: v0.7.2
+    version: v0.8.1
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
@@ -56,8 +56,8 @@ api:
     enabled: false
     className: ""
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
     hosts:
       - host: chart-example.local
         paths:
@@ -67,7 +67,6 @@ api:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
-
   # Config for huggingface model cache volume
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:
@@ -104,7 +103,7 @@ ui:
   # Container image config
   image:
     repository: ghcr.io/stackhpc/azimuth-llm-chat-ui
-    tag:  # Defaults to chart's appVersion
+    tag: # Defaults to chart's appVersion
     imagePullPolicy:
   # The settings to be passed to the frontend web app.
   # Format depends on the chosen UI image above. For each of the UIs
@@ -139,8 +138,8 @@ ui:
     enabled: false
     className: ""
     annotations: {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
     hosts:
       - host: chart-example.local
         paths:
