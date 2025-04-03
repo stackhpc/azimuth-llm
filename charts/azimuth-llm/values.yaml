@@ -102,6 +102,12 @@ api:
   tolerations: []
   # Pod affinities
   affinity: {}
+  # Pod disruption budget config
+  pdb:
+    enabled: false
+    # Only one of these should be set
+    # minAvailable:
+    # maxUnavailable:
 
 # Configuration for the frontend web interface
 ui:
@@ -167,3 +173,9 @@ ui:
   tolerations: []
   # Pod affinities
   affinity: {}
+  # Pod disruption budget config
+  pdb:
+    enabled: false
+    # Only one of these should be set
+    # minAvailable:
+    # maxUnavailable:

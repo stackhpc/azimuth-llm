@@ -1,0 +1,19 @@
+{{- if .Values.api.pdb.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Release.Name }}-api
+  labels:
+    {{- include "azimuth-llm.labels" . | nindent 4 }}
+spec:
+  {{- with .Values.api.pdb.minAvailable }}
+  minAvailable: {{ . }}
+  {{- end }}
+  {{- with .Values.api.pdb.maxUnavailable }}
+  maxUnavailable: {{ . }}
+  {{- end }}
+  selector:
+    matchLabels:
+      {{- include "azimuth-llm.api-selectorLabels" . | nindent 6 }}
+{{- end }}
