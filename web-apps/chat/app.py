@@ -183,6 +183,10 @@ with gr.Blocks(
             height="75vh",
             resizable=True,
             sanitize_html=True,
+            latex_delimiters=[
+                {"left": "$$", "right": "$$", "display": True },
+                {"left": "$", "right": "$", "display": False }
+                ],
             ),
     )
 
