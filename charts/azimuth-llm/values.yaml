@@ -67,7 +67,6 @@ api:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
-
   # Config for huggingface model cache volume
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:
@@ -97,6 +96,13 @@ api:
   # Extra args to supply to the vLLM backend, see
   # https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#command-line-arguments-for-the-server
   extraArgs: []
+  # Pod node selector labels
+  nodeSelector: {}
+  # Pod tolerations
+  tolerations: []
+  # Pod affinities
+  affinity: {}
+
 # Configuration for the frontend web interface
 ui:
   # Toggles installation of the gradio web UI
@@ -155,3 +161,9 @@ ui:
     rollingUpdate:
       maxSurge: 25%
       maxUnavailable: 25%
+  # Pod node selector labels
+  nodeSelector: {}
+  # Pod tolerations
+  tolerations: []
+  # Pod affinities
+  affinity: {}
