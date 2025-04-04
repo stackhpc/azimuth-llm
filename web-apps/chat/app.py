@@ -116,7 +116,10 @@ def inference(latest_message, history):
     except openai.BadRequestError as err:
         log.error("Received BadRequestError from backend API: %s", err)
         message = err.response.json()["message"]
-        if INCLUDE_SYSTEM_PROMPT:
+        if 'Please reduce the length of the messages.' in message:
+            log.info("Backend API returned a message length error")
+            raise gr.Error(f"{message} You must reload the page to continue.", duration=30)
+        elif INCLUDE_SYSTEM_PROMPT:
             raise PossibleSystemPromptException()
         else:
             # In this case we've already tried without system prompt and still hit a bad request error so something else must be wrong
