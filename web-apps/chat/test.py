@@ -1,10 +1,11 @@
+import openai
 import os
 import unittest
-from unittest.mock import patch
 
-# from unittest import mock
 from gradio_client import Client
-from app import build_chat_context, SystemMessage, HumanMessage, AIMessage
+from unittest.mock import patch, MagicMock
+from langchain.schema import HumanMessage, AIMessage, SystemMessage
+from app import build_chat_context, inference, PossibleSystemPromptException, BACKEND_INITIALISED
 
 url = os.environ.get("GRADIO_URL", "http://localhost:7860")
 client = Client(url)
@@ -57,6 +58,43 @@ class TestSuite(unittest.TestCase):
         self.assertEqual(context[1].content, "Hi! How can I help you?")
         self.assertIsInstance(context[2], HumanMessage)
         self.assertEqual(context[2].content, latest_message)
+
+    # inference function tests
+    @patch("app.settings")
+    @patch("app.llm")
+    @patch("app.log")
+    def test_inference_success(self, mock_logger, mock_llm, mock_settings):
+        mock_llm.stream.return_value = [MagicMock(content="response_chunk")]
+
+        mock_settings.model_instruction = "You are a very helpful assistant."
+        latest_message = "Why don't we drink horse milk?"
+        history = [
+            {"role": "user", 'metadata': None, "content": "Hi there!", 'options': None},
+            {"role": "assistant", 'metadata': None, "content": "Hi! How can I help you?", 'options': None},
+        ]
+
+        responses = list(inference(latest_message, history))
+
+        self.assertEqual(responses, ["response_chunk"])
+        mock_logger.debug.assert_any_call("Inference request received with history: %s", history)
+
+    @patch("app.llm")
+    @patch("app.build_chat_context")
+    def test_inference_thinking_tags(self, mock_build_chat_context, mock_llm):
+        mock_build_chat_context.return_value = ["mock_context"]
+        mock_llm.stream.return_value = [
+            MagicMock(content="<think>"),
+            MagicMock(content="processing"),
+            MagicMock(content="</think>"),
+            MagicMock(content="final response"),
+        ]
+        latest_message = "Hello"
+        history = []
+
+        responses = list(inference(latest_message, history))
+
+        self.assertEqual(responses, ["Thinking...", "Thinking...", "", "final response"])
+
 
 if __name__ == "__main__":
     unittest.main()
