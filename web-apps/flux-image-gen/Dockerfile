@@ -7,6 +7,8 @@ RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 ARG DIR=flux-image-gen
 
 COPY $DIR/requirements.txt requirements.txt
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir --upgrade setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY purge-google-fonts.sh .
