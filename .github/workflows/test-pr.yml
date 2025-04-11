@@ -35,6 +35,8 @@ jobs:
   chart_validation:
     needs: [publish_images]
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
     env:
       CLUSTER_NAME: chart-testing
       RELEASE_NAME: ci-test
@@ -44,27 +46,48 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
+      - name: Debug 1
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
+
       - name: Run Gradio app tests
         run: |
           ./test-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }})
         working-directory: web-apps
 
+      - name: Debug 2
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
+
       - name: Install Helm
         uses: azure/setup-helm@v4
+
+      - name: Debug 3
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
 
       - name: Run base chart templating with default values
         run: helm template ci-test charts/azimuth-llm
 
+      - name: Debug 4
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
+
       - name: Set up chart testing
         uses: helm/chart-testing-action@v2
 
+      - name: Debug 5
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
+
       - name: Run chart linting
         run: ct lint --config ct.yaml
+
+      - name: Debug 6
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
 
       - name: Create Kind Cluster
         uses: helm/kind-action@v1
         with:
           cluster_name: ${{ env.CLUSTER_NAME }}
+
+      - name: Debug 7
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
 
       # NOTE(scott): Since the local Chart.yaml uses "appVersion: latest" and this
       # only gets overwritten to the correct commit SHA during Helm chart build,
@@ -73,6 +96,9 @@ jobs:
       - name: Load tagged container images into kind cluster
         run: ./kind-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }}) ${{ env.CLUSTER_NAME }}
         working-directory: web-apps
+
+      - name: Debug 8
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
 
       # https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
       # Each chart/ci/*-values.yaml file will be treated as a separate test case with it's
