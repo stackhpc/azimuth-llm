@@ -35,6 +35,14 @@ jobs:
   chart_validation:
     needs: [publish_images]
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        chart:
+          - azimuth-llm-chat
+          - azimuth-llm-image-analysis
+          - azimuth-llm
+          - flux-image-gen
     env:
       CLUSTER_NAME: chart-testing
       RELEASE_NAME: ci-test
@@ -59,12 +67,15 @@ jobs:
         uses: helm/chart-testing-action@v2
 
       - name: Run chart linting
-        run: ct lint --config ct.yaml
+        run: ct lint --config ct.yaml --charts charts/${{ matrix.chart }}
 
       - name: Create Kind Cluster
         uses: helm/kind-action@v1
         with:
           cluster_name: ${{ env.CLUSTER_NAME }}
+
+      - name: Debug
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
 
       # NOTE(scott): Since the local Chart.yaml uses "appVersion: latest" and this
       # only gets overwritten to the correct commit SHA during Helm chart build,
@@ -74,11 +85,14 @@ jobs:
         run: ./kind-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }}) ${{ env.CLUSTER_NAME }}
         working-directory: web-apps
 
+      - name: Debug
+        run: (df -h && docker ps -a && docker image ls && kubectl get nodes && kubectl get pods --all-namespaces) || true
+
       # https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
       # Each chart/ci/*-values.yaml file will be treated as a separate test case with it's
       # own helm install/test process.
       - name: Run chart install and test
-        run: ct install --config ct.yaml
+        run: ct install --config ct.yaml --charts charts/${{ matrix.chart }}
 
   publish_charts:
     needs: [chart_validation]
