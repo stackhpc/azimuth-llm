@@ -36,7 +36,7 @@ api:
     # Defaults to vllm/vllm-openai when api.gpus > 0
     # or ghrc.io/stackhpc/vllm-cpu when api.gpus == 0
     repository:
-    version: v0.7.3
+    version: v0.8.4
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
@@ -108,7 +108,6 @@ api:
     # Only one of these should be set
     # minAvailable:
     # maxUnavailable:
-
 # Configuration for the frontend web interface
 ui:
   # Toggles installation of the gradio web UI
