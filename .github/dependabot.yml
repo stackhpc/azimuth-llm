@@ -40,7 +40,7 @@ updates:
   # https://github.com/dependabot/dependabot-core/issues/2237
   # enable-beta-ecosystems: true
   - package-ecosystem: "helm" 
-    directory: "/charts" # Location of package manifests
+    directory: "/charts/azimuth-llm" # Location of package manifests
     schedule:
       # Check for new versions daily
       interval: weekly
