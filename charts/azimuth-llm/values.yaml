@@ -33,7 +33,8 @@ api:
   enabled: true
   # Container image config
   image:
-    # Defaults to vllm/vllm-openai when api.gpus > 0
+    # Defaults to vllm/vllm-openai when api.gpus > 0,
+    # ghrc.io/stackhpc/vllm-xpu when api.gpus > 0 and intelXPUsEnabled is true,
     # or ghrc.io/stackhpc/vllm-cpu when api.gpus == 0
     repository:
     version: v0.8.5.post1
@@ -80,6 +81,8 @@ api:
   # distributed / multi-GPU support should be available, though it
   # has not been tested against this app.
   gpus: 1
+  # Whether pods should request Intel GPUs as opposed to the default Nvidia GPUs
+  intelXPUsEnabled: false
   # The update strategy to use for the deployment
   # See https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#updating-a-deployment
   # NOTE: The following RollingUpdate strategy offers a zero-downtime update but requires additional GPU worker nodes.
