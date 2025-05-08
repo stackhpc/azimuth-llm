@@ -44,6 +44,18 @@ jobs:
         with:
           ref: ${{ github.sha }}
 
+      - name: Reconfigure docker storage
+        # GitHub runners have an extra 75G disk at /mnt
+        # so we use this to avoid hitting capacity issues
+        # with kind cluster + vLLM container images
+        run: |
+          sudo bash -c 'cat > /etc/docker/daemon.json' << EOF
+          {
+            "data-root": "/mnt/docker-data"
+          }
+          EOF
+          sudo systemctl restart docker
+
       - name: Run Gradio app tests
         run: |
           ./test-images.sh $(git rev-parse --short ${{ github.sha }})
@@ -73,13 +85,6 @@ jobs:
       - name: Load tagged container images into kind cluster
         run: ./kind-images.sh $(git rev-parse --short ${{ github.sha }}) ${{ env.CLUSTER_NAME }}
         working-directory: web-apps
-
-      # TODO: Remove me
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
-        with:
-          ## limits ssh access and adds the ssh public key for the user which triggered the workflow
-          limit-access-to-actor: true
 
       # https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
       # Each chart/ci/*-values.yaml file will be treated as a separate test case with it's
