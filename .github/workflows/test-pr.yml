@@ -29,7 +29,13 @@ jobs:
     needs: [fail_on_remote]
     uses: ./.github/workflows/build-push-images.yml
     with:
-      ref: ${{ github.event.pull_request.head.sha }}
+      ref: ${{ github.sha }}
+    secrets: inherit
+
+  publish_charts:
+    uses: ./.github/workflows/build-push-charts.yml
+    with:
+      ref: ${{ github.sha }}
     secrets: inherit
 
   chart_validation:
@@ -42,11 +48,23 @@ jobs:
       - name: Checkout the repo
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.sha }}
+          ref: ${{ github.sha }}
+
+      - name: Reconfigure docker storage
+        # GitHub runners have an extra 75G disk at /mnt
+        # so we use this to avoid hitting capacity issues
+        # with kind cluster + vLLM container images
+        run: |
+          sudo bash -c 'cat > /etc/docker/daemon.json' << EOF
+          {
+            "data-root": "/mnt/docker-data"
+          }
+          EOF
+          sudo systemctl restart docker
 
       - name: Run Gradio app tests
         run: |
-          ./test-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }})
+          ./test-images.sh $(git rev-parse --short ${{ github.sha }})
         working-directory: web-apps
 
       - name: Install Helm
@@ -71,7 +89,7 @@ jobs:
       # we need to pull these published images and load them into the kind cluster
       # with the tag correct tag.
       - name: Load tagged container images into kind cluster
-        run: ./kind-images.sh $(git rev-parse --short ${{ github.event.pull_request.head.sha }}) ${{ env.CLUSTER_NAME }}
+        run: ./kind-images.sh $(git rev-parse --short ${{ github.sha }}) ${{ env.CLUSTER_NAME }}
         working-directory: web-apps
 
       # https://github.com/helm/charts/blob/master/test/README.md#providing-custom-test-values
@@ -79,10 +97,3 @@ jobs:
       # own helm install/test process.
       - name: Run chart install and test
         run: ct install --config ct.yaml
-
-  publish_charts:
-    needs: [chart_validation]
-    uses: ./.github/workflows/build-push-charts.yml
-    with:
-      ref: ${{ github.event.pull_request.head.sha }}
-    secrets: inherit
