@@ -33,6 +33,7 @@ jobs:
     secrets: inherit
 
   publish_charts:
+    needs: [fail_on_remote]
     uses: ./.github/workflows/build-push-charts.yml
     with:
       ref: ${{ github.sha }}
