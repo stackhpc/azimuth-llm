@@ -13,5 +13,37 @@ updates:
     groups:
       github-actions:
         patterns: ["*"]
+    labels:
+      - automation
+      - gha-update
 
-# TODO: Add web app python dependencies
+  # Automatically propose PRs for Python dependencies
+  - package-ecosystem: pip
+    directories: 
+    - "/web-apps"
+    - "/scripts"
+    schedule:
+      # Check for new versions daily
+      interval: weekly
+    groups:
+      pip-updates:
+        patterns: ["*"]
+    labels:
+      - automation
+      - pip-update
+    commit-message:
+    # Prefix all commit messages with "pip: "
+      prefix: "pip"
+
+  # Automatically propose PRs for Python dependencies
+  # Possibly required for Helm updates?
+  # https://github.com/dependabot/dependabot-core/issues/2237
+  # enable-beta-ecosystems: true
+  - package-ecosystem: "helm" 
+    directory: "/charts/azimuth-llm" # Location of package manifests
+    schedule:
+      # Check for new versions daily
+      interval: weekly
+    labels:
+      - automation
+      - helm-update

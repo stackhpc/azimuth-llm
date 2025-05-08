@@ -68,7 +68,7 @@ def build_chat_context(latest_message, history):
     context = []
     if INCLUDE_SYSTEM_PROMPT:
         context.append(SystemMessage(content=settings.model_instruction))
-    else:
+    elif history and len(history) > 0:
         # Mimic system prompt by prepending it to first human message
         history[0]['content'] = f"{settings.model_instruction}\n\n{history[0]['content']}"
 
