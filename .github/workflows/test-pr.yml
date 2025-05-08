@@ -32,6 +32,12 @@ jobs:
       ref: ${{ github.sha }}
     secrets: inherit
 
+  publish_charts:
+    uses: ./.github/workflows/build-push-charts.yml
+    with:
+      ref: ${{ github.sha }}
+    secrets: inherit
+
   chart_validation:
     needs: [publish_images]
     runs-on: ubuntu-latest
@@ -91,10 +97,3 @@ jobs:
       # own helm install/test process.
       - name: Run chart install and test
         run: ct install --config ct.yaml
-
-  publish_charts:
-    needs: [chart_validation]
-    uses: ./.github/workflows/build-push-charts.yml
-    with:
-      ref: ${{ github.sha }}
-    secrets: inherit
