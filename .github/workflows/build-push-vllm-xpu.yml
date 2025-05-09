@@ -40,5 +40,5 @@ jobs:
       - name: Build and push image
         run: |
           IMAGE=ghcr.io/stackhpc/vllm-xpu:${{ inputs.vllm_ref }}
-          docker build -f Dockerfile.xpu -t $IMAGE --shm-size=4g .
+          docker build -f docker/Dockerfile.xpu -t $IMAGE --shm-size=4g .
           docker push $IMAGE
