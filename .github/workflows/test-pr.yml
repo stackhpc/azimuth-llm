@@ -33,10 +33,15 @@ jobs:
     secrets: inherit
 
   publish_charts:
+    needs: [fail_on_remote]
     uses: ./.github/workflows/build-push-charts.yml
     with:
       ref: ${{ github.sha }}
     secrets: inherit
+    permissions:
+      # Explicit permissions are required for
+      # PRs created by dependabot user
+      contents: write
 
   chart_validation:
     needs: [publish_images]
