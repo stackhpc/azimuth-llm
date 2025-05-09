@@ -39,7 +39,7 @@ jobs:
       - name: Build and push image
         run: |
           IMAGE=ghcr.io/stackhpc/vllm-cpu:${{ inputs.vllm_ref }}
-          docker build -f Dockerfile.cpu -t $IMAGE --shm-size=4g .
+          docker build -f docker/Dockerfile.cpu -t $IMAGE --shm-size=4g .
           docker push $IMAGE
 
   build_push_arm64_image:
@@ -67,5 +67,5 @@ jobs:
       - name: Build and push image
         run: |
           IMAGE=ghcr.io/stackhpc/vllm-cpu:${{ inputs.vllm_ref }}-arm64
-          docker build -f Dockerfile.arm -t $IMAGE --shm-size=4g .
+          docker build -f docker/Dockerfile.arm -t $IMAGE --shm-size=4g .
           docker push $IMAGE
