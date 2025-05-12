@@ -34,8 +34,8 @@ api:
   # Container image config
   image:
     # Defaults to vllm/vllm-openai when api.gpus > 0,
-    # ghrc.io/stackhpc/vllm-xpu when api.gpus > 0 and intelXPUsEnabled is true,
-    # or ghrc.io/stackhpc/vllm-cpu when api.gpus == 0
+    # ghcr.io/stackhpc/vllm-xpu when api.gpus > 0 and intelXPUsEnabled is true,
+    # or ghcr.io/stackhpc/vllm-cpu when api.gpus == 0
     repository:
     version: v0.8.5.post1
   monitoring:
