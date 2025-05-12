@@ -12,7 +12,6 @@ on:
         type: string
         description: The vLLM GitHub ref (tag, branch or commit) to build.
         required: true
-  pull_request: # REMOVE THIS
 
 jobs:
   build_push_xpu_image:
