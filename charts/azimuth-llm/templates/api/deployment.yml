@@ -19,9 +19,13 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-api
-        {{ $gpuChart := ternary "ghcr.io/stackhpc/vllm-xpu" "vllm/vllm-openai" .Values.api.intelXPUsEnabled -}}
-        {{ $imageRepo := .Values.api.image.repository | default (ternary "ghcr.io/stackhpc/vllm-cpu" $gpuChart (eq (.Values.api.gpus | int) 0)) -}}
-        image: {{ printf "%s:%s" $imageRepo .Values.api.image.version }}
+        {{- if eq (.Values.api.gpus | int) 0 }}
+        image: "ghcr.io/stackhpc/vllm-cpu"
+        {{- else if .Values.api.intelXPUsEnabled }}
+        image: "ghcr.io/stackhpc/vllm-xpu"
+        {{- else }}
+        image: "vllm/vllm-openai"
+        {{- end }}
         ports:
         - name: api
           containerPort: 8000
