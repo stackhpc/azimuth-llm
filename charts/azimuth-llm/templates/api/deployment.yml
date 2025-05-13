@@ -19,8 +19,13 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}-api
-        {{ $imageRepo := .Values.api.image.repository | default (ternary "ghcr.io/stackhpc/vllm-cpu" "vllm/vllm-openai" (eq (.Values.api.gpus | int) 0)) -}}
-        image: {{ printf "%s:%s" $imageRepo .Values.api.image.version }}
+        {{- if eq (.Values.api.gpus | int) 0 }}
+        image: "ghcr.io/stackhpc/vllm-cpu:{{ .Values.api.image.version }}"
+        {{- else if .Values.api.intelXPUsEnabled }}
+        image: "ghcr.io/stackhpc/vllm-xpu:{{ .Values.api.image.version }}"
+        {{- else }}
+        image: "vllm/vllm-openai:{{ .Values.api.image.version }}"
+        {{- end }}
         ports:
         - name: api
           containerPort: 8000
@@ -61,7 +66,11 @@ spec:
           periodSeconds: 10
         resources:
           limits:
+            {{- if .Values.api.intelXPUsEnabled }}
+            gpu.intel.com/i915: {{ .Values.api.gpus | int }}
+            {{- else }}
             nvidia.com/gpu: {{ .Values.api.gpus | int }}
+            {{- end }}
       volumes:
         - name: data
           {{- .Values.api.cacheVolume | toYaml | nindent 10 }}

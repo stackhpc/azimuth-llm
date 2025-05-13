@@ -1,0 +1,43 @@
+name: Publish vLLM XPU images
+
+on:
+  # NOTE(sd109): Since this is checking out an external
+  # it's probably safer to leave this as workflow dispatch
+  # only so that we can manually build images from specific
+  # refs rather than automatically pulling in the latest
+  # content from the remote repo.
+  workflow_dispatch:
+    inputs:
+      vllm_ref:
+        type: string
+        description: The vLLM GitHub ref (tag, branch or commit) to build.
+        required: true
+
+jobs:
+  build_push_xpu_image:
+    name: Build and push image
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write         # needed for signing the images with GitHub OIDC Token
+      packages: write         # required for pushing container images
+      security-events: write  # required for pushing SARIF files
+    steps:
+      - name: Check out the vLLM repository
+        uses: actions/checkout@v4
+        with:
+          repository: vllm-project/vllm
+          ref: ${{ inputs.vllm_ref }}
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image
+        run: |
+          IMAGE=ghcr.io/stackhpc/vllm-xpu:${{ inputs.vllm_ref }}
+          docker build -f docker/Dockerfile.xpu -t $IMAGE --shm-size=4g .
+          docker push $IMAGE
