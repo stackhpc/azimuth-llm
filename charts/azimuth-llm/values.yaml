@@ -5,7 +5,7 @@
 huggingface:
   # The name of the HuggingFace model to use
   # Use a yaml anchor to avoid duplication elsewhere
-  model: &model-name microsoft/Phi-3.5-mini-instruct
+  model: &model-name deepseek-ai/deepseek-llm-7b-chat
   # A Jinja formatted chat template to provide to the language model.
   # See https://huggingface.co/blog/chat-templates for background info.
   # If not provided, the default template specified in the HuggingFace
