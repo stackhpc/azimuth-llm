@@ -4,6 +4,8 @@ ARG DIR=chat
 
 COPY $DIR/requirements.txt requirements.txt
 COPY utils utils
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir --upgrade setuptools
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY purge-google-fonts.sh purge-google-fonts.sh
