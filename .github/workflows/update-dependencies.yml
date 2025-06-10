@@ -51,11 +51,11 @@ jobs:
             mv $FILENAME{.new,}
 
             FILENAME=charts/azimuth-chat/values.schema.json
-            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' $FILENAME > $FILENAME.new
+            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties."azimuth-llm".properties.api.properties.image.properties.version.default = $tag' $FILENAME > $FILENAME.new
             mv $FILENAME{.new,}
 
             FILENAME=charts/azimuth-image-analysis/values.schema.json
-            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties.api.properties.image.properties.version.default = $tag' $FILENAME > $FILENAME.new
+            jq --indent 4 --arg tag $NEW_VLLM_TAG '.properties."azimuth-llm".properties.api.properties.image.properties.version.default = $tag' $FILENAME > $FILENAME.new
             mv $FILENAME{.new,}
           fi
 
