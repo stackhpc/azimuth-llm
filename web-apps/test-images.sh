@@ -76,7 +76,7 @@ test() {
             --name $1-test-suite \
             -e GRADIO_URL=http://$1-app:7860 --entrypoint python \
             $IMAGE \
-            test.py
+            test.py -v
 
         log "Removing containers:"
         docker rm -f ollama $1-app

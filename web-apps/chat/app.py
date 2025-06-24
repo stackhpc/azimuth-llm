@@ -61,30 +61,37 @@ llm = ChatOpenAI(
     streaming=True,
 )
 
+def build_chat_context(latest_message, history):
+    """
+    Build the chat context from the latest message and history.
+    """
+    context = []
+    if INCLUDE_SYSTEM_PROMPT:
+        context.append(SystemMessage(content=settings.model_instruction))
+    elif history and len(history) > 0:
+        # Mimic system prompt by prepending it to first human message
+        history[0]['content'] = f"{settings.model_instruction}\n\n{history[0]['content']}"
+
+    for message in history:
+        role = message['role']
+        content = message['content']
+        if role == "user":
+            context.append(HumanMessage(content=content))
+        else:
+            if role != "assistant":
+                log.warn(f"Message role {role} converted to 'assistant'")
+            context.append(AIMessage(content=(content or "")))
+    context.append(HumanMessage(content=latest_message))
+    return context
+
+
 def inference(latest_message, history):
     # Allow mutating global variable
     global BACKEND_INITIALISED
     log.debug("Inference request received with history: %s", history)
 
     try:
-        context = []
-        if INCLUDE_SYSTEM_PROMPT:
-            context.append(SystemMessage(content=settings.model_instruction))
-        elif history and len(history) > 0:
-            # Mimic system prompt by prepending it to first human message
-            history[0]['content'] = f"{settings.model_instruction}\n\n{history[0]['content']}"
-
-        for message in history:
-            role = message['role']
-            content = message['content']
-            if role == "user":
-                context.append(HumanMessage(content=content))
-            else:
-                if role != "assistant":
-                    log.warn(f"Message role {role} converted to 'assistant'")
-                context.append(AIMessage(content=(content or "")))
-        context.append(HumanMessage(content=latest_message))
-
+        context = build_chat_context(latest_message, history)
         log.debug("Chat context: %s", context)
 
         response = ""
