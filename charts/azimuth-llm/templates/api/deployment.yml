@@ -47,6 +47,10 @@ spec:
           {{- if .Values.api.extraArgs -}}
           {{- .Values.api.extraArgs | toYaml | nindent 10 }}
           {{- end -}}
+          {{- if gt (.Values.api.gpus | int) 1 }}
+          - --tensor-parallel-size
+          - {{ .Values.api.gpus | quote }}
+          {{- end }}
         {{- if .Values.huggingface.secretName -}}
         envFrom:
         - secretRef:
