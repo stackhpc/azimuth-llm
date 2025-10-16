@@ -49,7 +49,7 @@ spec:
           {{- end -}}
           {{- if gt (.Values.api.gpus | int) 1 }}
           - --tensor-parallel-size
-          - {{ (.Values.api.gpus | int) }}
+          - {{ .Values.api.gpus }}
           {{- end }}
         {{- if .Values.huggingface.secretName -}}
         envFrom:
