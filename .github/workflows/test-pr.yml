@@ -69,7 +69,10 @@ jobs:
 
       - name: Run Gradio app tests
         run: |
+          # Set up Ollama backend
           curl -fsSL https://ollama.com/install.sh | sh
+          ollama pull smollm2:135m
+          # Run the Gradio tests against Ollama
           ./test-images.sh $(git rev-parse --short ${{ github.sha }})
         working-directory: web-apps
 
