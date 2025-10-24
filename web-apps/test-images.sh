@@ -69,7 +69,7 @@ test() {
         docker run --network $DOCKER_NET_NAME -d --name $1-app $IMAGE
 
         # Give the app time to start
-        sleep 3
+        sleep 10
 
         log "Running tests"
         docker run --network $DOCKER_NET_NAME --rm \
