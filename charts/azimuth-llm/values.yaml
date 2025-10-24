@@ -99,6 +99,11 @@ api:
   # Extra args to supply to the vLLM backend, see
   # https://docs.vllm.ai/en/stable/serving/openai_compatible_server.html#command-line-arguments-for-the-server
   extraArgs: []
+  # Extra env vars to provide to the vLLM pods
+  # Each env var should be formatted as
+  # - name: FOO
+  #   value: "bar"
+  extraEnv: []
   # Pod node selector labels
   nodeSelector: {}
   # Pod tolerations
