@@ -71,6 +71,8 @@ jobs:
         run: |
           # Set up Ollama backend
           curl -fsSL https://ollama.com/install.sh | sh
+          # Give ollama systemd unit time to start
+          sleep 5
           ollama pull smollm2:135m
           # Run the Gradio tests against Ollama
           ./test-images.sh $(git rev-parse --short ${{ github.sha }})
