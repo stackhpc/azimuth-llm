@@ -10,6 +10,8 @@ api:
     enabled: false
   # No GPUs in CI runners
   gpus: 0
+  # Limit context length for efficiency
+  modelMaxContextLength: 100
 ui:
   service:
     zenith:
