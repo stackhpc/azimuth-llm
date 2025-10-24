@@ -69,6 +69,7 @@ jobs:
 
       - name: Run Gradio app tests
         run: |
+          curl -fsSL https://ollama.com/install.sh | sh
           ./test-images.sh $(git rev-parse --short ${{ github.sha }})
         working-directory: web-apps
 
