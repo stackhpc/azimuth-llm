@@ -1,6 +1,12 @@
 #!/bin/bash
 set -e
 
+# NOTE(sd109): This script relies on docker host networking in order
+# to communicate from Gradio to ollama running on localhost. This means
+# it does not work on MacOS since docker host networking does not work.
+# It is intended to be run on a Linux machine and is primarily used in
+# GitHub runners as part of CI testing.
+
 IMAGE_TAG="${1:-latest}"
 echo Testing image tag $IMAGE_TAG
 

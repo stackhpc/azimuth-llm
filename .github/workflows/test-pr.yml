@@ -69,12 +69,17 @@ jobs:
 
       - name: Run Gradio app tests
         run: |
-          # Set up Ollama backend
+          echo "Installing ollama..."
           curl -fsSL https://ollama.com/install.sh | sh
+
           # Give ollama systemd unit time to start
           sleep 5
-          ollama pull smollm2:135m
-          # Run the Gradio tests against Ollama
+
+          MODEL=smollm2:135m
+          echo "Pulling model $MODEL..."
+          ollama pull $MODEL
+
+          echo "Running Gradio test script"
           ./test-images.sh $(git rev-parse --short ${{ github.sha }})
         working-directory: web-apps
 
