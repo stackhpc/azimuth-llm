@@ -55,6 +55,9 @@ spec:
         env:
         - name: DO_NOT_TRACK
           value: "1"
+        {{- with .Values.api.extraEnv -}}
+        {{- . | toYaml | nindent 8 }}
+        {{- end -}}
         {{- if .Values.huggingface.token }}
         - name: HUGGING_FACE_HUB_TOKEN
           value: {{ quote .Values.huggingface.token }}
