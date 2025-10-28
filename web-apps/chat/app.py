@@ -2,6 +2,7 @@ import openai
 import utils
 import gradio as gr
 
+from datetime import date
 from urllib.parse import urljoin
 from langchain.schema import HumanMessage, AIMessage, SystemMessage
 from langchain_openai import ChatOpenAI
@@ -68,11 +69,12 @@ def inference(latest_message, history):
 
     try:
         context = []
+        model_instruction = settings.model_instruction.replace("{date}", f"{date.today()}")
         if INCLUDE_SYSTEM_PROMPT:
-            context.append(SystemMessage(content=settings.model_instruction))
+            context.append(SystemMessage(content=model_instruction))
         elif history and len(history) > 0:
             # Mimic system prompt by prepending it to first human message
-            history[0]['content'] = f"{settings.model_instruction}\n\n{history[0]['content']}"
+            history[0]['content'] = f"{model_instruction}\n\n{history[0]['content']}"
 
         for message in history:
             role = message['role']
