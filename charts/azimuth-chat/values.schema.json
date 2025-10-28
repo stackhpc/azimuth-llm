@@ -61,7 +61,7 @@
                                     "type": "string",
                                     "title": "Instruction",
                                     "description": "The initial system prompt (i.e. the hidden instruction) to use when generating responses.",
-                                    "default": "You are a helpful AI assistant. Please respond appropriately."
+                                    "default": "You are a helpful AI assistant. Please respond appropriately. Today's date is {date}."
                                 },
                                 "page_title": {
                                     "type": "string",

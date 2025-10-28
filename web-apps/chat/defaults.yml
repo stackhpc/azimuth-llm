@@ -5,7 +5,8 @@ backend_url: http://localhost:11434
 
 host_address: 0.0.0.0
 
-model_instruction: "You are a helpful and cheerful AI assistant. Please respond appropriately."
+# Model instruction allows substituting in current date
+model_instruction: "You are a helpful and cheerful AI assistant. Please respond appropriately. Today's date is {date}."
 
 page_title: Large Language Model
 
