@@ -114,8 +114,11 @@ app = gr.Interface(
         gr.Textbox(label="Image URL", lines=2),
         gr.Textbox(label="Prompt/Question", elem_id="prompt", scale=2, lines=2),
     ],
-    outputs=[gr.Image(label="Image"), gr.Textbox(label="Results", lines=2)],
-    flagging_mode='never',
+    outputs=[
+        gr.Image(label="Image"),
+        gr.Textbox(label="Results", lines=2, autoscroll=False),
+    ],
+    flagging_mode="never",
     title=settings.page_title,
     description=settings.page_description,
     examples=[[ex.image_url, ex.prompt] for ex in settings.examples],
