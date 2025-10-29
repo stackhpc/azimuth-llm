@@ -28,7 +28,5 @@ sortOrder:
   - /azimuth-llm/ui/appSettings/llm_params/frequency_penalty
   - /azimuth-llm/ui/appSettings/llm_params/presence_penalty
   - /azimuth-llm/ui/appSettings/llm_params/top_p
-  # vLLM responds with HTTP 400 BadRequest when top_k is
-  # passed to a vision model (but ollama accepts it)
-  # - /azimuth-llm/ui/appSettings/llm_params/top_k
+  - /azimuth-llm/ui/appSettings/llm_params/top_k
   - /azimuth-llm/api/modelMaxContextLength

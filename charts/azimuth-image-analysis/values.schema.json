@@ -89,6 +89,13 @@
                                             "exclusiveMinimum": 0,
                                             "maximum": 1
                                         },
+                                        "top_k": {
+                                            "type": "integer",
+                                            "title": "LLM Top K",
+                                            "description": "The [top k](https://docs.vllm.ai/en/stable/dev/sampling_params.html) value to use when generating LLM responses (must be an integer).",
+                                            "default": -1,
+                                            "minimum": -1
+                                        },
                                         "presence_penalty": {
                                             "type": "number",
                                             "title": "LLM Presence Penalty",
