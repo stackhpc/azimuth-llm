@@ -40,6 +40,14 @@
                             "default": "v0.11.0"
                         }
                     }
+                },
+                "gpus": {
+                    "type": "integer",
+                    "title": "GPU Count",
+                    "description": "The number of GPUs to allocate to the model.",
+                    "default": 1,
+                    "minimum": 1,
+                    "maximum": 8
                 }
             }
         },
