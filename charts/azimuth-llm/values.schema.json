@@ -44,7 +44,7 @@
                 "gpus": {
                     "type": "integer",
                     "title": "GPU Count",
-                    "description": "The number of GPUs to allocate to the model.",
+                    "description": "The number of GPUs (within a single node) to allocate to the model.",
                     "default": 1,
                     "minimum": 0,
                     "maximum": 8
