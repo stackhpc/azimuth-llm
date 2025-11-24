@@ -24,7 +24,7 @@ jobs:
       security-events: write  # required for pushing SARIF files
     steps:
       - name: Check out the vLLM repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: vllm-project/vllm
           ref: ${{ inputs.vllm_ref }}
@@ -52,7 +52,7 @@ jobs:
       security-events: write  # required for pushing SARIF files
     steps:
       - name: Check out the vLLM repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           repository: vllm-project/vllm
           ref: ${{ inputs.vllm_ref }}
