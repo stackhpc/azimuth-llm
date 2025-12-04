@@ -43,6 +43,11 @@
                         "modelMaxContextLength": {
                             "title": "Model Context Length",
                             "description": "An override for the maximum context length to allow, if the model's default is not suitable."
+                        },
+                        "azimuthNodeGroupSelector": {
+                            "type": "string",
+                            "title": "Node Group",
+                            "description": "The node group to deploy the API backend to. Must match a node group label in the cluster."
                         }
                     }
                 },
