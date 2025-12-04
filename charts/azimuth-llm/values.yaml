@@ -104,6 +104,8 @@ api:
   # - name: FOO
   #   value: "bar"
   extraEnv: []
+  # Azimuth node group selector label
+  azimuthNodeGroupSelector: ""
   # Pod node selector labels
   nodeSelector: {}
   # Pod tolerations

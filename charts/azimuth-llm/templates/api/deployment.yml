@@ -82,9 +82,14 @@ spec:
           emptyDir:
             medium: Memory
             sizeLimit: 1Gi
-      {{- with $.Values.api.nodeSelector }}
+      {{- with .Values.api }}
+      {{- if .azimuthNodeGroupSelector }}
       nodeSelector:
-        {{- toYaml . | nindent 8 }}
+        capi.stackhpc.com/node-group: {{ .azimuthNodeGroupSelector | quote }}
+      {{- else if .nodeSelector }}
+      nodeSelector:
+        {{- toYaml .nodeSelector | nindent 8 }}
+      {{- end }}
       {{- end }}
       {{- with $.Values.api.affinity }}
       affinity:
