@@ -37,7 +37,7 @@ api:
     # ghcr.io/stackhpc/vllm-xpu when api.gpus > 0 and intelXPUsEnabled is true,
     # or ghcr.io/stackhpc/vllm-cpu when api.gpus == 0
     repository:
-    version: v0.11.0
+    version: v0.13.0
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
