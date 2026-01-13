@@ -23,6 +23,8 @@ spec:
         image: "ghcr.io/stackhpc/vllm-cpu:{{ .Values.api.image.version }}"
         {{- else if .Values.api.intelXPUsEnabled }}
         image: "ghcr.io/stackhpc/vllm-xpu:{{ .Values.api.image.version }}"
+        {{- else if .Values.api.vllmOmniEnabled }}
+        image: "vllm/vllm-omni:{{ .Values.api.image.version }}"
         {{- else }}
         image: "vllm/vllm-openai:{{ .Values.api.image.version }}"
         {{- end }}
