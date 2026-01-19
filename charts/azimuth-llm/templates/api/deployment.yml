@@ -24,7 +24,12 @@ spec:
         {{- else if .Values.api.intelXPUsEnabled }}
         image: "ghcr.io/stackhpc/vllm-xpu:{{ .Values.api.image.version }}"
         {{- else }}
-        image: "vllm/vllm-openai:{{ .Values.api.image.version }}"
+        image: "{{ .Values.api.image.containerImage }}:{{ .Values.api.image.version }}"
+        {{- end }}
+        {{- if eq .Values.api.image.containerImage "vllm/vllm-omni" }}
+        command:
+        - vllm
+        - serve
         {{- end }}
         ports:
         - name: api
