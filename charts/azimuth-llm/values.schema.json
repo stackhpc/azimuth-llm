@@ -36,15 +36,27 @@
                         "version": {
                             "type": "string",
                             "title": "Backend vLLM version",
-                            "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
+                            "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags) when using vLLM or [this list](https://github.com/vllm-project/vllm-omni/tags) when using vLLM Omni.",
                             "default": "v0.11.0"
                         }
                     }
                 },
+                "vllmOmniEnabled": {
+                    "type": "boolean",
+                    "title": "Use vLLM Omni",
+                    "description": "Deploy vLLM Omni as backend. By default, this will still only work with standard LLMs unless 'Use Omni-style Model' is also enabled.",
+                    "default": false
+                },
+                "omniModelType": {
+                    "type": "boolean",
+                    "title": "Use Omni-style Model",
+                    "description": "Enable when using Omni-style models. This only works with vLLM Omni. NOTE: This is an experimental feature. The web interface only supports text-based interactions at this time.",
+                    "default": false
+                },
                 "azimuthNodeGroupSelector": {
                     "type": "string",
                     "title": "Node Group",
-                            "description": "The node group to deploy the API backend to. Must match a node group label in the cluster. Leave empty to use any available node."
+                    "description": "The node group to deploy the API backend to. Must match a node group label in the cluster. Leave empty to use any available node."
                 }
             }
         },

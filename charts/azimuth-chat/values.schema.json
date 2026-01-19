@@ -48,6 +48,18 @@
                             "type": "string",
                             "title": "Node Group",
                             "description": "(Optional) Require that the LLM runs on a particular node group. Must match a node group name in the cluster."
+                        },
+                        "vllmOmniEnabled": {
+                            "type": "boolean",
+                            "title": "Use vLLM Omni",
+                            "description": "Deploy vLLM Omni as backend. By default, this will still only work with standard LLMs unless 'Use Omni-style Model' is also enabled.",
+                            "default": false
+                        },
+                        "omniModelType": {
+                            "type": "boolean",
+                            "title": "Use Omni-style Model",
+                            "description": "Enable when using Omni-style models. This only works with vLLM Omni. NOTE: This is an experimental feature. The web interface only supports text-based interactions at this time.",
+                            "default": false
                         }
                     }
                 },
