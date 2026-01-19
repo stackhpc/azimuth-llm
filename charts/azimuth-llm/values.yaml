@@ -96,6 +96,7 @@ api:
   #   rollingUpdate:
   #     maxSurge: 1
   #     maxUnavailable: 0
+  # foo
   updateStrategy:
     type: Recreate
   # The value of the vLLM backend's max_model_len argument (if the model's default is not suitable)
