@@ -156,7 +156,7 @@ ui:
       label: Chat Interface
       iconUrl: https://raw.githubusercontent.com/gradio-app/gradio/5524e590577769b0444a5332b8d444aafb0c5c12/js/app/public/static/img/logo.svg
       description: |
-        A web-based user inferface for interacting with the deployed LLM.
+        A web-based user interface for interacting with the deployed LLM.
   # Standard ingress resource config for UI web app
   ingress:
     enabled: false
