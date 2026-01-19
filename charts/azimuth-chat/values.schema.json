@@ -40,7 +40,11 @@
                                     "type": "string",
                                     "title": "vLLM Container Image",
                                     "description": "Container to use as API backend. Currently only 'vllm/vllm-openai' and 'vllm/vllm-omni' are supported. Default is 'vllm/vllm-openai'.",
-                                    "default": "vllm/vllm-openai"
+                                    "default": "vllm/vllm-openai",
+                                    "enum": [
+                                        "vllm/vllm-openai",
+                                        "vllm/vllm-omni"
+                                    ]
                                 },
                                 "version": {
                                     "type": "string",
