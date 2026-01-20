@@ -26,11 +26,6 @@ spec:
         {{- else }}
         image: "{{ .Values.api.image.containerImage }}:{{ .Values.api.image.version }}"
         {{- end }}
-        {{- if eq .Values.api.image.containerImage "vllm/vllm-omni" }}
-        command:
-        - vllm
-        - serve
-        {{- end }}
         ports:
         - name: api
           containerPort: 8000
