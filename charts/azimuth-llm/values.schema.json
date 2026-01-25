@@ -47,14 +47,14 @@
                             "type": "string",
                             "title": "Backend vLLM version",
                             "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags) when using vllm-openai or [this list](https://github.com/vllm-project/vllm-omni/tags) when using vllm-omni.",
-                            "default": "v0.11.0"
+                            "default": "null"
                         }
                     }
                 },
                 "azimuthNodeGroupSelector": {
                     "type": "string",
                     "title": "Node Group",
-                            "description": "The node group to deploy the API backend to. Must match a node group label in the cluster. Leave empty to use any available node."
+                    "description": "The node group to deploy the API backend to. Must match a node group label in the cluster. Leave empty to use any available node."
                 }
             }
         },
