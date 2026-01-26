@@ -11,7 +11,7 @@ jobs:
       pull-requests: write
     steps:
       - name: Checkout the config repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -61,7 +61,7 @@ jobs:
 
       - name: Create Pull Request
         if: ${{ steps.dependency_updates.outputs.new_vllm_tag }}
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request@v8
         with:
           base: main
           branch: update/vllm-${{ steps.dependency_updates.outputs.new_vllm_tag }}
