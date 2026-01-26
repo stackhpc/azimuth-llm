@@ -51,7 +51,7 @@ jobs:
       RELEASE_NAME: ci-test
     steps:
       - name: Checkout the repo
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.sha }}
 
