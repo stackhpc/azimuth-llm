@@ -33,8 +33,12 @@ spec:
         - name: data
           mountPath: /root/.cache/huggingface
         args:
-          - --model
-          - {{ .Values.huggingface.model }}
+          {{- if semverCompare "<0.13.0" .Values.api.image.version }}
+            - --model
+            - {{ .Values.huggingface.model }}
+          {{- else }}
+            - {{ .Values.huggingface.model }}
+          {{- end }}
           {{- include "azimuth-llm.chatTemplate" . | nindent 10 -}}
           {{- if .Values.api.modelMaxContextLength -}}
           - --max-model-len
