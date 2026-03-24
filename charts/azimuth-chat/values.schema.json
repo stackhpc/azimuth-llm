@@ -36,10 +36,20 @@
                         "image": {
                             "type": "object",
                             "properties": {
+                                "containerImage": {
+                                    "type": "string",
+                                    "title": "vLLM Container Image",
+                                    "description": "Container to use as API backend. Currently only 'vllm/vllm-openai' and 'vllm/vllm-omni' are supported. Default is 'vllm/vllm-openai'.",
+                                    "default": "vllm/vllm-openai",
+                                    "enum": [
+                                        "vllm/vllm-openai",
+                                        "vllm/vllm-omni"
+                                    ]
+                                },
                                 "version": {
                                     "type": "string",
                                     "title": "Backend vLLM version",
-                                    "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags)",
+                                    "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags) when using vllm-openai or [this list](https://github.com/vllm-project/vllm-omni/tags) when using vllm-omni.",
                                     "default": "v0.11.0"
                                 }
                             }

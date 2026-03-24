@@ -24,7 +24,7 @@ spec:
         {{- else if .Values.api.intelXPUsEnabled }}
         image: "ghcr.io/stackhpc/vllm-xpu:{{ .Values.api.image.version }}"
         {{- else }}
-        image: "vllm/vllm-openai:{{ .Values.api.image.version }}"
+        image: "{{ .Values.api.image.containerImage }}:{{ .Values.api.image.version }}"
         {{- end }}
         ports:
         - name: api
@@ -33,7 +33,9 @@ spec:
         - name: data
           mountPath: /root/.cache/huggingface
         args:
+          {{- if semverCompare "<v0.13.0" .Values.api.image.version }}
           - --model
+          {{- end }}
           - {{ .Values.huggingface.model }}
           {{- include "azimuth-llm.chatTemplate" . | nindent 10 -}}
           {{- if .Values.api.modelMaxContextLength -}}
