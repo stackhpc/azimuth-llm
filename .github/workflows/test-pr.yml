@@ -84,7 +84,7 @@ jobs:
         working-directory: web-apps
 
       - name: Install Helm
-        uses: azure/setup-helm@v4
+        uses: azure/setup-helm@v5
 
       - name: Run base chart templating with default values
         run: helm template ci-test charts/azimuth-llm
