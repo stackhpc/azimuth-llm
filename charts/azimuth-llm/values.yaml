@@ -38,7 +38,7 @@ api:
     # or ghcr.io/stackhpc/vllm-cpu when api.gpus == 0
     repository:
     containerImage: vllm/vllm-openai
-    version: v0.11.0
+    version: v0.19.0
   monitoring:
     enabled: true
   # The number of replicas for the backend deployment
