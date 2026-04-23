@@ -26,6 +26,11 @@ spec:
         {{- else }}
         image: "{{ .Values.api.image.containerImage }}:{{ .Values.api.image.version }}"
         {{- end }}
+        {{- if eq .Values.api.image.containerImage "vllm/vllm-omni" }}
+        command:
+        - vllm
+        - serve
+        {{- end }}
         ports:
         - name: api
           containerPort: 8000
@@ -33,6 +38,9 @@ spec:
         - name: data
           mountPath: /root/.cache/huggingface
         args:
+          {{- if eq .Values.api.image.containerImage "vllm/vllm-omni" }}
+          - --omni
+          {{- end }}
           {{- if semverCompare "<v0.13.0" .Values.api.image.version }}
           - --model
           {{- end }}
