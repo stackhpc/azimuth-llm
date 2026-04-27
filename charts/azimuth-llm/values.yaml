@@ -1,7 +1,6 @@
 # Default values for azimuth-llm.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
-
 huggingface:
   # The name of the HuggingFace model to use
   # Use a yaml anchor to avoid duplication elsewhere
@@ -69,6 +68,22 @@ api:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+
+  # Gateway API HTTPRoute resource config for backend API
+  httpRoute:
+    enabled: true
+    annotations: {}
+    parentRefs:
+      - name: my-gateway
+        namespace: default
+        sectionName: https
+    hostnames:
+      - chart-example.local
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /v1
   # Config for huggingface model cache volume
   # This is mounted at /root/.cache/huggingface in the api deployment
   cacheVolume:
@@ -173,6 +188,21 @@ ui:
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
+  # Gateway API HTTPRoute resource config for UI web app
+  httpRoute:
+    enabled: false
+    annotations: {}
+    parentRefs:
+      - name: my-gateway
+        namespace: default
+        sectionName: https
+    hostnames:
+      - chart-example.local
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /
   # The update strategy to use for the deployment
   updateStrategy:
     rollingUpdate:
