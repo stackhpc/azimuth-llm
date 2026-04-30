@@ -89,19 +89,19 @@ jobs:
         working-directory: web-apps
 
       - name: Install Helm
-        uses: azure/setup-helm@v4
+        uses: azure/setup-helm@1a275c3b69536ee54be43f2070a358922e12c8d4 # v4.3.1
 
       - name: Run base chart templating with default values
         run: helm template ci-test charts/azimuth-llm
 
       - name: Set up chart testing
-        uses: helm/chart-testing-action@v2
+        uses: helm/chart-testing-action@6ec842c01de15ebb84c8627d2744a0c2f2755c9f # v2.8.0
 
       - name: Run chart linting
         run: ct lint --config ct.yaml
 
       - name: Create Kind Cluster
-        uses: helm/kind-action@v1
+        uses: helm/kind-action@ef37e7f390d99f746eb8b610417061a60e82a6cc # v1.14.0
         with:
           cluster_name: ${{ env.CLUSTER_NAME }}
 
