@@ -16,11 +16,11 @@ class Model(BaseModel):
     name: str
     address: HttpUrl
 
+
 class AppSettings(BaseModel):
     models: List[Model]
     example_prompt: str = "Yoda riding a skateboard."
     title: str = "Flux Image Generation Demo"
-
 
 
 settings_path = pathlib.Path("/etc/gradio-app/gradio_config.yaml")
@@ -38,7 +38,14 @@ MODEL_NAMES = list(MODELS.keys())
 # Disable analytics for GDPR compliance
 os.environ["GRADIO_ANALYTICS_ENABLED"] = "False"
 
-def save_image(model_name: str, prompt: str, seed: int, add_sampling_metadata: bool, image: Image.Image):
+
+def save_image(
+    model_name: str,
+    prompt: str,
+    seed: int,
+    add_sampling_metadata: bool,
+    image: Image.Image,
+):
     filename = f"output/gradio/{uuid.uuid4()}.jpg"
     os.makedirs(os.path.dirname(filename), exist_ok=True)
     exif_data = Image.Exif()
@@ -95,22 +102,43 @@ async def generate_image(
 
         return image, seed, filename, None
 
+
 with gr.Blocks(title=settings.title) as demo:
     gr.Markdown(f"# {settings.title}")
 
     with gr.Row():
         with gr.Column():
-            model = gr.Dropdown(MODEL_NAMES, value=MODEL_NAMES[0], label="Model", interactive=len(MODEL_NAMES) > 1)
+            model = gr.Dropdown(
+                MODEL_NAMES,
+                value=MODEL_NAMES[0],
+                label="Model",
+                interactive=len(MODEL_NAMES) > 1,
+            )
             prompt = gr.Textbox(label="Prompt", value=settings.example_prompt)
 
             with gr.Accordion("Advanced Options", open=False):
                 # TODO: Make min/max slide values configurable
                 width = gr.Slider(128, 8192, 1360, step=16, label="Width")
                 height = gr.Slider(128, 8192, 768, step=16, label="Height")
-                num_steps = gr.Slider(1, 50, 4 if model.value == "flux-schnell" else 50, step=1, label="Number of steps")
-                guidance = gr.Slider(1.0, 10.0, 3.5, step=0.1, label="Guidance", interactive=not model.value == "flux-schnell")
+                num_steps = gr.Slider(
+                    1,
+                    50,
+                    4 if model.value == "flux-schnell" else 50,
+                    step=1,
+                    label="Number of steps",
+                )
+                guidance = gr.Slider(
+                    1.0,
+                    10.0,
+                    3.5,
+                    step=0.1,
+                    label="Guidance",
+                    interactive=not model.value == "flux-schnell",
+                )
                 seed = gr.Textbox("-1", label="Seed (-1 for random)")
-                add_sampling_metadata = gr.Checkbox(label="Add sampling parameters to metadata?", value=True)
+                add_sampling_metadata = gr.Checkbox(
+                    label="Add sampling parameters to metadata?", value=True
+                )
 
             generate_btn = gr.Button("Generate")
 
@@ -122,7 +150,16 @@ with gr.Blocks(title=settings.title) as demo:
 
     generate_btn.click(
         fn=generate_image,
-        inputs=[model, width, height, num_steps, guidance, seed, prompt, add_sampling_metadata],
+        inputs=[
+            model,
+            width,
+            height,
+            num_steps,
+            guidance,
+            seed,
+            prompt,
+            add_sampling_metadata,
+        ],
         outputs=[output_image, seed_output, download_btn, warning_text],
     )
     demo.launch(enable_monitoring=False)

@@ -21,3 +21,19 @@ charts/*/charts
 **/flagged/
 web-apps/**/overrides.yml
 **/.env
+
+# devenv
+.devenv
+.devenv.flake.nix
+devenv.lock
+
+# Devenv
+.devenv*
+devenv.local.nix
+devenv.local.yaml
+
+# direnv
+.direnv
+
+# pre-commit
+.pre-commit-config.yaml

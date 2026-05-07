@@ -31,9 +31,11 @@ class ImageGenInput(BaseModel):
     prompt: str
     add_sampling_metadata: bool
 
+
 @app.get("/")
 def health_check():
     return "Server is running"
+
 
 @app.get("/model")
 async def get_model():
@@ -61,7 +63,9 @@ async def generate_image(input: ImageGenInput):
             add_sampling_metadata=input.add_sampling_metadata,
         )
         if not image:
-            return JSONResponse({"error": {"message": msg, "seed": seed}}, status_code=400)
+            return JSONResponse(
+                {"error": {"message": msg, "seed": seed}}, status_code=400
+            )
     # Convert image to bytes response
     buffer = io.BytesIO()
     image.save(buffer, format="jpeg")

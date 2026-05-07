@@ -16,11 +16,12 @@ url = "http://localhost:7860"
 prompts = [
     "Hi, how are you?",
     "What's the weather like with you?",
-    "Who's the best footballer of all time?"
+    "Who's the best footballer of all time?",
 ]
 
 client_count = 3
-request_count = 5 # Requests per client
+request_count = 5  # Requests per client
+
 
 def make_requests(client_id: int):
     client = Client(url)
@@ -32,7 +33,12 @@ def make_requests(client_id: int):
         timings.append(time.time() - start_time)
     return timings
 
-results = list(Parallel(n_jobs=client_count)(delayed(make_requests)(i) for i in range(1, client_count+1)))
+
+results = list(
+    Parallel(n_jobs=client_count)(
+        delayed(make_requests)(i) for i in range(1, client_count + 1)
+    )
+)
 all_timings = []
 for client_timings in results:
     all_timings += client_timings

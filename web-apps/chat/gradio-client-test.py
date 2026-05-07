@@ -6,7 +6,7 @@ from gradio_client import Client
 gradio_host = sys.argv[1]
 
 retries = 60
-for n in range(1, retries+1):
+for n in range(1, retries + 1):
     try:
         client = Client(gradio_host)
         result = client.predict("Hi", api_name="/chat")

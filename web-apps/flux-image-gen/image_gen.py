@@ -16,13 +16,17 @@ from flux.util import embed_watermark, load_ae, load_clip, load_flow_model, load
 
 NSFW_THRESHOLD = 0.85
 
+
 def get_models(name: str, device: torch.device, offload: bool, is_schnell: bool):
     t5 = load_t5(device, max_length=256 if is_schnell else 512)
     clip = load_clip(device)
     model = load_flow_model(name, device="cpu" if offload else device)
     ae = load_ae(name, device="cpu" if offload else device)
-    nsfw_classifier = pipeline("image-classification", model="Falconsai/nsfw_image_detection", device=device)
+    nsfw_classifier = pipeline(
+        "image-classification", model="Falconsai/nsfw_image_detection", device=device
+    )
     return model, ae, t5, clip, nsfw_classifier
+
 
 class FluxGenerator:
     def __init__(self, model_name: str, device: str, offload: bool):
@@ -69,10 +73,14 @@ class FluxGenerator:
 
         if init_image is not None:
             if isinstance(init_image, np.ndarray):
-                init_image = torch.from_numpy(init_image).permute(2, 0, 1).float() / 255.0
+                init_image = (
+                    torch.from_numpy(init_image).permute(2, 0, 1).float() / 255.0
+                )
                 init_image = init_image.unsqueeze(0)
             init_image = init_image.to(self.device)
-            init_image = torch.nn.functional.interpolate(init_image, (opts.height, opts.width))
+            init_image = torch.nn.functional.interpolate(
+                init_image, (opts.height, opts.width)
+            )
             if self.offload:
                 self.ae.encoder.to(self.device)
             init_image = self.ae.encode(init_image.to())
@@ -137,7 +145,7 @@ class FluxGenerator:
         x = rearrange(x[0], "c h w -> h w c")
 
         img = Image.fromarray((127.5 * (x + 1.0)).cpu().byte().numpy())
-        nsfw_score = [x["score"] for x in self.nsfw_classifier(img) if x["label"] == "nsfw"][0] # type: ignore
+        nsfw_score = [x["score"] for x in self.nsfw_classifier(img) if x["label"] == "nsfw"][0]  # type: ignore
 
         if nsfw_score < NSFW_THRESHOLD:
             exif_data = Image.Exif()
@@ -152,4 +160,8 @@ class FluxGenerator:
 
             return img, str(opts.seed), None
         else:
-            return None, str(opts.seed), "Your generated image may contain NSFW content."
+            return (
+                None,
+                str(opts.seed),
+                "Your generated image may contain NSFW content.",
+            )
