@@ -1,0 +1,170 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "definitions": {
+        "backend": {
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Deploy in-cluster backend",
+                    "description": "If true, a vLLM Deployment + Service is created to serve this modality. Disable to omit the tab or to point the omni UI at an external (off-cluster) backend.",
+                    "default": false
+                },
+                "huggingface": {
+                    "type": "object",
+                    "properties": {
+                        "model": {
+                            "type": "string",
+                            "title": "Model",
+                            "description": "The [HuggingFace model](https://huggingface.co/models) to deploy for this modality."
+                        },
+                        "token": {
+                            "type": ["string", "null"],
+                            "title": "Access Token",
+                            "description": "A HuggingFace [access token](https://huggingface.co/docs/hub/security-tokens). Required for [gated models](https://huggingface.co/docs/hub/en/models-gated)."
+                        }
+                    }
+                },
+                "api": {
+                    "type": "object",
+                    "properties": {
+                        "image": {
+                            "type": "object",
+                            "properties": {
+                                "containerImage": {
+                                    "type": "string",
+                                    "title": "vLLM Omni Container Image",
+                                    "description": "vLLM Omni container to use as the API backend.",
+                                    "default": "vllm/vllm-omni"
+                                },
+                                "version": {
+                                    "type": "string",
+                                    "title": "Backend vLLM Omni version",
+                                    "description": "Tag from https://github.com/vllm-project/vllm-omni/tags.",
+                                    "default": "v0.11.0"
+                                }
+                            }
+                        },
+                        "gpus": {
+                            "type": "integer",
+                            "title": "GPUs",
+                            "description": "Number of GPUs to request per backend pod.",
+                            "minimum": 1,
+                            "default": 1
+                        },
+                        "modelMaxContextLength": {
+                            "title": "Model Context Length",
+                            "description": "Override the maximum context length, if the model's default is unsuitable."
+                        },
+                        "azimuthNodeGroupSelector": {
+                            "type": "string",
+                            "title": "Node Group",
+                            "description": "(Optional) Require that the model runs on a particular node group."
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "properties": {
+        "backend": {
+            "type": "object",
+            "title": "In-cluster vLLM backends",
+            "description": "Settings forwarded to the azimuth-llm-omni-backend subchart.",
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "title": "Deploy in-cluster backends",
+                    "description": "If false, no in-cluster backends are deployed and the UI must target external backends.",
+                    "default": true
+                },
+                "ttt": {
+                    "title": "Text-to-Text backend (chat)",
+                    "allOf": [{ "$ref": "#/definitions/backend" }]
+                },
+                "tts": {
+                    "title": "Text-to-Speech backend",
+                    "allOf": [{ "$ref": "#/definitions/backend" }]
+                },
+                "tti": {
+                    "title": "Text-to-Image backend",
+                    "allOf": [{ "$ref": "#/definitions/backend" }]
+                }
+            }
+        },
+        "ui": {
+            "type": "object",
+            "properties": {
+                "appSettings": {
+                    "type": "object",
+                    "properties": {
+                        "page_title": {
+                            "type": "string",
+                            "title": "Page Title",
+                            "description": "The title shown at the top of the omni interface.",
+                            "default": "Omni Interface"
+                        },
+                        "page_description": {
+                            "type": "string",
+                            "title": "Page Description",
+                            "description": "Subtitle markdown shown under the page title.",
+                            "default": "A unified interface for multimodal AI."
+                        },
+                        "ttt": {
+                            "type": "object",
+                            "title": "Chat (TTT) UI settings",
+                            "properties": {
+                                "model_name": {
+                                    "type": "string",
+                                    "title": "Model name",
+                                    "description": "Model identifier sent to the chat backend. Mirrors backend.ttt.huggingface.model when ttt is in-cluster."
+                                },
+                                "system_prompt": {
+                                    "type": "string",
+                                    "title": "System prompt",
+                                    "description": "Initial system message. `{date}` is substituted at request time."
+                                },
+                                "backend_url": {
+                                    "type": "string",
+                                    "title": "External backend URL",
+                                    "description": "Only needed when backend.ttt.enabled is false. OpenAI-compatible base URL without /v1."
+                                }
+                            }
+                        },
+                        "tts": {
+                            "type": "object",
+                            "title": "TTS UI settings",
+                            "properties": {
+                                "model_name": {
+                                    "type": "string",
+                                    "title": "Model name"
+                                },
+                                "backend_url": {
+                                    "type": "string",
+                                    "title": "External backend URL",
+                                    "description": "Only needed when backend.tts.enabled is false."
+                                }
+                            }
+                        },
+                        "tti": {
+                            "type": "object",
+                            "title": "Image (TTI) UI settings",
+                            "properties": {
+                                "model_name": {
+                                    "type": "string",
+                                    "title": "Model name"
+                                },
+                                "backend_url": {
+                                    "type": "string",
+                                    "title": "External backend URL",
+                                    "description": "Only needed when backend.tti.enabled is false."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,35 @@
+{{- if .Values.ui.enabled -}}
+{{/*
+Build the omni overrides.yml. For each modality (ttt/tts/tti): if its backend
+is enabled, inject backend_url + model_name (user-supplied values win). If the
+backend is disabled but the user gave a backend_url + model_name, keep that
+block. Otherwise drop the modality so its tab does not appear.
+*/}}
+{{- $appSettings := deepCopy .Values.ui.appSettings -}}
+{{- $backend := default (dict) .Values.backend -}}
+{{- $backendEnabled := and $backend (ne $backend.enabled false) -}}
+{{- range $alias := list "ttt" "tts" "tti" }}
+  {{- $cfg := index $backend $alias -}}
+  {{- $userBlock := default (dict) (index $appSettings $alias) -}}
+  {{- if and $backendEnabled $cfg $cfg.enabled }}
+    {{- $defaults := dict
+        "backend_url" (printf "http://%s-%s.%s.svc" $.Release.Name $alias $.Release.Namespace)
+        "model_name"  $cfg.huggingface.model -}}
+    {{- $merged := merge $userBlock $defaults -}}
+    {{- $_ := set $appSettings $alias $merged -}}
+  {{- else }}
+    {{- if not (and (hasKey $userBlock "backend_url") (hasKey $userBlock "model_name")) }}
+      {{- $_ := unset $appSettings $alias -}}
+    {{- end }}
+  {{- end }}
+{{- end }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-omni-web-app
+  labels:
+    {{- include "azimuth-omni.labels" . | nindent 4 }}
+data:
+  overrides.yml: |
+    {{- $appSettings | toYaml | nindent 4 }}
+{{- end -}}

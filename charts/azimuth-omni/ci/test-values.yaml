@@ -1,0 +1,26 @@
+# CI: only exercise the TTT backend with the smallest possible model.
+backend:
+  enabled: true
+  ttt:
+    enabled: true
+    huggingface:
+      model: HuggingFaceTB/SmolLM2-135M-Instruct
+    api:
+      monitoring:
+        enabled: false
+      gpus: 1
+  tts:
+    enabled: false
+  tti:
+    enabled: false
+ui:
+  service:
+    zenith:
+      enabled: false
+  appSettings:
+    # model_name is auto-derived from backend.ttt.huggingface.model
+    ttt:
+      params:
+        max_tokens: 32
+        temperature: 0.1
+        top_p: 0.15

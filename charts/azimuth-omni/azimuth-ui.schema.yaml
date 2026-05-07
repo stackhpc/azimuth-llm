@@ -1,0 +1,87 @@
+controls:
+  /backend/ttt/enabled:
+    type: SwitchControl
+  /backend/ttt/huggingface/model:
+    type: TextControl
+  /backend/ttt/huggingface/token:
+    type: TextControl
+    secret: true
+  /backend/ttt/api/modelMaxContextLength:
+    type: IntegerControl
+    minimum: 100
+    required: false
+
+  /backend/tts/enabled:
+    type: SwitchControl
+  /backend/tts/huggingface/model:
+    type: TextControl
+  /backend/tts/huggingface/token:
+    type: TextControl
+    secret: true
+  /backend/tts/api/modelMaxContextLength:
+    type: IntegerControl
+    minimum: 100
+    required: false
+
+  /backend/tti/enabled:
+    type: SwitchControl
+  /backend/tti/huggingface/model:
+    type: TextControl
+  /backend/tti/huggingface/token:
+    type: TextControl
+    secret: true
+  /backend/tti/api/modelMaxContextLength:
+    type: IntegerControl
+    minimum: 100
+    required: false
+
+  # When a backend is in-cluster the omni UI auto-derives model_name from
+  # the matching huggingface.model in the configmap template; mirror it in
+  # the UI for visibility.
+  /ui/appSettings/ttt/model_name:
+    type: MirrorControl
+    path: /backend/ttt/huggingface/model
+    visuallyHidden: true
+  /ui/appSettings/tts/model_name:
+    type: MirrorControl
+    path: /backend/tts/huggingface/model
+    visuallyHidden: true
+  /ui/appSettings/tti/model_name:
+    type: MirrorControl
+    path: /backend/tti/huggingface/model
+    visuallyHidden: true
+
+sortOrder:
+  - /ui/appSettings/page_title
+  - /ui/appSettings/page_description
+
+  - /backend/ttt/enabled
+  - /backend/ttt/huggingface/model
+  - /backend/ttt/huggingface/token
+  - /backend/ttt/api/azimuthNodeGroupSelector
+  - /backend/ttt/api/image/containerImage
+  - /backend/ttt/api/image/version
+  - /backend/ttt/api/gpus
+  - /backend/ttt/api/modelMaxContextLength
+  - /ui/appSettings/ttt/system_prompt
+  - /ui/appSettings/ttt/backend_url
+
+  - /backend/tts/enabled
+  - /backend/tts/huggingface/model
+  - /backend/tts/huggingface/token
+  - /backend/tts/api/azimuthNodeGroupSelector
+  - /backend/tts/api/image/containerImage
+  - /backend/tts/api/image/version
+  - /backend/tts/api/gpus
+  - /backend/tts/api/modelMaxContextLength
+  - /ui/appSettings/tts/backend_url
+
+  - /backend/tti/enabled
+  - /backend/tti/huggingface/model
+  - /backend/tti/huggingface/token
+  - /backend/tti/api/azimuthNodeGroupSelector
+  - /backend/tti/api/image/containerImage
+  - /backend/tti/api/image/version
+  - /backend/tti/api/gpus
+  - /backend/tti/api/modelMaxContextLength
+  - /ui/appSettings/tti/backend_url

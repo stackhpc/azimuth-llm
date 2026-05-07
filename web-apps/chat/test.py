@@ -7,6 +7,7 @@ from gradio_client import Client
 url = os.environ.get("GRADIO_URL", "http://localhost:7860")
 client = Client(url)
 
+
 class TestSuite(unittest.TestCase):
 
     def test_gradio_api(self):
@@ -18,6 +19,7 @@ class TestSuite(unittest.TestCase):
     #         result = client.predict("Hi", api_name="/chat")
     #         # mock_response.assert_called_once_with("Hi", [])
     #         self.assertEqual(result, "Mocked")
+
 
 if __name__ == "__main__":
     unittest.main()

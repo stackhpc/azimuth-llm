@@ -1,4 +1,6 @@
 flux[gradio] @ git+https://github.com/black-forest-labs/flux@478338d
 fastapi[standard]
 httpx
+urllib3>=2.7.0
+idna>=3.15
 # ../utils

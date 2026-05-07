@@ -1,0 +1,16 @@
+{{- if .Values.ui.enabled -}}
+{{- if .Values.ui.service.zenith.enabled -}}
+apiVersion: zenith.stackhpc.com/v1alpha1
+kind: Client
+metadata:
+  name: {{ .Release.Name }}-omni-ui
+  labels:
+    {{- include "azimuth-omni.labels" . | nindent 4 }}
+spec:
+  reservationName: {{ .Release.Name }}-omni-ui
+  upstream:
+    serviceName: {{ .Release.Name }}-omni-ui
+  auth:
+    skip: {{ .Values.ui.service.zenith.skipAuth }}
+{{- end -}}
+{{- end -}}

@@ -24,7 +24,9 @@ def get_logger():
     structlog.configure(wrapper_class=structlog.make_filtering_bound_logger(log_level))
     return structlog.get_logger()
 
+
 log = get_logger()
+
 
 class LLMParams(BaseModel):
     """

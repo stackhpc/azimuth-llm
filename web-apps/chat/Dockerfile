@@ -1,6 +1,11 @@
-FROM ghcr.io/astral-sh/uv:python3.11-bookworm-slim
+FROM ghcr.io/astral-sh/uv:python3.11-trixie-slim
 
-RUN apt-get update && apt-get install -y libssl3=3.0.19-1~deb12u2 openssl=3.0.19-1~deb12u2 && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y \
+      libssl3t64=3.5.6-1~deb13u2 \
+      openssl=3.5.6-1~deb13u2 \
+      libsqlite3-0=3.46.1-7+deb13u1 \
+      libgnutls30t64=3.8.9-3+deb13u4 \
+    && rm -rf /var/lib/apt/lists/*
 
 ARG DIR=chat
 

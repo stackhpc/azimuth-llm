@@ -1,0 +1,17 @@
+Azimuth Omni backends provide one or more in-cluster vLLM model deployments
+(text-to-text / chat, text-to-speech, text-to-image) for the Omni interface.
+
+Enabled backends in this release:
+{{- range $alias := list "ttt" "tts" "tti" }}
+{{- $sub := index $.Values $alias }}
+{{- if and $sub $sub.enabled }}
+  - {{ $alias }}: {{ $sub.huggingface.model }} (in-cluster at http://{{ $.Release.Name }}-{{ $alias }}.{{ $.Release.Namespace }}.svc)
+{{- else }}
+  - {{ $alias }}: disabled (toggle with `{{ $alias }}.enabled=true`)
+{{- end }}
+{{- end }}
+
+Each enabled backend downloads its model weights from HuggingFace on first
+start, which can take a while.
+
+Release notes: https://github.com/stackhpc/azimuth-llm/releases

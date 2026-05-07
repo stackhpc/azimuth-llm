@@ -78,6 +78,17 @@ Create the name of the service account to use
 {{- end }}
 
 {{/*
+Detect whether the configured API image is a vLLM Omni image.
+*/}}
+{{- define "azimuth-llm.isOmniImage" -}}
+{{- $image := .Values.api.image.containerImage | default "" -}}
+{{- $name := $image | splitList ":" | first -}}
+{{- if regexMatch "(^|/)vllm-omni$" $name -}}
+true
+{{- end -}}
+{{- end }}
+
+{{/*
 Workaround for models which don't yet contain chat templates in their HuggingFace repos.
 If a chat template is provided in the Helm values then this is used, otherwise we omit the
 chat template for all models apart from a list of known cases where the upstream repo is

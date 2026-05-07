@@ -26,7 +26,7 @@ spec:
         {{- else }}
         image: "{{ .Values.api.image.containerImage }}:{{ .Values.api.image.version }}"
         {{- end }}
-        {{- if eq .Values.api.image.containerImage "vllm/vllm-omni" }}
+        {{- if include "azimuth-llm.isOmniImage" . }}
         command:
         - vllm
         - serve
@@ -38,7 +38,7 @@ spec:
         - name: data
           mountPath: /root/.cache/huggingface
         args:
-          {{- if eq .Values.api.image.containerImage "vllm/vllm-omni" }}
+          {{- if include "azimuth-llm.isOmniImage" . }}
           - --omni
           {{- end }}
           {{- if semverCompare "<v0.13.0" .Values.api.image.version }}

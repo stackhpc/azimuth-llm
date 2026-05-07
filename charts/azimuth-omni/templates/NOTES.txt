@@ -1,0 +1,24 @@
+Azimuth Omni provides a single multimodal web interface (chat, text-to-speech, text-to-image) backed by one or more vLLM model deployments.
+
+{{- $backend := default (dict) .Values.backend }}
+{{- if $backend.enabled }}
+In-cluster backends (from the azimuth-llm-omni-backend subchart) in this release:
+{{- range $alias := list "ttt" "tts" "tti" }}
+{{- $sub := index $backend $alias }}
+{{- if and $sub $sub.enabled }}
+  - {{ $alias }}: {{ $sub.huggingface.model }} (in-cluster at http://{{ $.Release.Name }}-{{ $alias }}.{{ $.Release.Namespace }}.svc)
+{{- else }}
+  - {{ $alias }}: disabled (toggle with `backend.{{ $alias }}.enabled=true` or point `ui.appSettings.{{ $alias }}.backend_url` at an external backend)
+{{- end }}
+{{- end }}
+
+Each enabled backend downloads its model weights from HuggingFace on first start, which can take a while.
+{{- else }}
+In-cluster backends are disabled (`backend.enabled=false`). The UI will only
+expose tabs for modalities whose `ui.appSettings.<alias>.backend_url` +
+`model_name` point at an external backend.
+{{- end }}
+
+If `ui.service.zenith.enabled` is true the omni UI is exposed through Zenith; otherwise enable `ui.ingress` or `ui.httpRoute` to expose it via standard Kubernetes networking.
+
+Release notes: https://github.com/stackhpc/azimuth-llm/releases

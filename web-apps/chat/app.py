@@ -62,6 +62,7 @@ llm = ChatOpenAI(
     streaming=True,
 )
 
+
 def inference(latest_message, history):
     # Allow mutating global variable
     global BACKEND_INITIALISED
@@ -69,16 +70,18 @@ def inference(latest_message, history):
 
     try:
         context = []
-        model_instruction = settings.model_instruction.replace("{date}", f"{date.today()}")
+        model_instruction = settings.model_instruction.replace(
+            "{date}", f"{date.today()}"
+        )
         if INCLUDE_SYSTEM_PROMPT:
             context.append(SystemMessage(content=model_instruction))
         elif history and len(history) > 0:
             # Mimic system prompt by prepending it to first human message
-            history[0]['content'] = f"{model_instruction}\n\n{history[0]['content']}"
+            history[0]["content"] = f"{model_instruction}\n\n{history[0]['content']}"
 
         for message in history:
-            role = message['role']
-            content = message['content']
+            role = message["role"]
+            content = message["content"]
             if role == "user":
                 context.append(HumanMessage(content=content))
             else:
@@ -102,10 +105,10 @@ def inference(latest_message, history):
             # The "think" tags mark the chatbot's reasoning. Remove the content
             # and replace with "Thinking..." until the closing tag is found.
             content = chunk.content
-            if '<think>' in content or thinking:
+            if "<think>" in content or thinking:
                 thinking = True
                 response = "Thinking..."
-                if '</think>' in content:
+                if "</think>" in content:
                     thinking = False
                     response = ""
             else:
@@ -175,7 +178,7 @@ with gr.Blocks(
     js=settings.custom_javascript,
     title=settings.page_title,
 ) as demo:
-    gr.Markdown('# ' + settings.page_title)
+    gr.Markdown("# " + settings.page_title)
     gr.ChatInterface(
         inference_wrapper,
         type="messages",
@@ -187,10 +190,10 @@ with gr.Blocks(
             sanitize_html=True,
             autoscroll=False,
             latex_delimiters=[
-                {"left": "$$", "right": "$$", "display": True },
-                {"left": "$", "right": "$", "display": False }
-                ],
-            ),
+                {"left": "$$", "right": "$$", "display": True},
+                {"left": "$", "right": "$", "display": False},
+            ],
+        ),
     )
 
 
