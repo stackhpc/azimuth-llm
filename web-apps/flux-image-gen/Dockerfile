@@ -1,7 +1,9 @@
-FROM ghcr.io/astral-sh/uv:python3.11-bookworm
+FROM ghcr.io/astral-sh/uv:python3.11-trixie
 
 # https://stackoverflow.com/questions/55313610/importerror-libgl-so-1-cannot-open-shared-object-file-no-such-file-or-directo
-RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+RUN apt-get update && \
+    apt-get install -y ffmpeg libsm6 libxext6 && \
+    rm -rf /var/lib/apt/lists/*
 
 
 ARG DIR=flux-image-gen
