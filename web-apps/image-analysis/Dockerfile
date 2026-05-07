@@ -1,5 +1,9 @@
 FROM ghcr.io/astral-sh/uv:python3.11-bookworm-slim
 
+RUN apt-get update && \
+    apt-get install -y --only-upgrade libssl3=3.0.19-1~deb12u2 openssl=3.0.19-1~deb12u2 && \
+    rm -rf /var/lib/apt/lists/*
+
 ARG DIR=image-analysis
 
 COPY $DIR/requirements.txt requirements.txt
