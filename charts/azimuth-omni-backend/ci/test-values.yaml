@@ -1,0 +1,13 @@
+# CI: only exercise the TTT backend with the smallest possible model.
+ttt:
+  enabled: true
+  huggingface:
+    model: HuggingFaceTB/SmolLM2-135M-Instruct
+  api:
+    monitoring:
+      enabled: false
+    gpus: 1
+tts:
+  enabled: false
+tti:
+  enabled: false

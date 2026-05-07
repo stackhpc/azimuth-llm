@@ -1,0 +1,64 @@
+host_address: 0.0.0.0
+
+page_title: Omni Interface
+page_description: A unified interface for multimodal AI.
+
+# Global app tunables
+app:
+  probe_timeout_s: 2.0
+  probe_interval_s: 10.0
+  concurrency_limit: 5
+  # Default OpenAI client request timeout (seconds) for inference calls.
+  request_timeout_s: 1800.0
+
+# Each backend is optional; only configured backends show in the UI.
+#
+# Schema per backend:
+#   backend_url:  OpenAI-compatible base URL (without /v1)
+#   model_name:   Model identifier accepted by the backend
+#   system_prompt: (ttt only) optional system message; {date} is substituted
+#   params:       Defaults sent on every request. Unknown keys go via extra_body.
+#   ui:           Optional dropdown choices and slider ranges (see below).
+#   request_timeout_s: Optional per-backend override of app.request_timeout_s.
+
+# TTT (text-to-text) backend - for text chat and multimodal understanding
+# ttt:
+#   backend_url: http://localhost:8000
+#   model_name: Qwen/Qwen2.5-Omni-7B
+#   system_prompt: "You are a helpful AI assistant. Today's date is {date}."
+#   params:
+#     max_tokens: 1024
+#     temperature: 0.7
+#     top_p: 0.9
+#     # Any extras (forwarded via extra_body):
+#     # repetition_penalty: 1.05
+#     # seed: 42
+
+# TTS backend - for text-to-speech
+tts:
+  backend_url: http://localhost:8000
+  model_name: mistralai/Voxtral-4B-TTS-2603
+  params:
+    voice: casual_male
+    response_format: wav
+  # ui:
+  #   voice_choices: ["casual_male", "casual_female"]
+  #   format_choices: ["wav", "mp3", "ogg", "aac", "flac"]
+
+# TTI (text-to-image) generation backend
+# tti:
+#   backend_url: http://localhost:8002
+#   model_name: Tongyi-MAI/Z-Image-Turbo
+#   params:
+#     size: 1024x1024
+#   ui:
+#     size_choices: ["1024x1024", "768x1024", "1024x768"]
+#     # style_choices: ["vivid", "natural"]
+#     # quality_choices: ["standard", "hd"]
+#     show_negative_prompt: true
+
+# Gradio theme
+theme_params: {}
+theme_params_extended: {}
+css_overrides:
+custom_javascript:

@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
       libgnutls30t64=3.8.9-3+deb13u4 \
     && rm -rf /var/lib/apt/lists/*
 
-ARG DIR=image-analysis
+ARG DIR=omni
 
 COPY $DIR/requirements.txt requirements.txt
 RUN sed -i s$../utils$./utils$ requirements.txt

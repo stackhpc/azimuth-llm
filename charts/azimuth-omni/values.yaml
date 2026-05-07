@@ -1,0 +1,108 @@
+# In-cluster vLLM backends, provided by the azimuth-llm-omni-backend subchart
+# aliased here under `backend`. Values set here pass through to that subchart
+# (see charts/azimuth-omni-backend/values.yaml for per-modality options).
+# Set backend.enabled: false to use external backends via ui.appSettings.<alias>.
+backend:
+  enabled: true
+  # Text-to-text backend (chat / multimodal understanding).
+  ttt:
+    enabled: true
+  # Text-to-speech backend.
+  tts:
+    enabled: false
+  # Text-to-image backend.
+  tti:
+    enabled: false
+
+# Omni UI - the web app that talks to the enabled backends above (or to
+# external URLs you provide).
+ui:
+  enabled: true
+  image:
+    repository: ghcr.io/stackhpc/azimuth-llm-omni-ui
+    # Defaults to chart's appVersion
+    tag:
+    imagePullPolicy:
+
+  # Settings written to /etc/web-app/overrides.yml inside the UI container.
+  # Format matches web-apps/omni/defaults.yml. For each enabled backend the
+  # chart fills in backend_url and model_name, so you only need to set them
+  # when pointing at an external backend.
+  appSettings:
+    page_title: Omni Interface
+    page_description: A unified interface for multimodal AI.
+    # Use local system fonts by default to avoid GDPR issues with Gradio's
+    # default fonts (which require fetching from the Google fonts API).
+    theme_params:
+      font:
+        - sans-serif
+        - Arial
+      font_mono:
+        - sans-serif
+        - Arial
+
+    # Per-backend UI/inference config. To point a tab at an out-of-cluster
+    # backend, disable backend.<alias>.enabled and set backend_url + model_name
+    # here. Other keys (system_prompt, params, ui, ...) are forwarded as-is.
+    ttt:
+      system_prompt: "You are a helpful AI assistant. Today's date is {date}."
+      params:
+        max_tokens: 1024
+        temperature: 0.7
+        top_p: 0.9
+    tts:
+      params:
+        voice: casual_male
+        response_format: wav
+      # ui:
+      #   voice_choices: ["casual_male", "casual_female"]
+      #   format_choices: ["wav", "mp3", "ogg", "aac", "flac"]
+    tti:
+      params:
+        size: 1024x1024
+      ui:
+        size_choices: ["1024x1024", "768x1024", "1024x768"]
+        show_negative_prompt: true
+
+  service:
+    type: ClusterIP
+    zenith:
+      enabled: true
+      skipAuth: false
+      label: Omni Interface
+      iconUrl: https://raw.githubusercontent.com/gradio-app/gradio/5524e590577769b0444a5332b8d444aafb0c5c12/js/app/public/static/img/logo.svg
+      description: |
+        A unified multimodal web interface (chat / text-to-speech / text-to-image).
+  ingress:
+    enabled: false
+    className: ""
+    annotations: {}
+    hosts:
+      - host: chart-example.local
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+    tls: []
+  httpRoute:
+    enabled: false
+    annotations: {}
+    parentRefs:
+      - name: my-gateway
+        namespace: default
+        sectionName: https
+    hostnames:
+      - chart-example.local
+    rules:
+      - matches:
+          - path:
+              type: PathPrefix
+              value: /
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+  pdb:
+    enabled: false

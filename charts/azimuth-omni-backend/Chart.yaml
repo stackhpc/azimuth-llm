@@ -1,0 +1,16 @@
+apiVersion: v2
+name: azimuth-llm-omni-backend
+description: |
+  In-cluster vLLM backends for the Omni multimodal interface
+  (text-to-text / chat, text-to-speech, text-to-image).
+maintainers:
+  - name: "Victor HANG"
+    email: victor@stackhpc.com
+
+type: application
+
+# The version and appVersion are updated by the chart build script
+version: 0.1.0
+appVersion: local
+
+icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg

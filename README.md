@@ -22,6 +22,13 @@ This will install the latest stable [release](https://github.com/stackhpc/azimut
 
 Under the charts directory, there is a base [azimuth-llm](./charts/azimuth-llm) Helm chart which uses vLLM to deploy models from Huggingface. The [azimuth-chat](charts/azimuth-chat) and [azimuth-image-analysis](charts/azimuth-image-analysis) are wrapper charts which add different Gradio web interfaces for interacting with the deployed LLM.
 
+### Omni
+
+The [azimuth-omni](charts/azimuth-omni) chart deploys a single multimodal Gradio web interface (chat, text-to-speech and text-to-image) backed by one or more in-cluster [vLLM-Omni](https://github.com/vllm-project/vllm-omni) model deployments, provided by the [azimuth-omni-backend](charts/azimuth-omni-backend) subchart. Each modality (`ttt`/`tts`/`tti`) can be enabled independently and pointed at either an in-cluster or external backend.
+
+> [!IMPORTANT]
+> Unlike the base chart, the Omni backends are **GPU-only** — vLLM-Omni has no CPU image, so each enabled backend requires at least one NVIDIA GPU (`gpus >= 1`).
+
 ### Customisation
 
 The `charts/azimuth-llm/values.yaml` file documents the various customisation options which are available. In order to access the LLM from outside the Kubernetes cluster, the API and/or UI service types may be changed to

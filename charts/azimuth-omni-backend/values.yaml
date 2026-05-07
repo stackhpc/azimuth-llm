@@ -1,0 +1,236 @@
+# In-cluster vLLM backends for the Omni interface. Each modality (ttt / tts /
+# tti) is its own vLLM Deployment + Service. Enable only the ones you need.
+
+# Text-to-text backend (chat / multimodal understanding).
+ttt:
+  enabled: true
+  huggingface:
+    model: Qwen/Qwen2.5-7B-Instruct
+    # Jinja chat template passed to vLLM via --chat-template.
+    chatTemplate:
+    # Pre-existing secret containing HUGGING_FACE_HUB_TOKEN.
+    secretName:
+    # Or inline the token here (testing only):
+    token:
+  api:
+    replicas: 1
+    image:
+      containerImage: vllm/vllm-omni
+      version: v0.11.0
+    monitoring:
+      enabled: true
+    service:
+      type: ClusterIP
+      zenith:
+        enabled: false
+        skipAuth: false
+        label: TTT (chat) backend
+        iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
+        description: |
+          The OpenAI-compatible API for the TTT (chat) backend.
+    # Paths default to the endpoints this modality serves so the backends can
+    # share an ingress host. Override paths/rules for broader matches like /v1.
+    ingress:
+      enabled: false
+      className: ""
+      annotations: {}
+      hosts:
+        - host: chart-example.local
+          paths:
+            - path: /v1/chat
+              pathType: Prefix
+            - path: /v1/completions
+              pathType: Prefix
+            - path: /v1/models
+              pathType: Prefix
+            - path: /health
+              pathType: Prefix
+      tls: []
+    httpRoute:
+      enabled: false
+      annotations: {}
+      parentRefs:
+        - name: my-gateway
+          namespace: default
+          sectionName: https
+      hostnames:
+        - chart-example.local
+      rules:
+        - matches:
+            - path:
+                type: PathPrefix
+                value: /v1/chat
+            - path:
+                type: PathPrefix
+                value: /v1/completions
+            - path:
+                type: PathPrefix
+                value: /v1/models
+            - path:
+                type: PathPrefix
+                value: /health
+    cacheVolume:
+      hostPath:
+        path: /tmp/llm/huggingface-cache
+    gpus: 1
+    updateStrategy:
+      type: Recreate
+    modelMaxContextLength:
+    extraArgs: []
+    extraEnv: []
+    azimuthNodeGroupSelector: ""
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    pdb:
+      enabled: false
+
+# Text-to-speech backend.
+tts:
+  enabled: false
+  huggingface:
+    model: mistralai/Voxtral-4B-TTS-2603
+    chatTemplate:
+    secretName:
+    token:
+  api:
+    replicas: 1
+    image:
+      containerImage: vllm/vllm-omni
+      version: v0.11.0
+    monitoring:
+      enabled: true
+    service:
+      type: ClusterIP
+      zenith:
+        enabled: false
+        skipAuth: false
+        label: TTS backend
+        iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
+        description: |
+          The OpenAI-compatible API for the TTS backend.
+    # Paths default to the endpoints this modality serves. Override to broaden.
+    ingress:
+      enabled: false
+      className: ""
+      annotations: {}
+      hosts:
+        - host: chart-example.local
+          paths:
+            - path: /v1/audio
+              pathType: Prefix
+            - path: /v1/models
+              pathType: Prefix
+            - path: /health
+              pathType: Prefix
+      tls: []
+    httpRoute:
+      enabled: false
+      annotations: {}
+      parentRefs:
+        - name: my-gateway
+          namespace: default
+          sectionName: https
+      hostnames:
+        - chart-example.local
+      rules:
+        - matches:
+            - path:
+                type: PathPrefix
+                value: /v1/audio
+            - path:
+                type: PathPrefix
+                value: /v1/models
+            - path:
+                type: PathPrefix
+                value: /health
+    cacheVolume:
+      hostPath:
+        path: /tmp/llm/huggingface-cache
+    gpus: 1
+    updateStrategy:
+      type: Recreate
+    modelMaxContextLength:
+    extraArgs: []
+    extraEnv: []
+    azimuthNodeGroupSelector: ""
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    pdb:
+      enabled: false
+
+# Text-to-image backend.
+tti:
+  enabled: false
+  huggingface:
+    model: Qwen/Qwen-Image
+    chatTemplate:
+    secretName:
+    token:
+  api:
+    replicas: 1
+    image:
+      containerImage: vllm/vllm-omni
+      version: v0.11.0
+    monitoring:
+      enabled: true
+    service:
+      type: ClusterIP
+      zenith:
+        enabled: false
+        skipAuth: false
+        label: TTI backend
+        iconUrl: https://raw.githubusercontent.com/vllm-project/vllm/v0.2.7/docs/source/assets/logos/vllm-logo-only-light.png
+        description: |
+          The OpenAI-compatible API for the TTI backend.
+    # Paths default to the endpoints this modality serves. Override to broaden.
+    ingress:
+      enabled: false
+      className: ""
+      annotations: {}
+      hosts:
+        - host: chart-example.local
+          paths:
+            - path: /v1/images
+              pathType: Prefix
+            - path: /v1/models
+              pathType: Prefix
+            - path: /health
+              pathType: Prefix
+      tls: []
+    httpRoute:
+      enabled: false
+      annotations: {}
+      parentRefs:
+        - name: my-gateway
+          namespace: default
+          sectionName: https
+      hostnames:
+        - chart-example.local
+      rules:
+        - matches:
+            - path:
+                type: PathPrefix
+                value: /v1/images
+            - path:
+                type: PathPrefix
+                value: /v1/models
+            - path:
+                type: PathPrefix
+                value: /health
+    cacheVolume:
+      hostPath:
+        path: /tmp/llm/huggingface-cache
+    gpus: 1
+    updateStrategy:
+      type: Recreate
+    modelMaxContextLength:
+    extraArgs: []
+    extraEnv: []
+    azimuthNodeGroupSelector: ""
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+    pdb:
+      enabled: false

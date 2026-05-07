@@ -1,0 +1,29 @@
+apiVersion: v2
+name: azimuth-llm-omni
+description: |
+  Omni multimodal web interface (chat, text-to-speech, text-to-image)
+  with optional in-cluster vLLM backends for each modality.
+maintainers:
+  - name: "Victor HANG"
+    email: victor@stackhpc.com
+
+type: application
+
+# The version and appVersion are updated by the chart build script
+version: 0.1.0
+appVersion: local
+
+icon: https://huggingface.co/datasets/huggingface/brand-assets/resolve/main/hf-logo.svg
+
+annotations:
+  azimuth.stackhpc.com/label: HuggingFace Omni
+
+dependencies:
+  # The in-cluster vLLM backends (ttt / tts / tti) live in a separate chart and
+  # are pulled in here under the `backend` alias. Disable the whole subchart
+  # (backend.enabled=false) to run the UI against external backends only.
+  - name: azimuth-llm-omni-backend
+    alias: backend
+    version: ">=0-0"
+    repository: "file://../azimuth-omni-backend/"
+    condition: backend.enabled

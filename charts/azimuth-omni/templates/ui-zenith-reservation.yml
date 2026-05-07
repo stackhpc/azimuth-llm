@@ -1,0 +1,18 @@
+{{- if .Values.ui.enabled -}}
+{{- if .Values.ui.service.zenith.enabled -}}
+apiVersion: zenith.stackhpc.com/v1alpha1
+kind: Reservation
+metadata:
+  name: {{ .Release.Name }}-omni-ui
+  labels:
+    {{- include "azimuth-omni.labels" . | nindent 4 }}
+  annotations:
+    azimuth.stackhpc.com/service-label: {{ quote .Values.ui.service.zenith.label }}
+    azimuth.stackhpc.com/service-icon-url: {{ .Values.ui.service.zenith.iconUrl }}
+    {{- with .Values.ui.service.zenith.description }}
+    azimuth.stackhpc.com/service-description: {{ quote . }}
+    {{- end }}
+spec:
+  credentialSecretName: {{ .Release.Name }}-omni-ui-zenith-credential
+{{- end -}}
+{{- end -}}
