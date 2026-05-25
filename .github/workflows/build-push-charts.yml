@@ -31,10 +31,10 @@ jobs:
 
       - name: Get SemVer version for current commit
         id: semver
-        uses: azimuth-cloud/github-actions/semver@8771cb1c1db134e99becf314f07db6a84b8d7fbf
+        uses: azimuth-cloud/github-actions/semver@6803528c56e7e20f76374ed32abec43ec28bd227
 
       - name: Publish Helm charts
-        uses: azimuth-cloud/github-actions/helm-publish@8771cb1c1db134e99becf314f07db6a84b8d7fbf
+        uses: azimuth-cloud/github-actions/helm-publish@6803528c56e7e20f76374ed32abec43ec28bd227
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           version: ${{ steps.semver.outputs.version }}
