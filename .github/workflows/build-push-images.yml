@@ -39,7 +39,7 @@ jobs:
 
       - name: Get SemVer version for current commit
         id: semver
-        uses: azimuth-cloud/github-actions/semver@8771cb1c1db134e99becf314f07db6a84b8d7fbf
+        uses: azimuth-cloud/github-actions/semver@master
 
       - name: Calculate metadata for image
         id: image-meta
@@ -53,7 +53,7 @@ jobs:
             type=raw,value=${{ steps.semver.outputs.short-sha }}
 
       - name: Build and push image
-        uses: azimuth-cloud/github-actions/docker-multiarch-build-push@8771cb1c1db134e99becf314f07db6a84b8d7fbf
+        uses: azimuth-cloud/github-actions/docker-multiarch-build-push@master
         with:
           cache-key: ${{ matrix.component }}
           context: ./web-apps/
