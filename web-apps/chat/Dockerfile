@@ -1,9 +1,9 @@
 FROM ghcr.io/astral-sh/uv:python3.11-trixie-slim
 
 RUN apt-get update && apt-get install -y \
-      libssl3t64=3.5.6-1~deb13u2 \
-      openssl=3.5.6-1~deb13u2 \
-      libsqlite3-0=3.46.1-7+deb13u1 \
+      libssl3t64=3.5.7-1~deb13u3 \
+      openssl=3.5.7-1~deb13u3 \
+      libsqlite3-0=3.46.1-7+deb13u2 \
       libgnutls30t64=3.8.9-3+deb13u4 \
     && rm -rf /var/lib/apt/lists/*
 
