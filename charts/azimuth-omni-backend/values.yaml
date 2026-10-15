@@ -16,7 +16,7 @@ ttt:
     replicas: 1
     image:
       containerImage: vllm/vllm-omni
-      version: v0.11.0
+      version: v0.30.0
     monitoring:
       enabled: true
     service:
@@ -97,7 +97,7 @@ tts:
     replicas: 1
     image:
       containerImage: vllm/vllm-omni
-      version: v0.11.0
+      version: v0.30.0
     monitoring:
       enabled: true
     service:
@@ -172,7 +172,7 @@ tti:
     replicas: 1
     image:
       containerImage: vllm/vllm-omni
-      version: v0.11.0
+      version: v0.30.0
     monitoring:
       enabled: true
     service:
