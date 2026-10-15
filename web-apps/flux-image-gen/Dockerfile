@@ -9,6 +9,7 @@ ARG LIBSQLITE3_VERSION=3.46.1-7+deb13u2
 ARG LIBGNUTLS_VERSION=3.8.9-3+deb13u4
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+        git \
         ffmpeg \
         libsm6 \
         libxext6 \
