@@ -94,7 +94,9 @@ spec:
         - name: shm
           mountPath: /dev/shm
         args:
+          {{- if $cfg.api.omni }}
           - --omni
+          {{- end }}
           {{- if semverCompare "<v0.13.0" $cfg.api.image.version }}
           - --model
           {{- end }}

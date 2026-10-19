@@ -76,6 +76,7 @@ ttt:
     updateStrategy:
       type: Recreate
     modelMaxContextLength:
+    omni: false
     extraArgs: []
     extraEnv: []
     azimuthNodeGroupSelector: ""
@@ -151,6 +152,7 @@ tts:
     updateStrategy:
       type: Recreate
     modelMaxContextLength:
+    omni: true
     extraArgs: []
     extraEnv: []
     azimuthNodeGroupSelector: ""
@@ -226,6 +228,7 @@ tti:
     updateStrategy:
       type: Recreate
     modelMaxContextLength:
+    omni: true
     extraArgs: []
     extraEnv: []
     azimuthNodeGroupSelector: ""
