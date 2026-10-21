@@ -138,7 +138,13 @@ spec:
             nvidia.com/gpu: {{ $cfg.api.gpus | int }}
       volumes:
         - name: data
-          {{- $cfg.api.cacheVolume | toYaml | nindent 10 }}
+          ephemeral:
+            volumeClaimTemplate:
+              metadata:
+                labels:
+                  {{- include "azimuth-omni-backend.backend-selectorLabels" $labelArgs | nindent 18 }}
+              spec:
+                {{- $cfg.api.cacheVolume | toYaml | nindent 16 }}
         - name: shm
           emptyDir:
             medium: Memory

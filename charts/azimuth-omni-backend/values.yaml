@@ -70,8 +70,11 @@ ttt:
                 type: PathPrefix
                 value: /health
     cacheVolume:
-      hostPath:
-        path: /tmp/llm/huggingface-cache
+      accessModes:
+       - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 40Gi
     gpus: 1
     updateStrategy:
       type: Recreate
@@ -146,8 +149,11 @@ tts:
                 type: PathPrefix
                 value: /health
     cacheVolume:
-      hostPath:
-        path: /tmp/llm/huggingface-cache
+      accessModes:
+       - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 40Gi
     gpus: 1
     updateStrategy:
       type: Recreate
@@ -222,8 +228,11 @@ tti:
                 type: PathPrefix
                 value: /health
     cacheVolume:
-      hostPath:
-        path: /tmp/llm/huggingface-cache
+      accessModes:
+       - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 40Gi
     gpus: 1
     updateStrategy:
       type: Recreate
