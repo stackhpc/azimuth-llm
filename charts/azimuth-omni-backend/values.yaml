@@ -16,7 +16,7 @@ ttt:
     replicas: 1
     image:
       containerImage: vllm/vllm-omni
-      version: v0.11.0
+      version: v0.30.0
     monitoring:
       enabled: true
     service:
@@ -70,12 +70,16 @@ ttt:
                 type: PathPrefix
                 value: /health
     cacheVolume:
-      hostPath:
-        path: /tmp/llm/huggingface-cache
+      accessModes:
+       - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 40Gi
     gpus: 1
     updateStrategy:
       type: Recreate
     modelMaxContextLength:
+    omni: false
     extraArgs: []
     extraEnv: []
     azimuthNodeGroupSelector: ""
@@ -97,7 +101,7 @@ tts:
     replicas: 1
     image:
       containerImage: vllm/vllm-omni
-      version: v0.11.0
+      version: v0.30.0
     monitoring:
       enabled: true
     service:
@@ -145,12 +149,16 @@ tts:
                 type: PathPrefix
                 value: /health
     cacheVolume:
-      hostPath:
-        path: /tmp/llm/huggingface-cache
+      accessModes:
+       - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 40Gi
     gpus: 1
     updateStrategy:
       type: Recreate
     modelMaxContextLength:
+    omni: true
     extraArgs: []
     extraEnv: []
     azimuthNodeGroupSelector: ""
@@ -172,7 +180,7 @@ tti:
     replicas: 1
     image:
       containerImage: vllm/vllm-omni
-      version: v0.11.0
+      version: v0.30.0
     monitoring:
       enabled: true
     service:
@@ -220,12 +228,16 @@ tti:
                 type: PathPrefix
                 value: /health
     cacheVolume:
-      hostPath:
-        path: /tmp/llm/huggingface-cache
+      accessModes:
+       - "ReadWriteOnce"
+      resources:
+        requests:
+          storage: 40Gi
     gpus: 1
     updateStrategy:
       type: Recreate
     modelMaxContextLength:
+    omni: true
     extraArgs: []
     extraEnv: []
     azimuthNodeGroupSelector: ""

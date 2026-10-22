@@ -77,7 +77,10 @@ jobs:
           echo "Installing ollama..."
           curl -fsSL https://ollama.com/install.sh | sh
 
-          # Give ollama systemd unit time to start
+          # No systemd running so API serve needs to be started in background
+          ollama serve &
+
+          # Give ollama time to initialise
           sleep 5
 
           MODEL=smollm2:135m
@@ -89,7 +92,7 @@ jobs:
         working-directory: web-apps
 
       - name: Install Helm
-        uses: azure/setup-helm@1a275c3b69536ee54be43f2070a358922e12c8d4 # v4.3.1
+        uses: azure/setup-helm@dda3372f752e03dde6b3237bc9431cdc2f7a02a2 # v5.0.0
 
       - name: Run base chart templating with default values
         run: helm template ci-test charts/azimuth-llm

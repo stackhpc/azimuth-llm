@@ -1,14 +1,22 @@
-FROM ghcr.io/astral-sh/uv:python3.11-trixie
+FROM ghcr.io/astral-sh/uv:python3.11-trixie-slim
 
-ARG IMAGEMAGICK_VERSION=8:7.1.1.43+dfsg1-1+deb13u11
-ARG LIBUNBOUND_VERSION=1.22.0-2+deb13u3
+ARG IMAGEMAGICK_VERSION=8:7.1.1.43+dfsg1-1+deb13u12
+ARG LIBUNBOUND_VERSION=1.26.1-0+deb13u1
 ARG KRB5_VERSION=1.21.3-5+deb13u1
 ARG LIBGCRYPT_VERSION=1.11.0-7+deb13u1
+ARG OPENSSL_VERSION=3.5.7-1~deb13u3
+ARG LIBSQLITE3_VERSION=3.46.1-7+deb13u2
+ARG LIBGNUTLS_VERSION=3.8.9-3+deb13u4
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
+        git \
         ffmpeg \
         libsm6 \
         libxext6 \
+        "libssl3t64=${OPENSSL_VERSION}" \
+        "openssl=${OPENSSL_VERSION}" \
+        "libsqlite3-0=${LIBSQLITE3_VERSION}" \
+        "libgnutls30t64=${LIBGNUTLS_VERSION}" \
         "imagemagick=${IMAGEMAGICK_VERSION}" \
         "imagemagick-7-common=${IMAGEMAGICK_VERSION}" \
         "imagemagick-7.q16=${IMAGEMAGICK_VERSION}" \
