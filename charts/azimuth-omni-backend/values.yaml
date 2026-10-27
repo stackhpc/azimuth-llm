@@ -156,7 +156,7 @@ tts:
           storage: 40Gi
     gpus: 1
     updateStrategy:
-      type: Recreate
+      type: RollingUpdate
     modelMaxContextLength:
     omni: true
     extraArgs: []
@@ -235,7 +235,7 @@ tti:
           storage: 40Gi
     gpus: 1
     updateStrategy:
-      type: Recreate
+      type: RollingUpdate
     modelMaxContextLength:
     omni: true
     extraArgs: []
