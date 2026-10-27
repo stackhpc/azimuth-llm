@@ -77,7 +77,7 @@ ttt:
           storage: 40Gi
     gpus: 1
     updateStrategy:
-      type: Recreate
+      type: RollingUpdate
     modelMaxContextLength:
     omni: false
     extraArgs: []
