@@ -71,7 +71,7 @@ ttt:
                 value: /health
     cacheVolume:
       accessModes:
-       - "ReadWriteOnce"
+        - "ReadWriteOnce"
       resources:
         requests:
           storage: 40Gi
@@ -150,7 +150,7 @@ tts:
                 value: /health
     cacheVolume:
       accessModes:
-       - "ReadWriteOnce"
+        - "ReadWriteOnce"
       resources:
         requests:
           storage: 40Gi
@@ -229,7 +229,7 @@ tti:
                 value: /health
     cacheVolume:
       accessModes:
-       - "ReadWriteOnce"
+        - "ReadWriteOnce"
       resources:
         requests:
           storage: 40Gi
