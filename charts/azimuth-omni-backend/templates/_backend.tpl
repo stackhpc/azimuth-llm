@@ -1,5 +1,5 @@
 {{/*
-Render a full vLLM backend (Deployment + Service + optional
+Render a full vLLM backend (StatefulSet + Service + optional
 ingress/httproute/zenith/pdb/servicemonitor) for one modality.
 
 Usage:
@@ -62,17 +62,18 @@ Renders every resource for one modality.
 {{- $labelArgs := dict "root" $root "alias" $alias -}}
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ $name }}
   labels:
     {{- include "azimuth-omni-backend.backend-labels" $labelArgs | nindent 4 }}
 spec:
+  serviceName: {{ $name }}-headless
   replicas: {{ default 1 $cfg.api.replicas }}
   selector:
     matchLabels:
       {{- include "azimuth-omni-backend.backend-selectorLabels" $labelArgs | nindent 6 }}
-  strategy:
+  updateStrategy:
     {{- $cfg.api.updateStrategy | toYaml | nindent 4 }}
   template:
     metadata:
@@ -94,7 +95,9 @@ spec:
         - name: shm
           mountPath: /dev/shm
         args:
+          {{- if $cfg.api.omni }}
           - --omni
+          {{- end }}
           {{- if semverCompare "<v0.13.0" $cfg.api.image.version }}
           - --model
           {{- end }}
@@ -135,8 +138,6 @@ spec:
           limits:
             nvidia.com/gpu: {{ $cfg.api.gpus | int }}
       volumes:
-        - name: data
-          {{- $cfg.api.cacheVolume | toYaml | nindent 10 }}
         - name: shm
           emptyDir:
             medium: Memory
@@ -158,6 +159,29 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+        labels:
+          {{- include "azimuth-omni-backend.backend-selectorLabels" $labelArgs | nindent 10 }}
+      spec:
+        {{- $cfg.api.cacheVolume | toYaml | nindent 8 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $name }}-headless
+  labels:
+    {{- include "azimuth-omni-backend.backend-labels" $labelArgs | nindent 4 }}
+spec:
+  ports:
+  - name: api
+    port: 8000
+    protocol: TCP
+    targetPort: api
+  type: {{ $cfg.api.service.type }}
+  selector:
+    {{- include "azimuth-omni-backend.backend-selectorLabels" $labelArgs | nindent 4 }}
 ---
 apiVersion: v1
 kind: Service
