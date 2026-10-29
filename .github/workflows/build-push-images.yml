@@ -17,6 +17,8 @@ jobs:
       matrix:
         component:
           - chat
+          - image-analysis
+          - flux-image-gen
           - omni
     permissions:
       contents: read
