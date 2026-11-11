@@ -98,6 +98,10 @@ spec:
           {{- if $cfg.api.omni }}
           - --omni
           {{- end }}
+          {{- if gt ($cfg.api.gpus | int) 1 }}
+          - --tensor-parallel-size
+          - {{ $cfg.api.gpus | quote }}
+          {{- end }}
           {{- if semverCompare "<v0.13.0" $cfg.api.image.version }}
           - --model
           {{- end }}
