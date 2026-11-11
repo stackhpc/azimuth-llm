@@ -3,3 +3,10 @@ ignore:
   - vulnerability: CVE-2026-40962
     package:
       location: /usr/bin/ffmpeg
+  # Chat web apps don't accept image or file
+  # input so not affected by Pillow CVEs
+  - vulnerability: GHSA-w889-685w-c8fh
+  - vulnerability: GHSA-332p-7hrc-92wf
+  - vulnerability: GHSA-8g5g-8vmr-9782
+  - vulnerability: GHSA-v9pv-5gc8-w2m6
+  - vulnerability: GHSA-5x8w-8jj5-q52h
