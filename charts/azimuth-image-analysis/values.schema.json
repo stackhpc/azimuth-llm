@@ -46,7 +46,7 @@
                                     "type": "string",
                                     "title": "Backend vLLM version",
                                     "description": "The vLLM version to use as a backend. Must be a version tag from [this list](https://github.com/vllm-project/vllm/tags) when using vllm-openai or [this list](https://github.com/vllm-project/vllm-omni/tags) when using vllm-omni.",
-                                    "default": "v0.11.0"
+                                    "default": "null"
                                 }
                             }
                         },
