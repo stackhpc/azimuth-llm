@@ -50,7 +50,7 @@ jobs:
 
   chart_validation:
     needs: [publish_images]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       CLUSTER_NAME: chart-testing
       RELEASE_NAME: ci-test
